@@ -17,7 +17,7 @@
 						<li><input type="submit" value="Login" DISABLED/>
 					<input type="reset" value="Clear" DISABLED/></li>
 						</form>
-					<li><a href="#">Create an account</a></li>
+					<li><a href="account.php?page=register">Create an account</a></li>
 					</ul><br>
 							
 						
@@ -31,9 +31,9 @@
 				<input type="submit" value="Search" DISABLED/>
 
 				</form>
-				</li>					<li><a href="#">Guild List</a></li>
-					<li><a href="#">House List</a></li>
-					<li><a href="#">Latest Deaths</a></li>
+				</li>					<li><a href="guild.php?page=list">Guild List</a></li>
+					<li><a href="info.php?act=house">House List</a></li>
+					<li><a href="info.php?act=deaths">Latest Deaths</a></li>
 				</ul>
 
 

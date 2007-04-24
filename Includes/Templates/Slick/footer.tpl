@@ -4,15 +4,23 @@
 
 				<h2>Go somewhere</h2>
 				<ul>
-					<li>Disabled</li>
+					<li><a href="index.html">Server Information</a></li>
+					<li><a href="index.html">Something else</a></li>
+					<li><a href="index.html">Something else</a></li>
+					<li><a href="index.html">Something else</a></li>
+					<li><a href="index.html">Something else</a></li>
 				</ul>
 
 			</div>
 
 			<div class="col3center">
-				<h2>Go somewhere</h2>
+				<h2>Sed purus</h2>
 				<ul>
-					<li>Disabled</li>
+					<li><a href="index.html">Server Information</a></li>
+					<li><a href="index.html">Something else</a></li>
+					<li><a href="index.html">Something else</a></li>
+					<li><a href="index.html">Something else</a></li>
+					<li><a href="index.html">Something else</a></li>
 				</ul>
 			</div>
 

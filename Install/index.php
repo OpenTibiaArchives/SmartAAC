@@ -2,7 +2,7 @@
 
 //echo "Welcome to the Start Page of Smart-Ass 2 (Codename: Trickie Dickie)";
 
-$title = 'Installation';
+$title = 'Installation->Start';
 $name = 'Smart-Ass';
 $bodySpecial = 'onload="openAlert()"';
 
@@ -23,16 +23,13 @@ echo '
 					<li>Manager</li>
 				</ul>
 				<center>
-				<form action="install?step=1" method="post">
+					<form action="install.php?step=1" method="post">
 				<br><input type="submit" value="Proceed" class="btn"/>
+					</form>
 				</center>
-			</div>
-
-		</div>
-		
 ';
 		
-
+// Alert  for when the page loads, this uses $bodySpecial to load this onload on <body>
 echo '<script type="text/javascript">
   function openAlert() {
    Dialog.alert("<h1>Welcome!</h1><br><p>Thank you for choosing our software to apply to your otserver as an AAC! The AAC is designed to be easy to use for anyone, and user friendly too coming together with an stylish interface and design too.</p>", {windowParameters: {className: "alphacube"}})
