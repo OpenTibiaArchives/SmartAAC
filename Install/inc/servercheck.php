@@ -29,6 +29,7 @@
 $title = 'Installation->Testing Your Server';
 $name = 'Smart-Ass';
 $bodySpecial = 'onload="openAlert()"';
+$documentation = file_get_contents('inc/servercheck.inc');
 
 include_once('../Includes/Templates/bTemplate.php');
 $tpl = new bTemplate();
@@ -36,11 +37,14 @@ $tpl = new bTemplate();
 $tpl->set('title', $title);
 $tpl->set('strayline', $name);
 $tpl->set('bodySpecial', $bodySpecial);
+$tpl->set('documentation', $documentation);
 
 echo $tpl->fetch('../Includes/Templates/Slick_minimal/top.tpl');
 
 $tests_passed = 0;
-if( version_compare(phpversion(), "5.1.0", ">=") )
+$tests_to_pass = 3;
+
+if( version_compare(phpversion(), "5.0.0", ">=") )
 {
 	$php_confirm = '<font color="green">Pass</font>';
 	$tests_passed++;
@@ -106,9 +110,10 @@ echo "<div align=\"center\"><table style=\"text-align: left; height: 119px; widt
 
 
 //Alert  for when the page loads, this uses $bodySpecial to load this onload on <body>
-if($tests_passed >= 2)
+if($tests_passed == $tests_to_pass)
 {
-	echo '<script type="text/javascript">
+	echo '
+<script type="text/javascript">
   function openAlert() {
    Dialog.alert("<h1>Passed</h1><br><p>You have passed at least too tests which means you should be able to move on, go ahead.</p>", {windowParameters: {className: "alphacube"}})
   }
@@ -117,7 +122,18 @@ if($tests_passed >= 2)
 <div align="center">
 <form action="install.php?step=2" method="post">
 <br><input type="submit" value="Next" class="btn"/>
-</form></div>';
+</form></div>
+	';
+}
+elseif($tests_passed != $tests_to_pass)
+{
+	echo '
+<script type="text/javascript">
+  function openAlert() {
+   Dialog.alert("<h1>Failed</h1><br><p>You have passed at least too tests which means you should be able to move on, go ahead.</p>", {windowParameters: {className: "alphacube"}})
+  }
+</script>
+	';
 }
 
 		

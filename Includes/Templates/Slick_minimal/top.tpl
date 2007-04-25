@@ -8,6 +8,7 @@
 <meta name="keywords" content="keywords"/> 
 <meta name="author" content="author"/> 
 <link rel="stylesheet" type="text/css" href="../Includes/Templates/Slick_minimal/default.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="../Includes/Templates/Slick_minimal/extra.css" media="screen"/>
 
 <script type="text/javascript" src="../Includes/window_protocol/javascript/prototype.js"> </script>
 <script type="text/javascript" src="../Includes/window_protocol/javascript/effects.js"> </script>

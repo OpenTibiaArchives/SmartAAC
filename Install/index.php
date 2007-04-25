@@ -5,6 +5,7 @@
 $title = 'Installation->Start';
 $name = 'Smart-Ass';
 $bodySpecial = 'onload="openAlert()"';
+$documentation = file_get_contents('inc/start.inc');
 
 include_once('../Includes/Templates/bTemplate.php');
 $tpl = new bTemplate();
@@ -12,6 +13,7 @@ $tpl = new bTemplate();
 $tpl->set('title', $title);
 $tpl->set('strayline', $name);
 $tpl->set('bodySpecial', $bodySpecial);
+$tpl->set('documentation', $documentation);
 
 echo $tpl->fetch('../Includes/Templates/Slick_minimal/top.tpl');
 
