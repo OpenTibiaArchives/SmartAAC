@@ -40,12 +40,7 @@ $tpl->set('bodySpecial', $bodySpecial);
 echo $tpl->fetch('../Includes/Templates/Slick_minimal/top.tpl');
 
 $tests_passed = 0;
-if( phpversion() == "5.2.1" ||
-	phpversion() == "5.1.4" || 
-	phpversion() == "5.1.1" ||
-	phpversion() == "5.1.2" ||
-	phpversion() == "5.1.3" ||
-	phpversion() == "5.1.0")
+if( version_compare(phpversion(), "5.1.0", ">=") )
 {
 	$php_confirm = '<font color="green">Pass</font>';
 	$tests_passed++;
