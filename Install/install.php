@@ -41,6 +41,17 @@ switch($step)
 	case 3:
 	include 'inc/maininstall.php';
 	break;
+	
+	case 4:
+	include 'inc/savesettings.php';
+	break;
+	
+	case 5:
+	include 'inc/finish.php';
+	break;
+	
+	default:
+	die("Wrong setup step given. Please try step 1 or index.php");
 }
 
 ?>
