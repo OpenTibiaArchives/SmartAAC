@@ -129,7 +129,7 @@ clear: left;
 <br /><br />
 
 <h1>Town</h1>
-<label for=\"Temple_ID\">Town ID:</label>
+<label for=\"Town_ID\">Town ID:</label>
 <input type=\"text\" name=\"Town_ID\" value=\"\" /><br />
 <br /><br />
 
