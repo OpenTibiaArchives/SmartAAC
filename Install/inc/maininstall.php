@@ -55,6 +55,17 @@ if($license_decide == "Disagree")
 }
 elseif($license_decide == "Agree")
 {
+	$error = $_GET['error'];
+	$errors =
+	array(
+		'noTown' => 'You have to type in a Town ID!',
+		'ble' => 'bla'
+	);
+	
+	if(strlen($errors[$error]) > 0){
+		echo "<font color=\"red\" size=\"4\">Error: $errors[$error]</font>";
+	}
+	
 echo "
 <style type=\"text/css\">
 
@@ -93,45 +104,33 @@ clear: left;
 <form action=\"install.php?step=4\" method=\"post\">
 <h1>MySQL Database Details</h1>
 <label for=\"SQL_Host\">MySQL Host:</label>
-<input type=\"text\" name=\"SQL_Host\" value=\"\" /><br />
+<input type=\"text\" name=\"SQL_Host\" value=\"localhost\" /><br />
 
 <label for=\"SQL_User\">MySQL User:</label>
-<input type=\"text\" name=\"SQL_User\" value=\"\" /><br />
+<input type=\"text\" name=\"SQL_User\" value=\"root\" /><br />
 
 <label for=\"SQL_Pass\">MySQL Password:</label>
 <input type=\"password\" name=\"SQL_Pass\" value=\"\" /><br />
 
 <label for=\"SQL_DB\">MySQL Database:</label>
-<input type=\"text\" name=\"SQL_DB\" value=\"\" /><br />
-<br /><br />\
+<input type=\"text\" name=\"SQL_DB\" value=\"otserv\" /><br />
+<br /><br />
+
+<h1>Directories</h1>
+<label for=\"dataDir\">Data dir:</label>
+<input type=\"text\" name=\"dataDir\" value=\"data/\" /><br /><br />
 
 <h1>Security Options</h1>
-<label for=\"HashPass\">Hash account passwords?</label>
+<label for=\"HashPass\">Use MD5 passwords?</label>
 <input type=\"checkbox\" name=\"HashPass\" class=\"boxes\" /><br /><br />
 
 <label for=\"ImgVer\">Image verification?</label>
 <input type=\"checkbox\" name=\"ImgVer\" class=\"boxes\" /><br />
 <br /><br />
 
-<h1>Spawn and Temple</h1>
-<h2>Spawn</h2><br />
-<label for=\"Spawn_X\">X Position:</label>
-<input type=\"text\" name=\"Spawn_X\" value=\"\" /><br />
-
-<label for=\"Spawn_Y\">Y Position:</label>
-<input type=\"text\" name=\"Spawn_Y\" value=\"\" /><br />
-
-<label for=\"Spawn_Z\">Z Position:</label>
-<input type=\"text\" name=\"Spawn_Z\" value=\"\" /><br />
-<h2>Temple</h2><br />
-<label for=\"Temple_X\">X Position:</label>
-<input type=\"text\" name=\"Temple_X\" value=\"\" /><br />
-
-<label for=\"Temple_Y\">Y Position:</label>
-<input type=\"text\" name=\"Temple_Y\" value=\"\" /><br />
-
-<label for=\"Temple_Z\">Z Position:</label>
-<input type=\"text\" name=\"Temple_Z\" value=\"\" /><br />
+<h1>Town</h1>
+<label for=\"Temple_ID\">Town ID:</label>
+<input type=\"text\" name=\"Town_ID\" value=\"\" /><br />
 <br /><br />
 
 <h1>Other Server Details</h1>
@@ -155,14 +154,20 @@ clear: left;
 <br /><br />
 
 <h1>Common Fields</h1>
+<label for=\"MinAccLen\">Min Account Number Length:</label>
+<input type=\"text\" name=\"MinAccLen\" value=\"6\" /><br />
 <label for=\"MaxAccLen\">Max Account Number Length:</label>
-<input type=\"text\" name=\"MaxAccLen\" value=\"\" /><br />
+<input type=\"text\" name=\"MaxAccLen\" value=\"8\" /><br /><br />
 
+<label for=\"MinPassLen\">Min Password Length:</label>
+<input type=\"text\" name=\"MinPassLen\" value=\"3\" /><br />
 <label for=\"MaxPassLen\">Max Password Length:</label>
-<input type=\"text\" name=\"MaxPassLen\" value=\"\" /><br />
+<input type=\"text\" name=\"MaxPassLen\" value=\"15\" /><br /><br />
 
+<label for=\"MinPlayerLen\">Min Playername Length:</label>
+<input type=\"text\" name=\"MinPlayerLen\" value=\"4\" /><br />
 <label for=\"MaxPlayerLen\">Max Playername Length:</label>
-<input type=\"text\" name=\"MaxPlayerLen\" value=\"\" /><br />
+<input type=\"text\" name=\"MaxPlayerLen\" value=\"20\" /><br /><br />
 
 <input type=\"submit\" name=\"submitbutton\" id=\"submitbutton\" value=\"Submit\" />
 </form>
