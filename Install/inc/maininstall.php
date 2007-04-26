@@ -104,16 +104,16 @@ clear: left;
 <form action=\"install.php?step=4\" method=\"post\">
 <h1>MySQL Database Details</h1>
 <label for=\"SQL_Host\">MySQL Host:</label>
-<input type=\"text\" name=\"SQL_Host\" value=\"localhost\" /><br />
+<input type=\"text\" name=\"SQL_Host\" value=\"\" /><br />
 
 <label for=\"SQL_User\">MySQL User:</label>
-<input type=\"text\" name=\"SQL_User\" value=\"root\" /><br />
+<input type=\"text\" name=\"SQL_User\" value=\"\" /><br />
 
 <label for=\"SQL_Pass\">MySQL Password:</label>
 <input type=\"password\" name=\"SQL_Pass\" value=\"\" /><br />
 
 <label for=\"SQL_DB\">MySQL Database:</label>
-<input type=\"text\" name=\"SQL_DB\" value=\"otserv\" /><br />
+<input type=\"text\" name=\"SQL_DB\" value=\"\" /><br />
 <br /><br />
 
 <h1>Directories</h1>
