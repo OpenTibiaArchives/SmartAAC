@@ -37,19 +37,18 @@ $aac_servername = 		"Unnamed Server";
 $net_ipaddress =		"127.0.0.1";
 $net_port = 			"7171";
 
-$aac_hashpasswords = 	false;
+$aac_md5passwords =		false;
 $aac_imgver = 			true;
 
-$aac_spawn =			array("x" => 500, "y" => 500, "z" => 7);
-$aac_temple = 			array("x" => 500, "y" => 500, "z" => 7);
-//$aac_type =				"Manager"; // Not yet in use, we just go straight to 'Manager' for now.
+$aac_townId =			1;
+//$aac_type =			"Manager"; // Not yet in use, we just go straight to 'Manager' for now.
 
-$sql_host =				'127.0.0.1';
-$sql_user =				'';
+$sql_host =			'127.0.0.1';
+$sql_user =			'';
 $sql_pass = 			'';
-$sql_db = 				'otserv';
+$sql_db = 			'otserv';
 
-$info_os =				"Windows";
+$info_os =			"Windows";
 $info_connection =		"5 Mbits";
 $info_uptimetype =		"24/7";
 
