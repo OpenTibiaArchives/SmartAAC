@@ -28,30 +28,38 @@
 
 $step = $_GET['step']; // Grab the variable from the url
 
-switch($step)
+if(file_exists("installLock.txt"))
 {
-	case 1:
-	include 'inc/servercheck.php';
-	break;
-	
-	case 2:
-	include 'inc/licenseagreement.php';
-	break;
-	
-	case 3:
-	include 'inc/maininstall.php';
-	break;
-	
-	case 4:
-	include 'inc/savesettings.php';
-	break;
-	
-	case 5:
-	include 'inc/finish.php';
-	break;
-	
-	default:
-	die("Wrong setup step given. Please try step 1 or index.php");
+    header("location: inc/forbidden.php");
+}
+else
+{
+	// This is for telling which step we are on in the installation of Smart-Ass
+	switch($step)
+	{
+		case 1:
+		include 'inc/servercheck.php';
+		break;
+		
+		case 2:
+		include 'inc/licenseagreement.php';
+		break;
+		
+		case 3:
+		include 'inc/maininstall.php';
+		break;
+		
+		case 4:
+		include 'inc/savesettings.php';
+		break;
+		
+		case 5:
+		include 'inc/finish.php';
+		break;
+		
+		default:
+		die("Wrong setup step given. Please try step 1 or index.php");
+	}
 }
 
 ?>

@@ -1,3 +1,8 @@
+<h2>Progress</h2><br />
+<img src="img/progress_4.png" />
+
+<br /><br />
+
 <h2>Setup Stuff</h2>
 <p>This is where you have to insert or edit the fields to fit the AAC system to what you want it to be like, below are a brief explanation of some of the things that are asked from you in this installation.</p>
 <br />

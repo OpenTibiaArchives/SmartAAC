@@ -26,44 +26,65 @@
 //    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // ===========================================================
 
-$conf_dataDir =			$_POST["dataDir"];
-
-$conf_minacclen = 		$_POST["MinAccLen"];
-$conf_maxacclen = 		$_POST["MaxAccLen"];
-$conf_minpasslen = 		$_POST["MinPassLen"];
-$conf_maxpasslen = 		$_POST["MaxPassLen"];
-$conf_minplayerlen =		$_POST["MinPlayerLen"];
-$conf_maxplayerlen =		$_POST["MaxPlayerLen"];
-
-$conf_servername = 		$_POST["ServerName"];
-$conf_ipaddress =		$_POST["HostName"];
-$conf_port = 			$_POST["HostPort"];
-
-$conf_md5passwords =		($_POST["HashPass"]) ? "true" : "false";
-$conf_imgver = 			($_POST["ImgVer"]) ? "true" : "false";
-
-$conf_townId =			$_POST["Town_ID"];
-
-if(isset($_POST['SQL_Pass'])){
-	$conf_host =			$_POST["SQL_Host"];
-	$conf_user =			$_POST["SQL_User"];
-	$conf_pass = 			$_POST["SQL_Pass"];
-	$conf_db = 			$_POST["SQL_DB"];
+if(file_exists("../installLock.txt"))
+{
+    header("location: forbidden.php");
 }
-else {
-	$conf_host =		"";
-	$conf_user =		"";
-	$conf_user =		"";
-	$conf_db =		"";
-}
+else
+{
+	$title = 'Installation->Configuration Saving';
+	$name = 'Smart-Ass';
+	$bodySpecial = 'onload="openAlert()"';
+	$documentation = file_get_contents('inc/savesettings.inc');
 
-$conf_os =			$_POST["HostOS"];
-$conf_connection =		$_POST["HostConnection"];
-$conf_uptimetype =		$_POST["HostUptime"];
+	include_once('../Includes/Templates/bTemplate.php');
+	$tpl = new bTemplate();
 
-$confFile = fopen("../conf.php", "w");
+	$tpl->set('title', $title);
+	$tpl->set('strayline', $name);
+	$tpl->set('bodySpecial', $bodySpecial);
+	$tpl->set('documentation', $documentation);
 
-$write = "
+	echo $tpl->fetch('../Includes/Templates/Slick_minimal/top.tpl');
+
+	$conf_dataDir =			$_POST["dataDir"];
+
+	$conf_minacclen = 		$_POST["MinAccLen"];
+	$conf_maxacclen = 		$_POST["MaxAccLen"];
+	$conf_minpasslen = 		$_POST["MinPassLen"];
+	$conf_maxpasslen = 		$_POST["MaxPassLen"];
+	$conf_minplayerlen =	$_POST["MinPlayerLen"];
+	$conf_maxplayerlen =	$_POST["MaxPlayerLen"];
+
+	$conf_servername = 		$_POST["ServerName"];
+	$conf_ipaddress =		$_POST["HostName"];
+	$conf_port = 			$_POST["HostPort"];
+
+	$conf_md5passwords =	($_POST["HashPass"]) ? "true" : "false";
+	$conf_imgver = 			($_POST["ImgVer"]) ? "true" : "false";
+
+	$conf_townId =			$_POST["Town_ID"];
+
+	if(isset($_POST['SQL_Pass'])){
+		$conf_host =			$_POST["SQL_Host"];
+		$conf_user =			$_POST["SQL_User"];
+		$conf_pass = 			$_POST["SQL_Pass"];
+		$conf_db = 			$_POST["SQL_DB"];
+	}
+	else {
+		$conf_host =		"";
+		$conf_user =		"";
+		$conf_user =		"";
+		$conf_db =		"";
+	}
+
+	$conf_os =			    $_POST["HostOS"];
+	$conf_connection =		$_POST["HostConnection"];
+	$conf_uptimetype =		$_POST["HostUptime"];
+
+	$confFile = fopen("../conf.php", "w");
+
+	$write = "
 <?PHP
 
 // ===========================================================
@@ -91,12 +112,9 @@ $write = "
 //    along with this program; if not, write to the Free Software
 //    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // ===========================================================
-
 \$aac_status = 			\"Installed\";
 \$aac_version = 		\"2.0 Alpha1\";
-
 \$aac_dataDir =			\"$conf_dataDir\";
-
 
 \$aac_minacclen = 		$conf_minacclen;
 \$aac_maxacclen = 		$conf_maxacclen;
@@ -104,37 +122,46 @@ $write = "
 \$aac_maxpasslen = 		$conf_maxpasslen;
 \$aac_minplayerlen =		$conf_minplayerlen;
 \$aac_maxplayerlen =		$conf_maxplayerlen;
-
 \$aac_servername = 		\"$conf_servername\";
 \$net_ipaddress =		\"$conf_ipaddress\";
 \$net_port = 			\"$conf_port\";
-
 \$aac_md5passwords =		$conf_md5passwords;
 \$aac_imgver = 			$conf_imgver;
-
 \$aac_townId =			$conf_townId;
 \$aac_type =			\"Manager\";
-
 \$sql_host =			\"$conf_host\";
 \$sql_user =			\"$conf_user\";
 \$sql_pass = 			\"$conf_pass\";
 \$sql_db = 			\"$conf_db\";
-
 \$info_os =			\"$conf_os\";
 \$info_connection =		\"$conf_connection\";
 \$info_uptimetype =		\"$conf_uptimetype\";
 ?>
 ";
 
-fwrite($confFile, $write);
+	fwrite($confFile, $write);
 
-fclose($confFile);
+	fclose($confFile);
 
-echo "
-<div align=\"center\">
-<form action=\"install.php?step=5\" method=\"post\">
-<br><input type=\"submit\" value=\"Next\" class=\"btn\"/>
-</form></div>
-";
+	echo "
+	<p>Go forward --></p>
+	<div align=\"center\">
+	<form action=\"install.php?step=5\" method=\"post\">
+	<br><input type=\"submit\" value=\"Next\" class=\"btn\"/>
+	</form></div>
+	";
 
+	echo '
+	<script type="text/javascript">
+	  function openAlert() {
+	   Dialog.alert("<h1>Saved</h1><br><p>The Smart-Ass configuration has been saved successfully.</p>", {windowParameters: {className: "alphacube"}})
+	  }
+	  openAlert();
+		</script>
+	';
+
+	echo $tpl->fetch('../Includes/Templates/Slick_minimal/sidebar.tpl');
+	echo $tpl->fetch('../Includes/Templates/Slick_minimal/footer.tpl');
+	echo $tpl->fetch('../Includes/Templates/Slick_minimal/bottom.tpl');
+}
 ?>

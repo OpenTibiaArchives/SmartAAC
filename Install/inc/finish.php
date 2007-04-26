@@ -43,10 +43,16 @@ echo $tpl->fetch('../Includes/Templates/Slick_minimal/top.tpl');
 
 
 echo '
-<font size="4" color="green">Congratulations! Your copy of Smart-Ass is fully installed!</font>
-<div align=\"center\">
+<font size="4" color="#17BF55">Congratulations! Your copy of Smart-Ass is fully installed!</font>
+<div align="center">
+<br />
+
+<p><b>REMEMBER! To access this installation again you need to delete or rename the installLock.txt file in the Install directory. When you do this, Smart-Ass will go into Maintenance mode preventing users from accessing the site.</b></p>
+
+<br /><br />
+
 <form action="../index.php" method="post">
-<br><input type="submit" value="Return Home" class="btn"/>
+<br><input type="submit" value="Goto your AAC" class="btn"/>
 </form></div>
 ';
 
@@ -54,4 +60,10 @@ echo '
 echo $tpl->fetch('../Includes/Templates/Slick_minimal/sidebar.tpl');
 echo $tpl->fetch('../Includes/Templates/Slick_minimal/footer.tpl');
 echo $tpl->fetch('../Includes/Templates/Slick_minimal/bottom.tpl');
+
+// write the lock file, so no one can get in here, unless someone can delete this file
+$installLockFile = fopen("installLock.txt", "w");
+$write = "";
+fwrite($installLockFile, $write);
+fclose($installLockFile);
 ?>

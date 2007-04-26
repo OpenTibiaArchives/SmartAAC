@@ -1,3 +1,4 @@
+
 <?PHP
 
 // ===========================================================
@@ -25,31 +26,28 @@
 //    along with this program; if not, write to the Free Software
 //    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // ===========================================================
+$aac_status = 			"Installed";
+$aac_version = 		"2.0 Alpha1";
+$aac_dataDir =			"data/";
 
-$aac_status = 			"Not Installed";
-$aac_version = 			"2.0 Alpha1";
-
+$aac_minacclen = 		6;
 $aac_maxacclen = 		8;
-$aac_maxpasslen = 		8;
+$aac_minpasslen = 		3;
+$aac_maxpasslen = 		15;
+$aac_minplayerlen =		4;
 $aac_maxplayerlen =		20;
-
-$aac_servername = 		"Unnamed Server";
-$net_ipaddress =		"127.0.0.1";
-$net_port = 			"7171";
-
+$aac_servername = 		"aaaaaaa";
+$net_ipaddress =		"";
+$net_port = 			"";
 $aac_md5passwords =		false;
-$aac_imgver = 			true;
-
-$aac_townId =			1;
-//$aac_type =			"Manager"; // Not yet in use, we just go straight to 'Manager' for now.
-
-$sql_host =			'127.0.0.1';
-$sql_user =			'';
-$sql_pass = 			'';
-$sql_db = 			'otserv';
-
-$info_os =			"Windows";
-$info_connection =		"5 Mbits";
-$info_uptimetype =		"24/7";
-
+$aac_imgver = 			false;
+$aac_townId =			4;
+$aac_type =			"Manager";
+$sql_host =			"";
+$sql_user =			"";
+$sql_pass = 			"";
+$sql_db = 			"";
+$info_os =			"";
+$info_connection =		"";
+$info_uptimetype =		"";
 ?>
