@@ -41,8 +41,12 @@ $tpl->set('bodySpecial', $bodySpecial);
 
 echo $tpl->fetch('./Includes/Templates/Slick/top.tpl');
 
-// Later add checking if we want to use Express or Manager, also a news system is good maybe
-echo '<h2><a href="Manager/">Goto Manager</a></h2>';
+if($aac_type == "Manager"){
+	echo '<h2><a href="Manager/">Goto Manager</a></h2>';
+}
+else {
+	echo '<h2><a href="Express/">Goto Express</a></h2>';
+}
 
 echo $tpl->fetch('./Includes/Templates/Slick/sidebar.tpl');
 echo $tpl->fetch('./Includes/Templates/Slick/footer.tpl');
