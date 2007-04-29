@@ -38,7 +38,7 @@ $aac_maxpasslen = 		15;
 $aac_minplayerlen =		4;
 $aac_maxplayerlen =		20;
 
-$aac_servername = 		"6";
+$aac_servername = 		"Serske";
 $net_ipaddress =		"7";
 $net_port = 			"8";
 
