@@ -83,13 +83,14 @@ else
 	$conf_uptimetype =		$_POST["HostUptime"];
 
 	$confFile = fopen("../conf.php", "w");
+	$timeCreated = date('r');
 
-	$write = "
-<?PHP
+	$write = "<?PHP
 
 // ===========================================================
 //	Smart-Ass: The Userfriendly AAC
 //	Version: 2.0 Development Only
+//	Configuration Created: $timeCreated
 //	
 //	USE OF THIS PROGRAM TO RELY ON IT FOR SERVER USE IS NOT
 // 	RECOMMENDED! THIS IS FOR TESTING ONLY.
@@ -112,8 +113,9 @@ else
 //    along with this program; if not, write to the Free Software
 //    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // ===========================================================
+
 \$aac_status = 			\"Installed\";
-\$aac_version = 		\"2.0 Alpha1\";
+\$aac_version = 			\"2.0 Alpha1\";
 \$aac_dataDir =			\"$conf_dataDir\";
 
 \$aac_minacclen = 		$conf_minacclen;
@@ -122,18 +124,22 @@ else
 \$aac_maxpasslen = 		$conf_maxpasslen;
 \$aac_minplayerlen =		$conf_minplayerlen;
 \$aac_maxplayerlen =		$conf_maxplayerlen;
+
 \$aac_servername = 		\"$conf_servername\";
 \$net_ipaddress =		\"$conf_ipaddress\";
 \$net_port = 			\"$conf_port\";
+
 \$aac_md5passwords =		$conf_md5passwords;
 \$aac_imgver = 			$conf_imgver;
 \$aac_townId =			$conf_townId;
-\$aac_type =			\"Manager\";
-\$sql_host =			\"$conf_host\";
-\$sql_user =			\"$conf_user\";
+
+\$aac_type =				\"Manager\";
+\$sql_host =				\"$conf_host\";
+\$sql_user =				\"$conf_user\";
 \$sql_pass = 			\"$conf_pass\";
-\$sql_db = 			\"$conf_db\";
-\$info_os =			\"$conf_os\";
+\$sql_db = 				\"$conf_db\";
+
+\$info_os =				\"$conf_os\";
 \$info_connection =		\"$conf_connection\";
 \$info_uptimetype =		\"$conf_uptimetype\";
 ?>
