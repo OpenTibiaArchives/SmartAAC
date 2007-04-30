@@ -31,24 +31,8 @@ session_start();
 
 include "../config.php";
 include "../resources.php";
-include '../template.php';
 
-$template = new Template();
-$template->set_rootdir("../$template_dir");
 
-$template->set_filenames(array(
-		'Top' => 'Top.tpl',
-		'Bottom' => 'Bottom.tpl')
-		);
-		
-$template->assign_vars(array(
-		'CSS' => "../template/$template_curr/style.css",
-		'TITLE' => "$SITETITLE",
-		'TOP_HEAD' => 'Change password',
-		'LINK_HOME' => '../',
-		'LINK_HSCORES' => '../') );
-		
-		
 $errors = 0;
 
 $M2_acc = "";
@@ -115,29 +99,6 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null)
 				header("location: accountPassChange.php?result=pass_failed&error=pass");
 			}
 			else {
-				if($SQLUSE == "no") // XML
-				{
-					@$filen = file_get_contents("$accdir$M2_acc.xml");
-					$patterns[0] = "/pass=\"$oldpass\"/";
-					
-				// Check if we should encrypt the password
-				if($md5_passwords_accounts)
-				{
-					$newpass = md5($newpass);
-				}
-					$replacements[0] = 'pass="'. $newpass .'"';
-
-					$files = preg_replace($patterns, $replacements, $filen);
-					$file_name = "$accdir$M2_acc.xml";
-					$fp = fopen ($file_name,"w");
-					fwrite ($fp,$files);
-					fclose ($fp);
-					session_unset();
-					header("Location: index.php");
-					//header("location: accountManager.php?result=pass_success");
-				}
-				else // SQL
-				{
 				if($md5_passwords_accounts)
 				{
 					$newpass = md5($newpass);
@@ -148,8 +109,6 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null)
 					$result = sqlquery("UPDATE accounts SET password='$newpass' WHERE accno='$M2_acc'");
 					session_unset();
 					header("Location: index.php");
-					//header("location: accountManager.php?result=pass_success");
-				}
 			}
 		}
 		else

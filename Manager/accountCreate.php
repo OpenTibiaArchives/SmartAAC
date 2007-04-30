@@ -31,24 +31,7 @@
 $error = 0;
 include "../config.php";
 include "../resources.php";
-include '../template.php';
 
-$template = new Template();
-$template->set_rootdir("../$template_dir");
-
-$template->set_filenames(array(
-		'Top' => 'Top.tpl',
-		'Bottom' => 'Bottom.tpl')
-		);
-		
-$template->assign_vars(array(
-		'CSS' => "../template/$template_curr/style.css",
-		'TITLE' => "$SITETITLE",
-		'TOP_HEAD' => 'Create an account',
-		'LINK_HOME' => '../',
-		'LINK_HSCORES' => '../') );
-		
-		
 
 $M2_password = $_POST['M2_password'];
 
@@ -135,25 +118,6 @@ if($md5_passwords_accounts == true)
 	
 			if ($error == 0)
 			{
-				if($SQLUSE == "no") // XML
-				{
-						$file = fopen(/*"../" . */$accdir . $accno . ".xml", "w");
-						$output = 
-"<?xml version=\"1.0\"?>
-<account pass=\"" . $M2_password . "\" type=\"1\" premDays=\"15\">
-<characters>
-</characters>
-</account>";
-
-						fwrite($file, $output);
-						$created_Account = true;
-						session_unset();
-		
-						doInfoBox("Your account has been successfully created. Login <a href=\"loginInterface.php\">here</a> to create your first character in the account!<br><br><b>Your account number is $accno</b></font>");
-				
-				}
-				else // SQL
-				{
 					$sqlconnect = mysql_connect($SQLHOST, $SQLUSER, $SQLPASS) or die("MySQL Error: mysql_error 								(mysql_errno()).\n");
 					mysql_select_db($SQLDB, $sqlconnect);
 					
@@ -191,8 +155,6 @@ if($md5_passwords_accounts == true)
 					session_unset();
 					doInfoBox("Your account has been successfully created. Login <a href=\"loginInterface.php\">here</a> to create your first character in the account!<br><br>
 					Your account number is: $accno</font>");
-					
-				}
 			}
 		}
 	}
@@ -207,7 +169,6 @@ else
 
 if ($created_Account != true)
 {
-$template->pparse('Top');
 ?>
 <h2>Please fill out the appropiate fields:</h2>
 <br />
@@ -226,6 +187,5 @@ $template->pparse('Top');
 
 
 <?
-$template->pparse('Bottom');
 }
 ?>

@@ -30,40 +30,11 @@
 
 include '../config.php';
 include '../resources.php';
-include '../template.php';
 
-$template = new Template();
-$template->set_rootdir("../$template_dir");
-
-$template->set_filenames(array(
-		'Top' => 'Top.tpl',
-		'Bottom' => 'Bottom.tpl')
-		);
-		
-$template->assign_vars(array(
-		'CSS' => "../template/$template_curr/style.css",
-		'TITLE' => "$SITETITLE",
-		'TOP_HEAD' => 'Start',
-		'LINK_HOME' => '../',
-		'LINK_HSCORES' => '../') );
-
-if($SITE_TYPE == "Express")
-{
-	header ("location: ../index.php");
-}
 
 // Check if its a new setup first!
-if($newsetup == true)
-{
-	$template->pparse('Top');
-	echo "<center>";
-	doInfoBox('Redirecting to setup and server check in 5 seconds. <meta http-equiv="refresh" content="5; url=../server_check.php"><br>If your browser doesn\'t refresh, press <a href="../server_check.php">here</a>');
-	echo "</center>";
-	$template->pparse('Bottom');
-}
-else
-{
 
+/*
 $ip = $IP;
 $port = 7171;
 
@@ -139,11 +110,11 @@ $uptime = floor($uptime / 24);
 
 $days = $uptime % 365;
 
+*/
 
 
-
-$template->pparse('Top');
 // Checks if setup.php still exists
+/*
 if(file_exists('../setup/setup.php'))
 {
 	if($template_curr == "keepcool")
@@ -156,8 +127,9 @@ if(file_exists('../setup/setup.php'))
 		echo "<b><font color=\"red\">Please delete <u>or</u> rename setup.php as this may pose a risk to your current setup!</font></b></p>";
 	}
 }
+*/
 ?>
-<h2>Welcome to <? echo $SITETITLE; ?></h2>
+<h2>Welcome to <? //echo $SITETITLE; ?></h2>
 <p>This server is using the <acronym title="This is the package apart from the Express Package. Manager is aimed at RPG servers.">Manager Package</acronym> of Smart-Ass.<br />
 The installation went successfully!<br /><br /> 
 
@@ -168,7 +140,7 @@ The installation went successfully!<br /><br />
 <br><br><br><br>
 
 <!--<h2>Server Stats and Smart-Ass Version</h2>-->
-<?/*
+<? /*
 @$fp = fsockopen ($IP, 7171, $errno, $errstr, 1);
 		if (!$fp) {
 		echo '<p>The server is currently offline, unable to get information.</p>';
@@ -207,6 +179,4 @@ echo '<b>MySQL</b>: ' . $MYSQL_STATUS . '<br /><br />';
 */
 echo '<br><br><br>Smart-Ass Version: ' . $accversion . '';
 
-$template->pparse('Bottom');
-}
 ?>

@@ -29,6 +29,9 @@
 
 */
 
+// IMPLEMENT FOR SQL
+// FOR 2.0 RELEASE
+
 /* session_start();
 
 include '../resources.php';

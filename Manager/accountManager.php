@@ -32,22 +32,6 @@ session_start();
 
 include "../resources.php";
 include '../config.php';
-include '../template.php';
-
-$template = new Template();
-$template->set_rootdir("../$template_dir");
-
-$template->set_filenames(array(
-		'Top' => 'Top.tpl',
-		'Bottom' => 'Bottom.tpl')
-		);
-		
-$template->assign_vars(array(
-		'CSS' => "../template/$template_curr/style.css",
-		'TITLE' => "$SITETITLE",
-		'TOP_HEAD' => 'Manage your account',
-		'LINK_HOME' => '../',
-		'LINK_HSCORES' => '../') );
 
 $M2_acc = "";
 $M2_pass = "";
@@ -73,7 +57,6 @@ else if ($result == "pass_success") {
 }
 }
 
-$template->pparse('Top');
 
 /* 	$sqlconnect = mysql_connect($SQLHOST, $SQLUSER, $SQLPASS) or die("MySQL Error: mysql_error (mysql_errno()).\n");
 	mysql_select_db($SQLDB, $sqlconnect);
@@ -87,53 +70,23 @@ $template->pparse('Top');
 <table>
 <?
 
-if($SQLUSE == "no") // XML
+$sqlconnect = mysql_connect($SQLHOST, $SQLUSER, $SQLPASS) or die("MySQL Error: mysql_error (mysql_errno()).\n");
+mysql_select_db($SQLDB, $sqlconnect);
+
+$result = sqlquery("SELECT * FROM accounts WHERE accno='$M2_acc'");
+$rowz = mysql_num_rows($result);
+if($rowz == 1)
 {
-	$file = /*../" . */$accdir . $M2_acc . ".xml";
-	if (file_exists($file)) {
-
-		if (is_readable($file)) {
-			$filecontents = fopen("$file", "r");
-			$nr = 0;
-			$charposarray = array();
-			while(!feof($filecontents)) {
-				$line=fgets($filecontents);
-				$charpos=strstr($line,"<character name=");
-				if(!($charpos === false) && $charpos != "") {
-					$charposarray["$nr"] = $charpos;
-					$nr++;
-					$charposarray["$nr"] = "";
-				}
-			}
-			$i = 0;
-			while($charposarray["$i"] != "") {
-				
-				$chartemp=explode("\"",$charposarray[$i]);
-				$char[$i]=$chartemp[1];
-				
-				echo "<tr><td><p>$char[$i] </p></td><td><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"deletePlayer.php?char=$char[$i]\">Delete?</a></p></td></tr>";
-				$i++;
-			}
-		}
-	}
-}
-else // SQL
-{
-	$sqlconnect = mysql_connect($SQLHOST, $SQLUSER, $SQLPASS) or die("MySQL Error: mysql_error (mysql_errno()).\n");
-	mysql_select_db($SQLDB, $sqlconnect);
-
-	$result = sqlquery("SELECT * FROM accounts WHERE accno='$M2_acc'");
-	$rowz = mysql_num_rows($result);
-	if($rowz == 1) {
-		$chars = sqlquery("SELECT name FROM players WHERE account='$M2_acc'");
-
-		while ($line = mysql_fetch_array($chars, MYSQL_ASSOC)) {
-			foreach ($line as $char) {
+	$chars = sqlquery("SELECT name FROM players WHERE account='$M2_acc'");
+	while ($line = mysql_fetch_array($chars, MYSQL_ASSOC))
+	{
+		foreach ($line as $char)
+		{
 				echo "<tr><td><p>$char </p></td><td><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"deletePlayer.php?char=$char\">Delete?</a></p></td></tr>";
-			}
 		}
 	}
 }
+
 
 ?>
 </table>
@@ -155,6 +108,5 @@ else // SQL
 
 
 <?
-$template->pparse('Bottom');
 }
 ?>

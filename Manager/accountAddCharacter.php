@@ -31,23 +31,6 @@
 session_start();
 
 include "../config.php";
-include '../template.php';
-
-$template = new Template();
-$template->set_rootdir("../$template_dir");
-
-$template->set_filenames(array(
-		'Top' => 'Top.tpl',
-		'Bottom' => 'Bottom.tpl')
-		);
-		
-$template->assign_vars(array(
-		'CSS' => "../template/$template_curr/style.css",
-		'TITLE' => "$SITETITLE",
-		'TOP_HEAD' => 'Add a character',
-		'LINK_HOME' => '../',
-		'LINK_HSCORES' => '../') );
-		
 		
 $M2_acc = "";
 $M2_pass = "";
@@ -87,7 +70,7 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null)
 		}
 	}
 
-$template->pparse('Top');	
+
 ?>
 
 
@@ -96,7 +79,7 @@ $template->pparse('Top');
 <form action="accountSaveCharacter.php" method="POST">
 <table>
 <tr>
-<td><p><b>Name:</b></td><td><input type="text" name="name" maxlength="<? echo $PLAYERNAMEMAX; ?>" class="textfield"><font color="red"><i> (2-20 letters and blankspaces)</p></i></font><br><hr></td>
+<td><p><b>Name:</b></td><td><input type="text" name="name" maxlength="<? echo //$PLAYERNAMEMAX; ?>" class="textfield"><font color="red"><i> (2-20 letters and blankspaces)</p></i></font><br><hr></td>
 </tr>
 <tr>
 <td><p><b>Vocation:</b></p></td>
@@ -122,6 +105,5 @@ $template->pparse('Top');
 
 </table>
 <?
-$template->pparse('Bottom');
 }
 ?>

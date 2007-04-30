@@ -30,8 +30,8 @@
 
 session_start();
 
-include("../config.php");
-include("../resources.php");
+include "../config.php";
+include "../resources.php";
 
 $errors = 0;
 
@@ -56,122 +56,6 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null)
 	$sex = $sexin;
 	$accno = $M2_acc;
 
-	if($SQLUSE == "no") // XML
-	{
-		if ($namein != "" && $vocin != "" && $sexin != "" && !file_exists("../" . $playerdir . $namein . ".xml"))
-		{
-			$temp = strspn("$namein", "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM -");
-
-			if ($temp != strlen($namein))
-			{
-				header("location: accountAddCharacter.php?result=char_failed&error=malformed_name");
-				$errors++;
-			}
-			if (strlen($namein) < 2 || strlen($namein) > 20)
-			{
-				header("location: accountAddCharacter.php?result=char_failed&error=wrong_length");
-				$errors++;
-			}
-
-			if ($errors == 0)
-			{
-				$file = $accdir . $M2_acc . ".xml";
-
-				if (file_exists($file))
-				{
-					$contents = file("$file");
-					$shallbreak = false;
-					$row;
-					for($i = 0; $contents[$i];$i++)
-					{
-						$endchar = strstr($contents[$i], "</characters>");
-						if($endchar)
-						{
-							$row = $i;
-						}
-					}
-
-					if(isset($row) && $row != "" && $row != null)
-					{
-						$f = fopen("$file","w");
-						for($i = 0; ($contents[$i] || $contents[$i-1]);$i++)
-						{
-							if ($i < $row)
-								fwrite($f, "$contents[$i]");
-							if ($i == $row)
-								fwrite($f, "<character name=\"$namein\" />
-");
-							if ($i > $row)
-								fwrite($f, $contents[$i-1]);
-		
-						}
-						fclose($f);
-			
-						//include("makeplayerxml/" . $vocin . ".php"); // FIX THIS TO WORK WITH DISTRO SELECTION // DONE
-			
-						switch($vocin)
-						{
-							case 1:
-								include '../distro_templates/'.$SERV_DISTRO.'/make_sorc.php';
-			
-								$playerfile = $playerdir . $namein . ".xml";
-								$f2 = fopen("$playerfile","w");
-								fwrite($f2, $playerdata);
-								break;
-							case 2:
-								include '../distro_templates/'.$SERV_DISTRO.'/make_druid.php';
-			
-								$playerfile = $playerdir . $namein . ".xml";
-								$f2 = fopen("$playerfile","w");
-								fwrite($f2, $playerdata);
-								break;
-							case 3:
-								include '../distro_templates/'.$SERV_DISTRO.'/make_paladin.php';
-			
-								$playerfile = $playerdir . $namein . ".xml";
-								$f2 = fopen("$playerfile","w");
-								fwrite($f2, $playerdata);
-								break;
-							case 4:
-								include '../distro_templates/'.$SERV_DISTRO.'/make_knight.php';
-			
-								$playerfile = $playerdir . $namein . ".xml";
-								$f2 = fopen("$playerfile","w");
-								fwrite($f2, $playerdata);
-								break;
-							default:
-								include '../distro_templates/'.$SERV_DISTRO.'/make_novoc.php';
-
-								$playerfile = $playerdir . $namein . ".xml";
-								$f2 = fopen("$playerfile","w");
-								fwrite($f2, $playerdata);
-								break;
-						}
-					}
-					else
-					{
-						// header("Location: accountManager.php");
-						// $errors++;
-						die("EXIT (1) OF SAVER");
-					}
-
-				}
-				else
-				{
-					// header("Location: accountManager.php");
-					// $errors++;
-					die("EXIT (2) OF SAVER");
-				}
-			}
-		}
-		else
-		{
-			header("Location: accountAddCharacter.php?result=char_failed&error=exists");
-			$errors++;
-		}
-	}
-	else // SQL
-	{
 		$sqlconnect = mysql_connect($SQLHOST, $SQLUSER, $SQLPASS) or die("MySQL Error: mysql_error (mysql_errno()).\n");
 		mysql_select_db($SQLDB, $sqlconnect);
 
@@ -231,7 +115,7 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null)
 			header("Location: accountAddCharacter.php?result=char_failed&error=exists");
 			$errors++;
 		}
-	}
+
 
 	if($errors == 0)
 	{

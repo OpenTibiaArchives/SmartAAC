@@ -29,29 +29,13 @@
 */
 
 include '../config.php';
-include '../template.php';
 
-$template = new Template();
-$template->set_rootdir("../$template_dir");
-
-$template->set_filenames(array(
-		'Top' => 'Top.tpl',
-		'Bottom' => 'Bottom.tpl')
-		);
-		
-$template->assign_vars(array(
-		'CSS' => "../template/$template_curr/style.css",
-		'TITLE' => "$SITETITLE",
-		'TOP_HEAD' => 'Login',
-		'LINK_HOME' => '../',
-		'LINK_HSCORES' => '../') );
 
 $M2_account = $_SESSION['M2_account'];
 $M2_password = $_SESSION['M2_password'];
 
 if (!(isset($M2_account) && isset($M2_password) && $M2_account != null && $M2_account != "" && $M2_password != null && $M2_password != ""))
 {
-	$template->pparse('Top');
 ?>
 <h2>Login to your account:</h2>
 	
@@ -70,7 +54,6 @@ if (!(isset($M2_account) && isset($M2_password) && $M2_account != null && $M2_ac
 	<input type="Reset" value="Clear">
 	</form>
 <?
-	$template->pparse('Bottom');
 }
 else
 {
