@@ -57,15 +57,22 @@ $M2_pass = $_SESSION['M2_password'];
 
 if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null) {
 	$char = $_GET['char'];
+	
+	$temp = strspn("$char", "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM -");
+
+	if ($temp != strlen($char))
+	{
+		die("Error! Your char name is not valid.");
+	}
 
 	$sqlconnect = mysql_connect($SQLHOST, $SQLUSER, $SQLPASS) or die("MySQL Error: mysql_error (mysql_errno()).\n");
 	mysql_select_db($SQLDB, $sqlconnect);
 
-	$result = sqlquery("SELECT * FROM players WHERE name='$char'"); // SAFE?
+	$result = sqlquery("SELECT * FROM players WHERE name='$char'");
 	$rowz = mysql_num_rows($result);
 	if($rowz == 1)
 	{
-		$result = sqlquery("SELECT account_id FROM players WHERE name='$char'"); // SAFE?
+		$result = sqlquery("SELECT account_id FROM players WHERE name='$char'");
 		while ($row = mysql_fetch_assoc($result)) {
 			$acc = $row["account_id"];
 		}
