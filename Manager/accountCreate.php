@@ -86,7 +86,7 @@ if ( (isset($M2_account) && !empty($M2_account)) && (isset($M2_password) && !emp
 			}
 			else {
 				sqlquery('INSERT INTO `accounts` ( id, password , email , blocked , premdays )
-					VALUES ( ' . intval($M2_account) . ', \'' . mysql_real_escape_string($M2_password) . '\', \'' . mysql_real_escape_string($M2_email) . '\', \'0\', \'0\' );');
+					VALUES ( ' . intval($M2_account) . ', \'' . mysql_real_escape_string($M2_password) . '\', \'' . mysql_real_escape_string($M2_email) . '\', 0, 0 );');
 					
 				$created_Account = true;
 				session_unset();
