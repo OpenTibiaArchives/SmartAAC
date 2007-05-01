@@ -177,6 +177,8 @@ else
 	<input type=\"text\" name=\"char_group\" value=\"1\" /><br />
 	<label for=\"char_exp\">Experience:</label>
 	<input type=\"text\" name=\"char_exp\" value=\"98800\" /><br />
+	<label for=\"char_cap\">Cap:</label>
+	<input type=\"text\" name=\"char_cap\" value=\"500\" /><br />
 	<label for=\"char_level\">Level:</label>
 	<input type=\"text\" name=\"char_level\" value=\"20\" /><br />
 	<label for=\"char_lookhead\">Head color:</label>

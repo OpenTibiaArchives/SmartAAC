@@ -31,6 +31,16 @@
 include '../conf.php';
 include '../Includes/resources.php';
 
+$title = 'Manager';
+$name = $aac_servername;
+$bodySpecial = 'onload="NOTHING"';
+
+include_once('../Includes/Templates/bTemplate.php');
+$tpl = new bTemplate();
+
+$tpl->set('title', $title);
+$tpl->set('strayline', $name);
+$tpl->set('bodySpecial', $bodySpecial);
 
 // Check if its a new setup first!
 
@@ -128,15 +138,16 @@ if(file_exists('../setup/setup.php'))
 	}
 }
 */
+echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 ?>
-<h2>Welcome to <?php echo $aac_servername; ?></h2>
-<p>This server is using the <acronym title="This is the package apart from the Express Package. Manager is aimed at RPG servers.">Manager Package</acronym> of Smart-Ass.<br />
-The installation went successfully!<br /><br /> 
+<h1>Manager Start</h1><br />
+<p>This is the start of the management to accounts and creation of accounts...</p>
 
 <center>
-<h1>What do you want to do?</h1><br />
-<a href="loginInterface.php"><img src="../images/Login.gif"/></a> <a href="accountCreate.php"><img src="../images/Register.gif"/></a>
+<h2><a href="loginInterface.php">Login</a> --- <a href="accountCreate.php">Create Account</a></h2>
+<br><p>Dev: CREATE LIVE.COM ACCOUNTS/WORDPRESS LOGIN INTERFACE
 </center>
+
 <br><br><br><br>
 
 <!--<h2>Server Stats and Smart-Ass Version</h2>-->
@@ -177,6 +188,7 @@ echo '<b>Apache</b>: ' . $APACHE_STATUS . '<br />';
 echo '<b>MySQL</b>: ' . $MYSQL_STATUS . '<br /><br />';
 }
 */
-echo '<br><br><br>Smart-Ass Version: ' . $acc_version . '';
-
+echo $tpl->fetch('../Includes/Templates/Indigo/sidebar.tpl');
+echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
+echo $tpl->fetch('../Includes/Templates/Indigo/bottom.tpl');
 ?>

@@ -33,6 +33,18 @@ session_start();
 include "../Includes/resources.php";
 include '../conf.php';
 
+$title = 'Account Details';
+$name = $aac_servername;
+$bodySpecial = 'onload="NOTHING"';
+
+include_once('../Includes/Templates/bTemplate.php');
+$tpl = new bTemplate();
+
+$tpl->set('title', $title);
+$tpl->set('strayline', $name);
+$tpl->set('bodySpecial', $bodySpecial);
+
+
 $M2_acc = "";
 $M2_pass = "";
 $M2_acc = $_SESSION['M2_account'];
@@ -58,11 +70,7 @@ else if ($result == "pass_success") {
 }
 
 
-/* 	$sqlconnect = mysql_connect($SQLHOST, $SQLUSER, $SQLPASS) or die("MySQL Error: mysql_error (mysql_errno()).\n");
-	mysql_select_db($SQLDB, $sqlconnect);
-
-	$result = sqlquery("SELECT * FROM accounts WHERE accno='$M2_acc'"); */
-
+echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 ?>
 <h2>Your Account</h2><br><br>
 
@@ -109,4 +117,7 @@ if($rowz == 1)
 
 <?php
 }
+echo $tpl->fetch('../Includes/Templates/Indigo/sidebar.tpl');
+echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
+echo $tpl->fetch('../Includes/Templates/Indigo/bottom.tpl');
 ?>

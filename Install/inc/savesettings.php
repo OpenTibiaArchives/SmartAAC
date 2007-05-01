@@ -67,6 +67,7 @@ else
 	$conf_char_town =		$_POST["char_town"];
 	$conf_char_group =		$_POST["char_group"];
 	$conf_char_exp =		$_POST["char_exp"];
+	$conf_char_cap =		$_POST["char_cap"];
 	$conf_char_level =		$_POST["char_level"];
 	$conf_char_lookhead =	$_POST["char_lookhead"];
 	$conf_char_lookbody =	$_POST["char_lookbody"];
@@ -197,6 +198,7 @@ else
 \$char_rook =			$conf_char_rook;
 \$char_group =			$conf_char_group;
 \$char_exp =			$conf_char_exp;
+\$char_cap =			$conf_char_cap;
 \$char_level =			$conf_char_level;
 \$char_lookhead =		$conf_char_lookhead;
 \$char_lookbody =		$conf_char_lookbody;

@@ -31,6 +31,17 @@
 session_start();
 
 include "../conf.php";
+
+$title = 'Login';
+$name = $aac_servername;
+$bodySpecial = 'onload="NOTHING"';
+
+include_once('../Includes/Templates/bTemplate.php');
+$tpl = new bTemplate();
+
+$tpl->set('title', $title);
+$tpl->set('strayline', $name);
+$tpl->set('bodySpecial', $bodySpecial);
 		
 $M2_acc = "";
 $M2_pass = "";
@@ -70,10 +81,9 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null)
 		}
 	}
 
+echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
 ?>
-
-
 <h2>Create a new character:</h2><br>
 
 <form action="accountSaveCharacter.php" method="POST">
@@ -113,6 +123,9 @@ else {
 </tr>
 
 </table>
-<?
+<?PHP
+echo $tpl->fetch('../Includes/Templates/Indigo/sidebar.tpl');
+echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
+echo $tpl->fetch('../Includes/Templates/Indigo/bottom.tpl');
 }
 ?>

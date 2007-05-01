@@ -30,8 +30,12 @@
 
 function sqlquery($query) {
 	$result = mysql_query($query);
-	if (mysql_errno())
-		echo "MySQL Error: " . mysql_error . " (" . mysql_errno() . ").";
+	if(!$result)
+	{
+	echo '<font style="font-family: Verdana; size: 12px;">';
+	echo 'MySQL error #' . mysql_errno() . '.<br><br> ' . mysql_error();
+	echo '</font>';
+	}
 
 	return $result;
 }

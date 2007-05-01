@@ -31,7 +31,7 @@ require("conf.php");
 switch($aac_status)
 {
 	case "Installed":
-	echo '<meta http-equiv="refresh" content="0;url=frontpage.php" />';
+	echo '<meta http-equiv="refresh" content="0;url=Main/frontpage.php" />';
 	break;
 	
 	case "Maintenance":

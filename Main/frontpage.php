@@ -26,29 +26,29 @@
 //    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // ===========================================================
 
-include 'conf.php';
+include '../conf.php';
 
 $title = 'Frontpage';
 $name = $aac_servername;
 $bodySpecial = 'onload="NOTHING"';
 
-include_once('./Includes/Templates/bTemplate.php');
+include_once('../Includes/Templates/bTemplate.php');
 $tpl = new bTemplate();
 
 $tpl->set('title', $title);
 $tpl->set('strayline', $name);
 $tpl->set('bodySpecial', $bodySpecial);
 
-echo $tpl->fetch('./Includes/Templates/Slick/top.tpl');
+echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
 if($aac_type == "Manager"){
-	echo '<h2><a href="Manager/">Goto Manager</a></h2>';
+	echo '<h2><a href="../Manager/">Goto Manager</a></h2>';
 }
 else {
-	echo '<h2><a href="Express/">Goto Express</a></h2>';
+	echo '<h2><a href="../Express/">Goto Express</a></h2>';
 }
 
-echo $tpl->fetch('./Includes/Templates/Slick/sidebar.tpl');
-echo $tpl->fetch('./Includes/Templates/Slick/footer.tpl');
-echo $tpl->fetch('./Includes/Templates/Slick/bottom.tpl');
+echo $tpl->fetch('../Includes/Templates/Indigo/sidebar.tpl');
+echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
+echo $tpl->fetch('../Includes/Templates/Indigo/bottom.tpl');
 ?>

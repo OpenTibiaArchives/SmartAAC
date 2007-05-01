@@ -39,6 +39,7 @@ $M2_acc = "";
 $M2_pass = "";
 $M2_acc = $_SESSION['M2_account'];
 $M2_pass = $_SESSION['M2_password'];
+$M2_char = $_POST['name'];
 
 if ($M2_acc != "" && $M2_acc != null && is_numeric($M2_acc) && $M2_pass != "" && $M2_pass != null)
 {
@@ -90,26 +91,26 @@ if ($M2_acc != "" && $M2_acc != null && is_numeric($M2_acc) && $M2_pass != "" &&
 					}
 					
 					switch($vocin)
-					{ // Fix these???
+					{ // Fix these??1
 						case 1: // Sorcerer
-							sqlquery('INSERT INTO players(name, account_id, group_id, sex, vocation, experience, level, maglevel, health, healthmax, mana, manamax, manaspent, soul, lookbody, lookfeet, lookhead, looklegs, looktype, cap, town_id) 
-												   VALUES(\'' . mysql_real_escape_string($M2_char) . '\', ' . intval($M2_acc) . ', ' . $char_group . ', ' . intval($sexin) . ', 1 ' . $char_exp . ', ' . $char_level . ', ' . $char_maglevel_sorcerer . ', ' . $char_health_sorcerer . ', ' . $char_health_sorcerer . ', ' . $char_mana_sorcerer . ', ' . $char_mana_sorcerer . ', 0, 100, ' . $char_lookbody . ', ' . $char_lookfeet . ', ' . $char_lookhead . ', ' . $char_looklegs . ', ' . $looktype . ', ' . $char_cap . ', ' . $char_town . ')');
+							sqlquery('INSERT INTO `players` (`name`, `account_id`, `group_id`, `sex`, `vocation`, `experience`, `level`, `maglevel`, `health`, `healthmax`, `mana`, `manamax`, `manaspent`, `soul`, `lookbody`, `lookfeet`, `lookhead`, `looklegs`, `looktype`, `cap`, `town_id`) 
+												   VALUES(\'' . mysql_real_escape_string($M2_char) . '\', ' . intval($M2_acc) . ', ' . $char_group . ', ' . intval($sexin) . ', 1, ' . $char_exp . ', ' . $char_level . ', ' . $char_maglevel_sorcerer . ', ' . $char_health_sorcerer . ', ' . $char_health_sorcerer . ', ' . $char_mana_sorcerer . ', ' . $char_mana_sorcerer . ', 0, 100, ' . $char_lookbody . ', ' . $char_lookfeet . ', ' . $char_lookhead . ', ' . $char_looklegs . ', ' . $looktype . ', ' . $char_cap . ', ' . $char_town . ')');
 							break;
 						case 2: // Druid
-							sqlquery('INSERT INTO players(name, account_id, group_id, sex, vocation, experience, level, maglevel, health, healthmax, mana, manamax, manaspent, soul, lookbody, lookfeet, lookhead, looklegs, looktype, cap, town_id) 
-												   VALUES(\'' . mysql_real_escape_string($M2_char) . '\', ' . intval($M2_acc) . ', ' . $char_group . ', ' . intval($sexin) . ', 2 ' . $char_exp . ', ' . $char_level . ', ' . $char_maglevel_druid . ', ' . $char_health_druid . ', ' . $char_health_druid . ', ' . $char_mana_druid . ', ' . $char_mana_druid . ', 0, 100, ' . $char_lookbody . ', ' . $char_lookfeet . ', ' . $char_lookhead . ', ' . $char_looklegs . ', ' . $looktype . ', ' . $char_cap . ', ' . $char_town . ')');
+							sqlquery('INSERT INTO `players` (`name`, `account_id`, `group_id`, `sex`, `vocation`, `experience`, `level`, `maglevel`, `health`, `healthmax`, `mana`, `manamax`, `manaspent`, `soul`, `lookbody`, `lookfeet`, `lookhead`, `looklegs`, `looktype`, `cap`, `town_id`) 
+												   VALUES(\'' . mysql_real_escape_string($M2_char) . '\', ' . intval($M2_acc) . ', ' . $char_group . ', ' . intval($sexin) . ', 2, ' . $char_exp . ', ' . $char_level . ', ' . $char_maglevel_sorcerer . ', ' . $char_health_sorcerer . ', ' . $char_health_sorcerer . ', ' . $char_mana_sorcerer . ', ' . $char_mana_sorcerer . ', 0, 100, ' . $char_lookbody . ', ' . $char_lookfeet . ', ' . $char_lookhead . ', ' . $char_looklegs . ', ' . $looktype . ', ' . $char_cap . ', ' . $char_town . ')');
 							break;
 						case 3: // Paladin
-							sqlquery('INSERT INTO players(name, account_id, group_id, sex, vocation, experience, level, maglevel, health, healthmax, mana, manamax, manaspent, soul, lookbody, lookfeet, lookhead, looklegs, looktype, cap, town_id) 
-												   VALUES(\'' . mysql_real_escape_string($M2_char) . '\', ' . intval($M2_acc) . ', ' . $char_group . ', ' . intval($sexin) . ', 3 ' . $char_exp . ', ' . $char_level . ', ' . $char_maglevel_paladin . ', ' . $char_health_paladin . ', ' . $char_health_paladin . ', ' . $char_mana_paladin . ', ' . $char_mana_paladin . ', 0, 100, ' . $char_lookbody . ', ' . $char_lookfeet . ', ' . $char_lookhead . ', ' . $char_looklegs . ', ' . $looktype . ', ' . $char_cap . ', ' . $char_town . ')');
+							sqlquery('INSERT INTO `players` (`name`, `account_id`, `group_id`, `sex`, `vocation`, `experience`, `level`, `maglevel`, `health`, `healthmax`, `mana`, `manamax`, `manaspent`, `soul`, `lookbody`, `lookfeet`, `lookhead`, `looklegs`, `looktype`, `cap`, `town_id`) 
+												   VALUES(\'' . mysql_real_escape_string($M2_char) . '\', ' . intval($M2_acc) . ', ' . $char_group . ', ' . intval($sexin) . ', 3, ' . $char_exp . ', ' . $char_level . ', ' . $char_maglevel_sorcerer . ', ' . $char_health_sorcerer . ', ' . $char_health_sorcerer . ', ' . $char_mana_sorcerer . ', ' . $char_mana_sorcerer . ', 0, 100, ' . $char_lookbody . ', ' . $char_lookfeet . ', ' . $char_lookhead . ', ' . $char_looklegs . ', ' . $looktype . ', ' . $char_cap . ', ' . $char_town . ')');
 							break;
 						case 4: // Knight
-							sqlquery('INSERT INTO players(name, account_id, group_id, sex, vocation, experience, level, maglevel, health, healthmax, mana, manamax, manaspent, soul, lookbody, lookfeet, lookhead, looklegs, looktype, cap, town_id) 
-												   VALUES(\'' . mysql_real_escape_string($M2_char) . '\', ' . intval($M2_acc) . ', ' . $char_group . ', ' . intval($sexin) . ', 4 ' . $char_exp . ', ' . $char_level . ', ' . $char_maglevel_knight . ', ' . $char_health_knight . ', ' . $char_health_knight . ', ' . $char_mana_knight . ', ' . $char_mana_knight . ', 0, 100, ' . $char_lookbody . ', ' . $char_lookfeet . ', ' . $char_lookhead . ', ' . $char_looklegs . ', ' . $looktype . ', ' . $char_cap . ', ' . $char_town . ')');
+							sqlquery('INSERT INTO `players` (`name`, `account_id`, `group_id`, `sex`, `vocation`, `experience`, `level`, `maglevel`, `health`, `healthmax`, `mana`, `manamax`, `manaspent`, `soul`, `lookbody`, `lookfeet`, `lookhead`, `looklegs`, `looktype`, `cap`, `town_id`) 
+												   VALUES(\'' . mysql_real_escape_string($M2_char) . '\', ' . intval($M2_acc) . ', ' . $char_group . ', ' . intval($sexin) . ', 4, ' . $char_exp . ', ' . $char_level . ', ' . $char_maglevel_sorcerer . ', ' . $char_health_sorcerer . ', ' . $char_health_sorcerer . ', ' . $char_mana_sorcerer . ', ' . $char_mana_sorcerer . ', 0, 100, ' . $char_lookbody . ', ' . $char_lookfeet . ', ' . $char_lookhead . ', ' . $char_looklegs . ', ' . $looktype . ', ' . $char_cap . ', ' . $char_town . ')');
 							break;
 						default: // Error? voc 0 aka no vocation ;p
-							sqlquery('INSERT INTO players(name, account_id, group_id, sex, vocation, experience, level, maglevel, health, healthmax, mana, manamax, manaspent, soul, lookbody, lookfeet, lookhead, looklegs, looktype, cap, town_id) 
-												   VALUES(\'' . mysql_real_escape_string($M2_char) . '\', ' . intval($M2_acc) . ', ' . $char_group . ', ' . intval($sexin) . ', 0 ' . $char_exp . ', ' . $char_level . ', ' . $char_maglevel_none . ', ' . $char_health_none . ', ' . $char_health_none . ', ' . $char_mana_none . ', ' . $char_mana_none . ', 0, 100, ' . $char_lookbody . ', ' . $char_lookfeet . ', ' . $char_lookhead . ', ' . $char_looklegs . ', ' . $looktype . ', ' . $char_cap . ', ' . $char_town . ')');
+							sqlquery('INSERT INTO `players` (`name`, `account_id`, `group_id`, `sex`, `vocation`, `experience`, `level`, `maglevel`, `health`, `healthmax`, `mana`, `manamax`, `manaspent`, `soul`, `lookbody`, `lookfeet`, `lookhead`, `looklegs`, `looktype`, `cap`, `town_id`) 
+												   VALUES(\'' . mysql_real_escape_string($M2_char) . '\', ' . intval($M2_acc) . ', ' . $char_group . ', ' . intval($sexin) . ', 0, ' . $char_exp . ', ' . $char_level . ', ' . $char_maglevel_sorcerer . ', ' . $char_health_sorcerer . ', ' . $char_health_sorcerer . ', ' . $char_mana_sorcerer . ', ' . $char_mana_sorcerer . ', 0, 100, ' . $char_lookbody . ', ' . $char_lookfeet . ', ' . $char_lookhead . ', ' . $char_looklegs . ', ' . $looktype . ', ' . $char_cap . ', ' . $char_town . ')');
 							break;
 					}
 				}
@@ -131,8 +132,7 @@ if ($M2_acc != "" && $M2_acc != null && is_numeric($M2_acc) && $M2_pass != "" &&
 
 	if($errors == 0)
 	{
-		echo "no errors, we would take you to the manager now";
-		//header("Location: accountManager.php");
+		header("Location: accountManager.php");
 	}
 }
 ?>

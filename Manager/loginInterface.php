@@ -30,14 +30,25 @@
 
 include '../conf.php';
 
+$title = 'Login';
+$name = $aac_servername;
+$bodySpecial = 'onload="NOTHING"';
+
+include_once('../Includes/Templates/bTemplate.php');
+$tpl = new bTemplate();
+
+$tpl->set('title', $title);
+$tpl->set('strayline', $name);
+$tpl->set('bodySpecial', $bodySpecial);
 
 $M2_account = $_SESSION['M2_account'];
 $M2_password = $_SESSION['M2_password'];
 
 if (!(isset($M2_account) && isset($M2_password) && $M2_account != null && $M2_account != "" && $M2_password != null && $M2_password != ""))
 {
+echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 ?>
-<h2>Login to your account:</h2>
+<h2>Login to your account:</h2><br />
 	
 
 	<form action="login.php" method="POST">
@@ -51,9 +62,11 @@ if (!(isset($M2_account) && isset($M2_password) && $M2_account != null && $M2_ac
 	</table>
 	<br>
 	<input type="Submit" value="Login">
-	<input type="Reset" value="Clear">
 	</form>
 <?
+echo $tpl->fetch('../Includes/Templates/Indigo/sidebar.tpl');
+echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
+echo $tpl->fetch('../Includes/Templates/Indigo/bottom.tpl');
 }
 else
 {

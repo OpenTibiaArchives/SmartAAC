@@ -3,7 +3,7 @@
 // ===========================================================
 //	Smart-Ass: The Userfriendly AAC
 //	Version: 2.0 Development Only
-//	Configuration Created: Tue, 01 May 2007 16:01:53 +0100
+//	Configuration Created: Wed, 02 May 2007 00:09:19 +0100
 //	
 //	USE OF THIS PROGRAM TO RELY ON IT FOR SERVER USE IS NOT
 // 	RECOMMENDED! THIS IS FOR TESTING ONLY.
@@ -28,36 +28,37 @@
 // ===========================================================
 
 $aac_status = 			"Not Installed";
-$aac_version = 			"2.0 Alpha1";
+$aac_version = 		"2.0 Alpha1";
 $aac_dataDir =			"data/";
 
 $aac_minacclen = 		6;
 $aac_maxacclen = 		8;
 $aac_minpasslen = 		3;
 $aac_maxpasslen = 		15;
-$aac_minplayerlen =		4;
-$aac_maxplayerlen =		20;
+$aac_minplayerlen =	4;
+$aac_maxplayerlen =	20;
 
-$aac_servername = 		"Serske";
+$aac_servername = 		"";
 $net_ipaddress =		"";
 $net_port = 			"";
 
-$aac_md5passwords =		false;
+$aac_md5passwords =	false;
 $aac_imgver = 			false;
 
 $aac_type =			"Manager";
 $sql_host =			"127.0.0.1";
 $sql_user =			"root";
 $sql_pass = 			"PASSWORD";
-$sql_db = 			"otserv";
+$sql_db = 				"otserv";
 
-$info_os =			"Windows XP";
-$info_connection =		"56k";
-$info_uptimetype =		"24/7";
+$info_os =				"";
+$info_connection =		"";
+$info_uptimetype =		"";
 
 $char_rook =			false;
 $char_group =			1;
 $char_exp =			98800;
+$char_cap =			500;
 $char_level =			20;
 $char_lookhead =		10;
 $char_lookbody =		10;
