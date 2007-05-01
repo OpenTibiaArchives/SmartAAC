@@ -65,8 +65,8 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null) {
 		die("Error! Your char name is not valid.");
 	}
 
-	$sqlconnect = mysql_connect($SQLHOST, $SQLUSER, $SQLPASS) or die("MySQL Error: mysql_error (mysql_errno()).\n");
-	mysql_select_db($SQLDB, $sqlconnect);
+	$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die("MySQL Error: mysql_error (mysql_errno()).\n");
+	mysql_select_db($sql_db, $sqlconnect);
 
 	$result = sqlquery('SELECT * FROM `players` WHERE `name` = \'' . mysql_real_escape_string($char) . '\'');
 	$rowz = mysql_num_rows($result);
@@ -86,16 +86,16 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null) {
 <font color="red" size="+2">Character deletion!</font><br><br>
 To delete your character we must ask you to enter your password for this account.
 <br>
-<form action="<?php=$PHP_SELF?>?char=<?php=$char?>" method="POST">
+<form action="<?php echo $PHP_SELF; ?>?char=<?php echo $char; ?>" method="POST">
 Password: <input type="password" name="M2_password"><br>
-<input type="submit" value="Continue"> <font color="red"><i>Note. By pressing this you agree that your character (<?phpecho "$char";?>) will be permanently deleted from our servers.</i></font>
+<input type="submit" value="Continue"> <font color="red"><i>Note. By pressing this you agree that your character (<?php echo $char; ?>) will be permanently deleted from our servers.</i></font>
 </form>
 
 <?php
 			}
 			else
 			{
-				$result = sqlquery('SELECT `password` FROM `accounts` WHERE `id` = \'' . mysql_real_escape_string($M2_acc) . '\'');
+				$result = sqlquery('SELECT `password` FROM `accounts` WHERE `id` = ' . intval($M2_acc) . '');
 				while ($row = mysql_fetch_assoc($result)) {
 					$temp = $row["password"];
 				}

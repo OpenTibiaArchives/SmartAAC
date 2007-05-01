@@ -106,10 +106,10 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null)
 				{
 					$newpass = md5($newpass);
 				}
-					$sqlconnect = mysql_connect($SQLHOST, $SQLUSER, $SQLPASS) or die("MySQL Error: mysql_error (mysql_errno()).\n");
-					mysql_select_db($SQLDB, $sqlconnect);
+					$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die("MySQL Error: mysql_error (mysql_errno()).\n");
+					mysql_select_db($sql_db, $sqlconnect);
 
-					$result = sqlquery('UPDATE `accounts` SET `password` = \'' . mysql_real_escape_string($newpass) . '\' WHERE `id` = \'' . mysql_real_escape_string($M2_acc) . '\'');
+					$result = sqlquery('UPDATE `accounts` SET `password` = \'' . mysql_real_escape_string($newpass) . '\' WHERE `id` = ' . intval($M2_acc) . '');
 					session_unset();
 					header("Location: index.php");
 			}
@@ -129,13 +129,13 @@ $template->pparse('Top');
 <form action="accountPassChange.php?result=change" method="POST">
 <table>
 <tr>
-<td><p><b>Old Password:</b></td><td><input type="password" name="oldpass" maxlength="20" class="textfield"></p><br><hr></td>
+<td><p><b>Old Password:</b></td><td><input type="password" name="oldpass" maxlength="<?php echo $aac_maxpasslen; ?>" class="textfield"></p><br><hr></td>
 </tr>
 <tr>
-<td><p><b>New Password:</b></td><td><input type="password" name="newpass" maxlength="20" class="textfield"></p><br><hr></td>
+<td><p><b>New Password:</b></td><td><input type="password" name="newpass" maxlength="<?php echo $aac_maxpasslen; ?>" class="textfield"></p><br><hr></td>
 </tr>
 <tr>
-<td><p><b>New Password (again):</b></td><td><input type="password" name="newpass2" maxlength="20" class="textfield"></p><br><hr></td>
+<td><p><b>New Password (again):</b></td><td><input type="password" name="newpass2" maxlength="<?php echo $aac_maxpasslen; ?>" class="textfield"></p><br><hr></td>
 </tr>
 
 <tr>

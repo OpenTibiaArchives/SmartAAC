@@ -68,16 +68,16 @@ else if ($result == "pass_success") {
 
 <p><b>Characters:</b></p>
 <table>
-<?
+<?php
 
 $sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die("MySQL Error: mysql_error (mysql_errno()).\n");
 mysql_select_db($sql_db, $sqlconnect);
 
-$result = sqlquery('SELECT * FROM `accounts` WHERE `id` = \'' . mysql_real_escape_string($M2_acc) . '\'');
+$result = sqlquery('SELECT * FROM `accounts` WHERE `id` = ' . intval($M2_acc) . '');
 $rowz = mysql_num_rows($result);
 if($rowz == 1)
 {
-	$chars = sqlquery('SELECT `name` FROM `players` WHERE `account_id` = \'' . mysql_real_escape_string($M2_acc) . '\'');
+	$chars = sqlquery('SELECT `name` FROM `players` WHERE `account_id` = ' . intval($M2_acc) . '');
 	while ($line = mysql_fetch_array($chars, MYSQL_ASSOC))
 	{
 		foreach ($line as $char)

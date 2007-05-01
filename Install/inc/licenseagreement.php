@@ -46,7 +46,7 @@ echo $tpl->fetch('../Includes/Templates/Slick_minimal/top.tpl');
 
 <div align="center">
 <h2>Please read the license:<br><br></h2><center>
-<textarea rows="17" cols="70" readonly="readonly"><? include '../LICENSE' ?></textarea>
+<textarea rows="17" cols="70" readonly="readonly"><?php include '../LICENSE' ?></textarea>
 
 	<br><br>
 	<form action="install.php?step=3" method="POST">

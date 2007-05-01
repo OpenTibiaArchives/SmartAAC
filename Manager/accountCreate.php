@@ -76,7 +76,7 @@ if ( (isset($M2_account) && !empty($M2_account)) && (isset($M2_password) && !emp
 			$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die("MySQL Error: mysql_error 								(mysql_errno()).\n");
 			mysql_select_db($sql_db, $sqlconnect);
 
-			$result = sqlquery('SELECT * FROM `accounts` WHERE `id` = \'' . mysql_real_escape_string($M2_account) . '\';');
+			$result = sqlquery('SELECT * FROM `accounts` WHERE `id` = ' . intval($M2_account) . ';');
 			$rowz = mysql_num_rows($result);
 
 			if($rowz == 1)
@@ -86,7 +86,7 @@ if ( (isset($M2_account) && !empty($M2_account)) && (isset($M2_password) && !emp
 			}
 			else {
 				sqlquery('INSERT INTO `accounts` ( id, password , email , blocked , premdays )
-					VALUES ( \'' . mysql_real_escape_string($M2_account) . '\', \'' . mysql_real_escape_string($M2_password) . '\', \'' . mysql_real_escape_string($M2_email) . '\', \'0\', \'0\' );');
+					VALUES ( ' . intval($M2_account) . ', \'' . mysql_real_escape_string($M2_password) . '\', \'' . mysql_real_escape_string($M2_email) . '\', \'0\', \'0\' );');
 					
 				$created_Account = true;
 				session_unset();

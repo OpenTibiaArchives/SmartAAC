@@ -78,7 +78,7 @@ if ($M2_acc != "" && $M2_acc != null && is_numeric($M2_acc) && $M2_pass != "" &&
 
 			if ($errors == 0)
 			{
-				$result = sqlquery('SELECT * FROM `accounts` WHERE `id` = \'' . mysql_real_escape_string($M2_acc) . '\'');
+				$result = sqlquery('SELECT * FROM `accounts` WHERE `id` = ' . intval($M2_acc) . '');
 				$rowz = mysql_num_rows($result);
 				if($rowz == 1)
 				{

@@ -84,7 +84,7 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null)
 <tr>
 <td><p><b>Vocation:</b></p></td>
 <td>
-<?
+<?php
 if($aac_rook) {
 	echo "<p><input type=\"radio\" name=\"voc\" value=\"0\" style=\"border: 0;\" checked> None</p>";
 }

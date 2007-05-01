@@ -27,33 +27,33 @@
 //    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // ===========================================================
 
-$aac_status = 			"Installed";
-$aac_version = 		"2.0 Alpha1";
+$aac_status = 			"Not Installed";
+$aac_version = 			"2.0 Alpha1";
 $aac_dataDir =			"data/";
 
 $aac_minacclen = 		6;
 $aac_maxacclen = 		8;
 $aac_minpasslen = 		3;
 $aac_maxpasslen = 		15;
-$aac_minplayerlen =	4;
-$aac_maxplayerlen =	20;
+$aac_minplayerlen =		4;
+$aac_maxplayerlen =		20;
 
 $aac_servername = 		"Serske";
 $net_ipaddress =		"";
 $net_port = 			"";
 
-$aac_md5passwords =	false;
+$aac_md5passwords =		false;
 $aac_imgver = 			false;
 
 $aac_type =			"Manager";
 $sql_host =			"127.0.0.1";
 $sql_user =			"root";
 $sql_pass = 			"PASSWORD";
-$sql_db = 				"otserv";
+$sql_db = 			"otserv";
 
-$info_os =				"";
-$info_connection =		"";
-$info_uptimetype =		"";
+$info_os =			"Windows XP";
+$info_connection =		"56k";
+$info_uptimetype =		"24/7";
 
 $char_rook =			false;
 $char_group =			1;
