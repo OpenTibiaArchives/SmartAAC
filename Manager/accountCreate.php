@@ -1,4 +1,4 @@
-<?
+<?php
 /**********************************
 * Smart-Ass
 * http://smart.pekay.co.uk
@@ -74,8 +74,8 @@ if ( (isset($M2_account) && !empty($M2_account)) && (isset($M2_password) && !emp
 		{
 			$sqlconnect = mysql_connect($SQLHOST, $SQLUSER, $SQLPASS) or die("MySQL Error: mysql_error 								(mysql_errno()).\n");
 			mysql_select_db($SQLDB, $sqlconnect);
-					
-			$result = sqlquery("SELECT * FROM accounts WHERE id='$M2_account'");
+			
+			$result = sqlquery('SELECT * FROM `accounts` WHERE `id` = \'' . mysql_real_escape_string($M2_account) . '\'');
 			$rowz = mysql_num_rows($result);
 			if($rowz == 1)
 			{
@@ -83,8 +83,10 @@ if ( (isset($M2_account) && !empty($M2_account)) && (isset($M2_password) && !emp
 				return;
 			}
 			else {
+				sqlquery('INSERT INTO `accounts` ( id, password , email , blocked , premdays )
+					VALUES (  );');
 				sqlquery("INSERT INTO accounts ( id , password , email , blocked , premdays ) 
-					VALUES ( '$M2_account', '$M2_password', '$', '0', '0' );");
+					VALUES ( \'' . mysql_real_escape_string($M2_account) . '\', \'' . mysql_real_escape_string($M2_password) . '\', \'' . mysql_real_escape_string($M2_email) . '\', \'0\', \'0\' );");
 
 				$created_Account = true;
 				session_unset();
@@ -105,11 +107,11 @@ if ($created_Account != true)
 <h2>Please fill out the appropiate fields:</h2>
 <br />
 
-	<form action="<?=$PHP_SELF?>" method="POST">
+	<form action="<?php=$PHP_SELF?>" method="POST">
 	<table>
 	<tr>
-	<td><p>Account Number: </p></td><td><input name="M2_account" type="text" maxlength="<? echo $aac_maxacclen; ?>" class="textfield"> <font color="red">* <i>(<? echo "$aac_minacclen - $aac_maxacclen numbers"; ?>)</i></font></td>
-	<td><p>Password: </p></td><td><input name="M2_password" type="password" maxlength="<? echo $aac_maxpasslen; ?>" class="textfield"> <font color="red">* <i>(<? echo "$aac_minpasslen - $aac_maxpasslen characters"; ?>)</i></font></td>
+	<td><p>Account Number: </p></td><td><input name="M2_account" type="text" maxlength="<?php echo $aac_maxacclen; ?>" class="textfield"> <font color="red">* <i>(<?php echo "$aac_minacclen - $aac_maxacclen numbers"; ?>)</i></font></td>
+	<td><p>Password: </p></td><td><input name="M2_password" type="password" maxlength="<?php echo $aac_maxpasslen; ?>" class="textfield"> <font color="red">* <i>(<?php echo "$aac_minpasslen - $aac_maxpasslen characters"; ?>)</i></font></td>
 	<td><p>Email: </p></td><td><input name="M2_email" type="text" class="textfield"></td>
 	</tr>
 	</table>

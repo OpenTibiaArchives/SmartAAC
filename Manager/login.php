@@ -1,4 +1,4 @@
-<?
+<?php
 // M2 LOGIN SMART-ASS
 // Author: Pekay/Jiddo
 // Renew comments later (DEV)
@@ -22,11 +22,11 @@ if (isset($M2_account) && is_numeric($M2_account) && isset($M2_password))
 	$sqlconnect = mysql_connect($SQLHOST, $SQLUSER, $SQLPASS) or die("MySQL Error: mysql_error (mysql_errno()).\n");
 	mysql_select_db($SQLDB, $sqlconnect);
 
-	$result = sqlquery("SELECT * FROM accounts WHERE id='$M2_account'");
+	$result = sqlquery('SELECT * FROM `accounts` WHERE `id` = \'' . mysql_real_escape_string($M2_account) . '\'');
 	$rowz = mysql_num_rows($result);
 	if($rowz == 1) // Check if the file exists first
 	{
-		$pass = sqlquery("SELECT * FROM accounts WHERE id='$M2_account'");
+		$pass = sqlquery('SELECT * FROM `accounts` WHERE `id` = \'' . mysql_real_escape_string($M2_account) . '\'');
 		while ($row = mysql_fetch_assoc($pass))
 		{
 			$passw = $row["password"];

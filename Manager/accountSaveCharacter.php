@@ -1,4 +1,4 @@
-<?
+<?php
 /**********************************
 * Smart-Ass
 * http://smart.pekay.co.uk
@@ -59,7 +59,7 @@ if ($M2_acc != "" && $M2_acc != null && is_numeric($M2_acc) && $M2_pass != "" &&
 		$sqlconnect = mysql_connect($SQLHOST, $SQLUSER, $SQLPASS) or die("MySQL Error: mysql_error (mysql_errno()).\n");
 		mysql_select_db($SQLDB, $sqlconnect);
 
-		$result = sqlquery("SELECT * FROM players WHERE name='$namein'");
+		$result = sqlquery('SELECT * FROM `players` WHERE `name` = \'' . mysql_real_escape_string($namein) . '\'');
 		$rowz = mysql_num_rows($result);
 		if ($namein != "" && $vocin != "" && $sexin != "" && $rowz == 0)
 		{
@@ -78,7 +78,7 @@ if ($M2_acc != "" && $M2_acc != null && is_numeric($M2_acc) && $M2_pass != "" &&
 
 			if ($errors == 0)
 			{
-				$result = sqlquery("SELECT * FROM accounts WHERE id='$M2_acc'");
+				$result = sqlquery('SELECT * FROM `accounts` WHERE `id` = \'' . mysql_real_escape_string($M2_acc) . '\'');
 				$rowz = mysql_num_rows($result);
 				if($rowz == 1)
 				{
@@ -90,7 +90,7 @@ if ($M2_acc != "" && $M2_acc != null && is_numeric($M2_acc) && $M2_pass != "" &&
 					}
 					
 					switch($vocin)
-					{
+					{ // Fix these???
 						case 1: // Sorcerer
 							sqlquery("INSERT INTO players(id, name, account_id, group_id, sex, vocation, experience, level, maglevel, health, healthmax, mana, manamax, manaspent, soul, lookbody, lookfeet, lookhead, looklegs, looktype, cap, town_id) 
 												   VALUES('', '$M2_char', '$M2_acc', '$char_group', '$sexin', '1' '$char_exp', '$char_level', '$char_maglevel_sorcerer', '$char_health_sorcerer', '$char_health_sorcerer', '$char_mana_sorcerer', '$char_mana_sorcerer', '0', '100', '$char_lookbody', '$char_lookfeet', '$char_lookhead', '$char_looklegs', '$looktype', '$char_cap', '$char_town')");

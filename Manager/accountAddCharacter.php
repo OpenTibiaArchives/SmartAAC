@@ -1,4 +1,4 @@
-<?
+<?php
 /**********************************
 * Smart-Ass
 * http://smart.pekay.co.uk
@@ -79,7 +79,7 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null)
 <form action="accountSaveCharacter.php" method="POST">
 <table>
 <tr>
-<td><p><b>Name:</b></td><td><input type="text" name="name" maxlength="<? echo $aac_maxplayerlen; ?>" class="textfield"><font color="red"><i> (<? echo "$aac_minplayerlen - $aac_maxplayerlen"; ?> letters and blankspaces)</p></i></font><br><hr></td>
+<td><p><b>Name:</b></td><td><input type="text" name="name" maxlength="<?php echo $aac_maxplayerlen; ?>" class="textfield"><font color="red"><i> (<?php echo "$aac_minplayerlen - $aac_maxplayerlen"; ?> letters and blankspaces)</p></i></font><br><hr></td>
 </tr>
 <tr>
 <td><p><b>Vocation:</b></p></td>

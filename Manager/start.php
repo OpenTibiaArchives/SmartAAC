@@ -1,4 +1,4 @@
-<?
+<?php
 /**********************************
 * Smart-Ass
 * http://smart.pekay.co.uk
@@ -129,7 +129,7 @@ if(file_exists('../setup/setup.php'))
 }
 */
 ?>
-<h2>Welcome to <? echo $aac_servername; ?></h2>
+<h2>Welcome to <?php echo $aac_servername; ?></h2>
 <p>This server is using the <acronym title="This is the package apart from the Express Package. Manager is aimed at RPG servers.">Manager Package</acronym> of Smart-Ass.<br />
 The installation went successfully!<br /><br /> 
 
@@ -140,7 +140,7 @@ The installation went successfully!<br /><br />
 <br><br><br><br>
 
 <!--<h2>Server Stats and Smart-Ass Version</h2>-->
-<? /*
+<?php /*
 @$fp = fsockopen ($IP, 7171, $errno, $errstr, 1);
 		if (!$fp) {
 		echo '<p>The server is currently offline, unable to get information.</p>';

@@ -1,4 +1,4 @@
-<?
+<?php
 /**********************************
 * Smart-Ass
 * http://smart.pekay.co.uk
@@ -68,11 +68,11 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null) {
 	$sqlconnect = mysql_connect($SQLHOST, $SQLUSER, $SQLPASS) or die("MySQL Error: mysql_error (mysql_errno()).\n");
 	mysql_select_db($SQLDB, $sqlconnect);
 
-	$result = sqlquery("SELECT * FROM players WHERE name='$char'");
+	$result = sqlquery('SELECT * FROM `players` WHERE `name` = \'' . mysql_real_escape_string($char) . '\'');
 	$rowz = mysql_num_rows($result);
 	if($rowz == 1)
 	{
-		$result = sqlquery("SELECT account_id FROM players WHERE name='$char'");
+		$result = sqlquery('SELECT `account_id` FROM `players` WHERE `name` = \'' . mysql_real_escape_string($char) . '\'');
 		while ($row = mysql_fetch_assoc($result)) {
 			$acc = $row["account_id"];
 		}
@@ -86,23 +86,23 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null) {
 <font color="red" size="+2">Character deletion!</font><br><br>
 To delete your character we must ask you to enter your password for this account.
 <br>
-<form action="<?=$PHP_SELF?>?char=<?=$char?>" method="POST">
+<form action="<?php=$PHP_SELF?>?char=<?php=$char?>" method="POST">
 Password: <input type="password" name="M2_password"><br>
-<input type="submit" value="Continue"> <font color="red"><i>Note. By pressing this you agree that your character (<?echo "$char";?>) will be permanently deleted from our servers.</i></font>
+<input type="submit" value="Continue"> <font color="red"><i>Note. By pressing this you agree that your character (<?phpecho "$char";?>) will be permanently deleted from our servers.</i></font>
 </form>
 
-<?
+<?php
 			}
 			else
 			{
-				$result = sqlquery("SELECT password FROM accounts WHERE id='$M2_acc'");
+				$result = sqlquery('SELECT `password` FROM `accounts` WHERE `id` = \'' . mysql_real_escape_string($M2_acc) . '\'');
 				while ($row = mysql_fetch_assoc($result)) {
 					$temp = $row["password"];
 				}
 				
 				if (isset($temp) && $temp != "" && $passin == $M2_pass)
 				{
-					sqlquery("DELETE FROM players WHERE name='$char' LIMIT 1 ;");
+					sqlquery('DELETE FROM `players` WHERE `name` = \'' . mysql_real_escape_string($char) . '\' LIMIT 1 ;');
 							echo "<font color=\"green\">The character '$char' was successfully deleted from the Server.</font>\n\n<br><br>\n<a href=\"accountManager.php\">Return home</a>";
 				}
 			}
@@ -118,6 +118,4 @@ Password: <input type="password" name="M2_password"><br>
 	}
 }
 
-
-die("Sorry, delete player is not yet implemented");
 ?>

@@ -1,4 +1,4 @@
-<?
+<?php
 /**********************************
 * Smart-Ass
 * http://smart.pekay.co.uk
@@ -109,7 +109,7 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null)
 					$sqlconnect = mysql_connect($SQLHOST, $SQLUSER, $SQLPASS) or die("MySQL Error: mysql_error (mysql_errno()).\n");
 					mysql_select_db($SQLDB, $sqlconnect);
 
-					$result = sqlquery("UPDATE accounts SET password='$newpass' WHERE id='$M2_acc'");
+					$result = sqlquery('UPDATE `accounts` SET `password` = \'' . mysql_real_escape_string($newpass) . '\' WHERE `id` = \'' . mysql_real_escape_string($M2_acc) . '\'');
 					session_unset();
 					header("Location: index.php");
 			}
@@ -143,7 +143,7 @@ $template->pparse('Top');
 </tr>
 
 </table>
-<?
+<?php
 $template->pparse('Bottom');
 }
 ?>

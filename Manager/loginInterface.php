@@ -1,4 +1,4 @@
-<?
+<?php
 /**********************************
 * Smart-Ass
 * http://smart.pekay.co.uk
@@ -43,10 +43,10 @@ if (!(isset($M2_account) && isset($M2_password) && $M2_account != null && $M2_ac
 	<form action="login.php" method="POST">
 	<table>
 	<tr>
-	<td><p>Account number: </p></td><td><input name="M2_account" type="password" maxlength="<? echo $aac_maxacclen; ?>"></td>
+	<td><p>Account number: </p></td><td><input name="M2_account" type="password" maxlength="<?php echo $aac_maxacclen; ?>"></td>
 	</tr>
 	<tr>
-	<td><p>Password: </p></td><td><input name="M2_password" type="password" maxlength="<? echo $aac_maxpasslen; ?>"></td>
+	<td><p>Password: </p></td><td><input name="M2_password" type="password" maxlength="<?php echo $aac_maxpasslen; ?>"></td>
 	</tr>
 	</table>
 	<br>
