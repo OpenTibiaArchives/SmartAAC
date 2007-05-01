@@ -29,142 +29,74 @@
 */
 
 $error = 0;
-include "../config.php";
-include "../resources.php";
+$created_Account = false;
+include "../conf.php";
+include "../Includes/resources.php";
 
-
+$M2_account = $_POST['M2_account'];
 $M2_password = $_POST['M2_password'];
+$M2_email = $_POST['M2_email'];
 
-if ( isset($M2_password) && !empty($M2_password) )
+if ( (isset($M2_account) && !empty($M2_account)) && (isset($M2_password) && !empty($M2_password)) && (isset($M2_email) && !empty($M2_email)) )
 {
-	if (strlen($M2_password) < 5)
+	if ( strlen($M2_account) < $aac_minacclen || strlen($M2_account) > $aac_maxacclen )
 	{
-		echo "<font color=\"red\">Error! Please fill out the form correctly!</font><br><br>";
+		echo "<font color=\"red\">Error! Your account number is either too short or too long!</font><br><br>";
+		$error = 1;
+	}
+	elseif ( !is_numeric($M2_account) )
+	{
+		echo "<font color=\"red\">Error! Your account number must be a number!</font><br><br>";
+	}
+	elseif (strlen($M2_password) < $aac_minpasslen || strlen($M2_password) > $aac_maxpasslen)
+	{
+		echo "<font color=\"red\">Error! Your password is either too short or too long!</font><br><br>";
 		$error = 1;
 	}
 	elseif( !preg_match('/^[a-z0-9 ]{5,}$/', $M2_password) )
 	{
-            echo "<font color=\"red\">Error! Your password must consist of more then 4 letters or numbers (ABC, abc, 123 and blankspaces)!</font><br><br>";
-            $error = 1;
-        }
+		echo "<font color=\"red\">Error! Your password must consist of more then 4 letters or numbers (ABC, abc, 123 and blankspaces)!</font><br><br>";
+		$error = 1;
+	}
+	elseif( !preg_match('^([a-zA-Z0-9_\-\.])+@(([0-2]?[0-5]?[0-5]\.[0-2]?[0-5]?[0-5]\.[0-2]?[0-5]?[0-5]\.[0-2]?[0-5]?[0-5])|((([a-zA-Z0-9\-])+\.)+([a-zA-Z\-])+))$', $M2_email) )
+	{
+		echo "<font color=\"red\">Error! Email address is not valid!</font><br><br>";
+		$error = 1;
+	}
 	else
 	{
-/*
-    Account number generation part by Wrzasq [wrzasq@gmail.com] (C) 2006.
+		if($aac_md5passwords == true)
+		{
+			$M2_password = md5($M2_password);
+		}
 
-    http://www.wrzasq.com/
-*/
-            $exist = array();
-
-            $directory = opendir($accdir);
-
-            // reads accounts
-            while($account = readdir($directory) )
-            {
-                // checks if the file is valid acocunt file name
-                if( eregi('^[0-9]*\.xml$', $account) )
-                {
-                    $exist[] = str_replace('.xml', '', $account);
-                }
-            }
-
-            // generates random account number
-            $random = rand(0, 999999);
-            $accno = $random;
-
-            // finds unused number
-            while(true)
-            {
-                // unused - found
-                //if( !isset($exist[$accno]) )
-                //{
-                //    break;
-                //}
-				$accountfile = $accdir . $accno . ".xml";
-				if(!file_exists($accountfile))
-				{
-				break;
-				}
-				else
-				{
-				$accno++;
-				}
-
-                // used - next one
-                //$accno++;
-
-                // we need to re-set
-                if($accno > 999999)
-                {
-                    $accno = 0;
-                }
-
-                // we checked all possibilities
-                if($accno == $random)
-                {
-                    echo "<font color=\"red\">Sorry... there are no free account number at the moment, lol :D.</font><br><br>";
-                    $error = 1;
-                }
-            }
-			
-			
-			
-if($md5_passwords_accounts == true)
-{
-	$M2_password = md5($M2_password);
-}
-			
-			
-	
-			if ($error == 0)
+		if ($error == 0)
+		{
+			$sqlconnect = mysql_connect($SQLHOST, $SQLUSER, $SQLPASS) or die("MySQL Error: mysql_error 								(mysql_errno()).\n");
+			mysql_select_db($SQLDB, $sqlconnect);
+					
+			$result = sqlquery("SELECT * FROM accounts WHERE id='$M2_account'");
+			$rowz = mysql_num_rows($result);
+			if($rowz == 1)
 			{
-					$sqlconnect = mysql_connect($SQLHOST, $SQLUSER, $SQLPASS) or die("MySQL Error: mysql_error 								(mysql_errno()).\n");
-					mysql_select_db($SQLDB, $sqlconnect);
-					
-					
-					while(true)
-						{
-							$result = sqlquery("SELECT * FROM accounts WHERE accno='$accno'");
-							$rowz = mysql_num_rows($result);
-							if($rowz == 1)
-							{
-								$accno++;
-							}
-							elseif($rowz == 0)
-							{
-								break;
-							}
-							
-							// we need to re-set
-						    if($accno > 999999)
-						    {
-						        $accno = 0;
-						    }
+				echo "<font color=\"red\">Error! That account already exist!</font><br><br>";
+				return;
+			}
+			else {
+				sqlquery("INSERT INTO accounts ( id , password , email , blocked , premdays ) 
+					VALUES ( '$M2_account', '$M2_password', '$', '0', '0' );");
 
-						    // we checked all possibilities
-						    if($accno == $random)
-						    {
-						        die('Sorry... there are no free account number at the moment, lol :D.');
-						    }
-						}
-	
-					sqlquery("INSERT INTO accounts ( id , accno , password , type , premDays , email , blocked ) 
-						VALUES ( '', '$accno', '$M2_password', '0', '0', '', '0' );");
-
-					$created_Account = true;
-					session_unset();
-					doInfoBox("Your account has been successfully created. Login <a href=\"loginInterface.php\">here</a> to create your first character in the account!<br><br>
-					Your account number is: $accno</font>");
+				$created_Account = true;
+				session_unset();
+				doInfoBox("Your account has been successfully created. Login <a href=\"loginInterface.php\">here</a> to create your first character in the account!<br><br>
+					Your account number is: $M2_account</font>");
 			}
 		}
 	}
-
+}
 else
 {
-	if ($account != "")
-	{
-		doInfoBox("Sorry, but that account number is not available at the moment. Please use another one.<br><br>");
-	}
+	// What to do here? lol :P
 }
 
 if ($created_Account != true)
@@ -176,7 +108,9 @@ if ($created_Account != true)
 	<form action="<?=$PHP_SELF?>" method="POST">
 	<table>
 	<tr>
-	<td><p>Password: </p></td><td><input name="M2_password" type="password" maxlength="<? echo $PASSWORDMAXNUM; ?>" class="textfield"> <font color="red">* <i>(at least 5 characters)</i></font></td>
+	<td><p>Account Number: </p></td><td><input name="M2_account" type="text" maxlength="<? echo $aac_maxacclen; ?>" class="textfield"> <font color="red">* <i>(<? echo "$aac_minacclen - $aac_maxacclen numbers"; ?>)</i></font></td>
+	<td><p>Password: </p></td><td><input name="M2_password" type="password" maxlength="<? echo $aac_maxpasslen; ?>" class="textfield"> <font color="red">* <i>(<? echo "$aac_minpasslen - $aac_maxpasslen characters"; ?>)</i></font></td>
+	<td><p>Email: </p></td><td><input name="M2_email" type="text" class="textfield"></td>
 	</tr>
 	</table>
 	<br>

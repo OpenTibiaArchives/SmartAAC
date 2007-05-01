@@ -26,6 +26,7 @@
 //    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // ===========================================================
 
+
 if(file_exists("../installLock.txt"))
 {
     header("location: forbidden.php");
@@ -134,11 +135,6 @@ else
 	<input type=\"checkbox\" name=\"ImgVer\" class=\"boxes\" /><br />
 	<br /><br />
 
-	<h1>Town</h1>
-	<label for=\"Town_ID\">Town ID:</label>
-	<input type=\"text\" name=\"Town_ID\" value=\"\" /><br />
-	<br /><br />
-
 	<h1>Other Server Details</h1>
 	<label for=\"ServerName\">Server Name:</label>
 	<input type=\"text\" name=\"ServerName\" value=\"\" /><br />
@@ -173,7 +169,68 @@ else
 	<label for=\"MinPlayerLen\">Min Playername Length:</label>
 	<input type=\"text\" name=\"MinPlayerLen\" value=\"4\" /><br />
 	<label for=\"MaxPlayerLen\">Max Playername Length:</label>
-	<input type=\"text\" name=\"MaxPlayerLen\" value=\"20\" /><br /><br />
+	<input type=\"text\" name=\"MaxPlayerLen\" value=\"20\" /><br />
+	<br /><br />
+	
+	<h1>Character settings</h1>
+	<label for=\"char_group\">Group ID:</label>
+	<input type=\"text\" name=\"char_group\" value=\"1\" /><br />
+	<label for=\"char_exp\">Experience:</label>
+	<input type=\"text\" name=\"char_exp\" value=\"98800\" /><br />
+	<label for=\"char_level\">Level:</label>
+	<input type=\"text\" name=\"char_level\" value=\"20\" /><br />
+	<label for=\"char_lookhead\">Head color:</label>
+	<input type=\"text\" name=\"char_lookhead\" value=\"10\" /><br />
+	<label for=\"char_lookbody\">Body color:</label>
+	<input type=\"text\" name=\"char_lookbody\" value=\"10\" /><br />
+	<label for=\"char_looklegs\">Legs color:</label>
+	<input type=\"text\" name=\"char_looklegs\" value=\"10\" /><br />
+	<label for=\"char_lookfeet\">Feet color:</label>
+	<input type=\"text\" name=\"char_lookfeet\" value=\"10\" /><br />
+	<label for=\"char_town\">Town ID:</label>
+	<input type=\"text\" name=\"char_town\" value=\"1\" /><br /><br />
+	
+	<label for=\"char_rook\">Use rook?</label>
+	<input type=\"checkbox\" name=\"char_rook\" class=\"boxes\" /><br />
+	<br /><br />
+	
+	<font color=\"red\" size=\"4\">IF you are NOT using rook, skip this!</font><br />
+	<label for=\"char_maglevel_none\">No vocation Magic Level:</label>
+	<input type=\"text\" name=\"char_maglevel_none\" value=\"\" /><br />
+	<label for=\"char_health_none\">No vocation Health:</label>
+	<input type=\"text\" name=\"char_health_none\" value=\"\" /><br />
+	<label for=\"char_mana_none\">No vocation Mana:</label>
+	<input type=\"text\" name=\"char_mana_none\" value=\"\" /><br />
+	
+	<font color=\"red\" size=\"4\">IF you are USING rook, skip rest!</font><br />
+	<label for=\"char_maglevel_sorcerer\">Sorcerer Magic Level:</label>
+	<input type=\"text\" name=\"char_maglevel_sorcerer\" value=\"\" /><br />
+	<label for=\"char_health_sorcerer\">Sorcerer Health:</label>
+	<input type=\"text\" name=\"char_health_sorcerer\" value=\"\" /><br />
+	<label for=\"char_mana_sorcerer\">Sorcerer Mana:</label>
+	<input type=\"text\" name=\"char_mana_sorcerer\" value=\"\" /><br />
+	
+	<label for=\"char_maglevel_druid\">Druid Magic Level:</label>
+	<input type=\"text\" name=\"char_maglevel_sorcerer\" value=\"\" /><br />
+	<label for=\"char_health_druid\">Druid Health:</label>
+	<input type=\"text\" name=\"char_health_druid\" value=\"\" /><br />
+	<label for=\"char_mana_druid\">Druid Mana:</label>
+	<input type=\"text\" name=\"char_mana_druid\" value=\"\" /><br />
+	
+	<label for=\"char_maglevel_paladin\">Paladin Magic Level:</label>
+	<input type=\"text\" name=\"char_maglevel_paladin\" value=\"\" /><br />
+	<label for=\"char_health_paladin\">Paladin Health:</label>
+	<input type=\"text\" name=\"char_health_paladin\" value=\"\" /><br />
+	<label for=\"char_mana_paladin\">Paladin Mana:</label>
+	<input type=\"text\" name=\"char_mana_paladin\" value=\"\" /><br />
+	
+	<label for=\"char_maglevel_knight\">Knight Magic Level:</label>
+	<input type=\"text\" name=\"char_maglevel_knight\" value=\"\" /><br />
+	<label for=\"char_health_knight\">Knight Health:</label>
+	<input type=\"text\" name=\"char_health_knight\" value=\"\" /><br />
+	<label for=\"char_mana_knight\">Knight Mana:</label>
+	<input type=\"text\" name=\"char_mana_knight\" value=\"\" /><br />
+	<br /><br />
 
 	<input type=\"submit\" name=\"submitbutton\" id=\"submitbutton\" value=\"Submit\" />
 	</form>

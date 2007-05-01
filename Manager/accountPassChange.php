@@ -29,8 +29,8 @@
 */
 session_start();
 
-include "../config.php";
-include "../resources.php";
+include "../conf.php";
+include "../Includes/resources.php";
 
 
 $errors = 0;
@@ -50,25 +50,24 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null)
 		if ($result == "pass_failed")
 		{
 			$error = $_GET['error'];
-			if (isset($error) && $error == "blank")
+			if (isset($error))
 			{
-				echo "<font color=\"red\">You have to enter both old and new password.</font><br><br>";
-			}
-			else if(isset($error) && $error == "wrong_old")
-			{
-				echo "<font color=\"red\">Your old password is not correct.</font><br><br>" . "Password entered: " . $oldpass;
-			}
-			else if (isset($error) && $error == "wrong_new")
-			{
-				echo "<font color=\"red\">Your new password is not correct.</font><br><br>";
-			}
-			else if (isset($error) && $error == "pass")
-			{
-				echo "<font color=\"red\">Error! Your new password must consist of more then 5 letters or numbers (ABC, abc, 123 and 				blankspaces)!</font><br><br>";
-			}
-			else
-			{
-				echo "<font color=\"red\">WARNING! An unknown error was returned: $error. If this happens again, please contact a gamemaster or an administrator.</font><br><br>";
+				switch($error){
+					case "blank":
+						echo "<font color=\"red\">You have to enter both old and new password.</font><br><br>";
+					case "wrong_old":
+						echo "<font color=\"red\">Your old password is not correct.</font><br><br>" . "Password entered: " . $oldpass;
+						break;
+					case "wrong_new":
+						echo "<font color=\"red\">Your new password is not correct.</font><br><br>";
+						break;
+					case "pass":
+						echo "<font color=\"red\">Error! Your new password must consist of between $aac_minpasslen and $aac_maxpasslen letters or numbers (ABC, abc, 123 and 				blankspaces)!</font><br><br>";
+						break;
+					default:
+						echo "<font color=\"red\">WARNING! An unknown error was returned: $error. If this happens again, please contact a gamemaster or an administrator.</font><br><br>";
+						break;
+				}
 			}
 		}
 		elseif ($result == "change")
@@ -98,6 +97,10 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null)
 			{
 				header("location: accountPassChange.php?result=pass_failed&error=pass");
 			}
+			elseif (strlen($newpass) < $aac_minpasslen || strlen($newpass) > $aac_maxpasslen)
+			{
+				header("location: accountPassChange.php?result=pass_failed&error=pass");
+			}
 			else {
 				if($md5_passwords_accounts)
 				{
@@ -106,7 +109,7 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null)
 					$sqlconnect = mysql_connect($SQLHOST, $SQLUSER, $SQLPASS) or die("MySQL Error: mysql_error (mysql_errno()).\n");
 					mysql_select_db($SQLDB, $sqlconnect);
 
-					$result = sqlquery("UPDATE accounts SET password='$newpass' WHERE accno='$M2_acc'");
+					$result = sqlquery("UPDATE accounts SET password='$newpass' WHERE id='$M2_acc'");
 					session_unset();
 					header("Location: index.php");
 			}

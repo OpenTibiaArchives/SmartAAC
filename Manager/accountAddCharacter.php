@@ -30,7 +30,7 @@
 
 session_start();
 
-include "../config.php";
+include "../conf.php";
 		
 $M2_acc = "";
 $M2_pass = "";
@@ -79,15 +79,24 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null)
 <form action="accountSaveCharacter.php" method="POST">
 <table>
 <tr>
-<td><p><b>Name:</b></td><td><input type="text" name="name" maxlength="<? echo //$PLAYERNAMEMAX; ?>" class="textfield"><font color="red"><i> (2-20 letters and blankspaces)</p></i></font><br><hr></td>
+<td><p><b>Name:</b></td><td><input type="text" name="name" maxlength="<? echo $aac_maxplayerlen; ?>" class="textfield"><font color="red"><i> (2-<? echo $aac_maxplayerlen; ?> letters and blankspaces)</p></i></font><br><hr></td>
 </tr>
 <tr>
 <td><p><b>Vocation:</b></p></td>
 <td>
-<p><input type="radio" name="voc" value="1" style="border: 0;" checked> Sorcerer</p>
-<p><input type="radio" name="voc" value="2" style="border: 0;"> Druid</p>
-<p><input type="radio" name="voc" value="3" style="border: 0;"> Paladin</p>
-<p><input type="radio" name="voc" value="4" style="border: 0;"> Knight</p>
+<?
+if($aac_rook) {
+	echo "<p><input type=\"radio\" name=\"voc\" value=\"0\" style=\"border: 0;\" checked> None</p>";
+}
+else {
+	echo "
+	<p><input type=\"radio\" name=\"voc\" value=\"1\" style=\"border: 0;\" checked> Sorcerer</p>
+	<p><input type=\"radio\" name=\"voc\" value=\"2\" style=\"border: 0;\"> Druid</p>
+	<p><input type=\"radio\" name=\"voc\" value=\"3\" style=\"border: 0;\"> Paladin</p>
+	<p><input type=\"radio\" name=\"voc\" value=\"4\" style=\"border: 0;\"> Knight</p>
+	";
+}
+?>
 <br><hr>
 </td>
 </tr>

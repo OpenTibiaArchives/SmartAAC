@@ -28,8 +28,8 @@
 
 */
 
-include '../config.php';
-include '../resources.php';
+include '../conf.php';
+include '../Includes/resources.php';
 
 
 // Check if its a new setup first!
@@ -129,7 +129,7 @@ if(file_exists('../setup/setup.php'))
 }
 */
 ?>
-<h2>Welcome to <? //echo $SITETITLE; ?></h2>
+<h2>Welcome to <? echo $aac_servername; ?></h2>
 <p>This server is using the <acronym title="This is the package apart from the Express Package. Manager is aimed at RPG servers.">Manager Package</acronym> of Smart-Ass.<br />
 The installation went successfully!<br /><br /> 
 
@@ -177,6 +177,6 @@ echo '<b>Apache</b>: ' . $APACHE_STATUS . '<br />';
 echo '<b>MySQL</b>: ' . $MYSQL_STATUS . '<br /><br />';
 }
 */
-echo '<br><br><br>Smart-Ass Version: ' . $accversion . '';
+echo '<br><br><br>Smart-Ass Version: ' . $acc_version . '';
 
 ?>

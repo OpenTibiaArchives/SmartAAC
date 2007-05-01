@@ -30,8 +30,8 @@
 
 session_start();
 
-include "../resources.php";
-include '../config.php';
+include "../Includes/resources.php";
+include '../conf.php';
 
 $M2_acc = "";
 $M2_pass = "";

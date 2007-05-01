@@ -63,15 +63,67 @@ else
 	$conf_md5passwords =	($_POST["HashPass"]) ? "true" : "false";
 	$conf_imgver = 			($_POST["ImgVer"]) ? "true" : "false";
 
-	$conf_townId =			$_POST["Town_ID"];
+	$conf_char_rook = 		($_POST["char_rook"]) ? "true" : "false";
+	$conf_char_town =		$_POST["char_town"];
+	$conf_char_group =		$_POST["char_group"];
+	$conf_char_exp =		$_POST["char_exp"];
+	$conf_char_level =		$_POST["char_level"];
+	$conf_char_lookhead =	$_POST["char_lookhead"];
+	$conf_char_lookbody =	$_POST["char_lookbody"];
+	$conf_char_looklegs =	$_POST["char_looklegs"];
+	$conf_char_lookfeet =	$_POST["char_lookfeet"];
+	
+	if($_POST["char_rook"])
+	{
+		$conf_char_maglevel_none = $_POST["char_maglevel_none"];
+		$conf_char_health_none = $_POST["char_health_none"];
+		$conf_char_mana_none = $_POST["char_mana_none"];
+		
+		$conf_char_maglevel_sorcerer = '""';
+		$conf_char_health_sorcerer = '""';
+		$conf_char_mana_sorcerer = '""';
+		$conf_char_maglevel_druid = '""';
+		$conf_char_health_druid = '""';
+		$conf_char_mana_druid = '""';
+		$conf_char_maglevel_paladin = '""';
+		$conf_char_health_paladin = '""';
+		$conf_char_mana_paladin = '""';
+		$conf_char_maglevel_knight = '""';
+		$conf_char_health_knight = '""';
+		$conf_char_mana_knight = '""';
+	}
+	else
+	{
+		$conf_char_maglevel_none = '""';
+		$conf_char_health_none = '""';
+		$conf_char_mana_none = '""';
+		
+		$conf_char_maglevel_sorcerer = $_POST["char_maglevel_sorcerer"];
+		$conf_char_health_sorcerer = $_POST["char_health_sorcerer"];
+		$conf_char_mana_sorcerer = $_POST["char_mana_sorcerer"];
+	
+		$conf_char_maglevel_druid = $_POST["char_maglevel_druid"];
+		$conf_char_health_druid = $_POST["char_health_druid"];
+		$conf_char_mana_druid = $_POST["char_mana_druid"];
+	
+		$conf_char_maglevel_paladin = $_POST["char_maglevel_paladin"];
+		$conf_char_health_paladin = $_POST["char_health_paladin"];
+		$conf_char_mana_paladin = $_POST["char_mana_paladin"];
+	
+		$conf_char_maglevel_knight = $_POST["char_maglevel_knight"];
+		$conf_char_health_knight = $_POST["char_health_knight"];
+		$conf_char_mana_knight = $_POST["char_mana_knight"];
+	}
 
-	if(isset($_POST['SQL_Pass'])){
+	if(isset($_POST['SQL_Pass']))
+	{
 		$conf_host =			$_POST["SQL_Host"];
 		$conf_user =			$_POST["SQL_User"];
 		$conf_pass = 			$_POST["SQL_Pass"];
 		$conf_db = 			$_POST["SQL_DB"];
 	}
-	else {
+	else
+	{
 		$conf_host =		"";
 		$conf_user =		"";
 		$conf_user =		"";
@@ -115,33 +167,62 @@ else
 // ===========================================================
 
 \$aac_status = 			\"Installed\";
-\$aac_version = 			\"2.0 Alpha1\";
+\$aac_version = 		\"2.0 Alpha1\";
 \$aac_dataDir =			\"$conf_dataDir\";
 
 \$aac_minacclen = 		$conf_minacclen;
 \$aac_maxacclen = 		$conf_maxacclen;
 \$aac_minpasslen = 		$conf_minpasslen;
 \$aac_maxpasslen = 		$conf_maxpasslen;
-\$aac_minplayerlen =		$conf_minplayerlen;
-\$aac_maxplayerlen =		$conf_maxplayerlen;
+\$aac_minplayerlen =	$conf_minplayerlen;
+\$aac_maxplayerlen =	$conf_maxplayerlen;
 
 \$aac_servername = 		\"$conf_servername\";
 \$net_ipaddress =		\"$conf_ipaddress\";
 \$net_port = 			\"$conf_port\";
 
-\$aac_md5passwords =		$conf_md5passwords;
+\$aac_md5passwords =	$conf_md5passwords;
 \$aac_imgver = 			$conf_imgver;
-\$aac_townId =			$conf_townId;
 
-\$aac_type =				\"Manager\";
-\$sql_host =				\"$conf_host\";
-\$sql_user =				\"$conf_user\";
+\$aac_type =			\"Manager\";
+\$sql_host =			\"$conf_host\";
+\$sql_user =			\"$conf_user\";
 \$sql_pass = 			\"$conf_pass\";
 \$sql_db = 				\"$conf_db\";
 
 \$info_os =				\"$conf_os\";
 \$info_connection =		\"$conf_connection\";
 \$info_uptimetype =		\"$conf_uptimetype\";
+
+\$char_rook =			$conf_char_rook;
+\$char_group =			$conf_char_group;
+\$char_exp =			$conf_char_exp;
+\$char_level =			$conf_char_level;
+\$char_lookhead =		$conf_char_lookhead;
+\$char_lookbody =		$conf_char_lookbody;
+\$char_looklegs =		$conf_char_looklegs;
+\$char_lookfeet =		$conf_char_lookfeet;
+\$char_town =			$conf_char_town;
+
+\$char_maglevel_none = $conf_char_maglevel_none;
+\$char_health_none = $conf_char_health_none;
+\$char_mana_none = $conf_char_mana_none;
+
+\$char_maglevel_sorcerer = $conf_char_maglevel_sorcerer;
+\$char_health_sorcerer = $conf_char_health_sorcerer;
+\$char_mana_sorcerer = $conf_char_mana_sorcerer;
+
+\$char_maglevel_druid = $conf_char_maglevel_druid;
+\$char_health_druid = $conf_char_health_druid;
+\$char_mana_druid = $conf_char_mana_druid;
+
+\$char_maglevel_paladin = $conf_char_maglevel_paladin;
+\$char_health_paladin = $conf_char_health_paladin;
+\$char_mana_paladin = $conf_char_mana_paladin;
+
+\$char_maglevel_knight = $conf_char_maglevel_knight;
+\$char_health_knight = $conf_char_health_knight;
+\$char_mana_knight = $conf_char_mana_knight;
 ?>
 ";
 

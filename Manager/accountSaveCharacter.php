@@ -30,8 +30,8 @@
 
 session_start();
 
-include "../config.php";
-include "../resources.php";
+include "../conf.php";
+include "../Includes/resources.php";
 
 $errors = 0;
 
@@ -40,7 +40,7 @@ $M2_pass = "";
 $M2_acc = $_SESSION['M2_account'];
 $M2_pass = $_SESSION['M2_password'];
 
-if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null)
+if ($M2_acc != "" && $M2_acc != null && is_numeric($M2_acc) && $M2_pass != "" && $M2_pass != null)
 {
 	$namein = "";
 	$vocin = "";
@@ -70,7 +70,7 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null)
 				header("location: accountAddCharacter.php?result=char_failed&error=malformed_name");
 				$errors++;
 			}
-			if (strlen($namein) < 2 || strlen($namein) > 20)
+			if (strlen($namein) < $aac_minplayerlen || strlen($namein) > $aac_maxplayerlen)
 			{
 				header("location: accountAddCharacter.php?result=char_failed&error=wrong_length");
 				$errors++;
@@ -78,29 +78,40 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null)
 
 			if ($errors == 0)
 			{
-				$result = sqlquery("SELECT * FROM accounts WHERE accno='$M2_acc'");
+				$result = sqlquery("SELECT * FROM accounts WHERE id='$M2_acc'");
 				$rowz = mysql_num_rows($result);
 				if($rowz == 1)
 				{
+					if ($sexin == 0) {
+						$looktype = 136;
+					}
+					else {
+						$looktype = 128;
+					}
+					
 					switch($vocin)
 					{
 						case 1: // Sorcerer
-							include '../distro_templates/'.$SERV_DISTRO.'/make_sorc.php';
+							sqlquery("INSERT INTO players(id, name, account_id, group_id, sex, vocation, experience, level, maglevel, health, healthmax, mana, manamax, manaspent, soul, lookbody, lookfeet, lookhead, looklegs, looktype, cap, town_id) 
+												   VALUES('', '$M2_char', '$M2_acc', '$char_group', '$sexin', '1' '$char_exp', '$char_level', '$char_maglevel_sorcerer', '$char_health_sorcerer', '$char_health_sorcerer', '$char_mana_sorcerer', '$char_mana_sorcerer', '0', '100', '$char_lookbody', '$char_lookfeet', '$char_lookhead', '$char_looklegs', '$looktype', '$char_cap', '$char_town')");
 							break;
 						case 2: // Druid
-							include '../distro_templates/'.$SERV_DISTRO.'/make_druid.php';
+							sqlquery("INSERT INTO players(id, name, account_id, group_id, sex, vocation, experience, level, maglevel, health, healthmax, mana, manamax, manaspent, soul, lookbody, lookfeet, lookhead, looklegs, looktype, cap, town_id) 
+												   VALUES('', '$M2_char', '$M2_acc', '$char_group', '$sexin', '2' '$char_exp', '$char_level', '$char_maglevel_druid', '$char_health_druid', '$char_health_druid', '$char_mana_druid', '$char_mana_druid', '0', '100', '$char_lookbody', '$char_lookfeet', '$char_lookhead', '$char_looklegs', '$looktype', '$char_cap', '$char_town')");
 							break;
 						case 3: // Paladin
-							include '../distro_templates/'.$SERV_DISTRO.'/make_paladin.php';
+							sqlquery("INSERT INTO players(id, name, account_id, group_id, sex, vocation, experience, level, maglevel, health, healthmax, mana, manamax, manaspent, soul, lookbody, lookfeet, lookhead, looklegs, looktype, cap, town_id) 
+												   VALUES('', '$M2_char', '$M2_acc', '$char_group', '$sexin', '3' '$char_exp', '$char_level', '$char_maglevel_paladin', '$char_health_paladin', '$char_health_paladin', '$char_mana_paladin', '$char_mana_paladin', '0', '100', '$char_lookbody', '$char_lookfeet', '$char_lookhead', '$char_looklegs', '$looktype', '$char_cap', '$char_town')");
 							break;
 						case 4: // Knight
-							include '../distro_templates/'.$SERV_DISTRO.'/make_knight.php';
+							sqlquery("INSERT INTO players(id, name, account_id, group_id, sex, vocation, experience, level, maglevel, health, healthmax, mana, manamax, manaspent, soul, lookbody, lookfeet, lookhead, looklegs, looktype, cap, town_id) 
+												   VALUES('', '$M2_char', '$M2_acc', '$char_group', '$sexin', '4' '$char_exp', '$char_level', '$char_maglevel_paladin', '$char_health_paladin', '$char_health_paladin', '$char_mana_paladin', '$char_mana_paladin', '0', '100', '$char_lookbody', '$char_lookfeet', '$char_lookhead', '$char_looklegs', '$looktype', '$char_cap', '$char_town')");
 							break;
-						default: // Error? voc 0
-							include '../distro_templates/'.$SERV_DISTRO.'/make_novoc.php';
+						default: // Error? voc 0 aka no vocation ;p
+							sqlquery("INSERT INTO players(id, name, account_id, group_id, sex, vocation, experience, level, maglevel, health, healthmax, mana, manamax, manaspent, soul, lookbody, lookfeet, lookhead, looklegs, looktype, cap, town_id) 
+												   VALUES('', '$M2_char', '$M2_acc', '$char_group', '$sexin', '0' '0', '1', '$char_maglevel_none', '$char_health_none', '$char_health_none', '$char_mana_none', '$char_mana_none', '0', '100', '$char_lookbody', '$char_lookfeet', '$char_lookhead', '$char_looklegs', '$looktype', '$char_cap', '$char_town')");
 							break;
 					}
-					sqlquery("$sqlplayer");
 				}
 				else
 				{
@@ -120,5 +131,6 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null)
 	if($errors == 0)
 	{
 		header("Location: accountManager.php");
-	}}
+	}
+}
 ?>

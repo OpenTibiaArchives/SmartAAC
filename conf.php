@@ -27,7 +27,7 @@
 //    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // ===========================================================
 
-$aac_status = 			"Installed";
+$aac_status = 			"Not Installed";
 $aac_version = 			"2.0 Alpha1";
 $aac_dataDir =			"data/";
 
@@ -39,20 +39,50 @@ $aac_minplayerlen =		4;
 $aac_maxplayerlen =		20;
 
 $aac_servername = 		"Serske";
-$net_ipaddress =		"7";
-$net_port = 			"8";
+$net_ipaddress =		"localhost";
+$net_port = 			"7171";
 
-$aac_md5passwords =		true;
-$aac_imgver = 			true;
-$aac_townId =			5;
+$aac_md5passwords =		false;
+$aac_imgver = 			false;
 
-$aac_type =				"Manager";
-$sql_host =				"127.0.0.1";
-$sql_user =				"root";
-$sql_pass = 			"FILL THIS IN YOURSELF IN CONF";
-$sql_db = 				"otserv";
+$aac_type =			"Manager";
+$sql_host =			"127.0.0.1";
+$sql_user =			"root";
+$sql_pass = 			"PASSWORD";
+$sql_db = 			"otserv";
 
-$info_os =				"9";
-$info_connection =		"10";
-$info_uptimetype =		"11";
+$info_os =			"Windows XP";
+$info_connection =		"24/1";
+$info_uptimetype =		"24/7";
+
+$char_rook =			true;
+$char_town =			1;
+$char_group =			1;
+$char_exp =			0;
+$char_level =			1;
+$char_lookhead =		10;
+$char_lookbody =		10;
+$char_looklegs =		10;
+$char_lookfeet =		10;
+
+$char_maglevel_none = 		0;
+$char_health_none =		150;
+$char_mana_none = 		0;
+
+$char_maglevel_sorcerer =	"";
+$char_health_sorcerer = 	"";
+$char_mana_sorcerer = 		"";
+
+$char_maglevel_druid = 		"";
+$char_health_druid = 		"";
+$char_mana_druid = 		"";
+
+$char_maglevel_paladin = 	"";
+$char_health_paladin = 		"";
+$char_mana_paladin = 		"";
+
+$char_maglevel_knight = 	"";
+$char_health_knight = 		"";
+$char_mana_knight = 		"";
+
 ?>
