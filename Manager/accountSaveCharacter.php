@@ -56,8 +56,8 @@ if ($M2_acc != "" && $M2_acc != null && is_numeric($M2_acc) && $M2_pass != "" &&
 	$sex = $sexin;
 	$accno = $M2_acc;
 
-		$sqlconnect = mysql_connect($SQLHOST, $SQLUSER, $SQLPASS) or die("MySQL Error: mysql_error (mysql_errno()).\n");
-		mysql_select_db($SQLDB, $sqlconnect);
+		$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die("MySQL Error: mysql_error (mysql_errno()).\n");
+		mysql_select_db($sql_db, $sqlconnect);
 
 		$result = sqlquery('SELECT * FROM `players` WHERE `name` = \'' . mysql_real_escape_string($namein) . '\'');
 		$rowz = mysql_num_rows($result);
@@ -123,14 +123,16 @@ if ($M2_acc != "" && $M2_acc != null && is_numeric($M2_acc) && $M2_pass != "" &&
 		}
 		else
 		{
-			header("Location: accountAddCharacter.php?result=char_failed&error=exists");
+			//header("Location: accountAddCharacter.php?result=char_failed&error=exists");
+			echo "EXISTS";
 			$errors++;
 		}
 
 
 	if($errors == 0)
 	{
-		header("Location: accountManager.php");
+		echo "no errors, we would take you to the manager now";
+		//header("Location: accountManager.php");
 	}
 }
 ?>

@@ -3,7 +3,7 @@
 // ===========================================================
 //	Smart-Ass: The Userfriendly AAC
 //	Version: 2.0 Development Only
-//	Configuration Created: Sun, 29 Apr 2007 21:18:31 +0100
+//	Configuration Created: Tue, 01 May 2007 16:01:53 +0100
 //	
 //	USE OF THIS PROGRAM TO RELY ON IT FOR SERVER USE IS NOT
 // 	RECOMMENDED! THIS IS FOR TESTING ONLY.
@@ -27,62 +27,61 @@
 //    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // ===========================================================
 
-$aac_status = 			"Not Installed";
-$aac_version = 			"2.0 Alpha1";
+$aac_status = 			"Installed";
+$aac_version = 		"2.0 Alpha1";
 $aac_dataDir =			"data/";
 
 $aac_minacclen = 		6;
 $aac_maxacclen = 		8;
 $aac_minpasslen = 		3;
 $aac_maxpasslen = 		15;
-$aac_minplayerlen =		4;
-$aac_maxplayerlen =		20;
+$aac_minplayerlen =	4;
+$aac_maxplayerlen =	20;
 
 $aac_servername = 		"Serske";
-$net_ipaddress =		"localhost";
-$net_port = 			"7171";
+$net_ipaddress =		"";
+$net_port = 			"";
 
-$aac_md5passwords =		false;
+$aac_md5passwords =	false;
 $aac_imgver = 			false;
 
 $aac_type =			"Manager";
 $sql_host =			"127.0.0.1";
 $sql_user =			"root";
 $sql_pass = 			"PASSWORD";
-$sql_db = 			"otserv";
+$sql_db = 				"otserv";
 
-$info_os =			"Windows XP";
-$info_connection =		"24/1";
-$info_uptimetype =		"24/7";
+$info_os =				"";
+$info_connection =		"";
+$info_uptimetype =		"";
 
-$char_rook =			true;
-$char_town =			1;
+$char_rook =			false;
 $char_group =			1;
-$char_exp =			0;
-$char_level =			1;
+$char_exp =			98800;
+$char_level =			20;
 $char_lookhead =		10;
 $char_lookbody =		10;
 $char_looklegs =		10;
 $char_lookfeet =		10;
+$char_town =			1;
 
-$char_maglevel_none = 		0;
-$char_health_none =		150;
-$char_mana_none = 		0;
+$char_maglevel_none = "";
+$char_health_none = "";
+$char_mana_none = "";
 
-$char_maglevel_sorcerer =	"";
-$char_health_sorcerer = 	"";
-$char_mana_sorcerer = 		"";
+$char_maglevel_sorcerer = 100;
+$char_health_sorcerer = 100;
+$char_mana_sorcerer = 100;
 
-$char_maglevel_druid = 		"";
-$char_health_druid = 		"";
-$char_mana_druid = 		"";
+$char_maglevel_druid = 100;
+$char_health_druid = 100;
+$char_mana_druid = 100;
 
-$char_maglevel_paladin = 	"";
-$char_health_paladin = 		"";
-$char_mana_paladin = 		"";
+$char_maglevel_paladin = 100;
+$char_health_paladin = 100;
+$char_mana_paladin = 100;
 
-$char_maglevel_knight = 	"";
-$char_health_knight = 		"";
-$char_mana_knight = 		"";
-
+$char_maglevel_knight = 100;
+$char_health_knight = 100;
+$char_mana_knight = 100;
 ?>

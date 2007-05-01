@@ -211,7 +211,7 @@ else
 	<input type=\"text\" name=\"char_mana_sorcerer\" value=\"\" /><br />
 	
 	<label for=\"char_maglevel_druid\">Druid Magic Level:</label>
-	<input type=\"text\" name=\"char_maglevel_sorcerer\" value=\"\" /><br />
+	<input type=\"text\" name=\"char_maglevel_druid\" value=\"\" /><br />
 	<label for=\"char_health_druid\">Druid Health:</label>
 	<input type=\"text\" name=\"char_health_druid\" value=\"\" /><br />
 	<label for=\"char_mana_druid\">Druid Mana:</label>

@@ -5,8 +5,8 @@
 
 // We forgot that for 1.0 xd
 
-include "../resources.php";
-include "../config.php";
+include "../Includes/resources.php";
+include "../conf.php";
 session_start();
 
 $M2_account = $_REQUEST['M2_account'];
@@ -19,8 +19,8 @@ if($md5_passwords_accounts)
 
 if (isset($M2_account) && is_numeric($M2_account) && isset($M2_password))
 {
-	$sqlconnect = mysql_connect($SQLHOST, $SQLUSER, $SQLPASS) or die("MySQL Error: mysql_error (mysql_errno()).\n");
-	mysql_select_db($SQLDB, $sqlconnect);
+	$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die("MySQL Error: mysql_error (mysql_errno()).\n");
+	mysql_select_db($sql_db, $sqlconnect);
 
 	$result = sqlquery('SELECT * FROM `accounts` WHERE `id` = \'' . mysql_real_escape_string($M2_account) . '\'');
 	$rowz = mysql_num_rows($result);

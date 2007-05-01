@@ -70,8 +70,8 @@ else if ($result == "pass_success") {
 <table>
 <?
 
-$sqlconnect = mysql_connect($SQLHOST, $SQLUSER, $SQLPASS) or die("MySQL Error: mysql_error (mysql_errno()).\n");
-mysql_select_db($SQLDB, $sqlconnect);
+$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die("MySQL Error: mysql_error (mysql_errno()).\n");
+mysql_select_db($sql_db, $sqlconnect);
 
 $result = sqlquery('SELECT * FROM `accounts` WHERE `id` = \'' . mysql_real_escape_string($M2_acc) . '\'');
 $rowz = mysql_num_rows($result);
@@ -99,7 +99,7 @@ if($rowz == 1)
 <p><b>Services:</b></p>
 <p>
 <ul>
-<li><a title="Create a new character on <?phpecho $aac_servername;?>" href="accountAddCharacter.php">Create a new character</a></li>
+<li><a title="Create a new character on <?php echo $aac_servername; ?>" href="accountAddCharacter.php">Create a new character</a></li>
 <li><a title="Logout your account" href="accountLogout.php">Logout</a></li>
 <li><a title="Change your password" href="accountPassChange.php">Change password</a></li>
 </ul>

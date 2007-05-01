@@ -58,11 +58,12 @@ if ( (isset($M2_account) && !empty($M2_account)) && (isset($M2_password) && !emp
 		echo "<font color=\"red\">Error! Your password must consist of more then 4 letters or numbers (ABC, abc, 123 and blankspaces)!</font><br><br>";
 		$error = 1;
 	}
-	elseif( !preg_match('^([a-zA-Z0-9_\-\.])+@(([0-2]?[0-5]?[0-5]\.[0-2]?[0-5]?[0-5]\.[0-2]?[0-5]?[0-5]\.[0-2]?[0-5]?[0-5])|((([a-zA-Z0-9\-])+\.)+([a-zA-Z\-])+))$', $M2_email) )
+/* 	elseif( !preg_match('^([a-zA-Z0-9_\-\.])+@(([0-2]?[0-5]?[0-5]\.[0-2]?[0-5]?[0-5]\.[0-2]?[0-5]?[0-5]\.[0-2]?[0-5]?[0-5])|((([a-zA-Z0-9\-])+\.)+([a-zA-Z\-])+))$', $M2_email) )
 	{
 		echo "<font color=\"red\">Error! Email address is not valid!</font><br><br>";
 		$error = 1;
-	}
+	} */
+// NO WORX
 	else
 	{
 		if($aac_md5passwords == true)
@@ -72,11 +73,12 @@ if ( (isset($M2_account) && !empty($M2_account)) && (isset($M2_password) && !emp
 
 		if ($error == 0)
 		{
-			$sqlconnect = mysql_connect($SQLHOST, $SQLUSER, $SQLPASS) or die("MySQL Error: mysql_error 								(mysql_errno()).\n");
-			mysql_select_db($SQLDB, $sqlconnect);
-			
-			$result = sqlquery('SELECT * FROM `accounts` WHERE `id` = \'' . mysql_real_escape_string($M2_account) . '\'');
+			$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die("MySQL Error: mysql_error 								(mysql_errno()).\n");
+			mysql_select_db($sql_db, $sqlconnect);
+
+			$result = sqlquery('SELECT * FROM `accounts` WHERE `id` = \'' . mysql_real_escape_string($M2_account) . '\';');
 			$rowz = mysql_num_rows($result);
+
 			if($rowz == 1)
 			{
 				echo "<font color=\"red\">Error! That account already exist!</font><br><br>";
@@ -84,14 +86,12 @@ if ( (isset($M2_account) && !empty($M2_account)) && (isset($M2_password) && !emp
 			}
 			else {
 				sqlquery('INSERT INTO `accounts` ( id, password , email , blocked , premdays )
-					VALUES (  );');
-				sqlquery("INSERT INTO accounts ( id , password , email , blocked , premdays ) 
-					VALUES ( \'' . mysql_real_escape_string($M2_account) . '\', \'' . mysql_real_escape_string($M2_password) . '\', \'' . mysql_real_escape_string($M2_email) . '\', \'0\', \'0\' );");
-
+					VALUES ( \'' . mysql_real_escape_string($M2_account) . '\', \'' . mysql_real_escape_string($M2_password) . '\', \'' . mysql_real_escape_string($M2_email) . '\', \'0\', \'0\' );');
+					
 				$created_Account = true;
 				session_unset();
-				doInfoBox("Your account has been successfully created. Login <a href=\"loginInterface.php\">here</a> to create your first character in the account!<br><br>
-					Your account number is: $M2_account</font>");
+			//	doInfoBox("Your account has been successfully created. Login <a href=\"loginInterface.php\">here</a> to create your first character in the account!<br><br>
+			//		Your account number is: $M2_account</font>");
 			}
 		}
 	}
@@ -107,7 +107,7 @@ if ($created_Account != true)
 <h2>Please fill out the appropiate fields:</h2>
 <br />
 
-	<form action="<?php=$PHP_SELF?>" method="POST">
+	<form action="<?php echo $PHP_SELF; ?>" method="POST">
 	<table>
 	<tr>
 	<td><p>Account Number: </p></td><td><input name="M2_account" type="text" maxlength="<?php echo $aac_maxacclen; ?>" class="textfield"> <font color="red">* <i>(<?php echo "$aac_minacclen - $aac_maxacclen numbers"; ?>)</i></font></td>
