@@ -13,3 +13,5 @@
 <b>Spawn And Temple</b>:<br /><br />
 <b>Other Server Details</b>:<br /><br />
 <b>Common Fields</b>:<br /><br />
+<b>Character settings</b>:<br />
+This is the part where you set the start-values of the characters made by Smart-Ass.<br /><br /></p>
