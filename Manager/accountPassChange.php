@@ -32,6 +32,16 @@ session_start();
 include "../conf.php";
 include "../Includes/resources.php";
 
+$title = 'Frontpage';
+$name = $aac_servername;
+$bodySpecial = 'onload="NOTHING"';
+
+include_once('../Includes/Templates/bTemplate.php');
+$tpl = new bTemplate();
+
+$tpl->set('title', $title);
+$tpl->set('strayline', $name);
+$tpl->set('bodySpecial', $bodySpecial);
 
 $errors = 0;
 
@@ -119,11 +129,9 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null)
 			echo "<font color=\"orange\">Unknown contents of the result variable.</font><br><br>";
 		}
 	}
-
-$template->pparse('Top');	
+	
+echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 ?>
-
-
 <h2>Change password:</h2><br>
 
 <form action="accountPassChange.php?result=change" method="POST">
@@ -144,6 +152,8 @@ $template->pparse('Top');
 
 </table>
 <?php
-$template->pparse('Bottom');
+echo $tpl->fetch('../Includes/Templates/Indigo/sidebar.tpl');
+echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
+echo $tpl->fetch('../Includes/Templates/Indigo/bottom.tpl');
 }
 ?>

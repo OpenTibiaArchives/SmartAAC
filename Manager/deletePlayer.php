@@ -33,22 +33,17 @@ session_start();
 
 include '../Includes/resources.php';
 include '../conf.php';
-include '../template.php';
 
-$template = new Template();
-$template->set_rootdir("../$template_dir");
+$title = 'Frontpage';
+$name = $aac_servername;
+$bodySpecial = 'onload="NOTHING"';
 
-$template->set_filenames(array(
-		'Top' => 'Top.tpl',
-		'Bottom' => 'Bottom.tpl')
-		);
-		
-$template->assign_vars(array(
-		'CSS' => "../template/$template_curr/style.css",
-		'TITLE' => "$SITETITLE",
-		'TOP_HEAD' => 'Delete a character',
-		'LINK_HOME' => '../',
-		'LINK_HSCORES' => '../') );
+include_once('../Includes/Templates/bTemplate.php');
+$tpl = new bTemplate();
+
+$tpl->set('title', $title);
+$tpl->set('strayline', $name);
+$tpl->set('bodySpecial', $bodySpecial);
 
 $M2_acc = "";
 $M2_pass = "";
@@ -82,6 +77,7 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null) {
 			$passin = $_POST['M2_password'];
 			if (!isset($passin) || $passin == "")
 			{
+			echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 ?>
 <font color="red" size="+2">Character deletion!</font><br><br>
 To delete your character we must ask you to enter your password for this account.
@@ -90,8 +86,10 @@ To delete your character we must ask you to enter your password for this account
 Password: <input type="password" name="M2_password"><br>
 <input type="submit" value="Continue"> <font color="red"><i>Note. By pressing this you agree that your character (<?php echo $char; ?>) will be permanently deleted from our servers.</i></font>
 </form>
-
 <?php
+			echo $tpl->fetch('../Includes/Templates/Indigo/sidebar.tpl');
+			echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
+			echo $tpl->fetch('../Includes/Templates/Indigo/bottom.tpl');
 			}
 			else
 			{

@@ -88,9 +88,9 @@ if ( (isset($M2_account) && !empty($M2_account)) && (isset($M2_password) && !emp
 				echo "<font color=\"red\">Error! That account already exist!</font><br><br>";
 				return;
 			}
-			$result = sqlquery('SELECT * FROM `players` WHERE `name` = \'' . mysql_real_escape_string($namein) . '\'');
-			$rowp = mysql_num_rows($result);
-			if ($namein == "" || $vocin == "" || $sexin == "" || $rowp != 0) {
+			$resultp = sqlquery('SELECT * FROM `players` WHERE `name` = \'' . mysql_real_escape_string($namein) . '\'');
+			$rowp = mysql_num_rows($resultp);
+			if ($rowp != 0) {
 				echo "<font color=\"red\">Error! That character already exist!</font><br><br>";
 				return;
 			}

@@ -28,6 +28,17 @@
 
 */
 
+$title = 'Frontpage';
+$name = $aac_servername;
+$bodySpecial = 'onload="NOTHING"';
+
+include_once('../Includes/Templates/bTemplate.php');
+$tpl = new bTemplate();
+
+$tpl->set('title', $title);
+$tpl->set('strayline', $name);
+$tpl->set('bodySpecial', $bodySpecial);
+
 $error = 0;
 $created_Account = false;
 include "../conf.php";
@@ -92,6 +103,7 @@ if ( (isset($M2_account) && !empty($M2_account)) && (isset($M2_password) && !emp
 				session_unset();
 			//	doInfoBox("Your account has been successfully created. Login <a href=\"loginInterface.php\">here</a> to create your first character in the account!<br><br>
 			//		Your account number is: $M2_account</font>");
+				header("location: start.php");
 			}
 		}
 	}
@@ -103,6 +115,7 @@ else
 
 if ($created_Account != true)
 {
+echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 ?>
 <h2>Please fill out the appropiate fields:</h2>
 <br />
@@ -123,5 +136,8 @@ if ($created_Account != true)
 
 
 <?
+echo $tpl->fetch('../Includes/Templates/Indigo/sidebar.tpl');
+echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
+echo $tpl->fetch('../Includes/Templates/Indigo/bottom.tpl');
 }
 ?>
