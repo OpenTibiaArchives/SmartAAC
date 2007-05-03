@@ -14,6 +14,7 @@
 <script type="text/javascript" src="./Includes/window_protocol/javascript/effects.js"> </script>
 <script type="text/javascript" src="./Includes/window_protocol/javascript/window.js"> </script>
 <script type="text/javascript" src="./Includes/window_protocol/javascript/debug.js"> </script>
+
 <link href="./Includes/window_protocol/theme/default_ajax.css" rel="stylesheet" type="text/css"/>
 <link href="./Includes/window_protocol/theme/alert.css" rel="stylesheet" type="text/css"/>
 <link href="./Includes/window_protocol/theme/alphacube.css" rel="stylesheet" type="text/css"/>

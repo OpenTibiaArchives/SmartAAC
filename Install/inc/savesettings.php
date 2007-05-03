@@ -235,7 +235,7 @@ else
 	echo "
 	<p>Go forward --></p>
 	<div align=\"center\">
-	<form action=\"install.php?step=5\" method=\"post\">
+	<form action=\"install.php?step=6\" method=\"post\">
 	<br><input type=\"submit\" value=\"Next\" class=\"btn\"/>
 	</form></div>
 	";

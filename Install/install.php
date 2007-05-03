@@ -46,14 +46,18 @@ else
 		break;
 		
 		case 3:
-		include 'inc/maininstall.php';
+		include 'inc/prequestions.php';
 		break;
 		
 		case 4:
-		include 'inc/savesettings.php';
+		include 'inc/maininstall.php';
 		break;
 		
 		case 5:
+		include 'inc/savesettings.php';
+		break;
+		
+		case 6:
 		include 'inc/finish.php';
 		break;
 		
