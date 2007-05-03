@@ -27,7 +27,7 @@
 // ===========================================================
 
 
-$title = 'Installation->GPL License';
+$title = 'Installation->Pre-Questions';
 $name = 'Smart-Ass';
 //$bodySpecial = 'onload="openAlert()"';
 $documentation = file_get_contents('inc/prequestions.inc');

@@ -25,7 +25,7 @@
 //    along with this program; if not, write to the Free Software
 //    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // ===========================================================
-
+include '../conf.php';
 
 if(file_exists("../installLock.txt"))
 {
@@ -50,7 +50,7 @@ else
 
 
 	$license_decide = $_POST['agreeordisagree'];
-	$use_rook = $_POST['char_rook'];
+	$char_rook = $_POST['char_rook'];
 
 	if($license_decide == "Disagree")
 	{
@@ -110,23 +110,25 @@ else
 		</style>
 
 		<form action=\"install.php?step=5\" method=\"post\">
+		<input type=\"hidden\" name=\"char_rook\" value=\"$char_rook\">
+		
 		<h1>MySQL Database Details</h1>
 		<label for=\"SQL_Host\">MySQL Host:</label>
-		<input type=\"text\" name=\"SQL_Host\" value=\"\" /><br />
+		<input type=\"text\" name=\"SQL_Host\" value=\"$sql_host\" /><br />
 
 		<label for=\"SQL_User\">MySQL User:</label>
-		<input type=\"text\" name=\"SQL_User\" value=\"\" /><br />
+		<input type=\"text\" name=\"SQL_User\" value=\"$sql_user\" /><br />
 
 		<label for=\"SQL_Pass\">MySQL Password:</label>
-		<input type=\"password\" name=\"SQL_Pass\" value=\"\" /><br />
+		<input type=\"password\" name=\"SQL_Pass\" value=\"$sql_pass\" /><br />
 
 		<label for=\"SQL_DB\">MySQL Database:</label>
-		<input type=\"text\" name=\"SQL_DB\" value=\"\" /><br />
+		<input type=\"text\" name=\"SQL_DB\" value=\"$sql_db\" /><br />
 		<br /><br />
 
 		<h1>Directories</h1>
 		<label for=\"dataDir\">Data dir:</label>
-		<input type=\"text\" name=\"dataDir\" value=\"data/\" /><br /><br />
+		<input type=\"text\" name=\"dataDir\" value=\"$aac_dataDir\" /><br /><br />
 
 		<h1>Security Options</h1>
 		<label for=\"HashPass\">Use MD5 passwords?</label>
@@ -138,63 +140,65 @@ else
 
 		<h1>Other Server Details</h1>
 		<label for=\"ServerName\">Server Name:</label>
-		<input type=\"text\" name=\"ServerName\" value=\"\" /><br />
+		<input type=\"text\" name=\"ServerName\" value=\"$aac_servername\" /><br />
 
 		<label for=\"HostName\">IP/Hostname:</label>
-		<input type=\"text\" name=\"HostName\" value=\"\" /><br />
+		<input type=\"text\" name=\"HostName\" value=\"$aac_ipaddress\" /><br />
 
 		<label for=\"HostPort\">Port:</label>
-		<input type=\"text\" name=\"HostPort\" value=\"\" /><br />
+		<input type=\"text\" name=\"HostPort\" value=\"$aac_port\" /><br />
 
 		<label for=\"HostOS\">Operating System:</label>
-		<input type=\"text\" name=\"HostOS\" value=\"\" /><br />
+		<input type=\"text\" name=\"HostOS\" value=\"$info_os\" /><br />
 
 		<label for=\"HostConnection\">Connection Type:</label>
-		<input type=\"text\" name=\"HostConnection\" value=\"\" /><br />
+		<input type=\"text\" name=\"HostConnection\" value=\"$info_connection\" /><br />
 
 		<label for=\"HostUptime\">Uptime Aim:</label>
-		<input type=\"text\" name=\"HostUptime\" value=\"\" /><br />
+		<input type=\"text\" name=\"HostUptime\" value=\"$info_uptimetype\" /><br />
 		<br /><br />
 
 		<h1>Common Fields</h1>
 		<label for=\"MinAccLen\">Min Account Number Length:</label>
-		<input type=\"text\" name=\"MinAccLen\" value=\"6\" /><br />
+		<input type=\"text\" name=\"MinAccLen\" value=\"$aac_minacclen\" /><br />
 		<label for=\"MaxAccLen\">Max Account Number Length:</label>
-		<input type=\"text\" name=\"MaxAccLen\" value=\"8\" /><br /><br />
+		<input type=\"text\" name=\"MaxAccLen\" value=\"$aac_maxacclen\" /><br /><br />
 
 		<label for=\"MinPassLen\">Min Password Length:</label>
-		<input type=\"text\" name=\"MinPassLen\" value=\"3\" /><br />
+		<input type=\"text\" name=\"MinPassLen\" value=\"$aac_minpasslen\" /><br />
 		<label for=\"MaxPassLen\">Max Password Length:</label>
-		<input type=\"text\" name=\"MaxPassLen\" value=\"15\" /><br /><br />
+		<input type=\"text\" name=\"MaxPassLen\" value=\"$aac_maxpasslen\" /><br /><br />
 
 		<label for=\"MinPlayerLen\">Min Playername Length:</label>
-		<input type=\"text\" name=\"MinPlayerLen\" value=\"4\" /><br />
+		<input type=\"text\" name=\"MinPlayerLen\" value=\"$aac_minplayerlen\" /><br />
 		<label for=\"MaxPlayerLen\">Max Playername Length:</label>
-		<input type=\"text\" name=\"MaxPlayerLen\" value=\"20\" /><br />
+		<input type=\"text\" name=\"MaxPlayerLen\" value=\"$aac_maxplayerlen\" /><br />
 		<br /><br />
 		
 		<h1>Character settings</h1>
 		<label for=\"char_group\">Group ID:</label>
-		<input type=\"text\" name=\"char_group\" value=\"1\" /><br />
+		<input type=\"text\" name=\"char_group\" value=\"$char_group\" /><br />
 		<label for=\"char_exp\">Experience:</label>
-		<input type=\"text\" name=\"char_exp\" value=\"98800\" /><br />
+		<input type=\"text\" name=\"char_exp\" value=\"$char_exp\" /><br />
 		<label for=\"char_cap\">Cap:</label>
-		<input type=\"text\" name=\"char_cap\" value=\"500\" /><br />
+		<input type=\"text\" name=\"char_cap\" value=\"$char_cap\" /><br />
 		<label for=\"char_level\">Level:</label>
-		<input type=\"text\" name=\"char_level\" value=\"20\" /><br />
+		<input type=\"text\" name=\"char_level\" value=\"$char_level\" /><br />
 		<label for=\"char_lookhead\">Head color:</label>
-		<input type=\"text\" name=\"char_lookhead\" value=\"10\" /><br />
+		<input type=\"text\" name=\"char_lookhead\" value=\"$char_lookhead\" /><br />
 		<label for=\"char_lookbody\">Body color:</label>
-		<input type=\"text\" name=\"char_lookbody\" value=\"10\" /><br />
+		<input type=\"text\" name=\"char_lookbody\" value=\"$char_lookbody\" /><br />
 		<label for=\"char_looklegs\">Legs color:</label>
-		<input type=\"text\" name=\"char_looklegs\" value=\"10\" /><br />
+		<input type=\"text\" name=\"char_looklegs\" value=\"$char_looklegs\" /><br />
 		<label for=\"char_lookfeet\">Feet color:</label>
-		<input type=\"text\" name=\"char_lookfeet\" value=\"10\" /><br />
+		<input type=\"text\" name=\"char_lookfeet\" value=\"$char_lookfeet\" /><br />
 		<label for=\"char_town\">Town ID:</label>
-		<input type=\"text\" name=\"char_town\" value=\"1\" /><br /><br />
+		<input type=\"text\" name=\"char_town\" value=\"$char_town\" /><br /><br />
+		
+		<p>Using rook?</p> $char_rook
 		";
 
-		if($use_rook == "true")
+		if($char_rook == "true")
 		{
 			echo "	
 			<label for=\"char_maglevel_none\">No vocation Magic Level:</label>
@@ -205,7 +209,7 @@ else
 			<input type=\"text\" name=\"char_mana_none\" value=\"\" /><br />
 		";
 		}
-		elseif($use_rook == "false")
+		elseif($char_rook == "false")
 		{
 			echo "	
 			<label for=\"char_maglevel_sorcerer\">Sorcerer Magic Level:</label>

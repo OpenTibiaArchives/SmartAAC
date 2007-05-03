@@ -48,7 +48,7 @@ $aac_imgver = 			false;
 $aac_type =			"Manager";
 $sql_host =			"127.0.0.1";
 $sql_user =			"root";
-$sql_pass = 			"PASSWORD";
+$sql_pass = 			"";
 $sql_db = 				"otserv";
 
 $info_os =				"";
