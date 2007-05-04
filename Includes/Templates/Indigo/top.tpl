@@ -22,11 +22,9 @@
 		</div>
 
 		<div class="navigation">
-			<a href="index.html">Vestibulum</a>
-			<a href="index.html">Suspendisse</a>
-			<a href="index.html">Elemen</a>
-			<a href="index.html">Maecenas</a>
-			<a href="index.html">Sodales</a>
+			<a href="http://otfans.net">OTFans</a>
+			<a href="http://smart.pekay.co.uk">Smart-Ass AAC</a>
+			<a href="http://www.otserv-aac.info/">AAC Scripts</a>
 			<div class="clearer"><span></span></div>
 		</div>
 

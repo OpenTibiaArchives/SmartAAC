@@ -83,11 +83,17 @@ if ($M2_acc != "" && $M2_acc != null && is_numeric($M2_acc) && $M2_pass != "" &&
 				$rowz = mysql_num_rows($result);
 				if($rowz == 1)
 				{
-					if ($sexin == 0) {
+					if ($sexin == 0)
+					{
 						$looktype = 136;
 					}
-					else {
+					elseif ($sexin == 1)
+					{
 						$looktype = 128;
+					}
+					else
+					{
+						die("Invalid sex id");
 					}
 					
 					switch($vocin)

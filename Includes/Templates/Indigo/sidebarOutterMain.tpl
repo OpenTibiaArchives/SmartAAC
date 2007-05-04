@@ -2,9 +2,8 @@
 
 		<div class="sidenav">
 			<h1>Login</h1>
-			<form action="index.html">
-			<div>
-			
+
+			<div>			
 				<form method="post" action="../Manager/#.php"
 				 name="Login">
 				  <table style="text-align: left; height: 112px; width: 296px;"
@@ -25,36 +24,35 @@
 				      </tr>
 				    </tbody>
 				  </table>
-				</form>
-				
+				</form>				
 			</div>
-			</form>
+
 
 			<h1>Main</h1>
 			<ul>
-				<li><a href="frontpage.php">Frontpage</a></li>
+				<li><a href="../Main/frontpage.php">Frontpage</a></li>
 			</ul>
 			
 			<h1>Community</h1>
 			<ul>
-				<li><a href="character.php">Search Characters</a></li>
-				<li><a href="guilds.php">Guild List</a></li>
-				<li><a href="houses.php">House List</a></li>
-				<li><a href="highscores.php">Highscores</a></li>
-				<li><a href="banned.php">Banned Players</a></li>
+				<li><a href="../Main/character.php">Search Characters</a></li>
+				<li><a href="../Main/guilds.php">Guild List</a></li>
+				<li><a href="../Main/houses.php">House List</a></li>
+				<li><a href="../Main/highscores.php">Highscores</a></li>
+				<li><a href="../Main/banned.php">Banned Players</a></li>
 			</ul>
 
 			<h1>Information</h1>
 			<ul>
-				<li><a href="information.php">General Information</a></li>
-				<li><a href="serverstats.php">Server Statistics</a></li>
-				<li><a href="commands.php">In-game Commands</a></li>
+				<li><a href="../Main/information.php">General Information</a></li>
+				<li><a href="../Main/serverstats.php">Server Statistics</a></li>
+				<li><a href="../Main/commands.php">In-game Commands</a></li>
 			</ul>
 
 			<h1>Extras</h1>
 			<ul>
-				<li><a href="downloads.php">Downloads</a></li>
-				<li><a href="feedback.php">Feedback</a></li>
+				<li><a href="../Main/downloads.php">Downloads</a></li>
+				<li><a href="../Main/feedback.php">Feedback</a></li>
 			</ul>
 			<br /><br /><br />
 			

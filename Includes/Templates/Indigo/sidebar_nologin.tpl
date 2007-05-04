@@ -1,35 +1,6 @@
 		</div>
 
 		<div class="sidenav">
-			<h1>Login</h1>
-			<form action="index.html">
-			<div>
-			
-				<form method="post" action="../Manager/#.php"
-				 name="Login">
-				  <table style="text-align: left; height: 112px; width: 296px;"
-				 border="0" cellpadding="2" cellspacing="2">
-				    <tbody>
-				      <tr>
-				        <td style="width: 90px;">
-				        <label>Account Number: </label></td>
-				        <td style="width: 157px;"><input name="M2_account" type="password"></td>
-				      </tr>
-				      <tr>
-				        <td style="width: 90px;"><label>Password: </label></td>
-				        <td style="width: 157px;"><input name="M2_password" type="password"></td>
-				      </tr>
-				      <tr>
-				        <td style="width: 90px;"><input type="Submit" value="Login"></td>
-				        <td style="width: 157px;"></td>
-				      </tr>
-				    </tbody>
-				  </table>
-				</form>
-				
-			</div>
-			</form>
-
 			<h1>Main</h1>
 			<ul>
 				<li><a href="frontpage.php">Frontpage</a></li>

@@ -84,22 +84,22 @@ h1,h2,h3 {
 }
 /* navigation */
 .navigation {
-	float: left;
+	float: right;
 	height: 92px;
-	margin-left: 24px;
+	margin-left: 5px;
 	padding: 0 16px;
 }
 .navigation a {
 	color: #FFF;
 	float: left;
 	font: bold 1.2em "Trebuchet MS",sans-serif;
-	margin-top: 56px;
+	margin-top: 5px;
 	padding: 8px 18px;
 	text-align: center;
 	text-decoration: none;
 }
 .navigation a:hover {
-	background-color: #4A91C3;
+	background-color: #000000;
 	color: #FFF;
 }
 

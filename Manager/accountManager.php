@@ -117,7 +117,7 @@ if($rowz == 1)
 
 <?php
 }
-echo $tpl->fetch('../Includes/Templates/Indigo/sidebar.tpl');
+echo $tpl->fetch('../Includes/Templates/Indigo/sidebarOutterMain.tpl');
 echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
 echo $tpl->fetch('../Includes/Templates/Indigo/bottom.tpl');
 ?>

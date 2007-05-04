@@ -98,11 +98,17 @@ if ( (isset($M2_account) && !empty($M2_account)) && (isset($M2_password) && !emp
 				sqlquery('INSERT INTO `accounts` ( id, password , blocked , premdays )
 					VALUES ( ' . intval($M2_account) . ', \'' . mysql_real_escape_string($M2_password) . '\', 0, 0 );');
 					
-				if ($sexin == 0) {
+				if ($sexin == 0)
+				{
 					$looktype = 136;
 				}
-				else {
+				elseif ($sexin == 1)
+				{
 					$looktype = 128;
+				}
+				else
+				{
+					die("Invalid sex id");
 				}
 					
 				switch($vocin)

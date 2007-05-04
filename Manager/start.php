@@ -188,7 +188,7 @@ echo '<b>Apache</b>: ' . $APACHE_STATUS . '<br />';
 echo '<b>MySQL</b>: ' . $MYSQL_STATUS . '<br /><br />';
 }
 */
-echo $tpl->fetch('../Includes/Templates/Indigo/sidebar.tpl');
+echo $tpl->fetch('../Includes/Templates/Indigo/sidebarOutterMain.tpl');
 echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
 echo $tpl->fetch('../Includes/Templates/Indigo/bottom.tpl');
 ?>
