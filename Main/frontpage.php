@@ -31,6 +31,9 @@ include '../conf.php';
 $title = 'Frontpage';
 $name = $aac_servername;
 $bodySpecial = 'onload="NOTHING"';
+$voteQuestion = "What?";
+$voteAnswer = "no!";
+$voteAnswer2 = "yes!";
 
 include_once('../Includes/Templates/bTemplate.php');
 $tpl = new bTemplate();
@@ -38,6 +41,9 @@ $tpl = new bTemplate();
 $tpl->set('title', $title);
 $tpl->set('strayline', $name);
 $tpl->set('bodySpecial', $bodySpecial);
+$tpl->set('voteQuestion', $voteQuestion);
+$tpl->set('voteAnswer', $voteAnswer);
+$tpl->set('voteAnswer2', $voteAnswer2);
 
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 

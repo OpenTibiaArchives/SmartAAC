@@ -56,6 +56,7 @@
 			<h1>Extras</h1>
 			<ul>
 				<li><a href="../Main/downloads.php">Downloads</a></li>
+				<li><a href="../Main/rules.php">Rules</a></li>
 				<li><a href="../Main/feedback.php">Feedback</a></li>
 			</ul>
 			<br /><br /><br />

@@ -6,6 +6,16 @@
 				<li><a href="frontpage.php">Frontpage</a></li>
 			</ul>
 			
+			  <h1>Vote</h1>
+			  <form action="votes.php" method="post">
+			  <b><tag:voteQuestion />?</b><br /><br />
+			  
+			 <input type="radio" name="vote" value="1"> <tag:voteAnswer /><br />
+			 <input type="radio" name="vote" value="2"> <tag:voteAnswer2 /><br /><br />
+			   
+			  <input type="submit" value="VOTE"><a href="votes.php">Results</a>
+			</form>			
+			
 			<h1>Community</h1>
 			<ul>
 				<li><a href="character.php">Search Characters</a></li>
@@ -25,6 +35,7 @@
 			<h1>Extras</h1>
 			<ul>
 				<li><a href="downloads.php">Downloads</a></li>
+				<li><a href="rules.php">Rules</a></li>
 				<li><a href="feedback.php">Feedback</a></li>
 			</ul>
 			<br /><br /><br />
