@@ -51,6 +51,8 @@ $sql_user =			"root";
 $sql_pass = 			"";
 $sql_db = 				"otserv";
 
+$main_highscores_result = 	20;
+
 $info_os =				"";
 $info_connection =		"";
 $info_uptimetype =		"";

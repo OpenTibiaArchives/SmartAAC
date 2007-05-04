@@ -85,4 +85,29 @@ function status($ip,$port,$timeout = 10)
 
 }
 
+function highscore($skill, $shown)
+{
+	for($i = 1; $i <= 5; $i++)
+	{
+		echo '
+		<tr>
+		<td style="width: 56px;">1</td>
+		<td style="width: 207px;">2</td>
+		<td style="width: 95px;x">3</td>
+		<td style="width: 171px;">4</td>
+		</tr>
+		';
+	}
+}
+
+function skills($skill)
+{
+	if($skill == "level" || $skill == "magic" || $skill == "fist" || $skill == "club" || $skill == "sword" || $skill == "axe" || $skill == "distance" || $skill == "shielding" || $skill == "fishing")
+	{
+		return "$skill";
+	}
+
+	return "level";
+}
+
 ?>
