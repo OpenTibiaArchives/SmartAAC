@@ -41,12 +41,13 @@ $tpl->set('bodySpecial', $bodySpecial);
 
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
-if($aac_type == "Manager"){
+// Do we need this anymore? As we got the login box thing.
+/* if($aac_type == "Manager"){
 	echo '<h2><a href="../Manager/">Goto Manager</a></h2>';
 }
 else {
 	echo '<h2><a href="../Express/">Goto Express</a></h2>';
-}
+} */
 
 echo $tpl->fetch('../Includes/Templates/Indigo/sidebar.tpl');
 echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');

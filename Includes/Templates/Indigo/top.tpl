@@ -8,7 +8,7 @@
 <meta name="keywords" content="keywords"/> 
 <meta name="author" content="author"/> 
 <link rel="stylesheet" type="text/css" href="../Includes/Templates/Indigo/default.css" media="screen"/>
-<title><tag:title /></title>
+<title><tag:title /> :: Smart-Ass AAC</title>
 </head>
 
 <body>

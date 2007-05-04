@@ -18,7 +18,7 @@
 <link href="../Includes/window_protocol/theme/alert.css" rel="stylesheet" type="text/css"/>
 <link href="../Includes/window_protocol/theme/alphacube.css" rel="stylesheet" type="text/css"/>
 	
-<title><tag:title /></title>
+<title><tag:title /> :: Smart-Ass AAC</title>
 </head>
 
 <!-- zero margin = wide layout -->
