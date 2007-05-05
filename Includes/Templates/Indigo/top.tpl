@@ -22,7 +22,7 @@
 		</div>
 
 		<div class="navigation">
-			<a href="../index.php">Frontpage</a>
+			<b><a href="../index.php">Frontpage</a></b>
 			<a href="http://otfans.net">OTFans</a>
 			<a href="http://smart.pekay.co.uk">Smart-Ass AAC</a>
 			<a href="http://www.otserv-aac.info/">AAC Scripts</a>

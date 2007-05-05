@@ -44,12 +44,14 @@
 				<li><a href="../Main/houses.php">House List</a></li>
 				<li><a href="../Main/highscores.php">Highscores</a></li>
 				<li><a href="../Main/banned.php">Banned Players</a></li>
+				<li><a href="../Main/vote.php">Voting</a></li>
 			</ul>
 
 			<h1>Information</h1>
 			<ul>
 				<li><a href="../Main/information.php">General Information</a></li>
 				<li><a href="../Main/serverstats.php">Server Statistics</a></li>
+				<li><a href="../Main/affliates.php">Affliates</a></li>
 				<li><a href="../Main/commands.php">In-game Commands</a></li>
 			</ul>
 

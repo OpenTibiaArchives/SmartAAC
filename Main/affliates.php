@@ -41,7 +41,8 @@ $tpl->set('bodySpecial', $bodySpecial);
 
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
-echo "<p> AEEEW</p>";
+echo "<p>Here are sites made by fellow fans of OTServ, or $aac_servername.</p>";
+include '../Includes/links.php';
 
 echo $tpl->fetch('../Includes/Templates/Indigo/sidebar.tpl');
 echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');

@@ -87,7 +87,7 @@ else {
 highscore($skill, $page);
 echo '</table>';
 if ($page != 1)
-	echo "<a href=\"highscores.php?skill=$skill&page=". intval($page - 1) ."\">Rank ". intval(($page - 1) * $main_highscores_result + 1) ." - ". intval(($page - 1) * $main_highscores_result) ."</a> ---- ";
+echo "<a href=\"highscores.php?skill=$skill&page=". intval($page - 1) ."\">Rank ". intval(($page - 2) * $main_highscores_result + 1) ." - ". intval(($page - 1) * $main_highscores_result) ."</a> -- ";
 echo "<a href=\"highscores.php?skill=$skill&page=". intval($page + 1) ."\">Rank ". intval($page * $main_highscores_result + 1) ." - ". intval(($page + 1) * $main_highscores_result) ."</a>";
 
 echo $tpl->fetch('../Includes/Templates/Indigo/sidebar.tpl');

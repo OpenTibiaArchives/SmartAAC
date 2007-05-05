@@ -184,12 +184,20 @@ else
 
 \$aac_md5passwords =	$conf_md5passwords;
 \$aac_imgver = 			$conf_imgver;
-
 \$aac_type =			\"Manager\";
+
 \$sql_host =			\"$conf_host\";
 \$sql_user =			\"$conf_user\";
 \$sql_pass = 			\"$conf_pass\";
 \$sql_db = 				\"$conf_db\";
+
+\$main_highscores_result = 	20;
+\$main_ugrp_nolist =		2;
+\$main_votequestion = \"What should the server add?\";
+\$main_voteanswer1 = \"More monsters\";
+\$main_voteanswer2 = \"More hunting areas\";
+\$main_voteanswer3 = \"More houses\";
+\$main_voteanswer4 = \"New towns\";
 
 \$info_os =				\"$conf_os\";
 \$info_connection =		\"$conf_connection\";

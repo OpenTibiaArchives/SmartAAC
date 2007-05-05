@@ -38,9 +38,9 @@ $aac_maxpasslen = 		15;
 $aac_minplayerlen =	4;
 $aac_maxplayerlen =	20;
 
-$aac_servername = 		"";
-$net_ipaddress =		"";
-$net_port = 			"";
+$aac_servername = 		"TestName";
+$net_ipaddress =		"x.x.x.x";
+$net_port = 			"7171";
 
 $aac_md5passwords =	false;
 $aac_imgver = 			false;
