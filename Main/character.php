@@ -73,6 +73,7 @@ if(isset($char)) {
 		echo '<tr><td width=100px>Guild membership:</td><td width=300px>aew<br /></td></tr>';
 		$lastlog = date('M d Y, H:i:s T', $lastlogin);
 		echo '<tr><td width=100px>Last login:</td><td width=300px>'.$lastlog.'<br /></td></tr>';
+		echo '</table>';
 		echo 'br';
 		echo '<br><br>';
 		echo '<h2>Account Information</h2>';

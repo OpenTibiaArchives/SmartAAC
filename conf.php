@@ -53,6 +53,11 @@ $sql_db = 			"otserv";
 
 $main_highscores_result = 	20;
 $main_ugrp_nolist =		2;
+$main_votequestion = "What should the server add?";
+$main_voteanswer1 = "More monsters";
+$main_voteanswer2 = "More hunting areas";
+$main_voteanswer3 = "More houses";
+$main_voteanswer4 = "New towns";
 
 $info_os =				"";
 $info_connection =		"";
