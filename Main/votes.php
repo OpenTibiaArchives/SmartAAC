@@ -1,149 +1,74 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
-       "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
-  <head>
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Revisit-After" content="5 Days">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title>Thank you for voteing</title>
-  </head>
-  <body bgcolor="#FFFFFF" text="#000000" link="#0000FF" alink="#0000FF" vlink="#0000FF">
-   <h1>Results</h1>
+<?
+	/*
+	Begin options
+	*/
 
-    <!-- Put Your HTML Here -->
+	$poll_file = "poll_script.php"; // Change this to the name of the other PHP file downloaded
 
-<?php
+	$poll_cookie_name = "poll_cookie"; // This is the cookie name that is set so that the "Vote" button is hidden on the form - you should change this name each time you change the poll so that previous voters may vote again in the new poll
 
+	$poll_results_file = "results.txt"; // Change this to the file that holds the poll results
 
-$question = "Votes For Do You Like This Site"; // change this to your question
-$questionoptionone = "Yes"; // change this to the first option
-$questionoptiontwo = "No"; // change this to the secound option
-if(isset($_POST['vote'])){
-     if (!empty($_POST['vote'])){
-          $vote = $_POST['vote'];
-          if($vote == "yes") {
-               $votegd = 'plus.txt';
-               $votebd = 'neg.txt';
-               $abab = $questionoptionone;
-               $baba = $questionoptiontwo;
-          } elseif($vote == "no") {
-               $votegd = "neg.txt";
-               $votebd = "plus.txt";
-               $abab = $questionoptiontwo;
-               $baba = $questionoptionone;
-          } else {
-               echo "<h3>Sorry there was an error.</h3>";
-          }
-$fpb = fopen("vote/$votebd","r");
-          $numa = fgets($fp,9999); 
-          fclose($fp); 
-$fpb = fopen("vote/$votebd","w");
-          $numa += 1; 
-          fputs($fp, $numa); 
-          fclose($fp); 
-$fpb = fopen("vote/$votebd","r");
-          $numb = fgets($fpb,9999); 
-          fclose($fpb); 
-$fpb = fopen("vote/$votebd","w");
-          fputs($fpb, $numb); 
-          fclose($fpb);
-          $a = $numa;
-          $b = $numb;
-          $num = $a + $b;
-          $numaa = round($a/$num * 100);
-          $numbb = round($b/$num * 100);
-          $anumaa = round($a/$num * 300);
-          $anumbb = round($b/$num * 300);
-          $numnum = $a + $b;
-?>
-<font size="4" face="arial">
-<?php
-print "".$question."";
-?>
-</font><br><br>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20%">
-<?php
-          print "".$abab."";
-          print "</td>\n";
-          print "<td width=\"80%\">\n";
-          print "<img src=\"vote/bar.gif\" WIDTH=".$anumaa." HEIGHT=15> ".$numaa."%<br>\n";
-          print "</td>\n";
-          print "</tr>\n";
-          print "<tr>\n";
-          print "<td width=\"20%\">\n";
-          print "".$baba."\n";
-          print "</td>\n";
-          print "<td width=\"80%\">\n";
-          print "<img src=\"vote/bar.gif\" WIDTH=".$anumbb." HEIGHT=15> ".$numbb."%<br>\n";
-          print "</td>\n";
-          print "</tr>\n";
-          print "</table><br>\n";
-          print "out of ".$numnum." people who voted\n";
-          print "</font>\n";
-     } elseif (empty($_POST['vote'])){
-          print "<font size=\"4\" face=\"arial\">Sorry you need to check one of the boxes</font>\n";
-     } else {
-          print "<font size=\"4\" face=\"arial\">Sorry there was an error</font>\n";
-     }
-} else {
-     $votegd = "plus.txt";
-     $votebd = "neg.txt";
-     $abab = $questionoptionone;
-     $baba = $questionoptiontwo;
-     $fp = fopen("vote/" . $votegd,"r"); 
-     $numa = fgets($fp,9999); 
-     fclose($fp);
-     $fpb = fopen("vote/" . $votebd,"r"); 
-     $numb = fgets($fpb,9999); 
-     fclose($fpb); 
-     $a = $numa;
-     $b = $numb;
-     $num = $a + $b;
-     if($a > 0 || $b > 0) {
-          $numaa = round($a/$num * 100);
-          $numbb = round($b/$num * 100);
-          $anumaa = round($a/$num * 300);
-          $anumbb = round($b/$num * 300);
-     } else {
-          $numaa = 0;
-          $numbb = 0;
-          $anumaa = 0;
-          $anumbb = 0;
-     }
-     $numnum = $a + $b;
-?>
-<font size="4" face="arial">
-<?php
-print "".$question."";
-?>
-</font><br><br>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20%">
-<?php
-     print "".$abab."";
-     print "</td>\n";
-     print "<td width=\"80%\">\n";
-     print "<img src=\"vote/bar.gif\" WIDTH=".$anumaa." HEIGHT=15> ".$numaa."%<br>\n";
-     print "</td>\n";
-     print "</tr>\n";
-     print "<tr>\n";
-     print "<td width=\"20%\">\n";
-     print "".$baba."\n";
-     print "</td>\n";
-     print "<td width=\"80%\">\n";
-     print "<img src=\"vote/bar.gif\" WIDTH=".$anumbb." HEIGHT=15> ".$numbb."%<br>\n";
-     print "</td>\n";
-     print "</tr>\n";
-     print "</table><br>\n";
-     print "out of ".$numnum." people who voted\n";
-     print "</font>\n";
-}
+	$poll_redirect_page = "form.php"; // Change this to the page you want to redirect the visitor to after he/she votes
+
+	$poll_cookie_expires = 604800; // Change this to the amount of time, in seconds, the cookie stays in the visitor's browser so that he/she may vote again after the cookie expires. 604800 seconds is equal to one week
+
+	/*
+	End options
+	*/
+
+	if(isset($_COOKIE["$poll_cookie_name"]) && $_GET["message"] != "1" && $_GET["message"] != "2" && $_GET["message"] != "3") $message = "<ins>Results</ins><br />";
+	elseif(!isset($_COOKIE["$poll_cookie_name"]) && !isset($_GET["message"]) || $_GET["message"] < "1" || $_GET["message"] > "3") $message = "<ins>Cast your vote below.</ins><br />";
+	elseif($_GET["message"] == "1") $message = "<ins>Your vote has been added.</ins><br />";
+	elseif($_GET["message"] == "2") $message = "<ins>You must select a choice.</ins><br />";
+	elseif($_GET["message"] == "3") $message = "<ins>You can only vote once per week.</ins><br />";
+	$choices_file = fopen($poll_results_file, "r");
+	$choices = fread($choices_file, 1024);
+	$choices = explode("\t", $choices);
+	fclose($choices_file);
 ?>
 
-    <!-- Put Your HTML Here -->
+<!-- -->
+<!-- -->
+<!-- The following block of code is the only HTML necessary to change on your poll -->
+<!-- -->
+<!-- -->
+<table border="2" cellpadding="15" cellspacing="5">
+	<tr>
+		<td style="background: #eee; color: #000; text-align: center">
+		<em>Date goes here</em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<em>Poll #1</em><br />
+		<strong>Is this a poll question?</strong><br /><br />
+		<?=$message?>
 
-  </body>
-</html>
+		<form action="<?=$poll_file?>" method="post">
+		<hr />
+		<p><input name="choice" type="radio" value="0" /> Choice 0 (<strong><?=$choices[0]?></strong>)</p>
+		<p><input name="choice" type="radio" value="1" /> Choice 1 (<strong><?=$choices[1]?></strong>)</p>
+		<p><input name="choice" type="radio" value="2" /> Choice 2 (<strong><?=$choices[2]?></strong>)</p>
+		<p><input name="choice" type="radio" value="3" /> Choice 3 (<strong><?=$choices[3]?></strong>)</p>
+<!-- -->
+<!-- -->
+<!-- It is not necessary to change anything after this -->
+<!-- -->
+<!-- -->
+		<hr />
+		<p><input name="cookie_name" type="hidden" value="<?=$poll_cookie_name?>" /></p>
+		<p><input name="results_file" type="hidden" value="<?=$poll_results_file?>" /></p>
+		<p><input name="redirect_page" type="hidden" value="<?=$poll_redirect_page?>" /></p>
+		<p><input name="cookie_expires" type="hidden" value="<?=$poll_cookie_expires?>" /></p>	<p><strong><?=$choices[0]+$choices[1]+$choices[2]+$choices[3]+$choices[4]+$choices[5]+$choices[6]+$choices[7]+$choices[8]+$choices[9]?></strong> total votes<br /><br /></p>
+		<? if(!isset($_COOKIE["$poll_cookie_name"])) { ?>
+<p><input name="submit" style="margin: 0 0 10px 0; padding: 0 15px 0 15px" type="submit" value="Vote" /></p>
+		<? } else { ?>
+<p style="margin: -5px 0 0 0; text-align: left"><em>Already voted.</em></p>
+		<? } ?>
+</form>
+		<hr />
+		<p>Powered by:<br /><a href="http://hypersilence.net" title="Silentum Poll v1.0.0">Silentum Poll v1.0.0</a></p>
+		</td>
+	</tr>
+</table>

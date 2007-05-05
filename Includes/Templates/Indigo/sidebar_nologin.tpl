@@ -1,20 +1,11 @@
 		</div>
 
 		<div class="sidenav">
-			<h1>Main</h1>
-			<ul>
-				<li><a href="frontpage.php">Frontpage</a></li>
-			</ul>
-			
-			  <h1>Vote</h1>
-			  <form action="votes.php" method="post">
-			  <b><tag:voteQuestion />?</b><br /><br />
-			  
-			 <input type="radio" name="vote" value="1"> <tag:voteAnswer /><br />
-			 <input type="radio" name="vote" value="2"> <tag:voteAnswer2 /><br /><br />
-			   
-			  <input type="submit" value="VOTE"><a href="votes.php">Results</a>
-			</form>			
+			<h1>Quick Info</h1>
+			<br />
+			<p>Players online: </p>
+			<p>Map size: </p>
+			<!-- use config.lua -->
 			
 			<h1>Community</h1>
 			<ul>
@@ -23,6 +14,7 @@
 				<li><a href="houses.php">House List</a></li>
 				<li><a href="highscores.php">Highscores</a></li>
 				<li><a href="banned.php">Banned Players</a></li>
+				<li><a href="../Main/vote.php">Voting</a></li>
 			</ul>
 
 			<h1>Information</h1>
