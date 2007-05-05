@@ -45,33 +45,26 @@ echo $tpl->fetch('../Includes/Templates/Slick_minimal/top.tpl');
 
 $license_decide = $_POST['agreeordisagree'];
 
+?>
 
-/* if($license_decide == "Disagree")
-{
-		echo '<script type="text/javascript">
-	  function openAlert() {
-	   Dialog.alert("<h1>You cannot use this software</h1><br><p>You have declined to agree with the license this software is with, therefore you cannot use this software.</p>", {windowParameters: {className: "alphacube"}})
-	  }
-	  openAlert();
-		</script>'; 
-}
-elseif($license_decide == "Agree")
-{ */
-	?>
+<h2>Please answer this one question:<br><br></h2>
+<br><br>
 
-	<h2>Please answer this one question:<br><br></h2>
-	<br><br>
-
-		<form action="install.php?step=4" method="POST">
-		<label for="char_rook">Enable rook settings</label>
-		<input type="radio" name="char_rook" value="true"> <br />
-		<label for="char_rook">Disable rook settings</label>
-		<input type="radio" name="char_rook" value="false">
-		<input type="hidden" name="agreeordisagree" value="<?PHP echo $license_decide; ?>">
+	<form action="install.php?step=4" method="POST">
+	<label for="char_rook">Enable rook settings</label>
+	<input type="radio" name="char_rook" value="true"> <br />
+	<label for="char_rook" selected>Disable rook settings</label>
+	<input type="radio" name="char_rook" value="false"><br /><br />
+	<label for="main_enable_feedback">Enable Feedback system (requires a SMTP server)</label>
+	<input type="radio" name="main_enable_feedback" value="true"> <br />
+	<label for="main_enable_feedback" selected>Disable Feedback system</label>
+	<input type="radio" name="main_enable_feedback" value="false">
+	
+	<input type="hidden" name="agreeordisagree" value="<?PHP echo $license_decide; ?>">
 		
-		<br /><br /><br />
-		<input type="submit" value="Next" class="btn"/>
-		</form>
+	<br /><br /><br />
+	<input type="submit" value="Next" class="btn"/>
+	</form>
 
 	<?
 //}

@@ -62,6 +62,8 @@ else
 
 	$conf_md5passwords =	($_POST["HashPass"]) ? "true" : "false";
 	$conf_imgver = 			($_POST["ImgVer"]) ? "true" : "false";
+	$conf_enable_feedback =	$_POST['main_enable_feedback'];
+	$conf_main_mail = 		$_POST['main_mail'];
 
 	$conf_char_rook = 		($_POST["char_rook"]) ? "true" : "false";
 	$conf_char_town =		$_POST["char_town"];
@@ -198,6 +200,8 @@ else
 \$main_voteanswer2 = \"More hunting areas\";
 \$main_voteanswer3 = \"More houses\";
 \$main_voteanswer4 = \"New towns\";
+\$main_enable_feedback = $conf_enable_feedback;
+\$main_mail = $conf_main_mail;
 
 \$info_os =				\"$conf_os\";
 \$info_connection =		\"$conf_connection\";

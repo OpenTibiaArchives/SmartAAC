@@ -51,6 +51,7 @@ else
 
 	$license_decide = $_POST['agreeordisagree'];
 	$char_rook = $_POST['char_rook'];
+	$main_enable_feedback = $_POST['main_enable_feedback'];
 
 	if($license_decide == "Disagree")
 	{
@@ -111,6 +112,7 @@ else
 
 		<form action=\"install.php?step=5\" method=\"post\">
 		<input type=\"hidden\" name=\"char_rook\" value=\"$char_rook\">
+		<input type=\"hidden\" name=\"main_enable_feedback\" value=\"$main_enable_feedback\">
 		
 		<h1>MySQL Database Details</h1>
 		<label for=\"SQL_Host\">MySQL Host:</label>
@@ -137,7 +139,18 @@ else
 		<label for=\"ImgVer\">Image verification?</label>
 		<input type=\"checkbox\" name=\"ImgVer\" class=\"boxes\" /><br />
 		<br /><br />
+		";
+		
+		if($main_enable_feedback == "true")
+		{
+			echo "
+		<h1>Feedback Settings $main_enable_feedback</h2>
+		<label for=\"main_email\">Your email:</label>
+		<input type=\"text\" name=\"main_email\" value=\"$main_email\" /><br /><br />
+			";
+		}
 
+		echo "
 		<h1>Other Server Details</h1>
 		<label for=\"ServerName\">Server Name:</label>
 		<input type=\"text\" name=\"ServerName\" value=\"$aac_servername\" /><br />
@@ -194,8 +207,6 @@ else
 		<input type=\"text\" name=\"char_lookfeet\" value=\"$char_lookfeet\" /><br />
 		<label for=\"char_town\">Town ID:</label>
 		<input type=\"text\" name=\"char_town\" value=\"$char_town\" /><br /><br />
-		
-		<p>Using rook?</p> $char_rook
 		";
 
 		if($char_rook == "true")
