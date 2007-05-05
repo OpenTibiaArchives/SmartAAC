@@ -43,10 +43,10 @@ $tpl->set('bodySpecial', $bodySpecial);
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
 if(isset($_GET['page']) && is_numeric($_GET['page']) && is_numeric($main_highscores_result)) {
-	$show = intval($_GET['page'] * $main_highscores_result);
+	$page = $_GET['page'];
 }
 else {
-	$show = 20;
+	$page = 1;
 }
 
 $tempskill = $_GET['skill'];
@@ -59,34 +59,36 @@ else {
 }
 ?>
 
-<table style="text-align: right; width: 563px;" border="1" cellpadding="2" cellspacing="2">
-Skill: <!-- <br> ??? -->
-<a href="highscores.php">Level</a>
-<a href="highscores.php?skill=magic">Magic level</a>
-<a href="highscores.php?skill=fist">Fist fighting</a>
-<a href="highscores.php?skill=club">Club fighting</a>
-<a href="highscores.php?skill=sword">Sword fighting</a>
-<a href="highscores.php?skill=axe">Axe fighting</a>
-<a href="highscores.php?skill=distance">Distance fighting</a>
-<a href="highscores.php?skill=shielding">Shielding</a>
-<a href="highscores.php?skill=fishing">Fishing</a>
-</select>
+<td width="13%" valign="top"><table width="130" border="0" align="right" cellpadding="2" cellspacing="1">
+<tr><td><div align="center"><a href="highscores.php">Level</a></td></div></tr>
+<tr><td><div align="center"><a href="highscores.php?skill=magic">Magic level</a></td></div></tr>
+<tr><td><div align="center"><a href="highscores.php?skill=fist">Fist fighting</a></td></div></tr>
+<tr><td><div align="center"><a href="highscores.php?skill=club">Club fighting</a></td></div></tr>
+<tr><td><div align="center"><a href="highscores.php?skill=sword">Sword fighting</a></td></div></tr>
+<tr><td><div align="center"><a href="highscores.php?skill=axe">Axe fighting</a></td></div></tr>
+<tr><td><div align="center"><a href="highscores.php?skill=distance">Distance fighting</a></td></div></tr>
+<tr><td><div align="center"><a href="highscores.php?skill=shielding">Shielding</a></td></div></tr>
+<tr><td><div align="center"><a href="highscores.php?skill=fishing">Fishing</a></td></div></tr>
 </table>
 
-<table style="text-align: left; width: 563px;" border="1"
- cellpadding="2" cellspacing="2">
+<table style="text-align: left; width: 50%;" border="1"
+ cellpadding="0" cellspacing="2">
   <tbody>
     <tr>
-      <td style="width: 56px;">Rank</td>
-      <td style="width: 207px;">Player Name</td>
-      <td style="width: 95px;">Level</td>
-      <td style="width: 171px;">Points</td>
+      <td style="width: 10%;">Rank</td>
+      <td style="width: 50%;">Player Name</td>
+      <td style="width: 15%;">Level</td>
+	  <?php if($skill == "level"){
+      echo '<td style="width: 25%;">Points</td>';
+	   } ?>
     </tr>
   </tbody>
-</table>
 <?php
-
-highscore($skill, $show);
+highscore($skill, $page);
+echo '</table>';
+if ($page != 1)
+	echo "<a href=\"highscores.php?skill=$skill&page=". intval($page - 1) ."\">Rank ". intval(($page - 1) * $main_highscores_result + 1) ." - ". intval(($page - 1) * $main_highscores_result) ."</a> ---- ";
+echo "<a href=\"highscores.php?skill=$skill&page=". intval($page + 1) ."\">Rank ". intval($page * $main_highscores_result + 1) ." - ". intval(($page + 1) * $main_highscores_result) ."</a>";
 
 echo $tpl->fetch('../Includes/Templates/Indigo/sidebar.tpl');
 echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');

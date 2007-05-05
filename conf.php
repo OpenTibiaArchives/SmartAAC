@@ -44,14 +44,15 @@ $net_port = 			"";
 
 $aac_md5passwords =	false;
 $aac_imgver = 			false;
-
 $aac_type =			"Manager";
-$sql_host =			"127.0.0.1";
+
+$sql_host =			"localhost";
 $sql_user =			"root";
-$sql_pass = 			"";
-$sql_db = 				"otserv";
+$sql_pass = 		"";
+$sql_db = 			"otserv";
 
 $main_highscores_result = 	20;
+$main_ugrp_nolist =		2;
 
 $info_os =				"";
 $info_connection =		"";

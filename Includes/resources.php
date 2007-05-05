@@ -85,19 +85,100 @@ function status($ip,$port,$timeout = 10)
 
 }
 
-function highscore($skill, $shown)
+function highscore($skill, $page)
 {
-	for($i = 1; $i <= 5; $i++)
-	{
-		echo '
-		<tr>
-		<td style="width: 56px;">1</td>
-		<td style="width: 207px;">2</td>
-		<td style="width: 95px;x">3</td>
-		<td style="width: 171px;">4</td>
-		</tr>
-		';
+	include '../conf.php';
+	if(!is_numeric($page) || $page == 0)
+		$page = 1;
+	$show = intval($page * $main_highscores_result);
+	if($page == 1)
+		$from = 0;
+	else
+		$from = intval($show - $main_highscores_result + 1);
+	$i = 1;
+	
+	switch($skill){
+		case "fist":
+			$id = 0;
+			break;
+		case "club":
+			$id = 1;
+			break;
+		case "sword":
+			$id = 2;
+			break;
+		case "axe":
+			$id = 3;
+			break;
+		case "distance":
+			$id = 4;
+			break;
+		case "shielding":
+			$id = 5;
+			break;
+		case "fishing":
+			$id = 6;
+			break;
 	}
+	
+	$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
+	mysql_select_db($sql_db, $sqlconnect);
+	if($skill == "level")
+	{
+		$query = sqlquery('SELECT `name`, `group_id`, `level`, `experience` FROM `players` WHERE `group_id` < '.$main_ugrp_nolist.' ORDER BY `experience` DESC LIMIT '.$from.','.$show.' ;');
+		while($row = mysql_fetch_array($query)) {
+			echo '
+			<tr>
+			<td><center>'. $i .'</center></td>
+			<td><center><a href="character.php?name='.$row['name'].'">'. $row['name'] .'</a></center></td>
+			<td><center>'. $row['level'] .'</center></td>
+			<td><center>'. $row['experience'] .'</center></td>
+			</tr>
+			';
+			$i++;
+		}
+	}
+	elseif($skill == "magic")
+	{
+		$query = sqlquery('SELECT `name`, `group_id`, `maglevel` FROM `players` WHERE `group_id` < '.$main_ugrp_nolist.' ORDER BY `maglevel` DESC LIMIT '.$from.','.$show.' ;');
+		while($row = mysql_fetch_array($query)) {
+			echo '
+			<tr>
+			<td><center>'. $i .'</center></td>
+			<td><center><a href="character.php?name='.$row['name'].'">'. $row['name'] .'</a></center></td>
+			<td><center>'. $row['maglevel'] .'</center></td>
+			</tr>
+			';
+			$i++;
+		}
+	}
+	else //skills
+	{ // Todo: check player group_id
+		$query = sqlquery('SELECT * FROM `player_skills` WHERE `skillid` = '.$id.' ORDER BY `player_skills`.`value` DESC LIMIT '.$from.','.$show.' ;');
+		while($row = mysql_fetch_array($query)) {
+			echo '
+			<tr>
+			<td><center>'. $i .'</center></td>
+			<td><center><a href="character.php?name='.userFromID($row['player_id']).'">'. userFromID($row['player_id']) .'</a></center></td>
+			<td><center>'. $row['value'] .'</center></td>
+			</tr>
+			';
+			$i++;
+		}
+	}
+}
+
+function userFromID($id)
+{
+	include '../conf.php';
+
+	$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
+	mysql_select_db($sql_db, $sqlconnect);
+	$query = sqlquery('SELECT `name` FROM `players` WHERE `id` = '.$id.'');
+	while($row = mysql_fetch_array($query)) {
+		return $row['name'];
+	}
+	return "None!";
 }
 
 function skills($skill)
