@@ -61,7 +61,7 @@ echo '
 		echo '
 		<tr>
 		<td><center>'. $types[$row['type']] .'</center></td>
-		<td><center>'. userFromID($row['player']) .'</center></td>
+		<td><center><a href="character.php?char='. userFromID($row['player']) .'">'. userFromID($row['player']) .'</a></center></td>
 		<td><center>'. date('M d Y, H:i:s T', $row['time']) .'</center></td>
 		</tr>
 		';
