@@ -27,6 +27,7 @@
 // ===========================================================
 
 include '../conf.php';
+include '../Includes/resources.php';
 
 $title = 'Banned Players';
 $name = $aac_servername;
@@ -40,6 +41,32 @@ $tpl->set('strayline', $name);
 $tpl->set('bodySpecial', $bodySpecial);
 
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
+
+$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
+mysql_select_db($sql_db, $sqlconnect);
+
+echo '
+<center><h2>Banned Players:</h2><br><br>
+<table style="text-align: left; width: 50%;" border="1" cellpadding="0" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="width: 10%;">Ban Type</td>
+      <td style="width: 50%;">Player Name</td>
+      <td style="width: 40%;">Until</td>
+    </tr>
+  </tbody>';
+	$query = sqlquery('SELECT `type`, `player`, `time` FROM `bans` ORDER BY `time` ASC');
+	$types = array(1 => 'IP', 2 => 'Account', 3 => 'Player');
+	while($row = mysql_fetch_array($query)) {
+		echo '
+		<tr>
+		<td><center>'. $types[$row['type']] .'</center></td>
+		<td><center>'. userFromID($row['player']) .'</center></td>
+		<td><center>'. date('M d Y, H:i:s T', $row['time']) .'</center></td>
+		</tr>
+		';
+	}
+echo '</table></center>';
 
 echo $tpl->fetch('../Includes/Templates/Indigo/sidebar.tpl');
 echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');

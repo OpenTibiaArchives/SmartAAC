@@ -53,6 +53,7 @@ $sql_db = 			"otserv";
 
 $main_highscores_result = 	20;
 $main_ugrp_nolist =		2;
+$main_towns = 		array(1 => 'Harmondale', 2 => 'Corden City', 3 => 'Kamre\'oh', 4 => 'Glorious Fields', 5 => 'Tankor');
 $main_votequestion = "What should the server add?";
 $main_voteanswer1 = "More monsters";
 $main_voteanswer2 = "More hunting areas";

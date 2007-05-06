@@ -178,7 +178,20 @@ function userFromID($id)
 	while($row = mysql_fetch_array($query)) {
 		return $row['name'];
 	}
-	return "None!";
+	return false;
+}
+
+function userByID($name)
+{
+	include '../conf.php';
+	
+	$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
+	mysql_select_db($sql_db, $sqlconnect);
+	$query = sqlquery('SELECT `id` FROM `players` WHERE `name` = '.$name.'');
+	while($row = mysql_fetch_array($query)) {
+		return $row['id'];
+	}
+	return false;
 }
 
 function skills($skill)
