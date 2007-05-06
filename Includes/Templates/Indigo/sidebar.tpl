@@ -21,11 +21,13 @@
 				        <td style="width: 157px;">Lost Password</td>
 				      </tr>
 				      <tr>
-				        <td style="width: 90px;"><input type="Submit" value="Login"></form><a href="../Manager/start.php"><button>Click Me!</button></a></td>
+				        <td style="width: 90px;"><input type="Submit" value="Login"></a></td>
 				        <td style="width: 157px;"></td>
 				      </tr>
 				    </tbody>
+					</form>
 				  </table>
+				  <a href="../Manager/accountCreate.php">Not got an account? Register Here</a>
 							
 			</div>
 			
