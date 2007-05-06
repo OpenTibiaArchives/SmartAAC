@@ -31,11 +31,12 @@
 				</form>				
 			</div>
 
+			<h1>Quick Info</h1>
+			<br />
+			<p>Players online: <br />
+			Map size: </p>
+			<!-- use config.lua -->
 
-			<h1>Main</h1>
-			<ul>
-				<li><a href="../Main/frontpage.php">Frontpage</a></li>
-			</ul>
 			
 			<h1>Community</h1>
 			<ul>

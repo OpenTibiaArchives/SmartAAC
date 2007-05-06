@@ -36,6 +36,7 @@ else
 	$name = 'Smart-Ass';
 	$bodySpecial = 'onload="openAlert()"';
 	$documentation = file_get_contents('inc/savesettings.inc');
+	$char_rook_use = $_POST['char_rook'];
 
 	include_once('../Includes/Templates/bTemplate.php');
 	$tpl = new bTemplate();
@@ -63,7 +64,7 @@ else
 	$conf_md5passwords =	($_POST["HashPass"]) ? "true" : "false";
 	$conf_imgver = 			($_POST["ImgVer"]) ? "true" : "false";
 	$conf_enable_feedback =	$_POST['main_enable_feedback'];
-	$conf_main_mail = 		$_POST['main_mail'];
+	$conf_main_email = 		$_POST['main_email'];
 
 	$conf_char_rook = 		($_POST["char_rook"]) ? "true" : "false";
 	$conf_char_town =		$_POST["char_town"];
@@ -76,7 +77,7 @@ else
 	$conf_char_looklegs =	$_POST["char_looklegs"];
 	$conf_char_lookfeet =	$_POST["char_lookfeet"];
 	
-	if($_POST["char_rook"])
+	if($char_rook_use == "true")
 	{
 		$conf_char_maglevel_none = $_POST["char_maglevel_none"];
 		$conf_char_health_none = $_POST["char_health_none"];
@@ -95,7 +96,7 @@ else
 		$conf_char_health_knight = '""';
 		$conf_char_mana_knight = '""';
 	}
-	else
+	elseif($char_rook_use == "false")
 	{
 		$conf_char_maglevel_none = '""';
 		$conf_char_health_none = '""';
@@ -201,7 +202,7 @@ else
 \$main_voteanswer3 = \"More houses\";
 \$main_voteanswer4 = \"New towns\";
 \$main_enable_feedback = $conf_enable_feedback;
-\$main_mail = $conf_main_mail;
+\$main_mail = \"$conf_main_email\";
 
 \$info_os =				\"$conf_os\";
 \$info_connection =		\"$conf_connection\";

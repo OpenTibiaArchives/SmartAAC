@@ -1,0 +1,12 @@
+<post>
+1178460599
+AAC Installed!
+Smart-Ass AAC has been installed successfully (well, you can see this news :p). You can goto the Admin Panel and goto the News area, where you can manage catagories and stuff :D.
+</post>
+<post>
+1178459911
+1st News Msg
+Welcome to this new release of one of the best AAC\'s available for Smart-Ass! Release 2.0! Smart-Ass was built to help with user friendliness and to be very easy to setup and use for an otserver also throughout providing features, themes and more. It uses the PHP language which is widely available too and easy to install on Apache web servers too.
+
+There is a release cycle that has been suggested for Smart-Ass 2.0 and onwards, providing a new revision every few months or weeks, with the maintenance of code and other resources.
+</post>

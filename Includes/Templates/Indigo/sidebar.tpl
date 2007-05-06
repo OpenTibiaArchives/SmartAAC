@@ -21,18 +21,19 @@
 				        <td style="width: 157px;">Lost Password</td>
 				      </tr>
 				      <tr>
-				        <td style="width: 90px;"><input type="Submit" value="Login"></td>
+				        <td style="width: 90px;"><input type="Submit" value="Login"></form><a href="../Manager/start.php"><button>Click Me!</button></a></td>
 				        <td style="width: 157px;"></td>
 				      </tr>
 				    </tbody>
 				  </table>
-				</form>				
+							
 			</div>
 			
 			<h1>Quick Info</h1>
 			<br />
-			<p>Players online: </p>
-			<p>Map size: </p>
+			<p>Players online: <br />
+			Map size: <br />
+			</p>
 			<!-- use config.lua -->
 
 			

@@ -144,22 +144,28 @@ else
 		if($main_enable_feedback == "true")
 		{
 			echo "
-		<h1>Feedback Settings $main_enable_feedback</h2>
-		<label for=\"main_email\">Your email:</label>
-		<input type=\"text\" name=\"main_email\" value=\"$main_email\" /><br /><br />
+			<h1>Feedback Settings $main_enable_feedback</h2>
+			<label for=\"main_email\">Your email:</label>
+			<input type=\"text\" name=\"main_email\" value=\"$main_email\" /><br /><br />
 			";
 		}
-
+		elseif($main_enable_feedback == "false")
+		{
+			echo "
+			<input type=\"hidden\" name=\"main_email\" value=\"none@none.nodomain\" />
+			";
+		}
+		
 		echo "
 		<h1>Other Server Details</h1>
 		<label for=\"ServerName\">Server Name:</label>
 		<input type=\"text\" name=\"ServerName\" value=\"$aac_servername\" /><br />
 
 		<label for=\"HostName\">IP/Hostname:</label>
-		<input type=\"text\" name=\"HostName\" value=\"$aac_ipaddress\" /><br />
+		<input type=\"text\" name=\"HostName\" value=\"$net_ipaddress\" /><br />
 
 		<label for=\"HostPort\">Port:</label>
-		<input type=\"text\" name=\"HostPort\" value=\"$aac_port\" /><br />
+		<input type=\"text\" name=\"HostPort\" value=\"$net_port\" /><br />
 
 		<label for=\"HostOS\">Operating System:</label>
 		<input type=\"text\" name=\"HostOS\" value=\"$info_os\" /><br />

@@ -47,13 +47,41 @@ $tpl->set('voteAnswer2', $voteAnswer2);
 
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
-// Do we need this anymore? As we got the login box thing.
-/* if($aac_type == "Manager"){
-	echo '<h2><a href="../Manager/">Goto Manager</a></h2>';
+include('../Admin/new_news/news.php');
+
+$want = $_GET['want'];
+
+switch($want)
+{
+	case "archives":
+		show_archives();
+		echo "
+		<br /><br /><b>
+		<a href=\"frontpage.php\">Back to normal view</a><br />
+		</b>
+		";
+	break;
+	
+	case "categories":
+		show_categories();
+		echo "
+		<br /><br /><b>
+		<a href=\"frontpage.php\">Back to normal view</a><br />
+		</b>
+		";
+	break;
+	
+	default:
+		show_news(5);
+		echo "
+		<br /><br /><b>
+		<a href=\"frontpage.php?want=archives\">News Archives</a><br />
+		<a href=\"frontpage.php?want=categories\">News Catagories</a>
+		</b>
+		";
+	break;
 }
-else {
-	echo '<h2><a href="../Express/">Goto Express</a></h2>';
-} */
+
 
 echo $tpl->fetch('../Includes/Templates/Indigo/sidebar.tpl');
 echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
