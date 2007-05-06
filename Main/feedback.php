@@ -56,7 +56,7 @@ if($aac_enable_feedback)
 }
 else
 {
-	echo "<p>Sorry, this feature has been disabled</p>";
+	echo "<p>Sorry, this feature has been disabled by the administrator</p>";
 }
 
 

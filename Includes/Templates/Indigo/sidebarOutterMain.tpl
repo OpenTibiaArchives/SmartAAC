@@ -23,12 +23,13 @@
 				        <td style="width: 157px;">Lost Password</td>
 				      </tr>
 				      <tr>
-				        <td style="width: 90px;"><input type="Submit" value="Login"></td>
+				        <td style="width: 90px;"><input type="Submit" value="Login"></form></td>
 				        <td style="width: 157px;"></td>
 				      </tr>
 				    </tbody>
 				  </table>
-				</form>				
+				  <a href="accountCreate.php">Not got an account? Register Here</a>
+								
 			</div>
 
 			<h1>Quick Info</h1>

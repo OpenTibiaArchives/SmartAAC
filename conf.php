@@ -27,9 +27,9 @@
 //    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // ===========================================================
 
-$aac_status = 			"Installed";
+$aac_status = 			"Not Installed";
 $aac_version = 		"2.0 Alpha1";
-$aac_dataDir =			"data/";
+$aac_dataDir =			"C:\Dev-Cpp\otserv\data";
 
 $aac_minacclen = 		6;
 $aac_maxacclen = 		8;

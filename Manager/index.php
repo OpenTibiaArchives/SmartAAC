@@ -29,5 +29,8 @@
 */
 
 
-header("location: start.php");
+//header("location: start.php");
+
+$act = $GET_['act'];
+
 ?>

@@ -42,7 +42,7 @@ $tpl->set('documentation', $documentation);
 echo $tpl->fetch('../Includes/Templates/Slick_minimal/top.tpl');
 
 $tests_passed = 0;
-$tests_to_pass = 3;
+$tests_to_pass = 4;
 
 if( version_compare(phpversion(), "5.0.0", ">=") )
 {
@@ -65,6 +65,16 @@ else
 	$tests_passed++;
 }
 
+if (!extension_loaded('simplexml'))
+{
+	$simplexml_confirm = "<font color=\"red\">Fail</font>";
+}
+else
+{
+	$simplexml_confirm = "<font color=\"green\">Pass</font>";
+	$tests_passed++;
+}
+
 if(is_writable("../conf.php"))
 {
 	$conf_confirm = "<font color=\"green\">Pass</font>";
@@ -76,7 +86,7 @@ else
 }
 
 // Then all those confirm variables are stored in the confirms array to access
-$confirms = array("PHP Version" => $php_confirm, "GD Enabled" => $gd_confirm, "Conf Writable" => $conf_confirm);
+$confirms = array("PHP Version" => $php_confirm, "GD Enabled" => $gd_confirm, "SimpleXML" => $simplexml_confirm, "Conf Writable" => $conf_confirm);
 
 
 echo '<h1>Testing</h1><p>Smart-Ass has tested out your server for testing. We do recommend you run Smart-Ass on an Apache server, since it was developed and tested on it.</p>';
@@ -95,6 +105,10 @@ echo "<div align=\"center\"><table style=\"text-align: left; height: 119px; widt
     <tr>
       <td style=\"width: 169px;\"><b>GD</b></td>
       <td style=\"width: 85px; text-align: center;\">{$confirms['GD Enabled']}</td>
+    </tr>
+	<tr>
+      <td style=\"width: 169px;\"><b>SimpleXML</b></td>
+      <td style=\"width: 85px; text-align: center;\">{$confirms['SimpleXML']}</td>
     </tr>
     <tr>
       <td style=\"width: 169px;\"><b>Configuration writable</b></td>
