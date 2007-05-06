@@ -174,7 +174,7 @@ function userFromID($id)
 
 	$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
 	mysql_select_db($sql_db, $sqlconnect);
-	$query = sqlquery('SELECT `name` FROM `players` WHERE `id` = '.$id.'');
+	$query = sqlquery('SELECT `name` FROM `players` WHERE `id` = '.intval($id).'');
 	while($row = mysql_fetch_array($query)) {
 		return $row['name'];
 	}
@@ -187,7 +187,7 @@ function userByID($name)
 	
 	$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
 	mysql_select_db($sql_db, $sqlconnect);
-	$query = sqlquery('SELECT `id` FROM `players` WHERE `name` = '.$name.'');
+	$query = sqlquery('SELECT `id` FROM `players` WHERE `name` = \''.mysql_real_escape_string($name).'\'');
 	while($row = mysql_fetch_array($query)) {
 		return $row['id'];
 	}

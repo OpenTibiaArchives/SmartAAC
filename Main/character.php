@@ -116,13 +116,47 @@ if(isset($char)) {
 		if($bantime > 0)
 			echo '<tr><td width=200px><font color="red">Banned until:</font></td><td width=300px><font color="red">'.date('M d Y, H:i:s T', $bantime).'</font><br /></td></tr>';
 		echo '</table>';
+		echo '<br><br>';
+		echo '<table width=350px><tr>';
+		echo '<h2>Characters:</h2>';
+		$query = sqlquery('SELECT `name` FROM `players` WHERE `account_id` = '. intval($accno) .'');
+		while($row = mysql_fetch_array($query)) {
+			echo '<tr><td width=200px>'.$row['name'].'</td><td width=300px><a href="character.php?char='.$row['name'].'">View</a><br /></td></tr>';
+		}
+		echo '</table>';
 	}
 	else {
-		// Todo(?): % %
+		$query = sqlquery('SELECT * FROM `players` WHERE `name` like \'%'. mysql_real_escape_string($char) .'%\'');
+		if(mysql_num_rows($query) != 0) {
+			echo '
+<center>
+<table style="text-align: left; width: 20%;" border="1" cellpadding="0" cellspacing="2">
+<tbody>
+<tr>
+<td style="width: 25%;">Name</td>
+<td style="width: 10%;">Level</td>
+<td style="width: 25%;">Vocation</td>
+</tr>
+</tbody>';
+			$vocations = array("None", "Sorcerer", "Druid", "Paladin", "Knight", "Master Sorcerer", "Elder Druid", "Royal Paladin", "Elite Knight");
+			while($row = mysql_fetch_array($query)) {
+				echo '<tr>
+				<td><center><a href="character.php?char='.$row['name'].'">'. $row['name'] .'</a></center></td>
+				<td><center>'. $row['level'] .'</center></td>
+				<td><center>'. $vocations[$row['vocation']] .'</center></td>
+				</tr>';
+			}
+
+			echo '</table></center>';
+		}
+		else {
+			echo '<center><h3>Character does not exist.</h3></center>';
+		}
 	}
 }
 echo '
 <br><br><br><br>
+<h1><font color="black">Search Character</font></h1><br>
 <form action="character.php" method="get">	
 <input type="text" name="char" maxlength="'.$aac_maxplayerlen.'" />
 <input type="submit" value="Search" />
