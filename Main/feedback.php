@@ -59,14 +59,8 @@ else
 	echo "<p>Sorry, this feature has been disabled</p>";
 }
 
-if($aac_type == "Express")
-{
-	echo $tpl->fetch('../Includes/Templates/Indigo/sidebar_nologin.tpl');
-}
-else
-{
-	echo $tpl->fetch('../Includes/Templates/Indigo/sidebar.tpl');
-}
+
+echo $tpl->fetch('../Includes/Templates/Indigo/sidebar.tpl');
 echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
 echo $tpl->fetch('../Includes/Templates/Indigo/bottom.tpl');
 ?>
