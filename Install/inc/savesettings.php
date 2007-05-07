@@ -63,6 +63,7 @@ else
 
 	$conf_md5passwords =	($_POST["HashPass"]) ? "true" : "false";
 	$conf_imgver = 			($_POST["ImgVer"]) ? "true" : "false";
+	$conf_downloadswarning =($_POST["DownloadsWarning"]) ? "true" : "false";
 	$conf_enable_feedback =	$_POST['main_enable_feedback'];
 	$conf_main_email = 		$_POST['main_email'];
 
@@ -187,7 +188,7 @@ else
 
 \$aac_md5passwords =	$conf_md5passwords;
 \$aac_imgver = 			$conf_imgver;
-\$aac_type =			\"Manager\";
+\$main_downloads_warning = $conf_downloadswarning;
 
 \$sql_host =			\"$conf_host\";
 \$sql_user =			\"$conf_user\";

@@ -3,7 +3,7 @@
 // ===========================================================
 //	Smart-Ass: The Userfriendly AAC
 //	Version: 2.0 Development Only
-//	Configuration Created: Sun, 06 May 2007 13:31:46 +0100
+//	Configuration Created: Mon, 07 May 2007 14:06:08 +0100
 //	
 //	USE OF THIS PROGRAM TO RELY ON IT FOR SERVER USE IS NOT
 // 	RECOMMENDED! THIS IS FOR TESTING ONLY.
@@ -29,7 +29,7 @@
 
 $aac_status = 			"Not Installed";
 $aac_version = 		"2.0 Alpha1";
-$aac_dataDir =			"C:\Dev-Cpp\otserv\data";
+$aac_dataDir =			"C:\\Dev-Cpp\\otserv\\data";
 
 $aac_minacclen = 		6;
 $aac_maxacclen = 		8;
@@ -44,7 +44,7 @@ $net_port = 			"7171";
 
 $aac_md5passwords =	true;
 $aac_imgver = 			true;
-$aac_type =			"Manager";
+$main_downloads_warning = true;
 
 $sql_host =			"localhost";
 $sql_user =			"root";
@@ -59,7 +59,7 @@ $main_voteanswer2 = "More hunting areas";
 $main_voteanswer3 = "More houses";
 $main_voteanswer4 = "New towns";
 $main_enable_feedback = false;
-$main_mail = "none@none.br";
+$main_mail = "none@none.nodomain";
 
 $info_os =				"Windows XP";
 $info_connection =		"5 Mbit";

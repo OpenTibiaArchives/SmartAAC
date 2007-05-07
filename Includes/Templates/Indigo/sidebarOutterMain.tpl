@@ -32,10 +32,13 @@
 								
 			</div>
 
-			<h1>Quick Info</h1>
+			<h1>Status</h1>
 			<br />
-			<p>Players online: <br />
-			Map size: </p>
+			<div style="font-size: 14px;" align="center">
+			<b>Online</b><br /><br />
+			Players: 0/0<br />
+			Uptime: 00:00<br />
+			</div>
 			<!-- use config.lua -->
 
 			
@@ -62,6 +65,7 @@
 				<li><a href="../Main/downloads.php">Downloads</a></li>
 				<li><a href="../Main/rules.php">Rules</a></li>
 				<li><a href="../Main/feedback.php">Feedback</a></li>
+				<li><a href="../Admin/">Admin Panel</a></li>
 			</ul>
 			<br /><br /><br />
 			
@@ -69,10 +73,7 @@
 			<table style="text-align: left; width: 129px;" border="0" cellpadding="2" cellspacing="2">
 			  <tbody>
 			    <tr>
-			      <td style="width: 119px;">Players Online: </td>
-			    </tr>
-			    <tr>
-			      <td style="width: 119px;">AAC Version: </td>
+			      <td style="width: 119px;">AAC Version: <tag:AAC_Version /></td>
 			    </tr>
 			  </tbody>
 			</table>

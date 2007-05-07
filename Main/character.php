@@ -155,7 +155,7 @@ if(isset($char)) {
 	}
 }
 echo '
-<br><br><br><br>
+<br>
 <h1><font color="black">Search Character</font></h1><br>
 <form action="character.php" method="get">	
 <input type="text" name="char" maxlength="'.$aac_maxplayerlen.'" />

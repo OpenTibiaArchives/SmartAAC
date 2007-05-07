@@ -27,18 +27,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 */
-
-$title = 'Frontpage';
-$name = $aac_servername;
-$bodySpecial = 'onload="NOTHING"';
-
-include_once('../Includes/Templates/bTemplate.php');
-$tpl = new bTemplate();
-
-$tpl->set('title', $title);
-$tpl->set('strayline', $name);
-$tpl->set('bodySpecial', $bodySpecial);
-
+session_start();
 $error = 0;
 $created_Account = false;
 include "../conf.php";
@@ -48,8 +37,22 @@ $M2_account = $_POST['M2_account'];
 $M2_password = $_POST['M2_password'];
 $M2_email = $_POST['M2_email'];
 
+
 if ( (isset($M2_account) && !empty($M2_account)) && (isset($M2_password) && !empty($M2_password)) && (isset($M2_email) && !empty($M2_email)) )
 {
+	if($aac_imgver)
+	{
+		// New system for image verification; CAPTCHA
+		$string = strtoupper($_SESSION['string']);
+		$userstring = strtoupper($_POST['userstring']); 
+		session_destroy();   
+
+		if ($string != $userstring) 
+		{
+			die("The image verification code you entered is <b>not</b> correct!");
+		}
+	}
+
 	if ( strlen($M2_account) < $aac_minacclen || strlen($M2_account) > $aac_maxacclen )
 	{
 		echo "<font color=\"red\">Error! Your account number is either too short or too long!</font><br><br>";
@@ -103,7 +106,7 @@ if ( (isset($M2_account) && !empty($M2_account)) && (isset($M2_password) && !emp
 				session_unset();
 			//	doInfoBox("Your account has been successfully created. Login <a href=\"loginInterface.php\">here</a> to create your first character in the account!<br><br>
 			//		Your account number is: $M2_account</font>");
-				header("location: start.php");
+				echo '<meta http-equiv="refresh" content="0;url=http://loginInterface.php/" />';
 			}
 		}
 	}
@@ -115,27 +118,67 @@ else
 
 if ($created_Account != true)
 {
+
+$title = 'Frontpage';
+$name = $aac_servername;
+$bodySpecial = 'onload="NOTHING"';
+
+include_once('../Includes/Templates/bTemplate.php');
+$tpl = new bTemplate();
+
+$tpl->set('title', $title);
+$tpl->set('strayline', $name);
+$tpl->set('bodySpecial', $bodySpecial);
+
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 ?>
+
 <h2>Please fill out the appropiate fields:</h2>
 <br />
 
-	<form action="<?php echo $PHP_SELF; ?>" method="POST">
-	<table>
-	<tr>
-	<td><p>Account Number: </p></td><td><input name="M2_account" type="text" maxlength="<?php echo $aac_maxacclen; ?>" class="textfield"> <font color="red">* <i>(<?php echo "$aac_minacclen - $aac_maxacclen numbers"; ?>)</i></font></td>
-	<td><p>Password: </p></td><td><input name="M2_password" type="password" maxlength="<?php echo $aac_maxpasslen; ?>" class="textfield"> <font color="red">* <i>(<?php echo "$aac_minpasslen - $aac_maxpasslen characters"; ?>)</i></font></td>
-	<td><p>Email: </p></td><td><input name="M2_email" type="text" class="textfield"></td>
-	</tr>
+<form action="<?php echo $PHP_SELF; ?>" method="POST">
+
+	<table style="text-align: left; width: 492px;" border="0"
+	 cellpadding="2" cellspacing="2">
+	  <tbody>
+	    <tr>
+	      <td>Account Number: </td>
+	      <td><input name="M2_account" type="text" maxlength="<?php echo $aac_maxacclen; ?>" class="textfield"></td>
+	      <td style="width: 218px;"><font color="red">* <i>(<?php echo "$aac_minacclen - $aac_maxacclen numbers"; ?>)</i></font></td>
+	    </tr>
+	    <tr>
+	      <td>Password: </td>
+	      <td><input name="M2_password" type="password" maxlength="<?php echo $aac_maxpasslen; ?>" class="textfield"></td>
+	      <td style="width: 218px;"><font color="red">* <i>(<?php echo "$aac_minpasslen - $aac_maxpasslen characters"; ?>)</i></font></td>
+	    </tr>
+	    <tr>
+	      <td>Email: </td>
+	      <td><input name="M2_email" type="text" class="textfield"></td>
+	      <td style="width: 218px;"></td>
+	    </tr>
+	  </tbody>
 	</table>
-	<br>
-	<input type="Submit" value="Create Account">
-	<input type="Reset" value="Clear Form">
+<br />
+
+<?PHP
+if($aac_imgver == true)
+{
+echo '<br />
+      <p><img src="../Includes/imgverification/imagebuilder.php" border="1" alt="Image Verification is missing, please contact the administrator">
+      <p>Enter the verification code:<br>
+        <input MAXLENGTH=8 SIZE=8 name="userstring" type="text" value="">
+        <br>	
+';
+}
+?>
+	
+	<br />
+	<input type="Submit" value="Register">
 	</form>
 
 
 
-<?
+<?PHP
 echo $tpl->fetch('../Includes/Templates/Indigo/sidebarOutterMain.tpl');
 echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
 echo $tpl->fetch('../Includes/Templates/Indigo/bottom.tpl');

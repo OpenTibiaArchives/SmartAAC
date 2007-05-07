@@ -31,6 +31,6 @@
 
 //header("location: start.php");
 
-$act = $GET_['act'];
+$act = $_GET['act'];
 
 ?>

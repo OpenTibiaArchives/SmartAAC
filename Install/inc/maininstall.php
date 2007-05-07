@@ -137,7 +137,10 @@ else
 		<input type=\"checkbox\" name=\"HashPass\" class=\"boxes\" /><br /><br />
 
 		<label for=\"ImgVer\">Image verification?</label>
-		<input type=\"checkbox\" name=\"ImgVer\" class=\"boxes\" /><br />
+		<input type=\"checkbox\" name=\"ImgVer\" class=\"boxes\" /><br /><br />
+		
+		<label for=\"DownloadsWarning\">Display downloads warnings?</label>
+		<input type=\"checkbox\" name=\"DownloadsWarning\" class=\"boxes\" /><br />
 		<br /><br />
 		";
 		

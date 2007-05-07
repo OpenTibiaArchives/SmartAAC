@@ -18,7 +18,7 @@
 	<div class="header">
 		
 		<div class="title">
-			<h1><tag:title /> || <tag:strayline /></h1>
+			<h1><tag:title /> - <tag:strayline /></h1>
 		</div>
 
 		<div class="navigation">
