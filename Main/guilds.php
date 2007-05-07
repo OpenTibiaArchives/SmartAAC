@@ -42,8 +42,8 @@ $tpl->set('bodySpecial', $bodySpecial);
 
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
-$act = $_REQUEST['act']; // Action
-if(isset($act)) // Manage/View/Create blabla
+$act = $_REQUEST['act'];
+if(isset($act))
 {
 	switch($act)
 	{
@@ -57,7 +57,44 @@ if(isset($act)) // Manage/View/Create blabla
 			break;
 		case "view":
 			if(isset($_REQUEST['guild'])) { // Show guild
+				$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
+				mysql_select_db($sql_db, $sqlconnect);
 				
+				$query = sqlquery('SELECT `id` FROM `guilds` WHERE `name` = \''. mysql_real_escape_string($_REQUEST['guild']) .'\'');
+				if(mysql_num_rows($query) == 1) {
+					while($row = mysql_fetch_array($query)) {
+						$guild_id = $row['id'];
+					}
+					
+					$query = sqlquery('SELECT `id`, `name`, `level` FROM `guild_ranks` WHERE `guild_id` = '. $guild_id .'');
+					$guild_ranks = 0;
+					while($row = mysql_fetch_array($query)) { // Hmm, missed something!
+						$guild_rank[$row['id']] = array('name' => $row['name'], 'level' => $row['level']);
+						$guild_ranks++;
+					}
+					
+				echo '
+<center>
+<table style="text-align: left; width: 20%;" border="1" cellpadding="0" cellspacing="2">
+<tbody>
+<tr>
+<td style="width: 10%;">Rank</td>
+<td style="width: 10%;">Name (Title)</td>
+</tr>
+</tbody>';
+					for($i = 1; $i <= $guild_ranks; $i++)// Ehm... ok this one is wrong ;p
+					{
+						$query = sqlquery('SELECT `name`, `rank_id`, `guildnick` FROM `players` WHERE `rank_id` = '. $i .'');
+						while($row = mysql_fetch_array($query)) {
+							echo '
+							<tr>
+							<td><center>'. $row['name'] .'</center></td>
+							<td><center><a href="character.php?char='. $row['name'] .'">'. $row['name'] .'</a></center></td>
+							</tr>
+							';
+						}
+					}
+				}
 			}
 			else { // List of guilds
 				echo '
@@ -88,13 +125,28 @@ if(isset($act)) // Manage/View/Create blabla
 			}
 			break;
 		case "create":
+			if(!$_SESSION['M2_account'] || !$_SESSION['M2_password']){ // not logged in
+				die("<center><a href=\"../Manager/loginInterface.php\">Please login first!</a></center>");
+			}
+			else { // logged in
 			
+			}
 			break;
 		case "leave":
+			if(!$_SESSION['M2_account'] || !$_SESSION['M2_password']){ // not logged in
+				die("<center><a href=\"../Manager/loginInterface.php\">Please login first!</a></center>");
+			}
+			else { // logged in
 			
+			}
 			break;
 		case "disband":
+			if(!$_SESSION['M2_account'] || !$_SESSION['M2_password']){ // not logged in
+				die("<center><a href=\"../Manager/loginInterface.php\">Please login first!</a></center>");
+			}
+			else { // logged in
 			
+			}
 			break;
 		default:
 			die("Error! Please contact an admin by using the feedback function <a href=\"feedback.php\">HERE</a>!");
