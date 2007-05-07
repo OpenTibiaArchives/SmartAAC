@@ -29,6 +29,7 @@
 */
 
 include '../conf.php';
+include '../Includes/stats/stats.php';
 
 $title = 'Login';
 $name = $aac_servername;
@@ -40,6 +41,7 @@ $tpl = new bTemplate();
 $tpl->set('title', $title);
 $tpl->set('strayline', $name);
 $tpl->set('bodySpecial', $bodySpecial);
+$tpl->set('stats', $global_stats);
 
 $M2_account = $_SESSION['M2_account'];
 $M2_password = $_SESSION['M2_password'];
@@ -61,7 +63,7 @@ echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 	</tr>
 	</table>
 	<br>
-	<input type="Submit" value="Login">
+	<input type="submit" name="submit" id="submit" value="Login">
 	</form>
 <?
 echo $tpl->fetch('../Includes/Templates/Indigo/sidebarOutterMain.tpl');

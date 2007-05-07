@@ -31,6 +31,7 @@
 session_start();
 
 include "../conf.php";
+include '../Includes/stats/stats.php';
 
 $title = 'Login';
 $name = $aac_servername;
@@ -42,6 +43,7 @@ $tpl = new bTemplate();
 $tpl->set('title', $title);
 $tpl->set('strayline', $name);
 $tpl->set('bodySpecial', $bodySpecial);
+$tpl->set('stats', $global_stats);
 		
 $M2_acc = "";
 $M2_pass = "";

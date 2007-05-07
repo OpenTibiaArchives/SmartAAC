@@ -30,8 +30,10 @@
 session_start();
 $error = 0;
 $created_Account = false;
+
 include "../conf.php";
 include "../Includes/resources.php";
+include '../Includes/stats/stats.php';
 
 $M2_account = $_POST['M2_account'];
 $M2_password = $_POST['M2_password'];
@@ -106,7 +108,7 @@ if ( (isset($M2_account) && !empty($M2_account)) && (isset($M2_password) && !emp
 				session_unset();
 			//	doInfoBox("Your account has been successfully created. Login <a href=\"loginInterface.php\">here</a> to create your first character in the account!<br><br>
 			//		Your account number is: $M2_account</font>");
-				echo '<meta http-equiv="refresh" content="0;url=http://loginInterface.php/" />';
+				echo '<meta http-equiv="refresh" content="0;url=loginInterface.php" />';
 			}
 		}
 	}
@@ -119,7 +121,7 @@ else
 if ($created_Account != true)
 {
 
-$title = 'Frontpage';
+$title = 'Register';
 $name = $aac_servername;
 $bodySpecial = 'onload="NOTHING"';
 
@@ -129,6 +131,7 @@ $tpl = new bTemplate();
 $tpl->set('title', $title);
 $tpl->set('strayline', $name);
 $tpl->set('bodySpecial', $bodySpecial);
+$tpl->set('stats', $global_stats);
 
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 ?>

@@ -27,6 +27,7 @@
 // ===========================================================
 
 include '../conf.php';
+include '../Includes/stats/stats.php';
 
 $title = 'Frontpage';
 $name = $aac_servername;
@@ -39,9 +40,8 @@ $tpl = new bTemplate();
 $tpl->set('title', $title);
 $tpl->set('strayline', $name);
 $tpl->set('bodySpecial', $bodySpecial);
-$tpl->set('voteQuestion', $voteQuestion);
-$tpl->set('voteAnswer', $voteAnswer);
-$tpl->set('voteAnswer2', $voteAnswer2);
+$tpl->set('stats', $global_stats);
+
 
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 

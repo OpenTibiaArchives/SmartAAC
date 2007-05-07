@@ -47,23 +47,37 @@ $license_decide = $_POST['agreeordisagree'];
 
 ?>
 
-<h2>Please answer this one question:<br><br></h2>
-<br><br>
+<h2>Please answer these questions:<br><br></h2>
 
 	<form action="install.php?step=4" method="POST">
-	<label for="char_rook">Enable rook settings</label>
-	<input type="radio" name="char_rook" value="true"> <br />
-	<label for="char_rook" selected>Disable rook settings</label>
-	<input type="radio" name="char_rook" value="false"><br /><br />
-	<label for="main_enable_feedback">Enable Feedback system (requires a SMTP server)</label>
-	<input type="radio" name="main_enable_feedback" value="true"> <br />
-	<label for="main_enable_feedback" selected>Disable Feedback system</label>
-	<input type="radio" name="main_enable_feedback" value="false">
-	
 	<input type="hidden" name="agreeordisagree" value="<?PHP echo $license_decide; ?>">
-		
-	<br /><br /><br />
-	<input type="submit" value="Next" class="btn"/>
+		<table style="text-align: left;" border="0"
+		 cellpadding="2" cellspacing="2">
+		  <tbody>
+		    <tr>
+		      <td style="width: 236px;">Enable rook settings</td>
+		      <td style="width: 60px; text-align: center;"><input type="radio" name="char_rook" value="true"></td>
+		    </tr>
+		    <tr>
+		      <td style="width: 50px;">Disable rook settings</td>
+		      <td style="width: 60px; text-align: center;"><input type="radio" name="char_rook" value="false"></td>
+		    </tr>
+			<tr>
+			  <td>&nbsp;</td>
+			  <td>&nbsp;</td>
+			</tr>
+		    <tr>
+		      <td style="width: 236px;">Enable Feedback system (requires a SMTP server)</td>
+		      <td style="width: 60px; text-align: center;"><input type="radio" name="main_enable_feedback" value="true"></td>
+		    </tr>
+		    <tr>
+		      <td style="width: 236px;">Disable Feedback system</td>
+		      <td style="width: 60px; text-align: center;"><input type="radio" name="main_enable_feedback" value="false"></td>
+		    </tr>
+		  </tbody>
+		</table>
+		<br /><br /><br />
+		<input type="submit" value="Next" class="btn"/>
 	</form>
 
 	<?

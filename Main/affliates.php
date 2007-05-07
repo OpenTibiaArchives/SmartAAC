@@ -27,10 +27,12 @@
 // ===========================================================
 
 include '../conf.php';
+include '../Includes/stats/stats.php';
 
 $title = 'Affliates';
 $name = $aac_servername;
 $bodySpecial = 'onload="NOTHING"';
+
 
 include_once('../Includes/Templates/bTemplate.php');
 $tpl = new bTemplate();
@@ -38,6 +40,7 @@ $tpl = new bTemplate();
 $tpl->set('title', $title);
 $tpl->set('strayline', $name);
 $tpl->set('bodySpecial', $bodySpecial);
+$tpl->set('stats', $global_stats);
 
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 

@@ -35,11 +35,8 @@
 			<h1>Status</h1>
 			<br />
 			<div style="font-size: 14px;" align="center">
-			<b>Online</b><br /><br />
-			Players: 0/0<br />
-			Uptime: 00:00<br />
+			<tag:stats />
 			</div>
-			<!-- use config.lua -->
 
 			
 			<h1>Community</h1>
