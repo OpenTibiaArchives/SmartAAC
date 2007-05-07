@@ -31,9 +31,7 @@ include '../conf.php';
 $title = 'Frontpage';
 $name = $aac_servername;
 $bodySpecial = 'onload="NOTHING"';
-$voteQuestion = "What?";
-$voteAnswer = "no!";
-$voteAnswer2 = "yes!";
+
 
 include_once('../Includes/Templates/bTemplate.php');
 $tpl = new bTemplate();
@@ -48,8 +46,8 @@ $tpl->set('voteAnswer2', $voteAnswer2);
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
 include('../Admin/new_news/news.php');
-
 $want = $_GET['want'];
+$own_text = file_get_contents("FrontpageText.txt");
 
 switch($want)
 {
@@ -72,12 +70,15 @@ switch($want)
 	break;
 	
 	default:
+		echo $own_text;
+	
+		echo "<hr><br /><h1>News</h1>";
 		show_news(5);
 		echo "
-		<br /><br /><b>
+		<br /><br /><div align=\"right\"><b>
 		<a href=\"frontpage.php?want=archives\">News Archives</a><br />
 		<a href=\"frontpage.php?want=categories\">News Catagories</a>
-		</b>
+		</b></div>
 		";
 	break;
 }
