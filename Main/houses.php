@@ -29,7 +29,7 @@
 include '../conf.php';
 include '../Includes/resources.php';
 include '../Includes/stats/stats.php';
-$xml_data = file_get_contents($aac_dataDir . "/world/map-house.xml");
+$xml_data = file_get_contents($aac_dataDir . '/world/'. $aac_housename .'-house.xml');
 
 $title = 'Houses';
 $name = $aac_servername;
@@ -81,7 +81,7 @@ if (file_exists($aac_dataDir . "/world/map-house.xml"))// Check the data dir lat
 		echo "<tr>";
 		echo '<td style="width: 135px; text-align: center;">#' . $xml2->house[$i]->getAttribute('houseid') . '</td>';
 		echo '<td style="width: 200px;">' . $xml2->house[$i]->getAttribute('name') . '</td>';
-		echo '<td style="width: 124px; text-align: center;">' . $xml2->house[$i]->getAttribute('townid') . '</td>';
+		echo '<td style="width: 124px; text-align: center;">' . $main_towns[$xml2->house[$i]->getAttribute('townid')] . '</td>';
 		echo '<td style="width: 124px; text-align: center;">' . $xml2->house[$i]->getAttribute('rent') . ' gp</td>';
 		echo '<td style="width: 124px; text-align: center;">' . $xml2->house[$i]->getAttribute('size') . ' sqm</td>';
 		echo "</tr>";

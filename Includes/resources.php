@@ -97,8 +97,11 @@ function highscore($skill, $page)
 		$from = 0;
 	else
 		$from = intval($show - $main_highscores_result + 1);
-	$i = 1;
-	
+	if($page != 1)
+		$i = $from;
+	else
+		$i = 1;
+
 	switch($skill){
 		case "fist":
 			$id = 0;
@@ -127,7 +130,7 @@ function highscore($skill, $page)
 	mysql_select_db($sql_db, $sqlconnect);
 	if($skill == "level")
 	{
-		$query = sqlquery('SELECT `name`, `group_id`, `level`, `experience` FROM `players` WHERE `group_id` < '.$main_ugrp_nolist.' ORDER BY `experience` DESC LIMIT '.$from.','.$show.' ;');
+		$query = sqlquery('SELECT `name`, `group_id`, `level`, `experience` FROM `players` WHERE `group_id` < '.$main_ugrp_nolist.' ORDER BY `experience` DESC LIMIT '.$from.','.$main_highscores_result.'');
 		while($row = mysql_fetch_array($query)) {
 			echo '
 			<tr>
@@ -142,7 +145,7 @@ function highscore($skill, $page)
 	}
 	elseif($skill == "magic")
 	{
-		$query = sqlquery('SELECT `name`, `group_id`, `maglevel` FROM `players` WHERE `group_id` < '.$main_ugrp_nolist.' ORDER BY `maglevel` DESC LIMIT '.$from.','.$show.' ;');
+		$query = sqlquery('SELECT `name`, `group_id`, `maglevel` FROM `players` WHERE `group_id` < '.$main_ugrp_nolist.' ORDER BY `maglevel` DESC LIMIT '.$from.','.$main_highscores_result.'');
 		while($row = mysql_fetch_array($query)) {
 			echo '
 			<tr>
@@ -154,9 +157,9 @@ function highscore($skill, $page)
 			$i++;
 		}
 	}
-	else //skills
-	{ // Todo: check player group_id
-		$query = sqlquery('SELECT * FROM `player_skills` WHERE `skillid` = '.$id.' ORDER BY `player_skills`.`value` DESC LIMIT '.$from.','.$show.' ;');
+	else
+	{
+		$query = sqlquery('SELECT * FROM `player_skills` WHERE `skillid` = '.$id.' ORDER BY `player_skills`.`value` DESC LIMIT '.$from.','.$main_highscores_result.'');
 		while($row = mysql_fetch_array($query)) {
 			echo '
 			<tr>
