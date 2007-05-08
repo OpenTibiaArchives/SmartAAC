@@ -135,7 +135,7 @@ function highscore($skill, $page)
 			echo '
 			<tr>
 			<td><center>'. $i .'</center></td>
-			<td><center><a href="character.php?name='.$row['name'].'">'. $row['name'] .'</a></center></td>
+			<td><center><a href="character.php?char='.$row['name'].'">'. $row['name'] .'</a></center></td>
 			<td><center>'. $row['level'] .'</center></td>
 			<td><center>'. $row['experience'] .'</center></td>
 			</tr>
@@ -150,7 +150,7 @@ function highscore($skill, $page)
 			echo '
 			<tr>
 			<td><center>'. $i .'</center></td>
-			<td><center><a href="character.php?name='.$row['name'].'">'. $row['name'] .'</a></center></td>
+			<td><center><a href="character.php?char='.$row['name'].'">'. $row['name'] .'</a></center></td>
 			<td><center>'. $row['maglevel'] .'</center></td>
 			</tr>
 			';
@@ -164,7 +164,7 @@ function highscore($skill, $page)
 			echo '
 			<tr>
 			<td><center>'. $i .'</center></td>
-			<td><center><a href="character.php?name='.userFromID($row['player_id']).'">'. userFromID($row['player_id']) .'</a></center></td>
+			<td><center><a href="character.php?char='.userFromID($row['player_id']).'">'. userFromID($row['player_id']) .'</a></center></td>
 			<td><center>'. $row['value'] .'</center></td>
 			</tr>
 			';

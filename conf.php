@@ -30,7 +30,7 @@
 $aac_status = 			"Not Installed";
 $aac_version = 			"2.0 Alpha1";
 $aac_dataDir =			"C:\\Dev-Cpp\\otserv\\data";
-$aac_housename = 		"Maeteka5";
+$aac_housename = 		"map";
 
 $aac_minacclen = 		6;
 $aac_maxacclen = 		8;
@@ -61,7 +61,7 @@ $main_voteanswer3 = "More houses";
 $main_voteanswer4 = "New towns";
 $main_enable_feedback = false;
 $main_mail = "none@none.nodomain";
-$main_towns = array(1 => 'Harmondale', 2 => 'Corden City', 3 => 'Kamre\'oh', 4 => 'Glorious Fields', 5 => 'Tankor');
+$main_towns = array(1 => 'Town 1', 2 => 'Town 2', 3 => 'Town 3', 4 => 'Town 4', 5 => 'Town 5');
 
 $info_os =				"Windows XP";
 $info_connection =		"5 Mbit";
