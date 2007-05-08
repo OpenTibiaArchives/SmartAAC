@@ -27,13 +27,13 @@
 // ===========================================================
 
 include '../conf.php';
-include '../Includes/stats/stats.php';
 include '../Includes/resources.php';
+include '../Includes/stats/stats.php';
+$xml_data = file_get_contents($aac_dataDir . '/world/'. $aac_mapname .'-house.xml');
 
 $title = 'Search Character';
 $name = $aac_servername;
 $bodySpecial = 'onload="NOTHING"';
-
 
 include_once('../Includes/Templates/bTemplate.php');
 $tpl = new bTemplate();
@@ -46,6 +46,9 @@ $tpl->set('AAC_Version', $aac_version);
 
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
+$xml = simplexml_load_string($xml_data);
+$xml2 = new SimpleXMLElementExtended($xml_data);
+
 $sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
 mysql_select_db($sql_db, $sqlconnect);
 
@@ -55,6 +58,7 @@ if(isset($char)) {
 	$query = sqlquery('SELECT * FROM `players` WHERE `name` = \''. mysql_real_escape_string($char) .'\' LIMIT 1;');
 	if(mysql_num_rows($query) == 1) {
 		while($row = mysql_fetch_array($query)) {
+			$pid = $row['id'];
 			$accno = $row['account_id'];
 			$name = $row['name'];
 			$groupid = $row['group_id'];
@@ -74,7 +78,23 @@ if(isset($char)) {
 		echo '<tr><td width=200px>Profession:</td><td width=300px>'.$vocations[$vocation].'<br /></td></tr>';
 		echo '<tr><td width=200px>Level:</td><td width=300px>'.$level.'<br /></td></tr>';
 		echo '<tr><td width=200px>Residence:</td><td width=300px>'.$main_towns[$town].'<br /></td></tr>';
-		//echo '<tr><td width=200px>House:</td><td width=300px>'.$house.'<br /></td></tr>'; // TODO: HOUSES?
+
+		$query = sqlquery('SELECT `id` FROM `houses` WHERE `owner` = '. $pid .'');
+		if(mysql_num_rows($query) >= 1) {
+			while($row = mysql_fetch_array($query)) {
+				$hid = $row['id'];
+			}
+			if(file_exists($aac_dataDir . '/world/'. $aac_mapname .'-house.xml'))
+			{
+				$scan_limit = $xml2->getChildrenCount();
+	
+				for($i = 0; $i < $scan_limit; $i++)
+				{
+					if($xml2->house[$i]->getAttribute('houseid') == $hid)
+						echo '<tr><td width=200px>House:</td><td width=300px>'.$xml2->house[$i]->getAttribute('name').'<br /></td></tr>';
+				}
+			}
+		}
 		
 		$query = sqlquery('SELECT `guilds`.`name` AS `guildname`, `guild_ranks`.`name` AS `guildrank` FROM `guilds`, `guild_ranks` WHERE `guild_ranks`.`id` = '.intval($guild).' AND `guild_ranks`.`guild_id` = `guilds`.`id`');
 		while($guildrow = mysql_fetch_array($query)) {
