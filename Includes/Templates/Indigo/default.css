@@ -204,7 +204,7 @@ input.plswhy {
 	padding: 0.25em;
 }
 
-.submit input:active, .button:active {
+/* .submit input:active, .button:active {
 	background: #f4f4f4;
 	border: 3px double #ccc;
 	border-left-color: #999;
@@ -218,21 +218,21 @@ input.plswhy {
 form, label input {
 	margin: 0;
 	padding: 0;
-}
+} */
 
-input:focus, textarea:focus{
+/* input:focus, textarea:focus{
 	background: #fff;
 	border: 1px solid #686868;
-}
+} */
 
-input:hover, textarea:hover{
+/* input:hover, textarea:hover{
 	background: #E4F7FA;
 	border: 1px solid #686868;
-}
+} */
 
-label:hover {
+/* label:hover {
 	background: #E4F7FA;
-}
+} */
 
 textarea, input, select {
 	background: #f4f4f4;

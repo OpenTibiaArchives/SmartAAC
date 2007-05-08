@@ -30,7 +30,7 @@
 $aac_status = 			"Not Installed";
 $aac_version = 			"2.0 Alpha1";
 $aac_dataDir =			"C:\\Dev-Cpp\\otserv\\data";
-$aac_housename = 		"map";
+$aac_mapname = 		"map";
 
 $aac_minacclen = 		6;
 $aac_maxacclen = 		8;
