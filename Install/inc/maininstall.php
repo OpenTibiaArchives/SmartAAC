@@ -197,6 +197,10 @@ else
 		<input type=\"text\" name=\"MaxPlayerLen\" value=\"$aac_maxplayerlen\" /><br />
 		<br /><br />
 		
+		<h1>Map name</h1>
+		<label for=\"MapName\">Name:</label>
+		<input type=\"text\" name=\"MapName\" value=\"$aac_mapname\" /><br />
+		
 		<h1>Character settings</h1>
 		<label for=\"char_group\">Group ID:</label>
 		<input type=\"text\" name=\"char_group\" value=\"$char_group\" /><br />

@@ -49,6 +49,7 @@ else
 	echo $tpl->fetch('../Includes/Templates/Slick_minimal/top.tpl');
 
 	$conf_dataDir =			$_POST["dataDir"];
+	$conf_mapname =		$_POST["MapName"];
 
 	$conf_minacclen = 		$_POST["MinAccLen"];
 	$conf_maxacclen = 		$_POST["MaxAccLen"];
@@ -174,6 +175,7 @@ else
 \$aac_status = 			\"Installed\";
 \$aac_version = 		\"2.0 Alpha1\";
 \$aac_dataDir =			\"$conf_dataDir\";
+\$aac_mapname =		\"$conf_mapname\";
 
 \$aac_minacclen = 		$conf_minacclen;
 \$aac_maxacclen = 		$conf_maxacclen;
@@ -204,6 +206,7 @@ else
 \$main_voteanswer4 = \"New towns\";
 \$main_enable_feedback = $conf_enable_feedback;
 \$main_mail = \"$conf_main_email\";
+\$main_towns = array(1 => 'Town 1', 2 => 'Town 2', 3 => 'Town 3', 4 => 'Town 4', 5 => 'Town 5');
 
 \$info_os =				\"$conf_os\";
 \$info_connection =		\"$conf_connection\";

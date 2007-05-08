@@ -1,6 +1,6 @@
 
 <user>
 0
-Admin
-$1$670.VX1.$yMZedf074tvXHaiO5kglY/
+demo
+$1$Nh2.SA4.$fRJNyqYXDwieUwl2OXyt31
 </user>
