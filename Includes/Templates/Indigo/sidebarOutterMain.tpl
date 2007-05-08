@@ -67,10 +67,10 @@
 			<br /><br /><br />
 			
 			<div align="right">
-			<table style="text-align: left; width: 129px;" border="0" cellpadding="2" cellspacing="2">
+			<table style="text-align: right; width: 200px;" border="0" cellpadding="2" cellspacing="2">
 			  <tbody>
 			    <tr>
-			      <td style="width: 119px;">AAC Version: <tag:AAC_Version /></td>
+			      <td style="width: 250px;"><b>AAC Version</b>: <tag:AAC_Version /></td>
 			    </tr>
 			  </tbody>
 			</table>

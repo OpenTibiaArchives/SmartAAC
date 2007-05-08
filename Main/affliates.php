@@ -33,7 +33,6 @@ $title = 'Affliates';
 $name = $aac_servername;
 $bodySpecial = 'onload="NOTHING"';
 
-
 include_once('../Includes/Templates/bTemplate.php');
 $tpl = new bTemplate();
 
@@ -41,6 +40,7 @@ $tpl->set('title', $title);
 $tpl->set('strayline', $name);
 $tpl->set('bodySpecial', $bodySpecial);
 $tpl->set('stats', $global_stats);
+$tpl->set('AAC_Version', $aac_version);
 
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 

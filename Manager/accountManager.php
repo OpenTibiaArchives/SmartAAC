@@ -45,6 +45,7 @@ $tpl->set('title', $title);
 $tpl->set('strayline', $name);
 $tpl->set('bodySpecial', $bodySpecial);
 $tpl->set('stats', $global_stats);
+$tpl->set('AAC_Version', $aac_version);
 
 $M2_acc = "";
 $M2_pass = "";
