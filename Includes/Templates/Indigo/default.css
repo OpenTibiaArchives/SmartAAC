@@ -250,3 +250,8 @@ textarea, input, select {
 textarea.all-options, input.all-options {
 	width: 250px;
 }
+
+div.tableforme {
+  padding-left: 28px;
+  border: 0px solid;
+}

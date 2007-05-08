@@ -60,17 +60,19 @@ function writeData($file, $content)
 	fclose($fh);
 }
 
-function readOutData($file)
+// Do we need this? ;p
+/* function readOutData($file)
 {
 	$fh = fopen($file, 'r');
 	$theData = fgets($fh);
 	fclose($fh);
 
 	// echo $theData;
-}
+} */
 
 
-function status($ip,$port,$timeout = 10)
+// Not used
+/* function status($ip,$port,$timeout = 10)
 {
 	$connect =  @fsockopen("$server", $port, $errno, $errstr, $timeout); 
    
@@ -83,7 +85,7 @@ function status($ip,$port,$timeout = 10)
 		echo "<font color=green>$servername is online</font>"; 
 	} 
 
-}
+} */
 
 function highscore($skill, $page)
 {

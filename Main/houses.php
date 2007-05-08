@@ -27,7 +27,9 @@
 // ===========================================================
 
 include '../conf.php';
+include '../Includes/resources.php';
 include '../Includes/stats/stats.php';
+$xml_data = file_get_contents($aac_dataDir . "/world/map-house.xml");
 
 $title = 'Houses';
 $name = $aac_servername;
@@ -43,6 +45,54 @@ $tpl->set('stats', $global_stats);
 $tpl->set('AAC_Version', $aac_version);
 
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
+
+$xml = simplexml_load_string($xml_data);
+$xml2 = new SimpleXMLElementExtended($xml_data);
+
+echo "<h1>Houses</h1><br />";
+
+if (file_exists($aac_dataDir . "/world/map-house.xml"))// Check the data dir later on
+{
+	echo '
+	<div class="tableforme">
+	<table style="text-align: left; width: 500px; font-size:14px;" border="0"
+	 cellpadding="4" cellspacing="3">
+	  <tbody>
+	    <tr>
+	      <td style="width: 139px; text-align: center;"><b>ID</b></td>
+	      <td style="width: 124px; text-align: center;"><b>House name</b></td>
+	      <td style="width: 124px; text-align: center;"><b>Town</b></td>
+	      <td style="width: 124px; text-align: center;"><b>Rent</b></td>
+	      <td style="width: 124px; text-align: center;"><b>Size</b></td>
+	    </tr>
+		<tr>
+	      <td style="width: 139px;">&nbsp;</td>
+	      <td style="width: 124px;">&nbsp;</td>
+	      <td style="width: 124px;">&nbsp;</td>
+	      <td style="width: 124px;">&nbsp;</td>
+	      <td style="width: 124px;">&nbsp;</td>
+	    </tr>
+	';
+
+	$scan_limit = $xml2->getChildrenCount();
+
+	for($i = 0; $i < $scan_limit; $i++)
+	{
+		echo "<tr>";
+		echo '<td style="width: 135px; text-align: center;">#' . $xml2->house[$i]->getAttribute('houseid') . '</td>';
+		echo '<td style="width: 200px;">' . $xml2->house[$i]->getAttribute('name') . '</td>';
+		echo '<td style="width: 124px; text-align: center;">' . $xml2->house[$i]->getAttribute('townid') . '</td>';
+		echo '<td style="width: 124px; text-align: center;">' . $xml2->house[$i]->getAttribute('rent') . ' gp</td>';
+		echo '<td style="width: 124px; text-align: center;">' . $xml2->house[$i]->getAttribute('size') . ' sqm</td>';
+		echo "</tr>";
+	}
+echo "</tbody></table></div>";
+echo "<br /><p><b>There are $i houses for this server.</b></p><br />";
+}
+else
+{
+    exit('Failed to open the houses file.');
+}
 
 echo $tpl->fetch('../Includes/Templates/Indigo/sidebar.tpl');
 echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
