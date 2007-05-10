@@ -28,6 +28,7 @@
 
 include '../conf.php';
 include '../Includes/resources.php';
+include '../Includes/stats/stats.php';
 
 $title = 'Guilds';
 $name = $aac_servername;
@@ -39,6 +40,8 @@ $tpl = new bTemplate();
 $tpl->set('title', $title);
 $tpl->set('strayline', $name);
 $tpl->set('bodySpecial', $bodySpecial);
+$tpl->set('stats', $global_stats);
+$tpl->set('AAC_Version', $aac_version);
 
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
@@ -66,34 +69,50 @@ if(isset($act))
 						$guild_id = $row['id'];
 					}
 					
+					$i = 1;
 					$query = sqlquery('SELECT `id`, `name`, `level` FROM `guild_ranks` WHERE `guild_id` = '. $guild_id .'');
-					$guild_ranks = 0;
-					while($row = mysql_fetch_array($query)) { // Hmm, missed something!
+					while($row = mysql_fetch_array($query)) {
 						$guild_rank[$row['id']] = array('name' => $row['name'], 'level' => $row['level']);
-						$guild_ranks++;
+						$guild_ranks[$i] = $row['id'];
+						$i++;
 					}
-					
+					$guild_ranks[0] = $i - 1;
+
+					for($i = 1; $i <= $guild_ranks[0]; $i++) // wrooong
+					{
+						if($guild_ranks[0] == $i) {
+							if($guild_ranks[$i - 1] > $guild_ranks[$i]) { $t = $guild_ranks[$i]; $guild_ranks[$i] = $guild_ranks[$i - 1]; $guild_ranks[$i - 1] = $t; }
+						}
+						else {
+							if($guild_ranks[$i] > $guild_ranks[$i + 1]) { $t = $guild_ranks[$i + 1]; $guild_ranks[$i + 1] = $guild_ranks[$i]; $guild_ranks[$i] = $t; }
+						}
+					}
+
 				echo '
 <center>
-<table style="text-align: left; width: 20%;" border="1" cellpadding="0" cellspacing="2">
+<table style="text-align: left; width: 25%;" border="1" cellpadding="0" cellspacing="2">
 <tbody>
 <tr>
-<td style="width: 10%;">Rank</td>
-<td style="width: 10%;">Name (Title)</td>
+<td style="width: 20%;">Rank</td>
+<td style="width: 70%;">Name (Title)</td>
 </tr>
 </tbody>';
-					for($i = 1; $i <= $guild_ranks; $i++)// Ehm... ok this one is wrong ;p
+					for($x = $guild_ranks[1]; $x <= $x + $guild_ranks[0]; $x++) // or something x.x
 					{
-						$query = sqlquery('SELECT `name`, `rank_id`, `guildnick` FROM `players` WHERE `rank_id` = '. $i .'');
+						$query = sqlquery('SELECT `name`, `rank_id`, `guildnick` FROM `players` WHERE `rank_id` = '. $x .'');
 						while($row = mysql_fetch_array($query)) {
 							echo '
 							<tr>
-							<td><center>'. $row['name'] .'</center></td>
-							<td><center><a href="character.php?char='. $row['name'] .'">'. $row['name'] .'</a></center></td>
+							<td><center>'. $guild_rank[$x]['name'] .'</center></td>
+							<td><center><a href="character.php?char='. $row['name'] .'">'. $row['name'] .'</a>';
+							if($row['guildnick'])
+								echo ' ('. $row['guildnick'] .')';
+							echo '</center></td>
 							</tr>
 							';
 						}
 					}
+					echo '</table></center>';
 				}
 			}
 			else { // List of guilds
