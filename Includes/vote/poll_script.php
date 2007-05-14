@@ -14,7 +14,7 @@
 	// The following code should not be changed unless you know PHP
 
 	if(isset($choice) && !isset($_COOKIE["$cookie_name"])) {
-	$choices_file = fopen($results_file, "r");
+	$choices_file = fopen("results.txt", "r");
 	$choices = fread($choices_file, 1024);
 	$choices = explode("\t", $choices);
 	fclose($choices_file);
@@ -23,19 +23,19 @@
 
 	$file_write = $choices[0]."\t".$choices[1]."\t".$choices[2]."\t".$choices[3]."\t".$choices[4]."\t".$choices[5]."\t".$choices[6]."\t".$choices[7]."\t".$choices[8]."\t".$choices[9];
 
-	$choices_file = fopen($results_file, "w");
+	$choices_file = fopen("results.txt", "w");
 	fwrite($choices_file, $file_write);
 	fclose($choices_file);
 
 	setcookie("$cookie_name", "true", time()+$cookie_expires);
-	header("Location: $redirect_page?message=1#poll");
+	header("Location: ../../Main/vote.php?message=1#poll");
 	}
 
 	elseif(!isset($choice)) {
-	header("Location: $redirect_page?message=2#poll");
+	header("Location: ../../Main/vote.php?message=2#poll");
 	}
 
 	elseif(isset($_COOKIE["$cookie_name"])) {
-	header("Location: $redirect_page?message=3#poll");
+	header("Location: ../../Main/vote.php?message=3#poll");
 	}
 ?>

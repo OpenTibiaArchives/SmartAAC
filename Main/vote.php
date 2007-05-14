@@ -59,7 +59,7 @@ if($modules_voting)
 
 	$poll_results_file = "../Includes/vote/results.txt"; // Change this to the file that holds the poll results
 
-	$poll_redirect_page = "vote.php"; // Change this to the page you want to redirect the visitor to after he/she votes
+	//$poll_redirect_page = "vote.php"; // Change this to the page you want to redirect the visitor to after he/she votes
 
 	$poll_cookie_expires = 604800; // Change this to the amount of time, in seconds, the cookie stays in the visitor's browser so that he/she may vote again after the cookie expires. 604800 seconds is equal to one week
 
