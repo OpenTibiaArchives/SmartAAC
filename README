@@ -1,0 +1,38 @@
+=============================================
+=== Smart-Ass 2.0			===
+=== Codename: Tricky Dicky	===
+=== Alpha 1 Release			===
+=============================================
+=== WEBSITE: http://smart.pekay.co.uk ===
+=============================================
+
+Short readme for people to read BEFORE they touch Smart-Ass.
+We have developed Smart-Ass 2, been updated for the new
+DB structure, and on.
+
+As this is a development release/preview, we don't particularly
+support people installing this to be absolutly stable :p.
+
+Remember! Development releases may not be ready fully or
+can do some wierd things. You have been warned.
+
+
+--------
+
+What you basicly need:
+* A web server (preferably Apache)
+* PHP 5
+* MySQL
+* GD, SimpleXML to be working
+* Write permissions for the webserver to write to the Smart-Ass directory!
+
+--------
+
+To get started off:
+* Just goto index.php and you should be redirected to the Installation
+* You'll be asked things, etc etc, and asked to fill out fields
+
+--------
+
+WHAT IF YOU FIND SOMETHING WRONG/BUGS:
+Go straight to: http://smart.pekay.co.uk/wiki/index.php?title=Bugs
