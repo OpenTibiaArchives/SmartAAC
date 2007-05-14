@@ -30,6 +30,7 @@
 
 include '../conf.php';
 include '../Includes/stats/stats.php';
+include '../Includes/counter/counter.php';
 
 $title = 'Login';
 $name = $aac_servername;
@@ -43,6 +44,8 @@ $tpl->set('strayline', $name);
 $tpl->set('bodySpecial', $bodySpecial);
 $tpl->set('stats', $global_stats);
 $tpl->set('AAC_Version', $aac_version);
+$tpl->set('Total_Visits', $total);
+$tpl->set('Unique_Visits', $total_uniques);
 
 $M2_account = $_SESSION['M2_account'];
 $M2_password = $_SESSION['M2_password'];

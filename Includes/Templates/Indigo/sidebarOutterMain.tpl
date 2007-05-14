@@ -71,6 +71,12 @@
 			  <tbody>
 			    <tr>
 			      <td style="width: 250px;"><b>AAC Version</b>: <tag:AAC_Version /></td>
+				</tr>
+				<tr>
+				  <td style="width: 250px;"><b>Total Visits</b>: <tag:Total_Visits /></td>
+			    </tr>
+				<tr>
+				  <td style="width: 250px;"><b>Unique Visits</b>: <tag:Unique_Visits /></td>
 			    </tr>
 			  </tbody>
 			</table>
