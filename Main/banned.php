@@ -45,31 +45,38 @@ $tpl->set('AAC_Version', $aac_version);
 
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
-$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
-mysql_select_db($sql_db, $sqlconnect);
+if($modules_bannedplayers)
+{
+	$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
+	mysql_select_db($sql_db, $sqlconnect);
 
-echo '
-<center><h2>Banned Players:</h2><br><br>
-<table style="text-align: left; width: 50%;" border="1" cellpadding="0" cellspacing="2">
-  <tbody>
-    <tr>
-      <td style="width: 10%;">Ban Type</td>
-      <td style="width: 50%;">Player Name</td>
-      <td style="width: 40%;">Until</td>
-    </tr>
-  </tbody>';
-	$query = sqlquery('SELECT `type`, `player`, `time` FROM `bans` ORDER BY `time` ASC');
-	$types = array(1 => 'IP', 2 => 'Account', 3 => 'Player');
-	while($row = mysql_fetch_array($query)) {
-		echo '
-		<tr>
-		<td><center>'. $types[$row['type']] .'</center></td>
-		<td><center><a href="character.php?char='. userFromID($row['player']) .'">'. userFromID($row['player']) .'</a></center></td>
-		<td><center>'. date('M d Y, H:i:s T', $row['time']) .'</center></td>
-		</tr>
-		';
-	}
-echo '</table></center>';
+	echo '
+	<center><h2>Banned Players:</h2><br><br>
+	<table style="text-align: left; width: 50%;" border="1" cellpadding="0" cellspacing="2">
+	  <tbody>
+	    <tr>
+	      <td style="width: 10%;">Ban Type</td>
+	      <td style="width: 50%;">Player Name</td>
+	      <td style="width: 40%;">Until</td>
+	    </tr>
+	  </tbody>';
+		$query = sqlquery('SELECT `type`, `player`, `time` FROM `bans` ORDER BY `time` ASC');
+		$types = array(1 => 'IP', 2 => 'Account', 3 => 'Player');
+		while($row = mysql_fetch_array($query)) {
+			echo '
+			<tr>
+			<td><center>'. $types[$row['type']] .'</center></td>
+			<td><center><a href="character.php?char='. userFromID($row['player']) .'">'. userFromID($row['player']) .'</a></center></td>
+			<td><center>'. date('M d Y, H:i:s T', $row['time']) .'</center></td>
+			</tr>
+			';
+		}
+	echo '</table></center>';
+}
+echo
+{
+	echo "<h1>Module has been disabled by the admin</h1>";
+}
 
 echo $tpl->fetch('../Includes/Templates/Indigo/sidebar.tpl');
 echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');

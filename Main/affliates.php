@@ -44,8 +44,15 @@ $tpl->set('AAC_Version', $aac_version);
 
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
-echo "<p>Here are sites made by fellow fans of OTServ, or $aac_servername.</p>";
-include '../Includes/links.php';
+if($modules_affliates)
+{
+	echo "<p>Here are sites made by fellow fans of OTServ, or $aac_servername.</p>";
+	include '../Includes/links.php';
+}
+else
+{
+	echo "<h1>Module has been disabled by the admin</h1>";
+}
 
 echo $tpl->fetch('../Includes/Templates/Indigo/sidebar.tpl');
 echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');

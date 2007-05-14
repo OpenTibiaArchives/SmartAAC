@@ -46,42 +46,49 @@ $tpl->set('AAC_Version', $aac_version);
 
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
-$xml = simplexml_load_string($xml_data);
-$xml2 = new SimpleXMLElementExtended($xml_data);
-
-echo "<h1>Commands</h1><br />";
-
-if (file_exists($aac_dataDir . '/commands.xml'))// Check the data dir later on
+if($modules_commands)
 {
-	echo '
-	<table style="text-align: left; width: 283px; font-size:14px;" border="0"
-	 cellpadding="4" cellspacing="3">
-	  <tbody>
-	    <tr>
-	      <td style="width: 139px; text-align: center;"><b>Command</b></td>
-	      <td style="width: 124px; text-align: center;"><b>Access Level</b></td>
-	    </tr>
-		<tr>
-	      <td style="width: 139px;">&nbsp;</td>
-	      <td style="width: 124px;">&nbsp;</td>
-	    </tr>
-	';
+	$xml = simplexml_load_string($xml_data);
+	$xml2 = new SimpleXMLElementExtended($xml_data);
 
-	$scan_limit = $xml2->getChildrenCount();
+	echo "<h1>Commands</h1><br />";
 
-	for($i = 0; $i < $scan_limit; $i++)
+	if (file_exists($aac_dataDir . '/commands.xml'))// Check the data dir later on
 	{
-		echo "<tr>";
-		echo '<td style="width: 139px;">' . $xml2->command[$i]->getAttribute('cmd') . '</td>';
-		echo '<td style="width: 124px; text-align: center;">' . $xml2->command[$i]->getAttribute('access') . '</td>';
-		echo "</tr>";
+		echo '
+		<table style="text-align: left; width: 283px; font-size:14px;" border="0"
+		 cellpadding="4" cellspacing="3">
+		  <tbody>
+		    <tr>
+		      <td style="width: 139px; text-align: center;"><b>Command</b></td>
+		      <td style="width: 124px; text-align: center;"><b>Access Level</b></td>
+		    </tr>
+			<tr>
+		      <td style="width: 139px;">&nbsp;</td>
+		      <td style="width: 124px;">&nbsp;</td>
+		    </tr>
+		';
+
+		$scan_limit = $xml2->getChildrenCount();
+
+		for($i = 0; $i < $scan_limit; $i++)
+		{
+			echo "<tr>";
+			echo '<td style="width: 139px;">' . $xml2->command[$i]->getAttribute('cmd') . '</td>';
+			echo '<td style="width: 124px; text-align: center;">' . $xml2->command[$i]->getAttribute('access') . '</td>';
+			echo "</tr>";
+		}
+	echo "</tbody></table>";
+	echo "<br /><b>There are $i commands for this server.</b>";
 	}
-echo "</tbody></table>";
-echo "<br /><b>There are $i commands for this server.</b>";
+	else
+	{
+	    exit('Failed to open commands.xml.');
+	}
 }
 else
 {
-    exit('Failed to open commands.xml.');
+	echo "<h1>Module has been disabled by the admin</h1>";
 }
 
 echo $tpl->fetch('../Includes/Templates/Indigo/sidebar.tpl');

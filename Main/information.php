@@ -44,18 +44,25 @@ $tpl->set('AAC_Version', $aac_version);
 
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
-echo "<h1>Instructions</h1><br />";
-echo "<p>Information about the server can be found here, this information is general information for where users can find out how to connect to the server.</p>";
-echo "
-<OL>
-<LI>Download Tibia 7.92
-<LI>Download the IP Changer
-<LI>Put the ip changer in the Tibia folder
-<LI>Open both Tibia and the IP changer
-<LI>Insert $net_ipaddress in the box
-<LI><i>You may need the port, it is $net_port</i>
-<LI>Press Change IP and then Login on the Tibia client!
-</OL>";
+if($modules_infopage)
+{
+	echo "<h1>Instructions</h1><br />";
+	echo "<p>Information about the server can be found here, this information is general information for where users can find out how to connect to the server.</p>";
+	echo "
+	<OL>
+	<LI>Download Tibia 7.92
+	<LI>Download the IP Changer
+	<LI>Put the ip changer in the Tibia folder
+	<LI>Open both Tibia and the IP changer
+	<LI>Insert $net_ipaddress in the box
+	<LI><i>You may need the port, it is $net_port</i>
+	<LI>Press Change IP and then Login on the Tibia client!
+	</OL>";
+}
+else
+{
+	echo "<h1>Module has been disabled by the admin</h1>";
+}
 
 echo $tpl->fetch('../Includes/Templates/Indigo/sidebar.tpl');
 echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');

@@ -43,26 +43,34 @@ $tpl->set('stats', $global_stats);
 $tpl->set('AAC_Version', $aac_version);
 
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
-?>
-<h1>Clients</h2><br />
-<?PHP if($main_downloads_warning == "true") { echo '<p>You can use alternative clients below to prevent breaking some Service Agreement of Cipsofts</p>'; } ?>
-<ul>
-<li><a href="http://dl1.tibianetwork.net/dl/13e45e671d52965f8cbf9bb16e2d2e4e/463f1763/tibicams/clients/tibia792.exe">Tibia 7.92</a></li>
-<li><a href="http://dl1.tibianetwork.net/dl/659a504d0159c85679545c740cf7286b/463f1763/tibicams/clients/tibia79.exe">Tibia 7.9</a></li>
-<li><a href="http://dl1.tibianetwork.net/dl/96155c8fa94e4bd92718853b369ace67/463f1763/tibicams/clients/tibia76.exe">Tibia 7.6</a></li>
-<li><a href="http://dl1.tibianetwork.net/dl/afd94e47b5ed33acb65307ed702209f5/463f1763/tibicams/clients/tibia74.exe">Tibia 7.4</a></li>
-<li><a href="http://dl1.tibianetwork.net/dl/f201a541847fb8e1611e774d272d3826/463f1763/tibicams/clients/tibia71.exe">Tibia 7.1</a></li>
-<li><a href="http://otfans.net/forumdisplay.php?f=127">The Outcast Client (Alternative Client)</a></li>
-</ul>
 
-<h1>IP Changers</h2><br />
-<ul>
-<li><a href="http://otfans.net/showthread.php?t=20767">Tibialoader</a></li>
-<li><a href="http://www.cpz-gaming.com/IP/FILER/ipchanger.zip">Tibia MULTI-IPChanger</a></li>
-</ul>
+if($modules_downloads)
+{
+	?>
+	<h1>Clients</h2><br />
+	<?PHP if($main_downloads_warning == "true") { echo '<p>You can use alternative clients below to prevent breaking some Service Agreement of Cipsofts</p>'; } ?>
+	<ul>
+	<li><a href="http://dl1.tibianetwork.net/dl/13e45e671d52965f8cbf9bb16e2d2e4e/463f1763/tibicams/clients/tibia792.exe">Tibia 7.92</a></li>
+	<li><a href="http://dl1.tibianetwork.net/dl/659a504d0159c85679545c740cf7286b/463f1763/tibicams/clients/tibia79.exe">Tibia 7.9</a></li>
+	<li><a href="http://dl1.tibianetwork.net/dl/96155c8fa94e4bd92718853b369ace67/463f1763/tibicams/clients/tibia76.exe">Tibia 7.6</a></li>
+	<li><a href="http://dl1.tibianetwork.net/dl/afd94e47b5ed33acb65307ed702209f5/463f1763/tibicams/clients/tibia74.exe">Tibia 7.4</a></li>
+	<li><a href="http://dl1.tibianetwork.net/dl/f201a541847fb8e1611e774d272d3826/463f1763/tibicams/clients/tibia71.exe">Tibia 7.1</a></li>
+	<li><a href="http://otfans.net/forumdisplay.php?f=127">The Outcast Client (Alternative Client)</a></li>
+	</ul>
 
+	<h1>IP Changers</h2><br />
+	<ul>
+	<li><a href="http://otfans.net/showthread.php?t=20767">Tibialoader</a></li>
+	<li><a href="http://www.cpz-gaming.com/IP/FILER/ipchanger.zip">Tibia MULTI-IPChanger</a></li>
+	</ul>
+	<?PHP
+	
+}
+else
+{
+	echo "<h1>Module has been disabled by the admin</h1>";
+}
 
-<?PHP
 echo $tpl->fetch('../Includes/Templates/Indigo/sidebar.tpl');
 echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
 echo $tpl->fetch('../Includes/Templates/Indigo/bottom.tpl');

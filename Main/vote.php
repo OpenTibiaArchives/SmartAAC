@@ -44,6 +44,8 @@ $tpl->set('AAC_Version', $aac_version);
 
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
+if($modules_voting)
+{
 	/*
 	Begin options
 	*/
@@ -71,45 +73,48 @@ echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 	$choices = fread($choices_file, 1024);
 	$choices = explode("\t", $choices);
 	fclose($choices_file);
-?>
+	?>
 
-<p>Voting for the server is very simple, except...</p><br /><br />
+	<table border="0" cellpadding="15" cellspacing="5">
+		<tr>
+			<td style="background: #eee; color: #000; text-align: center">
+			<h1>&nbsp;<?=$main_votequestion?>&nbsp;</h2>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<br />
+			<br /><font size="+1"><?=$message?></font><br />
 
-<table border="0" cellpadding="15" cellspacing="5">
-	<tr>
-		<td style="background: #eee; color: #000; text-align: center">
-		<h1>&nbsp;<?=$main_votequestion?>&nbsp;</h2>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<br />
-		<br /><font size="+1"><?=$message?></font><br />
+			<form action="<?=$poll_file?>" method="post">
+			<hr /><br />
+			<p><input name="choice" type="radio" value="0" /> <?=$main_voteanswer1?> (<strong><?=$choices[0]?> votes</strong>)</p>
+			<p><input name="choice" type="radio" value="1" /> <?=$main_voteanswer2?> (<strong><?=$choices[1]?> votes</strong>)</p>
+			<p><input name="choice" type="radio" value="2" /> <?=$main_voteanswer3?> (<strong><?=$choices[2]?> votes</strong>)</p>
+			<p><input name="choice" type="radio" value="3" /> <?=$main_voteanswer4?> (<strong><?=$choices[3]?> votes</strong>)</p>
 
-		<form action="<?=$poll_file?>" method="post">
-		<hr /><br />
-		<p><input name="choice" type="radio" value="0" /> <?=$main_voteanswer1?> (<strong><?=$choices[0]?> votes</strong>)</p>
-		<p><input name="choice" type="radio" value="1" /> <?=$main_voteanswer2?> (<strong><?=$choices[1]?> votes</strong>)</p>
-		<p><input name="choice" type="radio" value="2" /> <?=$main_voteanswer3?> (<strong><?=$choices[2]?> votes</strong>)</p>
-		<p><input name="choice" type="radio" value="3" /> <?=$main_voteanswer4?> (<strong><?=$choices[3]?> votes</strong>)</p>
-
-		
-		<hr />
-		<p><input name="cookie_name" type="hidden" value="<?=$poll_cookie_name?>" />
-		<input name="results_file" type="hidden" value="<?=$poll_results_file?>" />
-		<input name="redirect_page" type="hidden" value="<?=$poll_redirect_page?>" /></p>
-		<p><input name="cookie_expires" type="hidden" value="<?=$poll_cookie_expires?>" /></p>	<p><strong><?=$choices[0]+$choices[1]+$choices[2]+$choices[3]+$choices[4]+$choices[5]+$choices[6]+$choices[7]+$choices[8]+$choices[9]?></strong> total votes</p>
-		<?PHP if(!isset($_COOKIE["$poll_cookie_name"])) { ?>
-<p><input name="submit" style="margin: 0 0 10px 0; padding: 0 15px 0 15px" type="submit" value="Vote" /></p>
-		<?PHP } else { ?>
-<p style="margin: -5px 0 0 0; text-align: left"><em>You have already voted.</em></p>
-		<?PHP } ?>
-</form>
-		</td>
-	</tr>
-</table>
-
+			
+			<hr />
+			<p><input name="cookie_name" type="hidden" value="<?=$poll_cookie_name?>" />
+			<input name="results_file" type="hidden" value="<?=$poll_results_file?>" />
+			<input name="redirect_page" type="hidden" value="<?=$poll_redirect_page?>" /></p>
+			<p><input name="cookie_expires" type="hidden" value="<?=$poll_cookie_expires?>" /></p>	<p><strong><?=$choices[0]+$choices[1]+$choices[2]+$choices[3]+$choices[4]+$choices[5]+$choices[6]+$choices[7]+$choices[8]+$choices[9]?></strong> total votes</p>
+			<?PHP if(!isset($_COOKIE["$poll_cookie_name"])) { ?>
+	<p><input name="submit" style="margin: 0 0 10px 0; padding: 0 15px 0 15px" type="submit" value="Vote" /></p>
+			<?PHP } else { ?>
+	<p style="margin: -5px 0 0 0; text-align: left"><em>You have already voted.</em></p>
+			<?PHP } ?>
+		</form>
+				</td>
+			</tr>
+	</table>
 <?PHP
+}
+else
+{
+	echo "<h1>Module has been disabled by the admin</h1>";
+}
+
 echo $tpl->fetch('../Includes/Templates/Indigo/sidebar.tpl');
 echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
 echo $tpl->fetch('../Includes/Templates/Indigo/bottom.tpl');

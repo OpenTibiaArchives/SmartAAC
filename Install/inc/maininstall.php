@@ -80,7 +80,7 @@ else
 
 		label{
 		float: left;
-		width: 145px;
+		width: 220px;
 		font-weight: bold;
 		font-size: 12px;
 		}
@@ -220,11 +220,40 @@ else
 		<input type=\"text\" name=\"char_lookfeet\" value=\"$char_lookfeet\" /><br />
 		<label for=\"char_town\">Town ID:</label>
 		<input type=\"text\" name=\"char_town\" value=\"$char_town\" /><br /><br />
+		
+		<h1>Modules</h1>
+		<label for=\"CharSearch\">Char search:</label>
+		<input type=\"checkbox\" name=\"CharSearch\" class=\"boxes\" /><br /><br />
+		<label for=\"Feedback\">Feedback page:</label>
+		<input type=\"checkbox\" name=\"Feedback\" class=\"boxes\" /><br /><br />
+		<label for=\"Affliates\">Affliates page:</label>
+		<input type=\"checkbox\" name=\"Affliates\" class=\"boxes\" /><br /><br />
+		<label for=\"Guilds\">Guilds:</label>
+		<input type=\"checkbox\" name=\"Guilds\" class=\"boxes\" disabled=\"disabled\" /><br /><br />
+		<label for=\"Houses\">Houses:</label>
+		<input type=\"checkbox\" name=\"Houses\" class=\"boxes\" /><br /><br />
+		<label for=\"Highscores\">Highscores:</label>
+		<input type=\"checkbox\" name=\"Highscores\" class=\"boxes\" /><br /><br />
+		<label for=\"InfoPage\">Info page:</label>
+		<input type=\"checkbox\" name=\"InfoPage\" class=\"boxes\" /><br /><br />
+		<label for=\"ServerStats\">Server stats:</label>
+		<input type=\"checkbox\" name=\"ServerStats\" class=\"boxes\" /><br /><br />
+		<label for=\"DownloadsPage\">Downloads page:</label>
+		<input type=\"checkbox\" name=\"DownloadsPage\" class=\"boxes\" /><br /><br />
+		<label for=\"BannedPlayers\">Banned players:</label>
+		<input type=\"checkbox\" name=\"BannedPlayers\" class=\"boxes\" /><br /><br />
+		<label for=\"InGameCommands\">In-game commands page:</label>
+		<input type=\"checkbox\" name=\"InGameCommands\" class=\"boxes\" /><br /><br />
+		<label for=\"RulesPage\">Rules page:</label>
+		<input type=\"checkbox\" name=\"RulesPage\" class=\"boxes\" /><br /><br />
+		<label for=\"VotePage\">Voting:</label>
+		<input type=\"checkbox\" name=\"VotePage\" class=\"boxes\" /><br /><br /><br />
 		";
 
 		if($char_rook == "true")
 		{
-			echo "	
+			echo "
+			<h1>Character Values</h1>
 			<label for=\"char_maglevel_none\">No vocation Magic Level:</label>
 			<input type=\"text\" name=\"char_maglevel_none\" value=\"\" /><br />
 			<label for=\"char_health_none\">No vocation Health:</label>
@@ -235,7 +264,8 @@ else
 		}
 		elseif($char_rook == "false")
 		{
-			echo "	
+			echo "
+			<h1>Character Values</h1>
 			<label for=\"char_maglevel_sorcerer\">Sorcerer Magic Level:</label>
 			<input type=\"text\" name=\"char_maglevel_sorcerer\" value=\"\" /><br />
 			<label for=\"char_health_sorcerer\">Sorcerer Health:</label>

@@ -44,73 +44,80 @@ $tpl->set('AAC_Version', $aac_version);
 
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
-echo '<h1>Info</h1>';
-@$fp = fsockopen ($ip, 7171, $errno, $errstr, 1);
-if (!$fp)
+if($modules_serverstats)
 {
-	echo '<p>The server is offline, I cannot get information.</p>';
+	echo '<h1>Info</h1>';
+	@$fp = fsockopen ($ip, 7171, $errno, $errstr, 1);
+	if (!$fp)
+	{
+		echo '<p>The server is offline, I cannot get information.</p>';
+	}
+	else
+	{
+		echo '
+		<table style="text-align: left; width: 450px;" border="0"
+		 cellpadding="2" cellspacing="2">
+		  <tbody>
+		    <tr>
+		      <td style="width: 225px;"><b>Uptime</b></td>
+		      <td style="width: 300px;"><b>' . $days . '</b> Days, <b>' . $hours . '</b> Hours, <b>' . $minutes . '</b> Minutes and <b>' . $seconds . '</b> Seconds</td>
+		    </tr>
+		    <tr>
+		      <td style="width: 225px;"><b>Players online</b></td>
+		      <td style="width: 300px;">' . $info['online'] . ' of ' . $info['max'] . '</td>
+		    </tr>
+		    <tr>
+		      <td style="width: 225px;"><b>Peak</b></td>
+		      <td style="width: 300px;">' . $info['peak'] . '</td>
+		    </tr>
+		    <tr>
+		      <td style="width: 225px;"><b>Server location</b></td>
+		      <td style="width: 300px;">' . $info['location'] . '</td>
+		    </tr>
+		    <tr>
+		      <td style="width: 225px;"><b>Protocol version</b></td>
+		      <td style="width: 300px;">' . $info['version'] . '</td>
+		    </tr>
+		    <tr>
+		      <td style="width: 225px;"><b>Monsters Spawned</b></td>
+		      <td style="width: 300px;">' . $info['totalmonsters'] . '</td>
+		    </tr>
+		    <tr>
+		      <td style="width: 225px;">&nbsp;</td>
+		      <td style="width: 300px;">&nbsp;</td>
+		    </tr>
+		    <tr>
+		      <td style="width: 225px;"><b>Administrator</b></td>
+		      <td style="width: 300px;">' . $info['name'] . '</td>
+		    </tr>
+		    <tr>
+		      <td style="width: 225px;"><b>Administrator email</b></td>
+		      <td style="width: 300px;">' . $info['email'] . '</td>
+		    </tr>
+		    <tr>
+		      <td style="width: 225px;">&nbsp;</td>
+		      <td style="width: 300px;">&nbsp;</td>
+		    </tr>
+		    <tr>
+		      <td style="width: 225px;"><b>OS</b></td>
+		      <td style="width: 300px;">' . $info_os . '</td>
+		    </tr>
+		    <tr>
+		      <td style="width: 225px;"><b>Connection</b></td>
+		      <td style="width: 300px;">' . $info_connection . '</td>
+		    </tr>
+		    <tr>
+		      <td style="width: 225px;"><b>Uptime Type</b></td>
+		      <td style="width: 300px;">' . $info_uptimetype . '</td>
+		    </tr>
+		  </tbody>
+		</table>
+		';
+	}
 }
 else
 {
-	echo '
-	<table style="text-align: left; width: 450px;" border="0"
-	 cellpadding="2" cellspacing="2">
-	  <tbody>
-	    <tr>
-	      <td style="width: 225px;"><b>Uptime</b></td>
-	      <td style="width: 300px;"><b>' . $days . '</b> Days, <b>' . $hours . '</b> Hours, <b>' . $minutes . '</b> Minutes and <b>' . $seconds . '</b> Seconds</td>
-	    </tr>
-	    <tr>
-	      <td style="width: 225px;"><b>Players online</b></td>
-	      <td style="width: 300px;">' . $info['online'] . ' of ' . $info['max'] . '</td>
-	    </tr>
-	    <tr>
-	      <td style="width: 225px;"><b>Peak</b></td>
-	      <td style="width: 300px;">' . $info['peak'] . '</td>
-	    </tr>
-	    <tr>
-	      <td style="width: 225px;"><b>Server location</b></td>
-	      <td style="width: 300px;">' . $info['location'] . '</td>
-	    </tr>
-	    <tr>
-	      <td style="width: 225px;"><b>Protocol version</b></td>
-	      <td style="width: 300px;">' . $info['version'] . '</td>
-	    </tr>
-	    <tr>
-	      <td style="width: 225px;"><b>Monsters Spawned</b></td>
-	      <td style="width: 300px;">' . $info['totalmonsters'] . '</td>
-	    </tr>
-	    <tr>
-	      <td style="width: 225px;">&nbsp;</td>
-	      <td style="width: 300px;">&nbsp;</td>
-	    </tr>
-	    <tr>
-	      <td style="width: 225px;"><b>Administrator</b></td>
-	      <td style="width: 300px;">' . $info['name'] . '</td>
-	    </tr>
-	    <tr>
-	      <td style="width: 225px;"><b>Administrator email</b></td>
-	      <td style="width: 300px;">' . $info['email'] . '</td>
-	    </tr>
-	    <tr>
-	      <td style="width: 225px;">&nbsp;</td>
-	      <td style="width: 300px;">&nbsp;</td>
-	    </tr>
-	    <tr>
-	      <td style="width: 225px;"><b>OS</b></td>
-	      <td style="width: 300px;">' . $info_os . '</td>
-	    </tr>
-	    <tr>
-	      <td style="width: 225px;"><b>Connection</b></td>
-	      <td style="width: 300px;">' . $info_connection . '</td>
-	    </tr>
-	    <tr>
-	      <td style="width: 225px;"><b>Uptime Type</b></td>
-	      <td style="width: 300px;">' . $info_uptimetype . '</td>
-	    </tr>
-	  </tbody>
-	</table>
-	';
+echo "<h1>Module has been disabled by the admin</h1>";
 }
 
 echo $tpl->fetch('../Includes/Templates/Indigo/sidebar.tpl');

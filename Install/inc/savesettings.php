@@ -36,7 +36,7 @@ else
 	$name = 'Smart-Ass';
 	$bodySpecial = 'onload="openAlert()"';
 	$documentation = file_get_contents('inc/savesettings.inc');
-	$char_rook_use = $_POST['char_rook'];
+
 
 	include_once('../Includes/Templates/bTemplate.php');
 	$tpl = new bTemplate();
@@ -67,8 +67,22 @@ else
 	$conf_downloadswarning =($_POST["DownloadsWarning"]) ? "true" : "false";
 	$conf_enable_feedback =	$_POST['main_enable_feedback'];
 	$conf_main_email = 		$_POST['main_email'];
+	
+	$conf_modules_CharSearch =			($_POST['CharSearch']) ? "true" : "false";
+	$conf_modules_Feedback =			($_POST['Feedback']) ? "true" : "false";
+	$conf_modules_Affliates =			($_POST['Affliates']) ? "true" : "false";
+	$conf_modules_Guilds =				($_POST['Guilds']) ? "true" : "false";
+	$conf_modules_Houses =				($_POST['Houses']) ? "true" : "false";
+	$conf_modules_Highscores =			($_POST['Highscores']) ? "true" : "false";
+	$conf_modules_InfoPage =			($_POST['InfoPage']) ? "true" : "false";
+	$conf_modules_ServerStats =			($_POST['ServerStats']) ? "true" : "false";
+	$conf_modules_DownloadsPage =		($_POST['DownloadsPage']) ? "true" : "false";
+	$conf_modules_BannedPlayers =		($_POST['BannedPlayers']) ? "true" : "false";
+	$conf_modules_InGameCommands =		($_POST['InGameCommands']) ? "true" : "false";
+	$conf_modules_RulesPage =			($_POST['RulesPage']) ? "true" : "false";
+	$conf_modules_VotePage =			($_POST['VotePage']) ? "true" : "false";
 
-	$conf_char_rook = 		($_POST["char_rook"]) ? "true" : "false";
+	$char_rook_use = 		$_POST['char_rook'];
 	$conf_char_town =		$_POST["char_town"];
 	$conf_char_group =		$_POST["char_group"];
 	$conf_char_exp =		$_POST["char_exp"];
@@ -212,7 +226,21 @@ else
 \$info_connection =		\"$conf_connection\";
 \$info_uptimetype =		\"$conf_uptimetype\";
 
-\$char_rook =			$conf_char_rook;
+\$modules_charsearch = $conf_modules_CharSearch;
+\$modules_feedback = $conf_modules_Feedback;
+\$modules_affliates = $conf_modules_Affliates;
+\$modules_guilds = $conf_modules_Guilds;
+\$modules_houses = $conf_modules_Houses;
+\$modules_highscores = $conf_modules_Highscores;
+\$modules_infopage = $conf_modules_InfoPage;
+\$modules_serverstats = $conf_modules_ServerStats;
+\$modules_downloads = $conf_modules_DownloadsPage;
+\$modules_bannedplayers = $conf_modules_BannedPlayers;
+\$modules_commands = $conf_modules_InGameCommands;
+\$modules_rules = $conf_modules_RulesPage;
+\$modules_voting = $conf_modules_VotePage;
+
+\$char_rook =			$char_rook_use;
 \$char_group =			$conf_char_group;
 \$char_exp =			$conf_char_exp;
 \$char_cap =			$conf_char_cap;
@@ -250,7 +278,7 @@ else
 	fclose($confFile);
 
 	echo "
-	<p>Go forward --></p>
+	<p>Go forward -->$conf_char_rook</p>
 	<div align=\"center\">
 	<form action=\"install.php?step=6\" method=\"post\">
 	<br><input type=\"submit\" value=\"Next\" class=\"btn\"/>
