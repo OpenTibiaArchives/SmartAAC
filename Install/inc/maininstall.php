@@ -53,7 +53,7 @@ else
 	$char_rook = $_POST['char_rook'];
 	$main_enable_feedback = $_POST['main_enable_feedback'];
 
-	if($license_decide == "Disagree")
+ 	if($license_decide == "Disagree")
 	{
 		echo '<script type="text/javascript">
 	  function openAlert() {
@@ -63,8 +63,8 @@ else
 		</script>';
 	}
 	elseif($license_decide == "Agree")
-	{
-		$error = $_GET['error'];
+	{ 
+ 		$error = $_GET['error'];
 		$errors =
 		array(
 			'noTown' => 'You have to type in a Town ID!',
@@ -74,7 +74,7 @@ else
 		if(strlen($errors[$error]) > 0){
 			echo "<font color=\"red\" size=\"4\">Error: $errors[$error]</font>";
 		}
-		
+
 		echo "
 		<style type=\"text/css\">
 
@@ -110,7 +110,7 @@ else
 		}
 		</style>
 
-		<form action=\"install.php?step=5\" method=\"post\">
+		<form action=\"install.php?step=5\" method=\"POST\">
 		<input type=\"hidden\" name=\"char_rook\" value=\"$char_rook\">
 		<input type=\"hidden\" name=\"main_enable_feedback\" value=\"$main_enable_feedback\">
 		
@@ -147,7 +147,7 @@ else
 		if($main_enable_feedback == "true")
 		{
 			echo "
-			<h1>Feedback Settings $main_enable_feedback</h2>
+			<h1>Feedback Settings:</h2>
 			<label for=\"main_email\">Your email:</label>
 			<input type=\"text\" name=\"main_email\" value=\"$main_email\" /><br /><br />
 			";

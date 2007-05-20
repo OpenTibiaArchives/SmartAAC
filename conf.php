@@ -3,7 +3,7 @@
 // ===========================================================
 //	Smart-Ass: The Userfriendly AAC
 //	Version: 2.0 Development Only
-//	Configuration Created: Mon, 14 May 2007 16:10:34 +0100
+//	Configuration Created: Sun, 20 May 2007 18:56:00 +0100
 //	
 //	USE OF THIS PROGRAM TO RELY ON IT FOR SERVER USE IS NOT
 // 	RECOMMENDED! THIS IS FOR TESTING ONLY.
@@ -28,9 +28,10 @@
 // ===========================================================
 
 $aac_status = 			"Not Installed";
-$aac_version = 		"2.0 Alpha1";
+$aac_version = 			"2.0 Alpha 2";
+$aac_versioncode = 		199;
 $aac_dataDir =			"C:\\Dev-Cpp\\otserv\\data";
-$aac_mapname =		"map";
+$aac_mapname =			"map";
 
 $aac_minacclen = 		6;
 $aac_maxacclen = 		8;
@@ -43,9 +44,9 @@ $aac_servername = 		"TestName";
 $net_ipaddress =		"localhost";
 $net_port = 			"7171";
 
-$aac_md5passwords =	false;
-$aac_imgver = 			false;
-$main_downloads_warning = false;
+$aac_md5passwords =	true;
+$aac_imgver = 			true;
+$main_downloads_warning = true;
 
 $sql_host =			"localhost";
 $sql_user =			"root";
@@ -59,27 +60,27 @@ $main_voteanswer1 = "More monsters";
 $main_voteanswer2 = "More hunting areas";
 $main_voteanswer3 = "More houses";
 $main_voteanswer4 = "New towns";
-$main_enable_feedback = false;
-$main_mail = "none@none.nodomain";
+$main_enable_feedback = true;
+$main_mail = "noob";
 $main_towns = array(1 => 'Town 1', 2 => 'Town 2', 3 => 'Town 3', 4 => 'Town 4', 5 => 'Town 5');
 
 $info_os =				"Windows XP";
 $info_connection =		"5 Mbit";
 $info_uptimetype =		"24/7";
 
-$modules_charsearch = true;
-$modules_feedback = true;
-$modules_affliates = true;
+$modules_charsearch = false;
+$modules_feedback = false;
+$modules_affliates = false;
 $modules_guilds = false;
 $modules_houses = false;
-$modules_highscores = true;
+$modules_highscores = false;
 $modules_infopage = true;
 $modules_serverstats = true;
 $modules_downloads = true;
-$modules_bannedplayers = true;
+$modules_bannedplayers = false;
 $modules_commands = false;
-$modules_rules = true;
-$modules_voting = true;
+$modules_rules = false;
+$modules_voting = false;
 
 $char_rook =			true;
 $char_group =			1;

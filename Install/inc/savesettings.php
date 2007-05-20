@@ -37,16 +37,9 @@ else
 	$bodySpecial = 'onload="openAlert()"';
 	$documentation = file_get_contents('inc/savesettings.inc');
 
-
 	include_once('../Includes/Templates/bTemplate.php');
 	$tpl = new bTemplate();
 
-	$tpl->set('title', $title);
-	$tpl->set('strayline', $name);
-	$tpl->set('bodySpecial', $bodySpecial);
-	$tpl->set('documentation', $documentation);
-
-	echo $tpl->fetch('../Includes/Templates/Slick_minimal/top.tpl');
 
 	$conf_dataDir =			$_POST["dataDir"];
 	$conf_mapname =		$_POST["MapName"];
@@ -187,9 +180,10 @@ else
 // ===========================================================
 
 \$aac_status = 			\"Installed\";
-\$aac_version = 		\"2.0 Alpha1\";
+\$aac_version = 			\"2.0 Alpha 2\";
+\$aac_versioncode = 		199;
 \$aac_dataDir =			\"$conf_dataDir\";
-\$aac_mapname =		\"$conf_mapname\";
+\$aac_mapname =			\"$conf_mapname\";
 
 \$aac_minacclen = 		$conf_minacclen;
 \$aac_maxacclen = 		$conf_maxacclen;
@@ -274,11 +268,23 @@ else
 ";
 
 	fwrite($confFile, $write);
-
 	fclose($confFile);
+	
+	// End: Saving
+	
+	// Start: End Interface, if successful
+	
+	$tpl->set('title', $title);
+	$tpl->set('strayline', $name);
+	$tpl->set('bodySpecial', $bodySpecial);
+	$tpl->set('documentation', $documentation);
+
+	echo $tpl->fetch('../Includes/Templates/Slick_minimal/top.tpl');
 
 	echo "
-	<p>Go forward -->$conf_char_rook</p>
+	<h2>Saved</h2>
+	
+	<p>Go forward</p>
 	<div align=\"center\">
 	<form action=\"install.php?step=6\" method=\"post\">
 	<br><input type=\"submit\" value=\"Next\" class=\"btn\"/>
@@ -290,7 +296,6 @@ else
 	  function openAlert() {
 	   Dialog.alert("<h1>Saved</h1><br><p>The Smart-Ass configuration has been saved successfully.</p>", {windowParameters: {className: "alphacube"}})
 	  }
-	  openAlert();
 		</script>
 	';
 

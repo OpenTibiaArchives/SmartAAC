@@ -76,7 +76,7 @@ if($modules_bannedplayers)
 		}
 	echo '</table></center>';
 }
-echo
+else
 {
 	echo "<h1>Module has been disabled by the admin</h1>";
 }
