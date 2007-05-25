@@ -44,7 +44,7 @@ $aac_servername = 		"TestName";
 $net_ipaddress =		"localhost";
 $net_port = 			"7171";
 
-$aac_md5passwords =	true;
+$aac_md5passwords =	false;
 $aac_imgver = 			true;
 $main_downloads_warning = true;
 
@@ -97,19 +97,19 @@ $char_maglevel_none = 1;
 $char_health_none = 1;
 $char_mana_none = 1;
 
-$char_maglevel_sorcerer = "";
-$char_health_sorcerer = "";
-$char_mana_sorcerer = "";
+$char_maglevel_sorcerer = 1;
+$char_health_sorcerer = 1;
+$char_mana_sorcerer = 1;
 
-$char_maglevel_druid = "";
-$char_health_druid = "";
-$char_mana_druid = "";
+$char_maglevel_druid = 1;
+$char_health_druid = 1;
+$char_mana_druid = 1;
 
-$char_maglevel_paladin = "";
-$char_health_paladin = "";
-$char_mana_paladin = "";
+$char_maglevel_paladin = 1;
+$char_health_paladin = 1;
+$char_mana_paladin = 1;
 
-$char_maglevel_knight = "";
-$char_health_knight = "";
-$char_mana_knight = "";
+$char_maglevel_knight = 1;
+$char_health_knight = 1;
+$char_mana_knight = 1;
 ?>

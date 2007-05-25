@@ -28,7 +28,7 @@
 				      </tr>
 				    </tbody>
 				  </table>
-				  <a href="accountCreate.php">Not got an account? Register Here</a>
+				  <a href="index.php?act=register">Not got an account? Register Here</a>
 								
 			</div>
 

@@ -95,7 +95,7 @@ if($rowz == 1)
 	{
 		foreach ($line as $char)
 		{
-				echo "<tr><td><p>$char </p></td><td><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"deletePlayer.php?char=$char\">Delete?</a></p></td></tr>";
+				echo "<tr><td><p>$char </p></td><td><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"index.php?act=delete&char=$char\">Delete?</a></p></td></tr>";
 		}
 	}
 }
@@ -112,9 +112,9 @@ if($rowz == 1)
 <p><b>Services:</b></p>
 <p>
 <ul>
-<li><a title="Create a new character on <?php echo $aac_servername; ?>" href="accountAddCharacter.php">Create a new character</a></li>
-<li><a title="Logout your account" href="accountLogout.php">Logout</a></li>
-<li><a title="Change your password" href="accountPassChange.php">Change password</a></li>
+<li><a title="Create a new character on <?php echo $aac_servername; ?>" href="index.php?act=addchar">Create a new character</a></li>
+<li><a title="Logout your account" href="index.php?act=logout">Logout</a></li>
+<li><a title="Change your password" href="index.php?act=changepassword">Change password</a></li>
 </ul>
 </p>
 

@@ -68,12 +68,12 @@ if ($M2_acc != "" && $M2_acc != null && is_numeric($M2_acc) && $M2_pass != "" &&
 
 			if ($temp != strlen($namein))
 			{
-				header("location: accountAddCharacter.php?result=char_failed&error=malformed_name");
+				header("location: index.php?act=addchar&result=char_failed&error=malformed_name");
 				$errors++;
 			}
 			if (strlen($namein) < $aac_minplayerlen || strlen($namein) > $aac_maxplayerlen)
 			{
-				header("location: accountAddCharacter.php?result=char_failed&error=wrong_length");
+				header("location: index.php?act=addchar&result=char_failed&error=wrong_length");
 				$errors++;
 			}
 
@@ -138,7 +138,7 @@ if ($M2_acc != "" && $M2_acc != null && is_numeric($M2_acc) && $M2_pass != "" &&
 
 	if($errors == 0)
 	{
-		header("Location: accountManager.php");
+		header("Location: index.php?act=manager");
 	}
 }
 ?>

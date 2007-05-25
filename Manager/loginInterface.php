@@ -57,7 +57,7 @@ echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 <h2>Login to your account:</h2><br />
 	
 
-	<form action="login.php" method="POST">
+	<form action="index.php?act=auth" method="POST">
 	<table>
 	<tr>
 	<td><p>Account number: </p></td><td><input name="M2_account" type="password" maxlength="<?php echo $aac_maxacclen; ?>"></td>

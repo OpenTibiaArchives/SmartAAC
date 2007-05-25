@@ -109,7 +109,7 @@ if ( (isset($M2_account) && !empty($M2_account)) && (isset($M2_password) && !emp
 				session_unset();
 			//	doInfoBox("Your account has been successfully created. Login <a href=\"loginInterface.php\">here</a> to create your first character in the account!<br><br>
 			//		Your account number is: $M2_account</font>");
-				echo '<meta http-equiv="refresh" content="0;url=loginInterface.php" />';
+				echo '<meta http-equiv="refresh" content="0;url=index.php?act=login" />';
 			}
 		}
 	}

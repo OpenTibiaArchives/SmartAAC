@@ -12,7 +12,7 @@ session_start();
 $M2_account = $_REQUEST['M2_account'];
 $M2_password = $_REQUEST['M2_password'];
 
-if($md5_passwords_accounts)
+if($aac_md5passwords)
 {
 	$M2_password = md5($M2_password);
 }
@@ -41,17 +41,17 @@ if (isset($M2_account) && is_numeric($M2_account) && isset($M2_password))
 			$_SESSION["M2_account"] = "$M2_account";
 			$_SESSION["M2_password"] = "$M2_password";
 			//die("TEMP DEBUG 1:<br><br>Entered password: " . $M2_password . "<br>Actual Password:  " . $passw);
-			header ("location: accountManager.php");
+			header ("location: index.php?act=manager");
 		}
 		else
 		{
-			header ("location: loginInterface.php");
+			header ("location: index.php?act=login");
 			//die("Error! Wrong password.");
 		}
 	}
 	else
 	{
-		header ("location: loginInterface.php");
+		header ("location: index.php?act=login");
 		//echo "Debug Msg: EXIT (2)";
 	}
 }

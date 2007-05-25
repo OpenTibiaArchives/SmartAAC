@@ -33,4 +33,43 @@
 
 $act = $_GET['act'];
 
+switch($act)
+{
+	case "login":
+	include "loginInterface.php";
+	break;
+	
+	case "auth":
+	include "login.php";
+	break;
+	
+	case "manager":
+	include "accountManager.php";
+	break;
+	
+	case "delete":
+	include "deletePlayer.php";
+	break;
+	
+	case "addchar":
+	include "accountAddCharacter.php";
+	break;
+	
+	case "savechar":
+	include "accountSaveCharacter.php";
+	break;
+	
+	case "changepassword":
+	include "accountPassChange.php";
+	break;
+	
+	case "register":
+	include "accountCreate.php";
+	break;
+	
+	default:
+	include "loginInterface.php";
+	break;
+}
+
 ?>

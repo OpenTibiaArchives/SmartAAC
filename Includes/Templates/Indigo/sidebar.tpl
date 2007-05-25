@@ -27,7 +27,7 @@
 				    </tbody>
 					</form>
 				  </table>
-				  <a href="../Manager/accountCreate.php">Not got an account? Register Here</a>
+				  <a href="../Manager/index.php?act=register">Not got an account? Register Here</a>
 							
 			</div>
 			

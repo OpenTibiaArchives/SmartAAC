@@ -99,23 +99,23 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null)
 
 			if (!isset($oldpass) || !isset($newpass) || !isset($newpass2))
 			{
-				header("location: accountPassChange.php?result=pass_failed&error=blank");
+				header("location: index.php?act=changepassword&result=pass_failed&error=blank");
 			}
 			elseif ($oldpass != $M2_pass)
 			{
-				header("location: accountPassChange.php?result=pass_failed&error=wrong_old&entered=" . $oldpass);
+				header("location: index.php?act=changepassword&result=pass_failed&error=wrong_old&entered=" . $oldpass);
 			}
 			elseif ($newpass != $newpass2)
 			{
-				header("location: accountPassChange.php?result=pass_failed&error=wrong_new");
+				header("location: index.php?act=changepassword&result=pass_failed&error=wrong_new");
 			}
 			elseif ($temp != strlen($newpass))
 			{
-				header("location: accountPassChange.php?result=pass_failed&error=pass");
+				header("location: index.php?act=changepassword&result=pass_failed&error=pass");
 			}
 			elseif (strlen($newpass) < $aac_minpasslen || strlen($newpass) > $aac_maxpasslen)
 			{
-				header("location: accountPassChange.php?result=pass_failed&error=pass");
+				header("location: index.php?act=changepassword&result=pass_failed&error=pass");
 			}
 			else {
 				if($md5_passwords_accounts)
@@ -127,7 +127,7 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null)
 
 					$result = sqlquery('UPDATE `accounts` SET `password` = \'' . mysql_real_escape_string($newpass) . '\' WHERE `id` = ' . intval($M2_acc) . '');
 					session_unset();
-					header("Location: index.php");
+					header("Location: index.php?act=login");
 			}
 		}
 		else

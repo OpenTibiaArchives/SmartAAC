@@ -92,7 +92,7 @@ echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 ?>
 <h2>Create a new character:</h2><br>
 
-<form action="accountSaveCharacter.php" method="POST">
+<form action="index.php?act=savechar" method="POST">
 <table>
 <tr>
 <td><p><b>Name:</b></td><td><input type="text" name="name" maxlength="<?php echo $aac_maxplayerlen; ?>" class="textfield"><font color="red"><i> (<?php echo "$aac_minplayerlen - $aac_maxplayerlen"; ?> letters and blankspaces)</p></i></font><br><hr></td>
@@ -101,8 +101,8 @@ echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 <td><p><b>Vocation:</b></p></td>
 <td>
 <?php
-if($aac_rook) {
-	echo "<p><input type=\"radio\" name=\"voc\" value=\"0\" style=\"border: 0;\" checked> None</p>";
+if($char_rook) {
+	echo "<p><input type=\"hidden\" name=\"voc\" value=\"0\" style=\"border: 0;\" checked> Rook Mode Enabled</p>";
 }
 else {
 	echo "

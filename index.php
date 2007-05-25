@@ -35,7 +35,7 @@ switch($aac_status)
 	break;
 	
 	case "Maintenance":
-	echo '<meta http-equiv="refresh" content="0;url=maintenance.php" />';
+	echo '<meta http-equiv="refresh" content="0;url=Main/maintenance.php" />';
 	break;
 	
 	case "Not Installed":
