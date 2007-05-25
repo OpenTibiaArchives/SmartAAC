@@ -12,11 +12,6 @@ session_start();
 $M2_account = $_REQUEST['M2_account'];
 $M2_password = $_REQUEST['M2_password'];
 
-if($aac_md5passwords)
-{
-	$M2_password = md5($M2_password);
-}
-
 if (isset($M2_account) && is_numeric($M2_account) && isset($M2_password))
 {
 	$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die("MySQL Error: mysql_error (mysql_errno()).\n");
@@ -36,6 +31,7 @@ if (isset($M2_account) && is_numeric($M2_account) && isset($M2_password))
 		{
 			$M2_password = md5($M2_password);
 		}
+		
 		if($M2_password == $passw)
 		{
 			$_SESSION["M2_account"] = "$M2_account";

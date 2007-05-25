@@ -81,6 +81,11 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null) {
 		if(isset($acc) && $acc != "" && $acc == $M2_acc)
 		{
 			$passin = $_POST['M2_password'];
+			if($aac_md5passwords)
+			{
+				$passin = md5($passin);
+			}
+			
 			if (!isset($passin) || $passin == "")
 			{
 			echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');

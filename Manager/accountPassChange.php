@@ -89,12 +89,13 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null)
 		elseif ($result == "change")
 		{
 			$oldpass = $_POST['oldpass'];
-				if($md5_passwords_accounts)
-				{
-					$oldpass = md5($oldpass);
-				}
+			if($aac_md5passwords)
+			{
+				$oldpass = md5($oldpass);
+			}
 			$newpass = $_POST['newpass'];
 			$newpass2 = $_POST['newpass2'];
+			
 			$temp = strspn("$newpass", "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890 ");
 
 			if (!isset($oldpass) || !isset($newpass) || !isset($newpass2))
@@ -118,7 +119,7 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null)
 				header("location: index.php?act=changepassword&result=pass_failed&error=pass");
 			}
 			else {
-				if($md5_passwords_accounts)
+				if($aac_md5passwords)
 				{
 					$newpass = md5($newpass);
 				}

@@ -83,7 +83,7 @@ if ( (isset($M2_account) && !empty($M2_account)) && (isset($M2_password) && !emp
 // NO WORX
 	else
 	{
-		if($aac_md5passwords == true)
+		if($aac_md5passwords)
 		{
 			$M2_password = md5($M2_password);
 		}
@@ -119,7 +119,7 @@ else
 	// What to do here? lol :P
 }
 
-if ($created_Account != true)
+if (!$created_Account)
 {
 
 $title = 'Register';
@@ -168,7 +168,7 @@ echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 <br />
 
 <?PHP
-if($aac_imgver == true)
+if($aac_imgver)
 {
 echo '<br />
       <p><img src="../Includes/imgverification/imagebuilder.php" border="1" alt="Image Verification is missing, please contact the administrator">
