@@ -60,15 +60,15 @@ if($modules_commands)
 	{
 		echo '
 		<table style="text-align: left; width: 283px; font-size:14px;" border="0"
-		 cellpadding="4" cellspacing="3">
+		 cellpadding="4" cellspacing="0">
 		  <tbody>
-		    <tr>
+		    <tr class="tableheaders">
 		      <td style="width: 139px; text-align: center;"><b>Command</b></td>
 		      <td style="width: 124px; text-align: center;"><b>Access Level</b></td>
 		    </tr>
 			<tr>
-		      <td style="width: 139px;">&nbsp;</td>
-		      <td style="width: 124px;">&nbsp;</td>
+		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
+		      <td style="width: 124px; background: #FFFFFF;">&nbsp;</td>
 		    </tr>
 		';
 

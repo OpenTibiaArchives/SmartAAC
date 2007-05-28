@@ -78,7 +78,7 @@ $modules_infopage = true;
 $modules_serverstats = true;
 $modules_downloads = true;
 $modules_bannedplayers = false;
-$modules_commands = false;
+$modules_commands = true;
 $modules_rules = false;
 $modules_voting = false;
 

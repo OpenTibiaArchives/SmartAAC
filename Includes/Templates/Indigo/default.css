@@ -255,3 +255,9 @@ div.tableforme {
   padding-left: 28px;
   border: 0px solid;
 }
+
+tr.tableheaders td {
+	background: #DFDFDF;
+}
+
+tr:hover { background-color: #EFEFEF; }
