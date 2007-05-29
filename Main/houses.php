@@ -63,7 +63,7 @@ if($modules_houses)
 		<table style="text-align: left; width: 500px; font-size:14px;" border="0"
 		 cellpadding="4" cellspacing="3">
 		  <tbody>
-		    <tr>
+		    <tr class="tableheaders">
 		      <td style="width: 139px; text-align: center;"><b>ID</b></td>
 		      <td style="width: 124px; text-align: center;"><b>House name</b></td>
 		      <td style="width: 124px; text-align: center;"><b>Town</b></td>
@@ -83,7 +83,7 @@ if($modules_houses)
 
 		for($i = 0; $i < $scan_limit; $i++)
 		{
-			echo '<tr>';
+			echo '<tr class="lolhover">';
 			echo '<td style="width: 135px; text-align: center;">#' . $xml2->house[$i]->getAttribute('houseid') . '</td>';
 			echo '<td style="width: 200px;">' . $xml2->house[$i]->getAttribute('name') . '</td>';
 			echo '<td style="width: 124px; text-align: center;">' . $main_towns[$xml2->house[$i]->getAttribute('townid')] . '</td>';

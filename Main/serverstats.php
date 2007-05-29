@@ -49,11 +49,11 @@ echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
 if($modules_serverstats)
 {
-	echo '<h1>Info</h1>';
+	echo '<h1>Info</h1><br />';
 	@$fp = fsockopen ($ip, 7171, $errno, $errstr, 1);
 	if (!$fp)
 	{
-		echo '<p>The server is offline, I cannot get information.</p>';
+		echo '<p>The server is offline or there is a problem contacting the server, I cannot get information.</p>';
 	}
 	else
 	{
@@ -63,7 +63,7 @@ if($modules_serverstats)
 		  <tbody>
 		    <tr>
 		      <td style="width: 225px;"><b>Uptime</b></td>
-		      <td style="width: 300px;"><b>' . $days . '</b> Days, <b>' . $hours . '</b> Hours, <b>' . $minutes . '</b> Minutes and <b>' . $seconds . '</b> Seconds</td>
+		      <td style="width: 500px;"><b>' . $days . '</b> Days, <b>' . $hours . '</b> Hours, <b>' . $minutes . '</b> Minutes and <b>' . $seconds . '</b> Seconds</td>
 		    </tr>
 		    <tr>
 		      <td style="width: 225px;"><b>Players online</b></td>

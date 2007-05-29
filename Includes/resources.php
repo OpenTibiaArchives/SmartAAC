@@ -133,7 +133,7 @@ function highscore($skill, $page)
 		$query = sqlquery('SELECT `name`, `group_id`, `level`, `experience` FROM `players` WHERE `group_id` < '.$main_ugrp_nolist.' ORDER BY `experience` DESC LIMIT '.$from.','.$main_highscores_result.'');
 		while($row = mysql_fetch_array($query)) {
 			echo '
-			<tr>
+			<tr class="lolhover">
 			<td><center>'. $i .'</center></td>
 			<td><center><a href="character.php?char='.$row['name'].'">'. $row['name'] .'</a></center></td>
 			<td><center>'. $row['level'] .'</center></td>
@@ -148,7 +148,7 @@ function highscore($skill, $page)
 		$query = sqlquery('SELECT `name`, `group_id`, `maglevel` FROM `players` WHERE `group_id` < '.$main_ugrp_nolist.' ORDER BY `maglevel` DESC LIMIT '.$from.','.$main_highscores_result.'');
 		while($row = mysql_fetch_array($query)) {
 			echo '
-			<tr>
+			<tr class="lolhover">
 			<td><center>'. $i .'</center></td>
 			<td><center><a href="character.php?char='.$row['name'].'">'. $row['name'] .'</a></center></td>
 			<td><center>'. $row['maglevel'] .'</center></td>
@@ -162,7 +162,7 @@ function highscore($skill, $page)
 		$query = sqlquery('SELECT * FROM `player_skills` WHERE `skillid` = '.$id.' ORDER BY `player_skills`.`value` DESC LIMIT '.$from.','.$main_highscores_result.'');
 		while($row = mysql_fetch_array($query)) {
 			echo '
-			<tr>
+			<tr class="lolhover">
 			<td><center>'. $i .'</center></td>
 			<td><center><a href="character.php?char='.userFromID($row['player_id']).'">'. userFromID($row['player_id']) .'</a></center></td>
 			<td><center>'. $row['value'] .'</center></td>

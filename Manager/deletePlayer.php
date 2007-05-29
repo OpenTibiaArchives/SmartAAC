@@ -36,7 +36,7 @@ include '../conf.php';
 include '../Includes/stats/stats.php';
 include '../Includes/counter/counter.php';
 
-$title = 'Frontpage';
+$title = 'Delete Player';
 $name = $aac_servername;
 $bodySpecial = 'onload="NOTHING"';
 
@@ -93,7 +93,7 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null) {
 <font color="red" size="+2">Character deletion!</font><br><br>
 To delete your character we must ask you to enter your password for this account.
 <br>
-<form action="<?php echo $PHP_SELF; ?>?char=<?php echo $char; ?>" method="POST">
+<form action="index.php?act=delete&char=<?php echo $char; ?>" method="POST">
 Password: <input type="password" name="M2_password"><br>
 <input type="submit" value="Continue"> <font color="red"><i>Note. By pressing this you agree that your character (<?php echo $char; ?>) will be permanently deleted from our servers.</i></font>
 </form>
@@ -112,7 +112,7 @@ Password: <input type="password" name="M2_password"><br>
 				if (isset($temp) && $temp != "" && $passin == $M2_pass)
 				{
 					sqlquery('DELETE FROM `players` WHERE `name` = \'' . mysql_real_escape_string($char) . '\' LIMIT 1 ;');
-							echo "<font color=\"green\">The character '$char' was successfully deleted from the Server.</font>\n\n<br><br>\n<a href=\"accountManager.php\">Return home</a>";
+							echo "<font color=\"green\">The character '$char' was successfully deleted from the Server.</font>\n\n<br><br>\n<a href=\"index.php?act=manager\">Return home</a>";
 				}
 			}
 		}

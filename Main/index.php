@@ -26,7 +26,9 @@
 //    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // ===========================================================
 
-$page = $_GET['page'];
+header("location: frontpage.php");
+
+/* $page = $_GET['page'];
 
 switch($page)
 {
@@ -88,6 +90,6 @@ switch($page)
 	
 	default:
 	include "frontpage.php";
-	break;
-}
+	break; 
+}*/
 ?>

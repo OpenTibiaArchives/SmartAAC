@@ -76,7 +76,7 @@ if($modules_commands)
 
 		for($i = 0; $i < $scan_limit; $i++)
 		{
-			echo "<tr>";
+			echo "<tr class=\"lolhover\">";
 			echo '<td style="width: 139px;">' . $xml2->command[$i]->getAttribute('cmd') . '</td>';
 			echo '<td style="width: 124px; text-align: center;">' . $xml2->command[$i]->getAttribute('access') . '</td>';
 			echo "</tr>";

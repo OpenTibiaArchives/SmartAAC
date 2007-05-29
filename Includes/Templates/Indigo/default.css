@@ -260,4 +260,5 @@ tr.tableheaders td {
 	background: #DFDFDF;
 }
 
-tr:hover { background-color: #EFEFEF; }
+tr.lolhover:hover { background-color: #EFEFEF; }
+td.lolhovermanager:hover { background-color: #EFEFEF; }

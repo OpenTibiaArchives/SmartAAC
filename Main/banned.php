@@ -54,27 +54,27 @@ if($modules_bannedplayers)
 	mysql_select_db($sql_db, $sqlconnect);
 
 	echo '
-	<center><h2>Banned Players:</h2><br><br>
-	<table style="text-align: left; width: 50%;" border="1" cellpadding="0" cellspacing="2">
+	<h1>Banned Players</h1><br />
+	<table style="text-align: left; width: 50%; font-size:14px;" border="0" cellpadding="1" cellspacing="2">
 	  <tbody>
-	    <tr>
-	      <td style="width: 10%;">Ban Type</td>
-	      <td style="width: 50%;">Player Name</td>
-	      <td style="width: 40%;">Until</td>
+	    <tr class="tableheaders">
+	      <td style="width: 20%; text-align: center;"><b>Ban Type</b></td>
+	      <td style="width: 50%; text-align: center;"><b>Player Name</b></td>
+	      <td style="width: 40%; text-align: center;"><b>Until</b></td>
 	    </tr>
 	  </tbody>';
 		$query = sqlquery('SELECT `type`, `player`, `time` FROM `bans` ORDER BY `time` ASC');
 		$types = array(1 => 'IP', 2 => 'Account', 3 => 'Player');
 		while($row = mysql_fetch_array($query)) {
 			echo '
-			<tr>
+			<tr class="lolhover">
 			<td><center>'. $types[$row['type']] .'</center></td>
 			<td><center><a href="character.php?char='. userFromID($row['player']) .'">'. userFromID($row['player']) .'</a></center></td>
 			<td><center>'. date('M d Y, H:i:s T', $row['time']) .'</center></td>
 			</tr>
 			';
 		}
-	echo '</table></center>';
+	echo '</table>';
 }
 else
 {

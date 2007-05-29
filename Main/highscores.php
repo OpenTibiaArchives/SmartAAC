@@ -50,6 +50,8 @@ echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
 if($modules_highscores)
 {
+	echo "<h1>Highscores</h1><br />";
+	
 	if(isset($_GET['page']) && is_numeric($_GET['page']) && is_numeric($main_highscores_result)) {
 		$page = $_GET['page'];
 	}
@@ -79,21 +81,21 @@ if($modules_highscores)
 	<tr><td><div align="center"><a href="highscores.php?skill=fishing">Fishing</a></td></div></tr>
 	</table>
 
-	<table style="text-align: left; width: 50%;" border="1"
+	<table style="text-align: left; width: 50%; font-size:14px;" border="0"
 	 cellpadding="0" cellspacing="2">
 	  <tbody>
-	    <tr>
-	      <td style="width: 10%;">Rank</td>
-	      <td style="width: 50%;">Player Name</td>
-	      <td style="width: 15%;">Level</td>
+	    <tr class="tableheaders">
+	      <td style="width: 14%; text-align: center;"><b>Rank</b></td>
+	      <td style="width: 50%; text-align: center;"><b>Player Name</b></td>
+	      <td style="width: 15%; text-align: center;"><b>Level</b></td>
 		  <?php if($skill == "level"){
-	      echo '<td style="width: 25%;">Points</td>';
+	      echo '<td style="width: 25%; text-align: center;"><b>Points</b></td>';
 		   } ?>
 	    </tr>
 	  </tbody>
 	<?php
 	highscore($skill, $page);
-	echo '</table>';
+	echo '</table><br />';
 	if ($page != 1)
 	echo "<a href=\"highscores.php?skill=$skill&page=". intval($page - 1) ."\">Rank ". intval(($page - 2) * $main_highscores_result + 1) ." - ". intval(($page - 1) * $main_highscores_result) ."</a> -- ";
 	echo "<a href=\"highscores.php?skill=$skill&page=". intval($page + 1) ."\">Rank ". intval($page * $main_highscores_result + 1) ." - ". intval(($page + 1) * $main_highscores_result) ."</a>";

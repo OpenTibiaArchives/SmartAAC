@@ -77,11 +77,15 @@ else if ($result == "pass_success") {
 
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 ?>
-<h2>Your Account</h2><br><br>
+<h1>Your Account</h1><br>
 
-<p><b>Characters:</b></p>
-<table>
+<h2>Characters:</h2><br />
+<table style="text-align: left; width: 348px;" border="0"
+ cellpadding="2" cellspacing="2">
+  <tbody>
 <?php
+
+$vocations = array("None", "Sorcerer", "Druid", "Paladin", "Knight", "Master Sorcerer", "Elder Druid", "Royal Paladin", "Elite Knight");
 
 $sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die("MySQL Error: mysql_error (mysql_errno()).\n");
 mysql_select_db($sql_db, $sqlconnect);
@@ -95,28 +99,55 @@ if($rowz == 1)
 	{
 		foreach ($line as $char)
 		{
-				echo "<tr><td><p>$char </p></td><td><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"index.php?act=delete&char=$char\">Delete?</a></p></td></tr>";
+			$query = sqlquery('SELECT * FROM `players` WHERE `name` = \''. mysql_real_escape_string($char) .'\' LIMIT 1;');
+			if(mysql_num_rows($query) == 1)
+			{
+				while($row = mysql_fetch_array($query))
+				{
+					$pid = $row['id'];
+					$accno = $row['account_id'];
+					$name = $row['name'];
+					$groupid = $row['group_id'];
+					$sex = $row['sex'];
+					$vocation = $row['vocation'];
+					$level = $row['level'];
+					$town = $row['town_id'];
+					$guild = $row['rank_id'];
+					$guild_nick = $row['guildnick'];
+					$lastlogin = $row['lastlogin'];
+				}
+				echo "
+					<tr>
+				      <td style=\"width: 231px;\" class=\"lolhovermanager\"><b>$char</b><br /><br /><i>Level: $level<br />Vocation: $vocations[$vocation]<br />Town: $main_towns[$town]</i></td>
+				      <td style=\"width: 106px; text-align: center; background: #EFFFF0;\"><a href=\"index.php?act=delete&char=$char\">Delete?</a></td>
+				    </tr>
+					<tr>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+					</tr>
+
+					";
+			}
 		}
 	}
 }
 
-
 ?>
+  </tbody>
 </table>
 
-<br><br>
-<hr>
+
 
 <!-- menu -->
+<br /><br />
+<h2>Dashboard:</h2><br />
 
-<p><b>Services:</b></p>
-<p>
 <ul>
 <li><a title="Create a new character on <?php echo $aac_servername; ?>" href="index.php?act=addchar">Create a new character</a></li>
 <li><a title="Logout your account" href="index.php?act=logout">Logout</a></li>
 <li><a title="Change your password" href="index.php?act=changepassword">Change password</a></li>
 </ul>
-</p>
+
 
 
 
