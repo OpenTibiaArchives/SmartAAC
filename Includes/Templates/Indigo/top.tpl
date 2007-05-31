@@ -8,6 +8,12 @@
 <meta name="keywords" content="keywords"/> 
 <meta name="author" content="author"/> 
 <link rel="stylesheet" type="text/css" href="../Includes/Templates/Indigo/default.css" media="screen"/>
+<link rel="stylesheet" href="../Includes/thickbox/thickbox.css" type="text/css" media="screen" />
+
+<script type="text/javascript" src="../Includes/thickbox/jquery.js"></script>
+<script type="text/javascript" src="../Includes/thickbox/thickbox.js"></script>
+<script type="text/javascript" src="swfobject.js"></script>
+
 <title><tag:title /> :: Smart-Ass AAC</title>
 </head>
 

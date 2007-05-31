@@ -30,6 +30,10 @@ include '../conf.php';
 include '../Includes/resources.php';
 include '../Includes/stats/stats.php';
 include '../Includes/counter/counter.php';
+if($aac_status == "Maintenance")
+{
+	header("location: maintenance.php");
+}
 
 $title = 'Highscores';
 $name = $aac_servername;

@@ -30,6 +30,12 @@ include '../conf.php';
 include '../Includes/resources.php';
 include '../Includes/stats/stats.php';
 include '../Includes/counter/counter.php';
+if($aac_status == "Maintenance")
+{
+	header("location: maintenance.php");
+}
+
+
 $xml_data = file_get_contents($aac_dataDir . '/world/'. $aac_mapname .'-house.xml');
 
 $title = 'Search Character';

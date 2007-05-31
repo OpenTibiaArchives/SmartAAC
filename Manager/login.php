@@ -1,13 +1,38 @@
 <?php
-// M2 LOGIN SMART-ASS
-// Author: Pekay/Jiddo
-// Renew comments later (DEV)
-
-// We forgot that for 1.0 xd
+// ===========================================================
+//	Smart-Ass: The Userfriendly AAC
+//	Version: 2.0 Development Only
+//	
+//	USE OF THIS PROGRAM TO RELY ON IT FOR SERVER USE IS NOT
+// 	RECOMMENDED! THIS IS FOR TESTING ONLY.
+//
+//	Main setup for the system
+// ===========================================================
+// ===========================================================
+//
+//    This program is free software; you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation; either version 2 of the License, or
+//    (at your option) any later version.
+//
+//    This program is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with this program; if not, write to the Free Software
+//    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+// ===========================================================
 
 include "../Includes/resources.php";
 include "../conf.php";
 session_start();
+
+if($aac_status == "Not Installed")
+{
+	die("Your AAC is not yet installed, please goto the installer");
+}
 
 $M2_account = $_REQUEST['M2_account'];
 $M2_password = $_REQUEST['M2_password'];
@@ -54,6 +79,6 @@ if (isset($M2_account) && is_numeric($M2_account) && isset($M2_password))
 else
 {
 	//header ("location: index.php");
-	echo "Debug Msg: EXIT (3)";
+	echo "There is no data. (Message 3)";
 }
 ?>

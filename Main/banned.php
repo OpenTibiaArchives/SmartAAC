@@ -30,6 +30,10 @@ include '../conf.php';
 include '../Includes/resources.php';
 include '../Includes/stats/stats.php';
 include '../Includes/counter/counter.php';
+if($aac_status == "Maintenance")
+{
+	header("location: maintenance.php");
+}
 
 $title = 'Banned Players';
 $name = $aac_servername;

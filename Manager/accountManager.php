@@ -1,32 +1,29 @@
 <?php
-/**********************************
-* Smart-Ass
-* http://smart.pekay.co.uk
-**********************************
-* 
-*
-* Author: Pekay, Jiddo, Rifle
-* Version: 1.0
-* Package otaac
-*
-* 
-* Description: Main manager of an account
-
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-
-*/
+// ===========================================================
+//	Smart-Ass: The Userfriendly AAC
+//	Version: 2.0 Development Only
+//	
+//	USE OF THIS PROGRAM TO RELY ON IT FOR SERVER USE IS NOT
+// 	RECOMMENDED! THIS IS FOR TESTING ONLY.
+//
+//	Main setup for the system
+// ===========================================================
+// ===========================================================
+//
+//    This program is free software; you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation; either version 2 of the License, or
+//    (at your option) any later version.
+//
+//    This program is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with this program; if not, write to the Free Software
+//    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+// ===========================================================
 
 session_start();
 
@@ -34,6 +31,11 @@ include "../Includes/resources.php";
 include '../conf.php';
 include '../Includes/stats/stats.php';
 include '../Includes/counter/counter.php';
+
+if($aac_status == "Not Installed")
+{
+	die("Your AAC is not yet installed, please goto the installer");
+}
 
 $title = 'Account Details';
 $name = $aac_servername;
@@ -118,7 +120,7 @@ if($rowz == 1)
 				}
 				echo "
 					<tr>
-				      <td style=\"width: 231px;\" class=\"lolhovermanager\"><b>$char</b><br /><br /><i>Level: $level<br />Vocation: $vocations[$vocation]<br />Town: $main_towns[$town]</i></td>
+				      <td style=\"width: 231px; height: 20px;\" class=\"lolhovermanager\"><a href=\"../Main/character.php?char=$char\" target=\"_blank\"><b>$char</b></a></td>
 				      <td style=\"width: 106px; text-align: center; background: #EFFFF0;\"><a href=\"index.php?act=delete&char=$char\">Delete?</a></td>
 				    </tr>
 					<tr>
@@ -131,6 +133,9 @@ if($rowz == 1)
 		}
 	}
 }
+
+// Extra
+//<br /><i>Level: $level<br />Vocation: $vocations[$vocation]<br />Town: $main_towns[$town]</i>
 
 ?>
   </tbody>

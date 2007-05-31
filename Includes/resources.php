@@ -28,6 +28,7 @@
 
 */
 
+
 function sqlquery($query) {
 	$result = mysql_query($query);
 	if(!$result)

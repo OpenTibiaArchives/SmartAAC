@@ -29,6 +29,10 @@
 include '../conf.php';
 include '../Includes/stats/stats.php';
 include '../Includes/counter/counter.php';
+if($aac_status == "Maintenance")
+{
+	header("location: maintenance.php");
+}
 
 $title = 'Downloads';
 $name = $aac_servername;

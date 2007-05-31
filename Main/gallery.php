@@ -34,7 +34,7 @@ if($aac_status == "Maintenance")
 	header("location: maintenance.php");
 }
 
-$title = 'Affliates';
+$title = 'Gallery';
 $name = $aac_servername;
 $bodySpecial = 'onload="NOTHING"';
 
@@ -51,10 +51,22 @@ $tpl->set('Unique_Visits', $total_uniques);
 
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
-if($modules_affliates)
+if($modules_rules)
 {
-	echo "<p>Here are sites made by fellow fans of OTServ, or $aac_servername.</p>";
-	include '../Includes/links.php';
+	echo "<h1>Gallery</h1><br />";
+	
+	// START PICTURE FOLDER SCAN =)
+	$d = opendir("pictures");
+		while($f = readdir($d))
+		{
+		  if(is_dir($f))
+		  continue;
+
+		  echo "<a href=\"pictures/$f\" title=\"$f\" class=\"thickbox\"><img src=\"pictures/$f\" alt=\"$f\" width=\"260\" height=\"220\" border=\"0\"/></a>&nbsp;";
+		}
+	// END
+
+	echo "<br /><br />";
 }
 else
 {

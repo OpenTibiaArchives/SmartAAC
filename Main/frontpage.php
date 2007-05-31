@@ -27,8 +27,18 @@
 // ===========================================================
 
 include '../conf.php';
+include '../Includes/resources.php';
 include '../Includes/stats/stats.php';
 include '../Includes/counter/counter.php';
+if($aac_status == "Maintenance")
+{
+	header("location: maintenance.php");
+}
+
+if($aac_status == "Not Installed")
+{
+	die("Your AAC is not yet installed, please goto the installer");
+}
 
 $title = 'Frontpage';
 $name = $aac_servername;

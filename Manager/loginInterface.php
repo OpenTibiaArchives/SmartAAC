@@ -1,36 +1,38 @@
 <?php
-/**********************************
-* Smart-Ass
-* http://smart.pekay.co.uk
-**********************************
-* 
-*
-* Author: Pekay, Jiddo, Rifle
-* Version: 1.0
-* Package otaac
-*
-* 
-* Description: The main login interface of the manager
-
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-
-*/
+// ===========================================================
+//	Smart-Ass: The Userfriendly AAC
+//	Version: 2.0 Development Only
+//	
+//	USE OF THIS PROGRAM TO RELY ON IT FOR SERVER USE IS NOT
+// 	RECOMMENDED! THIS IS FOR TESTING ONLY.
+//
+//	Main setup for the system
+// ===========================================================
+// ===========================================================
+//
+//    This program is free software; you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation; either version 2 of the License, or
+//    (at your option) any later version.
+//
+//    This program is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with this program; if not, write to the Free Software
+//    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+// ===========================================================
 
 include '../conf.php';
 include '../Includes/stats/stats.php';
 include '../Includes/counter/counter.php';
+
+if($aac_status == "Not Installed")
+{
+	die("Your AAC is not yet installed, please goto the installer");
+}
 
 $title = 'Login';
 $name = $aac_servername;
@@ -60,10 +62,10 @@ echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 	<form action="index.php?act=auth" method="POST">
 	<table>
 	<tr>
-	<td><p>Account number: </p></td><td><input name="M2_account" type="password" maxlength="<?php echo $aac_maxacclen; ?>"></td>
+	<td><label>Account number: </label></td><td><input name="M2_account" type="password" maxlength="<?php echo $aac_maxacclen; ?>"></td>
 	</tr>
 	<tr>
-	<td><p>Password: </p></td><td><input name="M2_password" type="password" maxlength="<?php echo $aac_maxpasslen; ?>"></td>
+	<td><label>Password: </label></td><td><input name="M2_password" type="password" maxlength="<?php echo $aac_maxpasslen; ?>"></td>
 	</tr>
 	</table>
 	<br>

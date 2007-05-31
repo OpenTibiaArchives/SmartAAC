@@ -27,6 +27,7 @@
 // ===========================================================
 
 include '../conf.php';
+include '../Includes/resources.php';
 include '../Includes/stats/stats.php';
 include '../Includes/counter/counter.php';
 if($aac_status == "Maintenance")
@@ -34,7 +35,9 @@ if($aac_status == "Maintenance")
 	header("location: maintenance.php");
 }
 
-$title = 'Affliates';
+$xml_data = file_get_contents($aac_dataDir . '/commands.xml');
+
+$title = 'Videos';
 $name = $aac_servername;
 $bodySpecial = 'onload="NOTHING"';
 
@@ -51,10 +54,29 @@ $tpl->set('Unique_Visits', $total_uniques);
 
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
-if($modules_affliates)
+if($modules_commands)
 {
-	echo "<p>Here are sites made by fellow fans of OTServ, or $aac_servername.</p>";
-	include '../Includes/links.php';
+
+
+
+// Video 1
+// Change file too to your FLV file
+// COPY FROM HERE TO HAVE ANOTHER VIDEO
+?>
+<h1>Video 1</h1>
+<p id="player1"><a href="http://www.macromedia.com/go/getflashplayer">Get the Flash Player</a> to see this player.</p>
+<script type="text/javascript">
+	var s1 = new SWFObject("mediaplayer.swf","single","400","300","7");
+	s1.addParam("allowfullscreen","true");
+	s1.addVariable("file","video/test.flv");
+	s1.addVariable("image","video/preview.png");
+	s1.write("player1");
+</script>
+<?PHP
+// END COPY
+
+
+
 }
 else
 {
