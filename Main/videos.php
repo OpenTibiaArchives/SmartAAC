@@ -54,7 +54,7 @@ $tpl->set('Unique_Visits', $total_uniques);
 
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
-if($modules_commands)
+if($modules_videos)
 {
 
 

@@ -3,7 +3,7 @@
 // ===========================================================
 //	Smart-Ass: The Userfriendly AAC
 //	Version: 2.0 Development Only
-//	Configuration Created: Thu, 31 May 2007 00:40:48 +0100
+//	Configuration Created: Fri, 01 Jun 2007 00:58:14 +0100
 //	
 //	USE OF THIS PROGRAM TO RELY ON IT FOR SERVER USE IS NOT
 // 	RECOMMENDED! THIS IS FOR TESTING ONLY.
@@ -68,19 +68,23 @@ $info_os =				"Windows XP";
 $info_connection =		"5 Mbit";
 $info_uptimetype =		"24/7";
 
-$modules_charsearch = false;
-$modules_feedback = false;
-$modules_affliates = false;
+$modules_charsearch = true;
+$modules_feedback = true;
+$modules_affliates = true;
 $modules_guilds = false;
-$modules_houses = false;
-$modules_highscores = false;
-$modules_infopage = false;
-$modules_serverstats = false;
-$modules_downloads = false;
-$modules_bannedplayers = false;
-$modules_commands = false;
-$modules_rules = false;
-$modules_voting = false;
+$modules_houses = true;
+$modules_highscores = true;
+$modules_infopage = true;
+$modules_serverstats = true;
+$modules_downloads = true;
+$modules_bannedplayers = true;
+$modules_commands = true;
+$modules_rules = true;
+$modules_voting = true;
+$modules_custom = true;
+$modules_calculator = true;
+$modules_videos = true;
+$modules_gallery = true;
 
 $char_rook =			false;
 $char_group =			1;
@@ -97,19 +101,19 @@ $char_maglevel_none = "";
 $char_health_none = "";
 $char_mana_none = "";
 
-$char_maglevel_sorcerer = 300;
+$char_maglevel_sorcerer = 100;
 $char_health_sorcerer = 100;
 $char_mana_sorcerer = 100;
 
-$char_maglevel_druid = 1;
-$char_health_druid = 1;
-$char_mana_druid = 1;
+$char_maglevel_druid = 100;
+$char_health_druid = 100;
+$char_mana_druid = 100;
 
-$char_maglevel_paladin = 1;
-$char_health_paladin = 1;
-$char_mana_paladin = 1;
+$char_maglevel_paladin = 100;
+$char_health_paladin = 100;
+$char_mana_paladin = 100;
 
-$char_maglevel_knight = 1;
-$char_health_knight = 1;
-$char_mana_knight = 1;
+$char_maglevel_knight = 100;
+$char_health_knight = 100;
+$char_mana_knight = 100;
 ?>

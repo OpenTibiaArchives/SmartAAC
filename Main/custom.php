@@ -34,7 +34,7 @@ if($aac_status == "Maintenance")
 	header("location: maintenance.php");
 }
 
-$title = 'Gallery';
+$title = 'Custom Pages';
 $name = $aac_servername;
 $bodySpecial = 'onload="NOTHING"';
 
@@ -51,20 +51,18 @@ $tpl->set('Unique_Visits', $total_uniques);
 
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
-if($modules_gallery)
+if($modules_custom)
 {
-	echo "<h1>Gallery</h1><br />";
+	echo "<h1>Custom Pages</h1><br />";
 	
-	// START PICTURE FOLDER SCAN =)
-	$d = opendir("pictures");
+	$d = opendir("customs");
 		while($f = readdir($d))
 		{
 		  if(is_dir($f))
 		  continue;
 
-		  echo "<a href=\"pictures/$f\" title=\"$f\" class=\"thickbox\"><img src=\"pictures/$f\" alt=\"$f\" width=\"260\" height=\"220\" border=\"0\"/></a>&nbsp;";
+		  echo "<a href=\"pictures/$f\" title=\"$f\" class=\"thickbox\">$f</a><br />";
 		}
-	// END
 
 	echo "<br /><br />";
 }

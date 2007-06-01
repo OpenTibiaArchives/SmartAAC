@@ -74,6 +74,10 @@ else
 	$conf_modules_InGameCommands =		($_POST['InGameCommands']) ? "true" : "false";
 	$conf_modules_RulesPage =			($_POST['RulesPage']) ? "true" : "false";
 	$conf_modules_VotePage =			($_POST['VotePage']) ? "true" : "false";
+	$conf_modules_Custom =				($_POST['Custom']) ? "true" : "false";
+	$conf_modules_Calculator =			($_POST['Calculator']) ? "true" : "false";
+	$conf_modules_Videos =				($_POST['Videos']) ? "true" : "false";
+	$conf_modules_Gallery =				($_POST['Gallery']) ? "true" : "false";
 
 	$char_rook_use = 		$_POST['char_rook'];
 	$conf_char_town =		$_POST["char_town"];
@@ -253,6 +257,10 @@ else
 \$modules_commands = $conf_modules_InGameCommands;
 \$modules_rules = $conf_modules_RulesPage;
 \$modules_voting = $conf_modules_VotePage;
+\$modules_custom = $conf_modules_Custom;
+\$modules_calculator = $conf_modules_Calculator;
+\$modules_videos = $conf_modules_Videos;
+\$modules_gallery = $conf_modules_Gallery;
 
 \$char_rook =			$char_rook_use;
 \$char_group =			$conf_char_group;

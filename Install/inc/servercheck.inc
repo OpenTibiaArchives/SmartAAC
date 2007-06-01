@@ -1,5 +1,5 @@
 <h2>Progress</h2><br />
-<img src="img/progress_2.png" />
+<img src="img/progress_1.png" />
 
 <br /><br />
 

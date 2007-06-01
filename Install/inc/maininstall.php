@@ -223,31 +223,39 @@ else
 		
 		<h1>Modules</h1>
 		<label for=\"CharSearch\">Char search:</label>
-		<input type=\"checkbox\" name=\"CharSearch\" class=\"boxes\" /><br /><br />
+		<input type=\"checkbox\" name=\"CharSearch\" class=\"boxes\" /><br />
 		<label for=\"Feedback\">Feedback page:</label>
-		<input type=\"checkbox\" name=\"Feedback\" class=\"boxes\" /><br /><br />
+		<input type=\"checkbox\" name=\"Feedback\" class=\"boxes\" /><br />
 		<label for=\"Affliates\">Affliates page:</label>
-		<input type=\"checkbox\" name=\"Affliates\" class=\"boxes\" /><br /><br />
+		<input type=\"checkbox\" name=\"Affliates\" class=\"boxes\" /><br />
 		<label for=\"Guilds\">Guilds:</label>
-		<input type=\"checkbox\" name=\"Guilds\" class=\"boxes\" disabled=\"disabled\" /><br /><br />
+		<input type=\"checkbox\" name=\"Guilds\" class=\"boxes\" disabled=\"disabled\" /><br />
 		<label for=\"Houses\">Houses:</label>
-		<input type=\"checkbox\" name=\"Houses\" class=\"boxes\" /><br /><br />
+		<input type=\"checkbox\" name=\"Houses\" class=\"boxes\" /><br />
 		<label for=\"Highscores\">Highscores:</label>
-		<input type=\"checkbox\" name=\"Highscores\" class=\"boxes\" /><br /><br />
+		<input type=\"checkbox\" name=\"Highscores\" class=\"boxes\" /><br />
 		<label for=\"InfoPage\">Info page:</label>
-		<input type=\"checkbox\" name=\"InfoPage\" class=\"boxes\" /><br /><br />
+		<input type=\"checkbox\" name=\"InfoPage\" class=\"boxes\" /><br />
 		<label for=\"ServerStats\">Server stats:</label>
-		<input type=\"checkbox\" name=\"ServerStats\" class=\"boxes\" /><br /><br />
+		<input type=\"checkbox\" name=\"ServerStats\" class=\"boxes\" /><br />
 		<label for=\"DownloadsPage\">Downloads page:</label>
-		<input type=\"checkbox\" name=\"DownloadsPage\" class=\"boxes\" /><br /><br />
+		<input type=\"checkbox\" name=\"DownloadsPage\" class=\"boxes\" /><br />
 		<label for=\"BannedPlayers\">Banned players:</label>
-		<input type=\"checkbox\" name=\"BannedPlayers\" class=\"boxes\" /><br /><br />
+		<input type=\"checkbox\" name=\"BannedPlayers\" class=\"boxes\" /><br />
 		<label for=\"InGameCommands\">In-game commands page:</label>
-		<input type=\"checkbox\" name=\"InGameCommands\" class=\"boxes\" /><br /><br />
+		<input type=\"checkbox\" name=\"InGameCommands\" class=\"boxes\" /><br />
 		<label for=\"RulesPage\">Rules page:</label>
-		<input type=\"checkbox\" name=\"RulesPage\" class=\"boxes\" /><br /><br />
+		<input type=\"checkbox\" name=\"RulesPage\" class=\"boxes\" /><br />
 		<label for=\"VotePage\">Voting:</label>
-		<input type=\"checkbox\" name=\"VotePage\" class=\"boxes\" /><br /><br /><br />
+		<input type=\"checkbox\" name=\"VotePage\" class=\"boxes\" /><br />
+		<label for=\"Custom\">Custom page:</label>
+		<input type=\"checkbox\" name=\"Custom\" class=\"boxes\" /><br />
+		<label for=\"Calculator\">Calculator page:</label>
+		<input type=\"checkbox\" name=\"Calculator\" class=\"boxes\" /><br />
+		<label for=\"Videos\">Videos page:</label>
+		<input type=\"checkbox\" name=\"Videos\" class=\"boxes\" /><br />
+		<label for=\"Gallery\">Gallery page:</label>
+		<input type=\"checkbox\" name=\"Gallery\" class=\"boxes\" /><br /><br />
 		";
 
 		if($char_rook == "true")

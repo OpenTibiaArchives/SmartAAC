@@ -3,13 +3,16 @@
 	Silentum Counter v1.5.0
 	Modified March 26, 2007
 	counter.php copyright 2005-2007 "HyperSilence"
-	*/
+	*/ 
+	
+	//echo "<font style=\"font-size: 14px; color: red; padding-left: 5px; padding-top: 5px;\"><b>The visits.txt file is empty, please ask an admin to add a value to it.</b></font>";
 
 	$visits_file = "../Includes/counter/visits.txt";
 	$uniques_file = "../Includes/counter/uniques.txt";
 
 	$counter = fopen($visits_file, "r");
-	$total = fread($counter, filesize($visits_file));
+	$total = @fread($counter, filesize($visits_file));
+	if($total == NULL) { $total = 1; } // Reset..
 	fclose($counter);
 	$total++;
 	$counter = fopen($visits_file, "w");

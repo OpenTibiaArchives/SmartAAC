@@ -51,7 +51,7 @@ $tpl->set('Unique_Visits', $total_uniques);
 
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
-if($modules_rules)
+if($modules_calculator)
 {
 
 // Credits to Samir.se on OTFans.net for this calculation script
