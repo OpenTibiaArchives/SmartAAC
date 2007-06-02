@@ -122,23 +122,13 @@ if ($M2_acc != "" && $M2_acc != null && is_numeric($M2_acc) && $M2_pass != "" &&
 							break;
 					}
 					
-					for(int $i=1; $i<=10 $i++) // Foreach() ?
-					{
-						$expl = explode(",", $char_items[$i]);
-						$item = (int)$expl[0];
-						$count = (int)$expl[1];
-						if($item == 0 || $i == 3)
-							continue;
-						else
-						{
-							sqlquery('INSERT INTO `player_items` (`player_id`, `sid`, `pid`, `itemtype`, `count`)
-														VALUES(' . intval(userByID($M2_char)) . ', ' . /*DUNNO PQP*/ . ', ' . $i . ', '. $item .', ' . $count . ')');
-						}
-					}
-					
-					if($char_items[3] != 0)
-					{
-						// Todo: Backpack, $char_items[3][bp-pos, 0 = bp-id]
+					foreach($char_items as $key => $item){
+						$sid = $key - 1;
+						$itemtype = $item['item_type'];
+						$count = $item['count'];
+						$pid = $item['pid'];
+	 
+						sqlquery('INSERT INTO `player_items` (`player_id`, `sid`, `pid`, `itemtype`, `count`) VALUES ('.intval(userByID($M2_char)).', '.$sid.', '.$pid.', '.$itemtype.', '.$count.')');
 					}
 				}
 				else
