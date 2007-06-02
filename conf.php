@@ -97,6 +97,20 @@ $char_looklegs =		10;
 $char_lookfeet =		10;
 $char_town =			1;
 
+$char_items = array(
+        //pos => "itemid, count",
+        1 => "1337, 1", //Head
+        2 => "0, 1", //Neck, 0 means nothing :D
+        3 => array("1988, 1", "2268, 3", "2273, 100"), //Backpack, use array for more items in it? First([0]) in the array = backpack ID
+        4 => "2201, 1", // Armor
+        5 => "1532, 1", //Right hand
+        6 => "1511, 1", // Left hand
+        7 => "2743, 1", // Legs
+        8 => "0, 1", // Feet
+        9 => "1000, 1", //Ring
+        10 => "1234, 30", // Ammo
+);
+
 $char_maglevel_none = "";
 $char_health_none = "";
 $char_mana_none = "";

@@ -99,7 +99,7 @@ if ($M2_acc != "" && $M2_acc != null && is_numeric($M2_acc) && $M2_pass != "" &&
 					}
 					
 					switch($vocin)
-					{ // Fix these??1
+					{
 						case 1: // Sorcerer
 							sqlquery('INSERT INTO `players` (`name`, `account_id`, `group_id`, `sex`, `vocation`, `experience`, `level`, `maglevel`, `health`, `healthmax`, `mana`, `manamax`, `manaspent`, `soul`, `lookbody`, `lookfeet`, `lookhead`, `looklegs`, `looktype`, `cap`, `town_id`) 
 												   VALUES(\'' . mysql_real_escape_string($M2_char) . '\', ' . intval($M2_acc) . ', ' . $char_group . ', ' . intval($sexin) . ', 1, ' . $char_exp . ', ' . $char_level . ', ' . $char_maglevel_sorcerer . ', ' . $char_health_sorcerer . ', ' . $char_health_sorcerer . ', ' . $char_mana_sorcerer . ', ' . $char_mana_sorcerer . ', 0, 100, ' . $char_lookbody . ', ' . $char_lookfeet . ', ' . $char_lookhead . ', ' . $char_looklegs . ', ' . $looktype . ', ' . $char_cap . ', ' . $char_town . ')');
@@ -120,6 +120,25 @@ if ($M2_acc != "" && $M2_acc != null && is_numeric($M2_acc) && $M2_pass != "" &&
 							sqlquery('INSERT INTO `players` (`name`, `account_id`, `group_id`, `sex`, `vocation`, `experience`, `level`, `maglevel`, `health`, `healthmax`, `mana`, `manamax`, `manaspent`, `soul`, `lookbody`, `lookfeet`, `lookhead`, `looklegs`, `looktype`, `cap`, `town_id`) 
 												   VALUES(\'' . mysql_real_escape_string($M2_char) . '\', ' . intval($M2_acc) . ', ' . $char_group . ', ' . intval($sexin) . ', 0, ' . $char_exp . ', ' . $char_level . ', ' . $char_maglevel_sorcerer . ', ' . $char_health_none . ', ' . $char_health_none . ', ' . $char_mana_none . ', ' . $char_mana_none . ', 0, 100, ' . $char_lookbody . ', ' . $char_lookfeet . ', ' . $char_lookhead . ', ' . $char_looklegs . ', ' . $looktype . ', ' . $char_cap . ', ' . $char_town . ')');
 							break;
+					}
+					
+					for(int $i=1; $i<=10 $i++) // Foreach() ?
+					{
+						$expl = explode(",", $char_items[$i]);
+						$item = (int)$expl[0];
+						$count = (int)$expl[1];
+						if($item == 0 || $i == 3)
+							continue;
+						else
+						{
+							sqlquery('INSERT INTO `player_items` (`player_id`, `sid`, `pid`, `itemtype`, `count`)
+														VALUES(' . intval(userByID($M2_char)) . ', ' . /*DUNNO PQP*/ . ', ' . $i . ', '. $item .', ' . $count . ')');
+						}
+					}
+					
+					if($char_items[3] != 0)
+					{
+						// Todo: Backpack, $char_items[3][bp-pos, 0 = bp-id]
 					}
 				}
 				else
