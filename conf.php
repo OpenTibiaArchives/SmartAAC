@@ -99,11 +99,11 @@ $char_town =			1;
 
 // head, neck, container, armor, right hand, left hand, legs, feet, ring, ammo
 $char_items = array();
-$char_items[3] = array('pid' => '0', 'item_type' => '1988', 'count' => '1');
-$char_items[4] = array('pid' => '0', 'item_type' => '2650', 'count' => '1');
-$char_items[5] = array('pid' => '0', 'item_type' => '2382', 'count' => '1');
-$char_items[6] = array('pid' => '0', 'item_type' => '2050', 'count' => '1');
-$char_items[10] = array('pid' => '3', 'item_type' => '2674', 'count' => '2');
+$char_items[3] = array('sid' => '0', 'item_type' => '1988', 'count' => '1');
+$char_items[4] = array('sid' => '0', 'item_type' => '2650', 'count' => '1');
+$char_items[5] = array('sid' => '0', 'item_type' => '2382', 'count' => '1');
+$char_items[6] = array('sid' => '0', 'item_type' => '2050', 'count' => '1');
+$char_items[11] = array('sid' => '3', 'item_type' => '2674', 'count' => '2');
 
 $char_maglevel_none = "";
 $char_health_none = "";

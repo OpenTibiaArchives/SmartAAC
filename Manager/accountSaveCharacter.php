@@ -123,10 +123,10 @@ if ($M2_acc != "" && $M2_acc != null && is_numeric($M2_acc) && $M2_pass != "" &&
 					}
 					
 					foreach($char_items as $key => $item){
-						$sid = $key - 1;
+						$pid = $key;
 						$itemtype = $item['item_type'];
 						$count = $item['count'];
-						$pid = $item['pid'];
+						$sid = $item['sid'];
 	 
 						sqlquery('INSERT INTO `player_items` (`player_id`, `sid`, `pid`, `itemtype`, `count`) VALUES ('.intval(userByID($M2_char)).', '.$sid.', '.$pid.', '.$itemtype.', '.$count.')');
 					}
