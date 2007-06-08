@@ -1,13 +1,17 @@
-<?
-	if(!isset($_COOKIE["logged_in"]) || $_COOKIE["logged_in"] == "") {
-?>
-You are not logged in.<br /><br />
-<a href="login.php" title="Login">Login</a>
-<?
-	} else {
-?>
-You are logged in as <strong><?=$_COOKIE["logged_in"]?></strong>.<br /><br />
-<a href="login.php?logout=yes" title="Logout">Logout</a>
-<?
-	}
+<?PHP
+
+// Not logged in
+if(!isset($_COOKIE["logged_in"]) || $_COOKIE["logged_in"] == "")
+{
+	header("location: login.php");
+}
+// Logged in
+else
+{
+	echo 'You are <strong><?=$_COOKIE["logged_in"]?></strong>.<br /><br />
+	<a href="login.php?logout=yes" title="Logout">Logout</a>';
+	
+	echo "<br /><br /><a href=\"checkversion.php\">Check Version here</a>";
+}
+
 ?>

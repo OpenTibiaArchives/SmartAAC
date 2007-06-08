@@ -27,9 +27,9 @@
 //    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // ===========================================================
 
-$aac_status = 			"Installed";
+$aac_status = 			"Not Installed";
 $aac_version = 			"2.0 Alpha 2";
-$aac_versioncode = 		199;
+$aac_versioncode = 		198;
 $aac_dataDir =			"C:\\Dev-Cpp\\otserv\\data";
 $aac_mapname =			"map";
 
@@ -98,12 +98,14 @@ $char_lookfeet =		10;
 $char_town =			1;
 
 // head, neck, container, armor, right hand, left hand, legs, feet, ring, ammo
+$pids = array(1 => 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+$sid = 10;
 $char_items = array();
-$char_items[3] = array('sid' => '0', 'item_type' => '1988', 'count' => '1');
-$char_items[4] = array('sid' => '0', 'item_type' => '2650', 'count' => '1');
-$char_items[5] = array('sid' => '0', 'item_type' => '2382', 'count' => '1');
-$char_items[6] = array('sid' => '0', 'item_type' => '2050', 'count' => '1');
-$char_items[11] = array('sid' => '3', 'item_type' => '2674', 'count' => '2');
+$char_items[11] = array('slot' => 3, 'item_type' => 1988, 'count' => 1);
+$char_items[12] = array('slot' => 4, 'item_type' => 2650, 'count' => 1);
+$char_items[13] = array('slot' => 5, 'item_type' => 2382, 'count' => 1);
+$char_items[14] = array('slot' => 6, 'item_type' => 2050, 'count' => 1);
+$char_items[15] = array('slot' => 11, 'item_type' => 2674, 'count' => 2);
 
 $char_maglevel_none = "";
 $char_health_none = "";

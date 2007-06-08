@@ -122,14 +122,14 @@ if ($M2_acc != "" && $M2_acc != null && is_numeric($M2_acc) && $M2_pass != "" &&
 							break;
 					}
 					
-					foreach($char_items as $key => $item){
-						$pid = $key;
-						$itemtype = $item['item_type'];
-						$count = $item['count'];
-						$sid = $item['sid'];
-	 
-						sqlquery('INSERT INTO `player_items` (`player_id`, `sid`, `pid`, `itemtype`, `count`) VALUES ('.intval(userByID($M2_char)).', '.$sid.', '.$pid.', '.$itemtype.', '.$count.')');
-					}
+foreach($char_items as $id => $item)
+{
+    ++$sid;
+    $pids[$id] = $sid;
+    $pid = $pids[ $item['slot'] ];
+
+    sqlquery('INSERT INTO `player_items` (`player_id`, `sid`, `pid`, `itemtype`, `count`) VALUES ('.intval(userByID($M2_char)).', '.$sid.', '.$pid.', '.$item['item_type'].', '.$item['count'].')');
+}
 				}
 				else
 				{

@@ -6,6 +6,7 @@
 	*/
 
 	// Here is where you set your user name and password
+	// IMPLEMENT IN SETUP
 	$user_name = "admin";
 	$password = "admin";
 	// End
