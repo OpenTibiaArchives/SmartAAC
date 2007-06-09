@@ -26,6 +26,7 @@
 //    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // ===========================================================
 include '../conf.php';
+include '../Includes/resources.php';
 
 if(file_exists("../installLock.txt"))
 {
@@ -52,6 +53,7 @@ else
 	$license_decide = $_POST['agreeordisagree'];
 	$char_rook = $_POST['char_rook'];
 	$main_enable_feedback = $_POST['main_enable_feedback'];
+	$admin_pass_generated = createRandomPassword();
 
  	if($license_decide == "Disagree")
 	{
@@ -140,7 +142,13 @@ else
 		<input type=\"checkbox\" name=\"ImgVer\" class=\"boxes\" /><br /><br />
 		
 		<label for=\"DownloadsWarning\">Display downloads warnings?</label>
-		<input type=\"checkbox\" name=\"DownloadsWarning\" class=\"boxes\" /><br />
+		<input type=\"checkbox\" name=\"DownloadsWarning\" class=\"boxes\" /><br /><br />
+		
+		<label for=\"AdminUser\">Admin Username:</label>
+		<input type=\"text\" name=\"AdminUser\" value=\"$admin_user\" /><br />
+		
+		<label for=\"AdminPass\">Admin Password:</label>
+		<input type=\"text\" name=\"AdminPass\" value=\"$admin_pass_generated\" /><br /><br />
 		<br /><br />
 		";
 		

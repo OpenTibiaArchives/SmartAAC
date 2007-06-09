@@ -3,7 +3,7 @@
 // ===========================================================
 //	Smart-Ass: The Userfriendly AAC
 //	Version: 2.0 Development Only
-//	Configuration Created: Fri, 01 Jun 2007 00:58:14 +0100
+//	Configuration Created: Sat, 09 Jun 2007 09:07:02 +0100
 //	
 //	USE OF THIS PROGRAM TO RELY ON IT FOR SERVER USE IS NOT
 // 	RECOMMENDED! THIS IS FOR TESTING ONLY.
@@ -29,7 +29,7 @@
 
 $aac_status = 			"Not Installed";
 $aac_version = 			"2.0 Alpha 2";
-$aac_versioncode = 		198;
+$aac_versioncode = 		199;
 $aac_dataDir =			"C:\\Dev-Cpp\\otserv\\data";
 $aac_mapname =			"map";
 
@@ -47,6 +47,8 @@ $net_port = 			"7171";
 $aac_md5passwords =	false;
 $aac_imgver = 			false;
 $main_downloads_warning = false;
+$admin_user =			"admin";
+$admin_pass = 			"877113";
 
 $sql_host =			"localhost";
 $sql_user =			"root";
@@ -68,23 +70,23 @@ $info_os =				"Windows XP";
 $info_connection =		"5 Mbit";
 $info_uptimetype =		"24/7";
 
-$modules_charsearch = true;
-$modules_feedback = true;
-$modules_affliates = true;
+$modules_charsearch = false;
+$modules_feedback = false;
+$modules_affliates = false;
 $modules_guilds = false;
-$modules_houses = true;
-$modules_highscores = true;
-$modules_infopage = true;
-$modules_serverstats = true;
-$modules_downloads = true;
-$modules_bannedplayers = true;
-$modules_commands = true;
-$modules_rules = true;
-$modules_voting = true;
-$modules_custom = true;
-$modules_calculator = true;
-$modules_videos = true;
-$modules_gallery = true;
+$modules_houses = false;
+$modules_highscores = false;
+$modules_infopage = false;
+$modules_serverstats = false;
+$modules_downloads = false;
+$modules_bannedplayers = false;
+$modules_commands = false;
+$modules_rules = false;
+$modules_voting = false;
+$modules_custom = false;
+$modules_calculator = false;
+$modules_videos = false;
+$modules_gallery = false;
 
 $char_rook =			false;
 $char_group =			1;
@@ -96,16 +98,6 @@ $char_lookbody =		10;
 $char_looklegs =		10;
 $char_lookfeet =		10;
 $char_town =			1;
-
-// head, neck, container, armor, right hand, left hand, legs, feet, ring, ammo
-$pids = array(1 => 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-$sid = 10;
-$char_items = array();
-$char_items[11] = array('slot' => 3, 'item_type' => 1988, 'count' => 1);
-$char_items[12] = array('slot' => 4, 'item_type' => 2650, 'count' => 1);
-$char_items[13] = array('slot' => 5, 'item_type' => 2382, 'count' => 1);
-$char_items[14] = array('slot' => 6, 'item_type' => 2050, 'count' => 1);
-$char_items[15] = array('slot' => 11, 'item_type' => 2674, 'count' => 2);
 
 $char_maglevel_none = "";
 $char_health_none = "";

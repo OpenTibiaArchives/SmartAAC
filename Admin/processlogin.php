@@ -4,12 +4,10 @@
 	Modified May 1, 2007
 	login2.php copyright 2007 "HyperSilence"
 	*/
+	include '../conf.php';
 
-	// Here is where you set your user name and password
-	// IMPLEMENT IN SETUP
-	$user_name = "admin";
-	$password = "admin";
-	// End
+	$user_name = $admin_user;
+	$password = $admin_pass;
 
 	$login_user_name = $_POST["login_user_name"];
 	$login_password = $_POST["login_password"];
