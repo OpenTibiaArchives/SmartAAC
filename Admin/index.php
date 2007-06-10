@@ -8,10 +8,12 @@ if(!isset($_COOKIE["logged_in"]) || $_COOKIE["logged_in"] == "")
 // Logged in
 else
 {
-	echo 'You are <strong><?=$_COOKIE["logged_in"]?></strong>.<br /><br />
+	/*echo 'You are <strong><?=$_COOKIE["logged_in"]?></strong>.<br /><br />
 	<a href="login.php?logout=yes" title="Logout">Logout</a>';
 	
-	echo "<br /><br /><a href=\"checkversion.php\">Check Version here</a>";
+	echo "<br /><br /><a href=\"checkversion.php\">Check Version here</a>";*/
+	
+	header("location: admin.php");
 }
 
 ?>

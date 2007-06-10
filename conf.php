@@ -3,7 +3,7 @@
 // ===========================================================
 //	Smart-Ass: The Userfriendly AAC
 //	Version: 2.0 Development Only
-//	Configuration Created: Sat, 09 Jun 2007 09:07:02 +0100
+//	Configuration Created: Mon, 11 Jun 2007 00:13:56 +0100
 //	
 //	USE OF THIS PROGRAM TO RELY ON IT FOR SERVER USE IS NOT
 // 	RECOMMENDED! THIS IS FOR TESTING ONLY.
@@ -27,10 +27,10 @@
 //    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // ===========================================================
 
-$aac_status = 			"Not Installed";
+$aac_status = 			"Installed";
 $aac_version = 			"2.0 Alpha 2";
 $aac_versioncode = 		199;
-$aac_dataDir =			"C:\\Dev-Cpp\\otserv\\data";
+$aac_dataDir =			"C:\Dev-Cpp\otserv\data";
 $aac_mapname =			"map";
 
 $aac_minacclen = 		6;
@@ -45,7 +45,7 @@ $net_ipaddress =		"localhost";
 $net_port = 			"7171";
 
 $aac_md5passwords =	false;
-$aac_imgver = 			false;
+$aac_imgver = 			true;
 $main_downloads_warning = false;
 $admin_user =			"admin";
 $admin_pass = 			"877113";
@@ -88,7 +88,7 @@ $modules_calculator = false;
 $modules_videos = false;
 $modules_gallery = false;
 
-$char_rook =			false;
+$char_rook =			true;
 $char_group =			1;
 $char_exp =			98800;
 $char_cap =			700;
@@ -99,23 +99,33 @@ $char_looklegs =		10;
 $char_lookfeet =		10;
 $char_town =			1;
 
-$char_maglevel_none = "";
-$char_health_none = "";
-$char_mana_none = "";
+// head, neck, container, armor, right hand, left hand, legs, feet, ring, ammo 	 
+$pids = array(1 => 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+$sid = 10; 	 
+$char_items = array(); 	 
+$char_items[11] = array('slot' => 3, 'item_type' => 1988, 'count' => 1); 	 
+$char_items[12] = array('slot' => 4, 'item_type' => 2650, 'count' => 1); 	 
+$char_items[13] = array('slot' => 5, 'item_type' => 2382, 'count' => 1); 	 
+$char_items[14] = array('slot' => 6, 'item_type' => 2050, 'count' => 1); 	 
+$char_items[15] = array('slot' => 11, 'item_type' => 2674, 'count' => 2); 	 
 
-$char_maglevel_sorcerer = 100;
-$char_health_sorcerer = 100;
-$char_mana_sorcerer = 100;
+$char_maglevel_none = 100;
+$char_health_none = 100;
+$char_mana_none = 100;
 
-$char_maglevel_druid = 100;
-$char_health_druid = 100;
-$char_mana_druid = 100;
+$char_maglevel_sorcerer = "";
+$char_health_sorcerer = "";
+$char_mana_sorcerer = "";
 
-$char_maglevel_paladin = 100;
-$char_health_paladin = 100;
-$char_mana_paladin = 100;
+$char_maglevel_druid = "";
+$char_health_druid = "";
+$char_mana_druid = "";
 
-$char_maglevel_knight = 100;
-$char_health_knight = 100;
-$char_mana_knight = 100;
+$char_maglevel_paladin = "";
+$char_health_paladin = "";
+$char_mana_paladin = "";
+
+$char_maglevel_knight = "";
+$char_health_knight = "";
+$char_mana_knight = "";
 ?>

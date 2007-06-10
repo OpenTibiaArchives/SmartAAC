@@ -29,10 +29,6 @@
 include '../conf.php';
 include '../Includes/stats/stats.php';
 include '../Includes/counter/counter.php';
-if($aac_status == "Maintenance")
-{
-	header("location: maintenance.php");
-}
 
 // Not logged in
 if(!isset($_COOKIE["logged_in"]) || $_COOKIE["logged_in"] == "")
@@ -43,8 +39,8 @@ if(!isset($_COOKIE["logged_in"]) || $_COOKIE["logged_in"] == "")
 // Logged in
 else
 {
-	$title = 'Check Version';
-	$name = $aac_servername;
+	$title = 'Security';
+	$name = 'Admin Panel';
 	$bodySpecial = 'onload="NOTHING"';
 
 	include_once('../Includes/Templates/bTemplate.php');
@@ -60,18 +56,57 @@ else
 
 	echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
-	$currVersion = file_get_contents("http://smart.pekay.co.uk/smartass_version");
-	if($currVersion != $aac_versioncode)
-	{
-		echo "<p>Smart-Ass isn't up to date. Updates are there to bring new features, security fixes and other stuff.</p>";
-		echo '<form action="http://smart.pekay.co.uk/something_not_made_yet.php?version='.$aac_versioncode.'" method="post"><input name="submit" tabindex="4" type="submit" value="Upgrade to '.$currVersion.'" /></form>';
-	}
-	elseif($currVersion == $aac_versioncode)
-	{
-		echo "They are the same!";
-	}
+		echo "
+		<style type=\"text/css\">
 
-	echo $tpl->fetch('../Includes/Templates/Indigo/sidebar.tpl');
+		label{
+		float: left;
+		width: 220px;
+		font-weight: bold;
+		font-size: 12px;
+		}
+
+		input, textarea{
+		width: 180px;
+		margin-bottom: 5px;
+		}
+
+		textarea{
+		width: 250px;
+		height: 150px;
+		}
+
+		.boxes{
+		width: 3em;
+		}
+
+		#submitbutton{
+		margin-left: 120px;
+		margin-top: 5px;
+		width: 90px;
+		}
+
+		br{
+		clear: left;
+		}
+		</style>
+
+		<form action=\"save.php?save=security\" method=\"POST\">
+		<label for=\"HashPass\">Use MD5 passwords?</label>
+		<input type=\"checkbox\" name=\"HashPass\" class=\"boxes\" /><br /><br />
+
+		<label for=\"ImgVer\">Image verification?</label>
+		<input type=\"checkbox\" name=\"ImgVer\" class=\"boxes\" /><br /><br />
+		
+		<label for=\"DownloadsWarning\">Display downloads warnings?</label>
+		<input type=\"checkbox\" name=\"DownloadsWarning\" class=\"boxes\" /><br />
+		
+		<br />
+		<input type=\"submit\" name=\"submitbutton\" id=\"submitbutton\" value=\"Change\" />
+		</form>
+		";
+
+	echo $tpl->fetch('../Includes/Templates/Indigo/sidebarAdmin.tpl');
 	echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
 	echo $tpl->fetch('../Includes/Templates/Indigo/bottom.tpl');
 }

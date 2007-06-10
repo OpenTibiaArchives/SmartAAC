@@ -277,6 +277,16 @@ else
 \$char_lookfeet =		$conf_char_lookfeet;
 \$char_town =			$conf_char_town;
 
+// head, neck, container, armor, right hand, left hand, legs, feet, ring, ammo 	 
+\$pids = array(1 => 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+\$sid = 10; 	 
+\$char_items = array(); 	 
+\$char_items[11] = array('slot' => 3, 'item_type' => 1988, 'count' => 1); 	 
+\$char_items[12] = array('slot' => 4, 'item_type' => 2650, 'count' => 1); 	 
+\$char_items[13] = array('slot' => 5, 'item_type' => 2382, 'count' => 1); 	 
+\$char_items[14] = array('slot' => 6, 'item_type' => 2050, 'count' => 1); 	 
+\$char_items[15] = array('slot' => 11, 'item_type' => 2674, 'count' => 2); 	 
+
 \$char_maglevel_none = $conf_char_maglevel_none;
 \$char_health_none = $conf_char_health_none;
 \$char_mana_none = $conf_char_mana_none;
