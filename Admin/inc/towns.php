@@ -39,7 +39,7 @@ if(!isset($_COOKIE["logged_in"]) || $_COOKIE["logged_in"] == "")
 // Logged in
 else
 {
-	$title = 'Check Version';
+	$title = 'Towns';
 	$name = 'Admin Panel';
 	$bodySpecial = 'onload="NOTHING"';
 
@@ -56,16 +56,58 @@ else
 
 	echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
-	$currVersion = file_get_contents("http://smart.pekay.co.uk/smartass_version");
-	if($currVersion != $aac_versioncode)
-	{
-		echo "<p>Smart-Ass isn't up to date. Updates are there to bring new features, security fixes and other stuff.</p>";
-		echo '<form action="http://smart.pekay.co.uk/upgrade.php?version='.$aac_versioncode.'" method="post"><input name="submit" tabindex="4" type="submit" value="Upgrade to '.$currVersion.'" /></form>';
-	}
-	elseif($currVersion == $aac_versioncode)
-	{
-		echo "Your version of Smart-Ass is up to date. Panic over!";
-	}
+		echo "
+		<style type=\"text/css\">
+
+		label{
+		float: left;
+		width: 220px;
+		font-weight: bold;
+		font-size: 12px;
+		}
+
+		input, textarea{
+		width: 180px;
+		margin-bottom: 5px;
+		}
+
+		textarea{
+		width: 250px;
+		height: 150px;
+		}
+
+		.boxes{
+		width: 3em;
+		}
+
+		#submitbutton{
+		margin-left: 120px;
+		margin-top: 5px;
+		width: 90px;
+		}
+
+		br{
+		clear: left;
+		}
+		</style>
+
+		<form action=\"save.php?save=towns\" method=\"POST\">
+		<label for=\"Town1\">Town 1:</label>
+		<input type=\"text\" name=\"Town1\" value=\"$main_towns[1]\" /><br />
+		<label for=\"Town2\">Town 2:</label>
+		<input type=\"text\" name=\"Town2\" value=\"$main_towns[2]\" /><br />
+		<label for=\"Town3\">Town 3:</label>
+		<input type=\"text\" name=\"Town3\" value=\"$main_towns[3]\" /><br />
+		<label for=\"Town4\">Town 4:</label>
+		<input type=\"text\" name=\"Town4\" value=\"$main_towns[4]\" /><br />
+		<label for=\"Town5\">Town 5:</label>
+		<input type=\"text\" name=\"Town5\" value=\"$main_towns[5]\" /><br /><br />
+		<br /><br />
+		
+		<input type=\"submit\" name=\"submitbutton\" id=\"submitbutton\" value=\"Change\" />
+			<br />
+		</form>
+		";
 
 	echo $tpl->fetch('../Includes/Templates/Indigo/sidebarAdmin.tpl');
 	echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');

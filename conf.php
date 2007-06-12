@@ -3,7 +3,7 @@
 // ===========================================================
 //	Smart-Ass: The Userfriendly AAC
 //	Version: 2.0 Development Only
-//	Configuration Created: Mon, 11 Jun 2007 00:13:56 +0100
+//	Configuration Created: Tue, 12 Jun 2007 00:56:54 +0100
 //	
 //	USE OF THIS PROGRAM TO RELY ON IT FOR SERVER USE IS NOT
 // 	RECOMMENDED! THIS IS FOR TESTING ONLY.
@@ -33,15 +33,15 @@ $aac_versioncode = 		199;
 $aac_dataDir =			"C:\Dev-Cpp\otserv\data";
 $aac_mapname =			"map";
 
-$aac_minacclen = 		6;
-$aac_maxacclen = 		8;
-$aac_minpasslen = 		3;
-$aac_maxpasslen = 		15;
-$aac_minplayerlen =	4;
-$aac_maxplayerlen =	20;
+$aac_minacclen = 		4;
+$aac_maxacclen = 		20;
+$aac_minpasslen = 		4;
+$aac_maxpasslen = 		20;
+$aac_minplayerlen =	3;
+$aac_maxplayerlen =	10;
 
 $aac_servername = 		"TestName";
-$net_ipaddress =		"localhost";
+$net_ipaddress =		"127.0.0.1";
 $net_port = 			"7171";
 
 $aac_md5passwords =	false;
@@ -53,40 +53,40 @@ $admin_pass = 			"877113";
 $sql_host =			"localhost";
 $sql_user =			"root";
 $sql_pass = 			"";
-$sql_db = 				"otserv";
+$sql_db = 				"loltest";
 
 $main_highscores_result = 	20;
 $main_ugrp_nolist =		2;
 $main_votequestion = "What should the server add?";
-$main_voteanswer1 = "More monsters";
-$main_voteanswer2 = "More hunting areas";
-$main_voteanswer3 = "More houses";
-$main_voteanswer4 = "New towns";
+$main_voteanswer1 = "More monsterssss";
+$main_voteanswer2 = "More hunting areasssss";
+$main_voteanswer3 = "More housessss";
+$main_voteanswer4 = "New townssss";
 $main_enable_feedback = false;
 $main_mail = "none@none.nodomain";
-$main_towns = array(1 => 'Town 1', 2 => 'Town 2', 3 => 'Town 3', 4 => 'Town 4', 5 => 'Town 5');
+$main_towns = array(1 => '', 2 => '', 3 => '', 4 => '', 5 => '');
 
-$info_os =				"Windows XP";
+$info_os =				"Debian Linux";
 $info_connection =		"5 Mbit";
 $info_uptimetype =		"24/7";
 
-$modules_charsearch = false;
-$modules_feedback = false;
-$modules_affliates = false;
+$modules_charsearch = true;
+$modules_feedback = true;
+$modules_affliates = true;
 $modules_guilds = false;
-$modules_houses = false;
-$modules_highscores = false;
-$modules_infopage = false;
-$modules_serverstats = false;
-$modules_downloads = false;
-$modules_bannedplayers = false;
-$modules_commands = false;
-$modules_rules = false;
-$modules_voting = false;
-$modules_custom = false;
-$modules_calculator = false;
-$modules_videos = false;
-$modules_gallery = false;
+$modules_houses = true;
+$modules_highscores = true;
+$modules_infopage = true;
+$modules_serverstats = true;
+$modules_downloads = true;
+$modules_bannedplayers = true;
+$modules_commands = true;
+$modules_rules = true;
+$modules_voting = true;
+$modules_custom = true;
+$modules_calculator = true;
+$modules_videos = true;
+$modules_gallery = true;
 
 $char_rook =			true;
 $char_group =			1;
@@ -109,9 +109,9 @@ $char_items[13] = array('slot' => 5, 'item_type' => 2382, 'count' => 1);
 $char_items[14] = array('slot' => 6, 'item_type' => 2050, 'count' => 1); 	 
 $char_items[15] = array('slot' => 11, 'item_type' => 2674, 'count' => 2); 	 
 
-$char_maglevel_none = 100;
-$char_health_none = 100;
-$char_mana_none = 100;
+$char_maglevel_none = 25;
+$char_health_none = 8;
+$char_mana_none = 4;
 
 $char_maglevel_sorcerer = "";
 $char_health_sorcerer = "";

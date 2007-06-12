@@ -9,8 +9,10 @@ if(!isset($_COOKIE["logged_in"]) || $_COOKIE["logged_in"] == "")
 else
 {
 	include_once('../conf.php');
+	include "../Includes/resources.php";
 	$save = $_GET['save'];
 
+	$aac_status = "Installed";
 	/* Evaluation of booleans */
 	$aac_md5passwords = ($aac_md5passwords) ? "true" : "false";
 	$aac_imgver = ($aac_imgver) ? "true" : "false";
@@ -81,9 +83,126 @@ else
 	switch($save)
 	{
 		case "security":
-		$aac_md5passwords =	($_POST["HashPass"]) ? "true" : "false";
-		$aac_imgver = 			($_POST["ImgVer"]) ? "true" : "false";
-		$main_downloads_warning =($_POST["DownloadsWarning"]) ? "true" : "false";
+		$aac_md5passwords =				($_POST["HashPass"]) ? "true" : "false";
+		$aac_imgver = 					($_POST["ImgVer"]) ? "true" : "false";
+		$main_downloads_warning =		($_POST["DownloadsWarning"]) ? "true" : "false";
+		break;
+		
+		case "modules":
+		$modules_charsearch =			($_POST['CharSearch']) ? "true" : "false";
+		$modules_feedback =				($_POST['Feedback']) ? "true" : "false";
+		$modules_affliates =			($_POST['Affliates']) ? "true" : "false";
+		$modules_guilds =				($_POST['Guilds']) ? "true" : "false";
+		$modules_houses =				($_POST['Houses']) ? "true" : "false";
+		$modules_highscores =			($_POST['Highscores']) ? "true" : "false";
+		$modules_infopage =				($_POST['InfoPage']) ? "true" : "false";
+		$modules_serverstats =			($_POST['ServerStats']) ? "true" : "false";
+		$modules_downloads =			($_POST['DownloadsPage']) ? "true" : "false";
+		$modules_bannedplayers =		($_POST['BannedPlayers']) ? "true" : "false";
+		$modules_commands =				($_POST['InGameCommands']) ? "true" : "false";
+		$modules_rules =				($_POST['RulesPage']) ? "true" : "false";
+		$modules_voting =				($_POST['VotePage']) ? "true" : "false";
+		$modules_custom =				($_POST['Custom']) ? "true" : "false";
+		$modules_calculator =			($_POST['Calculator']) ? "true" : "false";
+		$modules_videos =				($_POST['Videos']) ? "true" : "false";
+		$modules_gallery =				($_POST['Gallery']) ? "true" : "false";
+		break;
+		
+		case "sql":
+		$sql_host =			$_POST["SQL_Host"];
+		$sql_user =			$_POST["SQL_User"];
+		$sql_pass = 		$_POST["SQL_Pass"];
+		$sql_db = 			$_POST["SQL_DB"];
+		break;
+		
+		case "stats":
+		$aac_servername = 		$_POST["ServerName"];
+		$net_ipaddress =		$_POST["HostName"];
+		$net_port = 			$_POST["HostPort"];
+		$info_os =			    $_POST["HostOS"];
+		$info_connection =		$_POST["HostConnection"];
+		$info_uptimetype =		$_POST["HostUptime"];
+		break;
+		
+		case "renewvote":
+		$main_votequestion = 	$_POST["VoteQuestion"];
+		$main_voteanswer1 = 	$_POST["Answer1"];
+		$main_voteanswer2 = 	$_POST["Answer2"];
+		$main_voteanswer3 = 	$_POST["Answer3"];
+		$main_voteanswer4 = 	$_POST["Answer4"];
+		break;
+		
+		case "fieldlens":
+		$aac_minacclen = 		$_POST["MinAccLen"];
+		$aac_maxacclen = 		$_POST["MaxAccLen"];
+		$aac_minpasslen = 		$_POST["MinPassLen"];
+		$aac_maxpasslen = 		$_POST["MaxPassLen"];
+		$aac_minplayerlen =		$_POST["MinPlayerLen"];
+		$aac_maxplayerlen =		$_POST["MaxPlayerLen"];
+		break;
+		
+		case "playerlvls":
+		if($char_rook == "true")
+		{
+			$char_maglevel_none = $_POST["char_maglevel_none"];
+			$char_health_none = $_POST["char_health_none"];
+			$char_mana_none = $_POST["char_mana_none"];
+			
+			$char_maglevel_sorcerer = '""';
+			$char_health_sorcerer = '""';
+			$char_mana_sorcerer = '""';
+			$char_maglevel_druid = '""';
+			$char_health_druid = '""';
+			$char_mana_druid = '""';
+			$char_maglevel_paladin = '""';
+			$char_health_paladin = '""';
+			$char_mana_paladin = '""';
+			$char_maglevel_knight = '""';
+			$char_health_knight = '""';
+			$char_mana_knight = '""';
+		}
+		elseif($char_rook == "false")
+		{
+			$char_maglevel_none = '""';
+			$char_health_none = '""';
+			$char_mana_none = '""';
+						
+			$char_maglevel_sorcerer = $_POST["char_maglevel_sorcerer"];
+			$char_health_sorcerer = $_POST["char_health_sorcerer"];
+			$char_mana_sorcerer = $_POST["char_mana_sorcerer"];
+		
+			$char_maglevel_druid = $_POST["char_maglevel_druid"];
+			$char_health_druid = $_POST["char_health_druid"];
+			$char_mana_druid = $_POST["char_mana_druid"];
+		
+			$char_maglevel_paladin = $_POST["char_maglevel_paladin"];
+			$char_health_paladin = $_POST["char_health_paladin"];
+			$char_mana_paladin = $_POST["char_mana_paladin"];
+		
+			$char_maglevel_knight = $_POST["char_maglevel_knight"];
+			$char_health_knight = $_POST["char_health_knight"];
+			$char_mana_knight = $_POST["char_mana_knight"];
+		}
+		break;
+		
+		case "towns":
+		$main_towns[1] = $_POST['Town1'];
+		$main_towns[2] = $_POST['Town2'];
+		$main_towns[3] = $_POST['Town3'];
+		$main_towns[4] = $_POST['Town4'];
+		$main_towns[5] = $_POST['Town5'];
+		break;
+		
+		case "maintenance":
+		$aac_status_1a =	($_POST['MaintenanceMode']) ? "true" : "false";
+		if($aac_status_1a == "true")
+		{
+			$aac_status = "Maintenance";
+		}
+		else
+		{
+			$aac_status = "Installed";
+		}
 		break;
 	}
 
@@ -119,7 +238,7 @@ else
 //    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // ===========================================================
 
-\$aac_status = 			\"Installed\";
+\$aac_status = 			\"$aac_status\";
 \$aac_version = 			\"2.0 Alpha 2\";
 \$aac_versioncode = 		199;
 \$aac_dataDir =			\"$aac_dataDir\";
