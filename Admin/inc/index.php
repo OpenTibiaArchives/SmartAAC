@@ -87,7 +87,7 @@ Version: $aac_version</p><br />";
 <li><a href="admin.php?action=ImportDB">Import the Default OTServ DB</a></li>
 <li><a href="admin.php?action=Others">Change other stuff</a></li>
 <br />
-<li><a href="admin.php?action=Others">Change admin credentials</a></li>
+<li><a href="admin.php?action=AdminCreds">Change admin credentials</a></li>
 </ul>
 <?
 

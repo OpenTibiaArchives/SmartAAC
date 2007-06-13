@@ -132,6 +132,13 @@ else
 		$main_voteanswer4 = 	$_POST["Answer4"];
 		break;
 		
+		case "resetvotestat":
+		$voteFile = fopen("../Includes/vote/results.txt", "w");
+		$writeVote = "0	0	0	0	0	0	0	0	0	";
+		fwrite($voteFile, $writeVote);
+		fclose($voteFile);
+		break;
+		
 		case "fieldlens":
 		$aac_minacclen = 		$_POST["MinAccLen"];
 		$aac_maxacclen = 		$_POST["MaxAccLen"];
@@ -203,6 +210,28 @@ else
 		{
 			$aac_status = "Installed";
 		}
+		break;
+		
+		case "changeadmincreds":
+		$admin_user = $_POST['adminuser'];
+		$admin_pass = $_POST['adminpass'];
+		break;
+		
+		case "resetadminpass":
+		$admin_pass = createRandomPassword();
+		break;
+		
+		case "others":
+		$aac_servername = $_POST['ServerName'];
+		$main_highscores_result = $_POST['HighscoresResult'];
+		$char_exp = $_POST['StartEXP'];
+		$char_cap = $_POST['StartCAP'];
+		$char_level = $_POST['StartLevel'];
+		$char_lookhead = $_POST['StartLookhead'];
+		$char_lookbody = $_POST['StartLookbody'];
+		$char_looklegs = $_POST['StartLooklegs'];
+		$char_lookfeet = $_POST['StartLookfeet'];
+		$char_town = $_POST['StartTown'];
 		break;
 	}
 

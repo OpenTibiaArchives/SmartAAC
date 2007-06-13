@@ -48,6 +48,14 @@ switch($action)
 	include 'inc/importdb.php';
 	break;
 	
+	case "AdminCreds":
+	include 'inc/admincreds.php';
+	break;
+	
+	case "Others":
+	include 'inc/others.php';
+	break;
+	
 	default:
 	include 'inc/index.php';
 	break;

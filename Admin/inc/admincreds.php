@@ -39,7 +39,7 @@ if(!isset($_COOKIE["logged_in"]) || $_COOKIE["logged_in"] == "")
 // Logged in
 else
 {
-	$title = 'Voting';
+	$title = 'Towns';
 	$name = 'Admin Panel';
 	$bodySpecial = 'onload="NOTHING"';
 
@@ -84,6 +84,11 @@ else
 		margin-left: 120px;
 		margin-top: 5px;
 		width: 90px;
+		
+		#submitbutton2{
+		margin-left: 120px;
+		margin-top: 5px;
+		width: 200px;
 		}
 
 		br{
@@ -91,29 +96,22 @@ else
 		}
 		</style>
 
-		<form action=\"save.php?save=renewvote\" method=\"POST\">
-		<label for=\"VoteQuestion\">Vote question:</label>
-		<input type=\"text\" name=\"VoteQuestion\" value=\"$main_votequestion\" /><br />
-
-		<label for=\"Answer1\">Answer 1:</label>
-		<input type=\"text\" name=\"Answer1\" value=\"$main_voteanswer1\" /><br />
-
-		<label for=\"Answer2\">Answer 2:</label>
-		<input type=\"text\" name=\"Answer2\" value=\"$main_voteanswer2\" /><br />
-
-		<label for=\"Answer3\">Answer 3:</label>
-		<input type=\"text\" name=\"Answer3\" value=\"$main_voteanswer3\" /><br />
-
-		<label for=\"Answer4\">Answer 4:</label>
-		<input type=\"text\" name=\"Answer4\" value=\"$main_voteanswer4\" /><br />
-		<br /><br />
+		<form action=\"save.php?save=changeadmincreds\" method=\"POST\">
+		<label for=\"adminuser\">Username:</label>
+		<input type=\"text\" name=\"adminuser\" value=\"$admin_user\" /><br />
+		<label for=\"adminpass\">Password:</label>
+		<input type=\"password\" name=\"adminpass\" /><br /><br />
 		
-		<br />
+		
 		<input type=\"submit\" name=\"submitbutton\" id=\"submitbutton\" value=\"Change\" />
+			<br />
 		</form>
 		
-		<form action=\"save.php?save=resetvotestat\" method=\"POST\">
-		<input type=\"submit\" name=\"submitbutton\" id=\"submitbutton\" value=\"Reset Votes\" />
+		
+		<br /><br />
+		<p>You can reset the password to a random one.</p>
+		<form action=\"save.php?save=resetadminpass\" method=\"POST\">
+		<input type=\"submit\" name=\"submitbutton2\" id=\"submitbutton2\" value=\"Randomize new password\" />
 		</form>
 		";
 

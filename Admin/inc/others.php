@@ -39,7 +39,7 @@ if(!isset($_COOKIE["logged_in"]) || $_COOKIE["logged_in"] == "")
 // Logged in
 else
 {
-	$title = 'Voting';
+	$title = 'Towns';
 	$name = 'Admin Panel';
 	$bodySpecial = 'onload="NOTHING"';
 
@@ -84,6 +84,11 @@ else
 		margin-left: 120px;
 		margin-top: 5px;
 		width: 90px;
+		
+		#submitbutton2{
+		margin-left: 120px;
+		margin-top: 5px;
+		width: 200px;
 		}
 
 		br{
@@ -91,29 +96,29 @@ else
 		}
 		</style>
 
-		<form action=\"save.php?save=renewvote\" method=\"POST\">
-		<label for=\"VoteQuestion\">Vote question:</label>
-		<input type=\"text\" name=\"VoteQuestion\" value=\"$main_votequestion\" /><br />
-
-		<label for=\"Answer1\">Answer 1:</label>
-		<input type=\"text\" name=\"Answer1\" value=\"$main_voteanswer1\" /><br />
-
-		<label for=\"Answer2\">Answer 2:</label>
-		<input type=\"text\" name=\"Answer2\" value=\"$main_voteanswer2\" /><br />
-
-		<label for=\"Answer3\">Answer 3:</label>
-		<input type=\"text\" name=\"Answer3\" value=\"$main_voteanswer3\" /><br />
-
-		<label for=\"Answer4\">Answer 4:</label>
-		<input type=\"text\" name=\"Answer4\" value=\"$main_voteanswer4\" /><br />
-		<br /><br />
-		
+		<form action=\"save.php?save=others\" method=\"POST\">
+		<label for=\"ServerName\">Servername:</label>
+		<input type=\"text\" name=\"ServerName\" value=\"$aac_servername\" /><br />
+		<label for=\"HighscoresResult\">Highscores results:</label>
+		<input type=\"text\" name=\"HighscoresResult\" value=\"$main_highscores_result\" /><br />
+		<label for=\"StartEXP\">Start EXP:</label>
+		<input type=\"text\" name=\"StartEXP\" value=\"$char_exp\" /><br />
+		<label for=\"StartCAP\">Start CAP:</label>
+		<input type=\"text\" name=\"StartCAP\" value=\"$char_cap\" /><br />
+		<label for=\"StartLevel\">Start Level:</label>
+		<input type=\"text\" name=\"StartLevel\" value=\"$char_level\" /><br />
+		<label for=\"StartLookhead\">Look->Head:</label>
+		<input type=\"text\" name=\"StartLookhead\" value=\"$char_lookhead\" /><br />
+		<label for=\"StartLookbody\">Look->Body:</label>
+		<input type=\"text\" name=\"StartLookbody\" value=\"$char_lookbody\" /><br />
+		<label for=\"StartLooklegs\">Look->Legs:</label>
+		<input type=\"text\" name=\"StartLooklegs\" value=\"$char_looklegs\" /><br />
+		<label for=\"StartLookfeet\">Look->Feet:</label>
+		<input type=\"text\" name=\"StartLookfeet\" value=\"$char_lookfeet\" /><br />
+		<label for=\"StartTown\">Start town:</label>
+		<input type=\"text\" name=\"StartTown\" value=\"$char_town\" /><br />
 		<br />
 		<input type=\"submit\" name=\"submitbutton\" id=\"submitbutton\" value=\"Change\" />
-		</form>
-		
-		<form action=\"save.php?save=resetvotestat\" method=\"POST\">
-		<input type=\"submit\" name=\"submitbutton\" id=\"submitbutton\" value=\"Reset Votes\" />
 		</form>
 		";
 

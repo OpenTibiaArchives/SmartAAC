@@ -3,7 +3,7 @@
 // ===========================================================
 //	Smart-Ass: The Userfriendly AAC
 //	Version: 2.0 Development Only
-//	Configuration Created: Tue, 12 Jun 2007 00:56:54 +0100
+//	Configuration Created: Tue, 12 Jun 2007 10:42:36 +0100
 //	
 //	USE OF THIS PROGRAM TO RELY ON IT FOR SERVER USE IS NOT
 // 	RECOMMENDED! THIS IS FOR TESTING ONLY.
@@ -47,8 +47,8 @@ $net_port = 			"7171";
 $aac_md5passwords =	false;
 $aac_imgver = 			true;
 $main_downloads_warning = false;
-$admin_user =			"admin";
-$admin_pass = 			"877113";
+$admin_user =			"yo";
+$admin_pass = 			"z50r4su8";
 
 $sql_host =			"localhost";
 $sql_user =			"root";
@@ -64,7 +64,7 @@ $main_voteanswer3 = "More housessss";
 $main_voteanswer4 = "New townssss";
 $main_enable_feedback = false;
 $main_mail = "none@none.nodomain";
-$main_towns = array(1 => '', 2 => '', 3 => '', 4 => '', 5 => '');
+$main_towns = array(1 => 'a', 2 => 'x', 3 => '', 4 => '', 5 => '');
 
 $info_os =				"Debian Linux";
 $info_connection =		"5 Mbit";
