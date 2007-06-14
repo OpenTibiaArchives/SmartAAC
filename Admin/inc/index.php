@@ -33,8 +33,7 @@ include '../Includes/counter/counter.php';
 // Not logged in
 if(!isset($_COOKIE["logged_in"]) || $_COOKIE["logged_in"] == "")
 {
-	echo 'You are not logged in.<br /><br />
-	<a href="login.html" title="Login">Login</a>';
+	header("location: login.php?message=notloggedin");
 }
 // Logged in
 else
@@ -81,6 +80,7 @@ Version: $aac_version</p><br />";
 <li><a href="admin.php?action=Videos">Add/Delete videos</a></li>
 <li><a href="admin.php?action=Gallery">Add/Delete images</a></li>
 <li><a href="admin.php?action=FieldLens">Change field lengths</a></li>
+<li><a href="admin.php?action=Items">Change player items</a></li>
 <li><a href="admin.php?action=PlayerLvls">Change player levels (hp, mana, maglvl)</a></li>
 <li><a href="admin.php?action=Towns">Change towns</a></li>
 <li><a href="admin.php?action=Maintenance">Change in/out of maintenance mode</a></li>

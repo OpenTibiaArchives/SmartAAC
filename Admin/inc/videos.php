@@ -38,7 +38,7 @@ if(!isset($_COOKIE["logged_in"]) || $_COOKIE["logged_in"] == "")
 // Logged in
 else
 {
-	$title = 'Towns';
+	$title = 'Videos';
 	$name = 'Admin Panel';
 	$bodySpecial = 'onload="NOTHING"';
 
@@ -56,7 +56,10 @@ else
 	echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
 		echo "
-<p>Sorry not yet implemented =(.</p>
+		<p>There is no management for Videos yet, but you can follow these instructions to add videos to your AAC</p>
+		<p>1. Convert your video to FLV format and name it to something unique<br />
+		2. Open Main/video/flvs, and put the file there<br />
+		3. Smart-Ass should see the file and embed it to the page ;)</p>
 		";
 
 	echo $tpl->fetch('../Includes/Templates/Indigo/sidebarAdmin.tpl');

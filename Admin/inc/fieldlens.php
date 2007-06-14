@@ -33,8 +33,7 @@ include '../Includes/counter/counter.php';
 // Not logged in
 if(!isset($_COOKIE["logged_in"]) || $_COOKIE["logged_in"] == "")
 {
-	echo 'You are not logged in.<br /><br />
-	<a href="login.html" title="Login">Login</a>';
+	header("location: login.php?message=notloggedin");
 }
 // Logged in
 else

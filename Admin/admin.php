@@ -56,6 +56,18 @@ switch($action)
 	include 'inc/others.php';
 	break;
 	
+	case "Videos":
+	include 'inc/videos.php';
+	break;
+	
+	case "Gallery":
+	include 'inc/gallery.php';
+	break;
+	
+	case "Items":
+	include 'inc/items.php';
+	break;
+	
 	default:
 	include 'inc/index.php';
 	break;

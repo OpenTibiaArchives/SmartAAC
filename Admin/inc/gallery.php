@@ -38,7 +38,7 @@ if(!isset($_COOKIE["logged_in"]) || $_COOKIE["logged_in"] == "")
 // Logged in
 else
 {
-	$title = 'Towns';
+	$title = 'Gallery';
 	$name = 'Admin Panel';
 	$bodySpecial = 'onload="NOTHING"';
 
@@ -56,7 +56,9 @@ else
 	echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
 		echo "
-<p>Sorry not yet implemented =(.</p>
+		<p>There is no management for the Gallery yet, but you can follow these instructions to add images to your AAC's gallery:</p>
+		<p>1. Put all the images into Main/pictures<br />
+		2. Smart-Ass should see the file and display it</p>
 		";
 
 	echo $tpl->fetch('../Includes/Templates/Indigo/sidebarAdmin.tpl');

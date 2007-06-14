@@ -56,7 +56,62 @@ else
 	echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
 		echo "
-<p>Sorry not yet implemented =(.</p>
+		<style type=\"text/css\">
+
+		label{
+		float: left;
+		width: 220px;
+		font-weight: bold;
+		font-size: 12px;
+		}
+
+		input, textarea{
+		width: 180px;
+		margin-bottom: 5px;
+		}
+
+		textarea{
+		width: 250px;
+		height: 150px;
+		}
+
+		.boxes{
+		width: 3em;
+		}
+
+		#submitbutton{
+		margin-left: 120px;
+		margin-top: 5px;
+		width: 90px;
+		
+		#submitbutton2{
+		margin-left: 120px;
+		margin-top: 5px;
+		width: 200px;
+		}
+
+		br{
+		clear: left;
+		}
+		</style>
+
+		<form action=\"save.php?save=changeadmincreds\" method=\"POST\">
+		<label for=\"Head\">Head:</label>
+		<input type=\"text\" name=\"HeadItem\" value=\"$char_items[11]['item_type']\" />
+		
+		<br /><br />
+		
+		
+		<input type=\"submit\" name=\"submitbutton\" id=\"submitbutton\" value=\"Change\" />
+			<br />
+		</form>
+		
+		
+		<br /><br />
+		<p>You can reset the password to a random one.</p>
+		<form action=\"save.php?save=resetadminpass\" method=\"POST\">
+		<input type=\"submit\" name=\"submitbutton2\" id=\"submitbutton2\" value=\"Randomize new password\" />
+		</form>
 		";
 
 	echo $tpl->fetch('../Includes/Templates/Indigo/sidebarAdmin.tpl');

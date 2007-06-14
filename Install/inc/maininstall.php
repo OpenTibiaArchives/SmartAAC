@@ -263,7 +263,11 @@ else
 		<label for=\"Videos\">Videos page:</label>
 		<input type=\"checkbox\" name=\"Videos\" class=\"boxes\" /><br />
 		<label for=\"Gallery\">Gallery page:</label>
-		<input type=\"checkbox\" name=\"Gallery\" class=\"boxes\" /><br /><br />
+		<input type=\"checkbox\" name=\"Gallery\" class=\"boxes\" /><br />
+		<label for=\"Monsters\">Monsters page:</label>
+		<input type=\"checkbox\" name=\"Monsters\" class=\"boxes\" /><br />
+		<label for=\"Spells\">Spells page:</label>
+		<input type=\"checkbox\" name=\"Spells\" class=\"boxes\" /><br /><br />
 		";
 
 		if($char_rook == "true")

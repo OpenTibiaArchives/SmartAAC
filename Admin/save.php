@@ -34,6 +34,8 @@ else
 	$modules_calculator = ($modules_calculator) ? "true" : "false";
 	$modules_videos = ($modules_videos) ? "true" : "false";
 	$modules_gallery = ($modules_gallery) ? "true" : "false";
+	$modules_monsters = ($modules_monsters) ? "true" : "false";
+	$modules_spells = ($modules_spells) ? "true" : "false";
 	$main_enable_feedback = ($main_enable_feedback) ? "true" : "false";
 	$char_rook = ($char_rook) ? "true" : "false";
 
@@ -106,6 +108,8 @@ else
 		$modules_calculator =			($_POST['Calculator']) ? "true" : "false";
 		$modules_videos =				($_POST['Videos']) ? "true" : "false";
 		$modules_gallery =				($_POST['Gallery']) ? "true" : "false";
+		$modules_monsters =				($_POST['Monsters']) ? "true" : "false";
+		$modules_spells =				($_POST['Spells']) ? "true" : "false";
 		break;
 		
 		case "sql":
@@ -192,12 +196,25 @@ else
 		}
 		break;
 		
+		case "switchplayerlvls":
+		$char_rook = ($_POST['SwitchLevels']) ? "true" : "false";
+		break;
+			
 		case "towns":
 		$main_towns[1] = $_POST['Town1'];
 		$main_towns[2] = $_POST['Town2'];
 		$main_towns[3] = $_POST['Town3'];
 		$main_towns[4] = $_POST['Town4'];
 		$main_towns[5] = $_POST['Town5'];
+		
+		/* FLEXIBLE SYSTEM NOT IMPLEMENTED :[
+		$content = '$main_towns = array(';
+		foreach($main_towns as $index => $town)
+		{
+		$content .= "\n" . $index . ' => \'' . str_replace( array('\'', '\\'), array('\\\'', '\\\\'), $town) . '\',';
+		$content .= ');';
+		}
+		*/
 		break;
 		
 		case "maintenance":
@@ -327,6 +344,8 @@ else
 \$modules_calculator = $modules_calculator;
 \$modules_videos = $modules_videos;
 \$modules_gallery = $modules_gallery;
+\$modules_monsters = $modules_monsters;
+\$modules_spells = $modules_spells;
 
 \$char_rook =			$char_rook;
 \$char_group =			$char_group;

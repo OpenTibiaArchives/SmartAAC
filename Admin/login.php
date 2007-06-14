@@ -7,12 +7,7 @@
 	
 	$message = $_GET['message'];
 
-	if(isset($message))
-	{
-		$message = "
-			<strong>Such invalid</strong>
-		";
-	}
+
 	if(isset($_COOKIE["logged_in"]) && $_COOKIE["logged_in"] != "" && $_GET["logout"] != "yes") {
 	header("Location: index.php");
 	exit;
@@ -21,6 +16,12 @@
 	setcookie("logged_in", "", time()+60*60*24*30, "/");
 	header("Location: index.php");
 	exit;
+	}
+	if($message == "notloggedin") {
+	echo "Error: You are not logged in.";
+	}
+	if($message == "Invalid") {
+	echo "Error: Invalid username or password.";
 	}
 ?>
 
@@ -42,7 +43,6 @@ a:hover { text-decoration:underline; }
 </head>
 <body>
 <br /><br /><br />
-<? echo $message ;?>
 
 
   <table style="width: 450px; text-align: left; margin-left: auto; margin-right: auto;" cellpadding="0" cellspacing="0">

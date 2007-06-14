@@ -33,8 +33,7 @@ include '../Includes/counter/counter.php';
 // Not logged in
 if(!isset($_COOKIE["logged_in"]) || $_COOKIE["logged_in"] == "")
 {
-	echo 'You are not logged in.<br /><br />
-	<a href="login.html" title="Login">Login</a>';
+	header("location: login.php?message=notloggedin");
 }
 // Logged in
 else
@@ -56,6 +55,8 @@ else
 
 	echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
+		$total_towns = count($main_towns);
+	
 		echo "
 		<style type=\"text/css\">
 
@@ -92,16 +93,13 @@ else
 		</style>
 
 		<form action=\"save.php?save=towns\" method=\"POST\">
-		<label for=\"Town1\">Town 1:</label>
-		<input type=\"text\" name=\"Town1\" value=\"$main_towns[1]\" /><br />
-		<label for=\"Town2\">Town 2:</label>
-		<input type=\"text\" name=\"Town2\" value=\"$main_towns[2]\" /><br />
-		<label for=\"Town3\">Town 3:</label>
-		<input type=\"text\" name=\"Town3\" value=\"$main_towns[3]\" /><br />
-		<label for=\"Town4\">Town 4:</label>
-		<input type=\"text\" name=\"Town4\" value=\"$main_towns[4]\" /><br />
-		<label for=\"Town5\">Town 5:</label>
-		<input type=\"text\" name=\"Town5\" value=\"$main_towns[5]\" /><br /><br />
+		";
+		for($i = 1; $i <= 5; $i++){
+		echo "<label for=\"Town$i\">Town $i:</label><input type=\"text\" name=\"Town$i\" value=\"$main_towns[$i]\" /><br />
+		";
+		}
+		echo "
+
 		<br /><br />
 		
 		<input type=\"submit\" name=\"submitbutton\" id=\"submitbutton\" value=\"Change\" />

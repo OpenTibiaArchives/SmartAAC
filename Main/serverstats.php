@@ -59,6 +59,14 @@ if($modules_serverstats)
 	if (!$fp)
 	{
 		echo '<p>The server is offline or there is a problem contacting the server, I cannot get information.</p>';
+		
+		$offline = "Server is offline";
+		$image = imagecreatefrompng('sysuptime3.png');
+		header("Content-type: image/png");
+		$black = imagecolorallocate($image, 0, 0, 0);
+		Imagestring($image,2,(imagesy+5),(imagesy+23),$offline,$black);
+		imagepng($image);
+		imagedestroy($image);
 	}
 	else
 	{
@@ -121,6 +129,20 @@ if($modules_serverstats)
 		  </tbody>
 		</table>
 		';
+		$players = 'Players online: '.$info['online'].' / '.$info['max'];
+		$owner = 'Owner Name: '.$info['name'];
+		$uptime = 'Uptime: '.$hours.'h '.$minutes.'m';
+		//uncomment for debug
+		//print "$owner <br /> $uptime <br /> $players";
+		$image = imagecreatefrompng('sysuptime3.png');
+		header("Content-type: image/png");
+		$black = imagecolorallocate($image, 0, 0, 0);
+		Imagestring($image,2,(imagesy+5),(imagesy+9),$owner,$black);
+		Imagestring($image,2,(imagesy+5),(imagesy+23),$uptime,$black);
+		Imagestring($image,2,(imagesy+5),(imagesy+37),$players,$black);
+		imagepng($image);
+		imagedestroy($image);
+
 	}
 }
 else

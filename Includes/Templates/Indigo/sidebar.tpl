@@ -60,6 +60,8 @@
 			<ul>
 				<li><a href="downloads.php">Downloads</a></li>
 				<li><a href="custom.php">Custom Pages</a></li>
+				<li><a href="monsters.php">Monsters</a></li>
+				<li><a href="spells.php">Spells</a></li>
 				<li><a href="gallery.php">Gallery</a></li>
 				<li><a href="videos.php">Videos</a></li>
 				<li><a href="calculator.php">Damage Calculator</a></li>

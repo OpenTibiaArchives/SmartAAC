@@ -118,7 +118,7 @@ if ($M2_acc != "" && $M2_acc != null && is_numeric($M2_acc) && $M2_pass != "" &&
 							break;
 						default: // Error? voc 0 aka no vocation ;p
 							sqlquery('INSERT INTO `players` (`name`, `account_id`, `group_id`, `sex`, `vocation`, `experience`, `level`, `maglevel`, `health`, `healthmax`, `mana`, `manamax`, `manaspent`, `soul`, `lookbody`, `lookfeet`, `lookhead`, `looklegs`, `looktype`, `cap`, `town_id`) 
-												   VALUES(\'' . mysql_real_escape_string($M2_char) . '\', ' . intval($M2_acc) . ', ' . $char_group . ', ' . intval($sexin) . ', 0, ' . $char_exp . ', ' . $char_level . ', ' . $char_maglevel_sorcerer . ', ' . $char_health_none . ', ' . $char_health_none . ', ' . $char_mana_none . ', ' . $char_mana_none . ', 0, 100, ' . $char_lookbody . ', ' . $char_lookfeet . ', ' . $char_lookhead . ', ' . $char_looklegs . ', ' . $looktype . ', ' . $char_cap . ', ' . $char_town . ')');
+												   VALUES(\'' . mysql_real_escape_string($M2_char) . '\', ' . intval($M2_acc) . ', ' . $char_group . ', ' . intval($sexin) . ', 0, ' . $char_exp . ', ' . $char_level . ', ' . $char_maglevel_none . ', ' . $char_health_none . ', ' . $char_health_none . ', ' . $char_mana_none . ', ' . $char_mana_none . ', 0, 100, ' . $char_lookbody . ', ' . $char_lookfeet . ', ' . $char_lookhead . ', ' . $char_looklegs . ', ' . $looktype . ', ' . $char_cap . ', ' . $char_town . ')');
 							break;
 					}
 					

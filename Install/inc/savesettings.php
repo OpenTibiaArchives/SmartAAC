@@ -80,6 +80,8 @@ else
 	$conf_modules_Calculator =			($_POST['Calculator']) ? "true" : "false";
 	$conf_modules_Videos =				($_POST['Videos']) ? "true" : "false";
 	$conf_modules_Gallery =				($_POST['Gallery']) ? "true" : "false";
+	$conf_modules_Monsters =			($_POST['Monsters']) ? "true" : "false";
+	$conf_modules_Spells =				($_POST['Spells']) ? "true" : "false";
 
 	$char_rook_use = 		$_POST['char_rook'];
 	$conf_char_town =		$_POST["char_town"];
@@ -265,6 +267,8 @@ else
 \$modules_calculator = $conf_modules_Calculator;
 \$modules_videos = $conf_modules_Videos;
 \$modules_gallery = $conf_modules_Gallery;
+\$modules_monsters = $conf_modules_Monsters;
+\$modules_spells = $conf_modules_Spells;
 
 \$char_rook =			$char_rook_use;
 \$char_group =			$conf_char_group;

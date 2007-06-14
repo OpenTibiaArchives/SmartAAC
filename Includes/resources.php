@@ -79,6 +79,42 @@ function createRandomPassword() {
 
 }
 
+/* Credits to Nostradamus (on otfans.net) for this function */
+function list_monsters($dir)
+{
+   $open_dir = opendir("$dir/monster/");
+   echo "<table border=1><th>Name</th><th>Exp</th><th>Health</th><th>Summon</th>";
+   
+   while($file = readdir($open_dir))
+   {
+		if($file != 'monsters.xml')
+		{
+			if(eregi("\.xml$", $file))
+			{
+				$xml = new SimpleXMLElement(file_get_contents("$dir/monster/$file"));
+        
+				$name = $xml['name'];
+				$exp = $xml['experience'];
+				$health = $xml->health['max'];
+				$summon = $xml->summons->summon['name'];
+
+				if($exp == NULL)
+					$exp = 0;
+                
+				if($summon == NULL)
+					$summon = "-";
+            
+				echo "<tr><td>$name</td>";
+				echo "<td>$exp</td>";
+				echo "<td>$health</td>";
+				echo "<td>$summon</td></tr>";
+			}
+		}
+	}
+	echo "</table>";
+}  
+
+
 // Do we need this? ;p
 /* function readOutData($file)
 {

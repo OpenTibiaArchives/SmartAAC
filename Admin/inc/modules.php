@@ -33,8 +33,7 @@ include '../Includes/counter/counter.php';
 // Not logged in
 if(!isset($_COOKIE["logged_in"]) || $_COOKIE["logged_in"] == "")
 {
-	echo 'You are not logged in.<br /><br />
-	<a href="login.html" title="Login">Login</a>';
+	header("location: login.php?message=notloggedin");
 }
 // Logged in
 else
@@ -125,7 +124,11 @@ else
 		<label for=\"Videos\">Videos page:</label>
 		<input type=\"checkbox\" name=\"Videos\" class=\"boxes\" /><br />
 		<label for=\"Gallery\">Gallery page:</label>
-		<input type=\"checkbox\" name=\"Gallery\" class=\"boxes\" /><br /><br />
+		<input type=\"checkbox\" name=\"Gallery\" class=\"boxes\" /><br />
+		<label for=\"Monsters\">Monsters page:</label>
+		<input type=\"checkbox\" name=\"Monsters\" class=\"boxes\" /><br />
+		<label for=\"Spells\">Spells page:</label>
+		<input type=\"checkbox\" name=\"Spells\" class=\"boxes\" /><br /><br />
 		
 		<br />
 		<input type=\"submit\" name=\"submitbutton\" id=\"submitbutton\" value=\"Change\" />

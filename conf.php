@@ -3,7 +3,7 @@
 // ===========================================================
 //	Smart-Ass: The Userfriendly AAC
 //	Version: 2.0 Development Only
-//	Configuration Created: Tue, 12 Jun 2007 10:42:36 +0100
+//	Configuration Created: Fri, 15 Jun 2007 00:31:19 +0100
 //	
 //	USE OF THIS PROGRAM TO RELY ON IT FOR SERVER USE IS NOT
 // 	RECOMMENDED! THIS IS FOR TESTING ONLY.
@@ -30,7 +30,7 @@
 $aac_status = 			"Installed";
 $aac_version = 			"2.0 Alpha 2";
 $aac_versioncode = 		199;
-$aac_dataDir =			"C:\Dev-Cpp\otserv\data";
+$aac_dataDir =			"C:/Dev-Cpp/otserv/data";
 $aac_mapname =			"map";
 
 $aac_minacclen = 		4;
@@ -53,7 +53,7 @@ $admin_pass = 			"z50r4su8";
 $sql_host =			"localhost";
 $sql_user =			"root";
 $sql_pass = 			"";
-$sql_db = 				"loltest";
+$sql_db = 				"otserv";
 
 $main_highscores_result = 	20;
 $main_ugrp_nolist =		2;
@@ -64,7 +64,7 @@ $main_voteanswer3 = "More housessss";
 $main_voteanswer4 = "New townssss";
 $main_enable_feedback = false;
 $main_mail = "none@none.nodomain";
-$main_towns = array(1 => 'a', 2 => 'x', 3 => '', 4 => '', 5 => '');
+$main_towns = array(1 => 'A', 2 => 'B', 3 => 'C', 4 => 'D', 5 => 'E');
 
 $info_os =				"Debian Linux";
 $info_connection =		"5 Mbit";
@@ -87,8 +87,10 @@ $modules_custom = true;
 $modules_calculator = true;
 $modules_videos = true;
 $modules_gallery = true;
+$modules_monsters = true;
+$modules_spells = true;
 
-$char_rook =			true;
+$char_rook =			false;
 $char_group =			1;
 $char_exp =			98800;
 $char_cap =			700;
@@ -109,23 +111,23 @@ $char_items[13] = array('slot' => 5, 'item_type' => 2382, 'count' => 1);
 $char_items[14] = array('slot' => 6, 'item_type' => 2050, 'count' => 1); 	 
 $char_items[15] = array('slot' => 11, 'item_type' => 2674, 'count' => 2); 	 
 
-$char_maglevel_none = 25;
-$char_health_none = 8;
-$char_mana_none = 4;
+$char_maglevel_none = "";
+$char_health_none = "";
+$char_mana_none = "";
 
-$char_maglevel_sorcerer = "";
-$char_health_sorcerer = "";
-$char_mana_sorcerer = "";
+$char_maglevel_sorcerer = 100;
+$char_health_sorcerer = 100;
+$char_mana_sorcerer = 100;
 
-$char_maglevel_druid = "";
-$char_health_druid = "";
-$char_mana_druid = "";
+$char_maglevel_druid = 100;
+$char_health_druid = 100;
+$char_mana_druid = 100;
 
-$char_maglevel_paladin = "";
-$char_health_paladin = "";
-$char_mana_paladin = "";
+$char_maglevel_paladin = 100;
+$char_health_paladin = 100;
+$char_mana_paladin = 100;
 
-$char_maglevel_knight = "";
-$char_health_knight = "";
-$char_mana_knight = "";
+$char_maglevel_knight = 100;
+$char_health_knight = 100;
+$char_mana_knight = 100;
 ?>

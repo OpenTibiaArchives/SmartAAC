@@ -13,6 +13,7 @@
 			<ul>
 				<li><a href="admin.php">Index</a></li>
 				<li><a href="../">Back to AAC</a></li>
+				<li><a href="login.php?logout=yes">Logout</a></li>
 			</ul>
 
 			<br /><br /><br />

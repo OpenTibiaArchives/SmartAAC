@@ -62,8 +62,8 @@ if($modules_videos)
 // Video 1
 // Change file too to your FLV file
 // COPY FROM HERE TO HAVE ANOTHER VIDEO
-?>
-<h1>Video 1</h1>
+
+/* <h1>Video 1</h1>
 <p id="player1"><a href="http://www.macromedia.com/go/getflashplayer">Get the Flash Player</a> to see this player.</p>
 <script type="text/javascript">
 	var s1 = new SWFObject("mediaplayer.swf","single","400","300","7");
@@ -71,9 +71,28 @@ if($modules_videos)
 	s1.addVariable("file","video/test.flv");
 	s1.addVariable("image","video/preview.png");
 	s1.write("player1");
-</script>
-<?PHP
+</script> */
+
 // END COPY
+
+
+// New system for videos =)
+$d = opendir("video/flvs");
+	while($f = readdir($d))
+	{
+	if(is_dir($f))
+	continue;
+
+	echo "<p id=\"player1\"><a href=\"http://www.macromedia.com/go/getflashplayer\">Get the Flash Player</a> to see this player.</p>
+<script type=\"text/javascript\">
+	var s1 = new SWFObject(\"mediaplayer.swf\",\"single\",\"400\",\"300\",\"7\");
+	s1.addParam(\"allowfullscreen\",\"true\");
+	s1.addVariable(\"file\",\"video/flvs/$f\");
+	s1.addVariable(\"image\",\"video/preview.png\");
+	s1.write(\"player1\");
+</script> ";
+}
+
 
 
 
