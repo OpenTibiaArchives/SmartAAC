@@ -31,7 +31,7 @@ include '../Includes/stats/stats.php';
 include '../Includes/counter/counter.php';
 
 // Not logged in
-if(!isset($_COOKIE["logged_in"]) || $_COOKIE["logged_in"] == "")
+if((!isset($_COOKIE["logged_in_user"]) || $_COOKIE["logged_in_user"] != md5($admin_user)) || (!isset($_COOKIE["logged_in_pass"]) || $_COOKIE["logged_in_pass"] != md5($admin_pass)))
 {
 	header("location: login.php?message=notloggedin");
 }

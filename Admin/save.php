@@ -1,6 +1,6 @@
 <?
 // Not logged in
-if(!isset($_COOKIE["logged_in"]) || $_COOKIE["logged_in"] == "")
+if((!isset($_COOKIE["logged_in_user"]) || $_COOKIE["logged_in_user"] != md5($admin_user)) || (!isset($_COOKIE["logged_in_pass"]) || $_COOKIE["logged_in_pass"] != md5($admin_pass)))
 {
 	echo 'You are not logged in.<br /><br />
 	<a href="login.html" title="Login">Login</a>';
