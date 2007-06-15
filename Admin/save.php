@@ -1,4 +1,5 @@
 <?
+include "../conf.php";
 // Not logged in
 if((!isset($_COOKIE["logged_in_user"]) || $_COOKIE["logged_in_user"] != md5($admin_user)) || (!isset($_COOKIE["logged_in_pass"]) || $_COOKIE["logged_in_pass"] != md5($admin_pass)))
 {
@@ -38,6 +39,8 @@ else
 	$modules_spells = ($modules_spells) ? "true" : "false";
 	$main_enable_feedback = ($main_enable_feedback) ? "true" : "false";
 	$char_rook = ($char_rook) ? "true" : "false";
+	
+	$main_towns = "array(1 => '$main_towns[1]', 2 => '$main_towns[2]', 3 => '$main_towns[3]', 4 => '$main_towns[4]', 5 => '$main_towns[5]')";
 
 	if($char_rook == "true")
 	{
@@ -201,20 +204,11 @@ else
 		break;
 			
 		case "towns":
-		$main_towns[1] = $_POST['Town1'];
-		$main_towns[2] = $_POST['Town2'];
-		$main_towns[3] = $_POST['Town3'];
-		$main_towns[4] = $_POST['Town4'];
-		$main_towns[5] = $_POST['Town5'];
-		
-		/* FLEXIBLE SYSTEM NOT IMPLEMENTED :[
-		$content = '$main_towns = array(';
-		foreach($main_towns as $index => $town)
-		{
-		$content .= "\n" . $index . ' => \'' . str_replace( array('\'', '\\'), array('\\\'', '\\\\'), $town) . '\',';
-		$content .= ');';
+		$main_towns = 'array(';
+		for($i=1; $i <= $_POST['Towns']; $i++) {
+			$main_towns .= $i . ' => \'' . $_POST["Town$i"] . '\', ';
 		}
-		*/
+		$main_towns .= ')';
 		break;
 		
 		case "maintenance":
@@ -321,7 +315,7 @@ else
 \$main_voteanswer4 = \"$main_voteanswer4\";
 \$main_enable_feedback = $main_enable_feedback;
 \$main_mail = \"$main_mail\";
-\$main_towns = array(1 => '$main_towns[1]', 2 => '$main_towns[2]', 3 => '$main_towns[3]', 4 => '$main_towns[4]', 5 => '$main_towns[5]');
+\$main_towns = $main_towns;
 
 \$info_os =				\"$info_os\";
 \$info_connection =		\"$info_connection\";

@@ -4,7 +4,7 @@
 	Modified May 1, 2007
 	login.php copyright 2007 "HyperSilence"
 	*/
-	
+	include "../conf.php";
 	$message = $_GET['message'];
 
 	if((isset($_COOKIE["logged_in_user"]) && $_COOKIE["logged_in_user"] == md5($admin_user)) && (isset($_COOKIE["logged_in_pass"]) && $_COOKIE["logged_in_pass"] == md5($admin_pass)) && $_GET["logout"] != "yes")

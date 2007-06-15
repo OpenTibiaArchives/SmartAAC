@@ -1,5 +1,5 @@
 <?PHP
-
+include "../conf.php";
 // ===========================================================
 //	Smart-Ass: The Userfriendly AAC
 //	Version: 2.0 Development Only

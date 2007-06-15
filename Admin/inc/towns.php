@@ -94,15 +94,22 @@ else
 
 		<form action=\"save.php?save=towns\" method=\"POST\">
 		";
-		for($i = 1; $i <= 5; $i++){
-		echo "<label for=\"Town$i\">Town $i:</label><input type=\"text\" name=\"Town$i\" value=\"$main_towns[$i]\" /><br />
-		";
+		include '../Includes/SpawnReader.php';
+		include '../conf.php';
+		$mapfile = $aac_dataDir.'/world/'.$aac_mapname;
+		$towns = new SpawnsReader($mapfile);
+		$town = 0;
+		foreach($towns as $id => $name) {
+			echo "Town $id: $name\n";
+			echo "<label for=\"Town$id\"></label><input type=\"hidden\" name=\"Town$id\" value=\"$name\" /><br />";
+			$town++;
 		}
 		echo "
+		<label for=\"Towns\"></label><input type=\"hidden\" name=\"Towns\" value=\"".$town."\" /><br />
 
 		<br /><br />
 		
-		<input type=\"submit\" name=\"submitbutton\" id=\"submitbutton\" value=\"Change\" />
+		<input type=\"submit\" name=\"submitbutton\" id=\"submitbutton\" value=\"Update\" />
 			<br />
 		</form>
 		";
