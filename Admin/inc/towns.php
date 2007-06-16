@@ -92,9 +92,15 @@ else
 		}
 		</style>
 
+		<h1>Towns</h1>
+		<p>The towns are already set in your map, press Change to update your Smart-Ass configuration</p>
+		
+		<br />
+		<h2>Detected towns</h2>
+		<br />
 		<form action=\"save.php?save=towns\" method=\"POST\">
 		";
-		include '../Includes/SpawnReader.php';
+		include '../Includes/SpawnsReader.php';
 		include '../conf.php';
 		$mapfile = $aac_dataDir.'/world/'.$aac_mapname;
 		$towns = new SpawnsReader($mapfile);

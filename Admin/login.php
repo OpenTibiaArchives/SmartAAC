@@ -8,11 +8,13 @@
 	$message = $_GET['message'];
 
 	if((isset($_COOKIE["logged_in_user"]) && $_COOKIE["logged_in_user"] == md5($admin_user)) && (isset($_COOKIE["logged_in_pass"]) && $_COOKIE["logged_in_pass"] == md5($admin_pass)) && $_GET["logout"] != "yes")
+	{
 	header("Location: index.php");
 	exit;
 	}
 	if($_GET["logout"] == "yes") {
-	setcookie("logged_in", "", time()+60*60*24*30, "/");
+	setcookie("logged_in_user", "", time()+1);
+	setcookie("logged_in_pass", "", time()+1);
 	header("Location: index.php");
 	exit;
 	}

@@ -112,7 +112,11 @@ function list_monsters($dir)
 		}
 	}
 	echo "</table>";
-}  
+}
+
+function checkModuleLinks()
+{
+}
 
 
 // Do we need this? ;p

@@ -99,7 +99,7 @@ Password: <input type="password" name="M2_password"><br>
 <input type="submit" value="Continue"> <font color="red"><i>Note. By pressing this you agree that your character (<?php echo $char; ?>) will be permanently deleted from our servers.</i></font>
 </form>
 <?php
-			echo $tpl->fetch('../Includes/Templates/Indigo/sidebarOutterMain.tpl');
+			echo $tpl->fetch('../Includes/Templates/Indigo/sidebarManagerLoggedIn.tpl');
 			echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
 			echo $tpl->fetch('../Includes/Templates/Indigo/bottom.tpl');
 			}
