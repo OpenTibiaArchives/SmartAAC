@@ -3,7 +3,8 @@
 		<div class="sidenav">
 			<h1>My Account</h1>
 			<ul>
-				<li><a href="../Main/character.php">Search Characters</a></li>
+				<li><a href="index.php?act=manager">My Account</a></li>
+				<li><a href="index.php?act=logout">Logout</a></li>
 
 			</ul>		
 
@@ -39,7 +40,6 @@
 				<li><a href="../Main/spells.php">Spells</a></li>
 				<li><a href="../Main/gallery.php">Gallery</a></li>
 				<li><a href="../Main/videos.php">Videos</a></li>
-				<li><a href="../Main/calculator.php">Damage Calculator</a></li>
 				<li><a href="../Main/rules.php">Rules</a></li>
 				<li><a href="../Main/feedback.php">Feedback</a></li>
 				<li><a href="../Admin/">Admin Panel</a></li>

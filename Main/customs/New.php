@@ -26,19 +26,18 @@
 //    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // ===========================================================
 
-include '../conf.php';
-include '../Includes/stats/stats.php';
-include '../Includes/counter/counter.php';
+include '../../conf.php';
+include '../../Includes/stats/stats.php';
 if($aac_status == "Maintenance")
 {
 	header("location: maintenance.php");
 }
 
-$title = 'Custom Pages';
+$title = 'Test';
 $name = $aac_servername;
 $bodySpecial = 'onload="NOTHING"';
 
-include_once('../Includes/Templates/bTemplate.php');
+include_once('../../Includes/Templates/bTemplate.php');
 $tpl = new bTemplate();
 
 $tpl->set('title', $title);
@@ -46,32 +45,24 @@ $tpl->set('strayline', $name);
 $tpl->set('bodySpecial', $bodySpecial);
 $tpl->set('stats', $global_stats);
 $tpl->set('AAC_Version', $aac_version);
-$tpl->set('Total_Visits', $total);
-$tpl->set('Unique_Visits', $total_uniques);
+$tpl->set('Total_Visits', "Disabled");
+$tpl->set('Unique_Visits', "Disabled");
 
-echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
+echo $tpl->fetch('../../Includes/Templates/Indigo/topCustom.tpl');
 
-if($modules_custom)
-{
-	echo "<h1>Custom Pages</h1><br />";
-	
-	$d = opendir("customs");
-		while($f = readdir($d))
-		{
-		  if(is_dir($f))
-		  continue;
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		  echo "<a href=\"customs/$f\" title=\"$f\">$f</a><br />";
-		}
+echo "<h1>Custom page</h1>";
+echo "<p>Test</p>";
 
-	echo "<br /><br />";
-}
-else
-{
-	echo "<h1>Module has been disabled by the admin</h1>";
-}
 
-echo $tpl->fetch('../Includes/Templates/Indigo/sidebar.tpl');
-echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
-echo $tpl->fetch('../Includes/Templates/Indigo/bottom.tpl');
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+echo $tpl->fetch('../../Includes/Templates/Indigo/sidebarCustoms.tpl');
+echo $tpl->fetch('../../Includes/Templates/Indigo/footer.tpl');
+echo $tpl->fetch('../../Includes/Templates/Indigo/bottom.tpl');
 ?>

@@ -102,7 +102,7 @@ else
 		";
 		include '../Includes/SpawnsReader.php';
 		include '../conf.php';
-		$mapfile = $aac_dataDir.'/world/'.$aac_mapname;
+		$mapfile = $aac_dataDir.'/world/'.$aac_mapname.'.otbm';
 		$towns = new SpawnsReader($mapfile);
 		$town = 0;
 		foreach($towns as $id => $name) {

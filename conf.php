@@ -3,7 +3,7 @@
 // ===========================================================
 //	Smart-Ass: The Userfriendly AAC
 //	Version: 2.0 Development Only
-//	Configuration Created: Sat, 16 Jun 2007 09:13:40 +0100
+//	Configuration Created: Sun, 17 Jun 2007 20:57:48 +0100
 //	
 //	USE OF THIS PROGRAM TO RELY ON IT FOR SERVER USE IS NOT
 // 	RECOMMENDED! THIS IS FOR TESTING ONLY.
@@ -31,7 +31,7 @@ $aac_status = 			"Installed";
 $aac_version = 			"2.0 Alpha 2";
 $aac_versioncode = 		199;
 $aac_dataDir =			"C:/Dev-Cpp/otserv/data";
-$aac_mapname =			"map.otbm";
+$aac_mapname =			"map";
 
 $aac_minacclen = 		4;
 $aac_maxacclen = 		20;
@@ -64,7 +64,7 @@ $main_voteanswer3 = "More housessss";
 $main_voteanswer4 = "New townssss";
 $main_enable_feedback = false;
 $main_mail = "none@none.nodomain";
-$main_towns = array(1 => 'Tharkas', 2 => 'Khal-Tar', 3 => '', 4 => '', 5 => '');
+$main_towns = array(1 => 'Tharkas', 2 => 'Khal-Tar', );
 
 $info_os =				"Debian Linux";
 $info_connection =		"5 Mbit";

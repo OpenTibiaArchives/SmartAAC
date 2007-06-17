@@ -162,7 +162,7 @@ echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
 </table>
 <?php
-echo $tpl->fetch('../Includes/Templates/Indigo/sidebarOutterMain.tpl');
+echo $tpl->fetch('../Includes/Templates/Indigo/sidebarManagerLoggedIn.tpl');
 echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
 echo $tpl->fetch('../Includes/Templates/Indigo/bottom.tpl');
 }

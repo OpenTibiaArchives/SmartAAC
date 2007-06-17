@@ -41,10 +41,10 @@ else
 	$char_rook = ($char_rook) ? "true" : "false";
 	
 	$new_main_towns = 'array(';
-	for($i=1; $i <= count($main_towns); $i++) {
-		$new_main_towns .= $i . ' => \'' . $main_towns[$i] . '\', ';
-	}
-	$new_main_towns .= ')';
+foreach($main_towns as $id => $town) {
+$new_main_towns .= $id . ' => \'' . $town . '\', ';
+}
+$new_main_towns .= ')';
 	
 	if($char_rook == "true")
 	{

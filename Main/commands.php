@@ -82,10 +82,13 @@ if($modules_commands)
 
 		for($i = 0; $i < $scan_limit; $i++)
 		{
-			echo "<tr class=\"lolhover\">";
-			echo '<td style="width: 139px;">' . $xml2->command[$i]->getAttribute('cmd') . '</td>';
-			echo '<td style="width: 124px; text-align: center;">' . $xml2->command[$i]->getAttribute('access') . '</td>';
-			echo "</tr>";
+			if($xml2->command[$i]->getAttribute('access') == 0)
+			{
+				echo "<tr class=\"lolhover\">";
+				echo '<td style="width: 139px;">' . $xml2->command[$i]->getAttribute('cmd') . '</td>';
+				echo '<td style="width: 124px; text-align: center;">' . $xml2->command[$i]->getAttribute('access') . '</td>';
+				echo "</tr>";
+			}
 		}
 	echo "</tbody></table>";
 	echo "<br /><b>There are $i commands for this server.</b>";
