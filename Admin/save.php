@@ -40,8 +40,12 @@ else
 	$main_enable_feedback = ($main_enable_feedback) ? "true" : "false";
 	$char_rook = ($char_rook) ? "true" : "false";
 	
-	$main_towns = "array(1 => '$main_towns[1]', 2 => '$main_towns[2]', 3 => '$main_towns[3]', 4 => '$main_towns[4]', 5 => '$main_towns[5]')";
-
+	$new_main_towns = 'array(';
+	for($i=1; $i <= count($main_towns); $i++) {
+		$new_main_towns .= $i . ' => \'' . $main_towns[$i] . '\', ';
+	}
+	$new_main_towns .= ')';
+	
 	if($char_rook == "true")
 	{
 			$char_maglevel_none = $char_maglevel_none;
@@ -204,11 +208,11 @@ else
 		break;
 			
 		case "towns":
-		$main_towns = 'array(';
+		$new_main_towns = 'array(';
 		for($i=1; $i <= $_POST['Towns']; $i++) {
-			$main_towns .= $i . ' => \'' . $_POST["Town$i"] . '\', ';
+			$new_main_towns .= $i . ' => \'' . $_POST["Town$i"] . '\', ';
 		}
-		$main_towns .= ')';
+		$new_main_towns .= ')';
 		break;
 		
 		case "maintenance":
@@ -315,7 +319,7 @@ else
 \$main_voteanswer4 = \"$main_voteanswer4\";
 \$main_enable_feedback = $main_enable_feedback;
 \$main_mail = \"$main_mail\";
-\$main_towns = $main_towns;
+\$main_towns = $new_main_towns;
 
 \$info_os =				\"$info_os\";
 \$info_connection =		\"$info_connection\";
