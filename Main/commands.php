@@ -77,7 +77,7 @@ if($modules_commands)
 		      <td style="width: 124px; background: #FFFFFF;">&nbsp;</td>
 		    </tr>
 		';
-
+		$total_commands = 0;
 		$scan_limit = $xml2->getChildrenCount();
 
 		for($i = 0; $i < $scan_limit; $i++)
@@ -88,10 +88,19 @@ if($modules_commands)
 				echo '<td style="width: 139px;">' . $xml2->command[$i]->getAttribute('cmd') . '</td>';
 				echo '<td style="width: 124px; text-align: center;">' . $xml2->command[$i]->getAttribute('access') . '</td>';
 				echo "</tr>";
+				
+				$total_commands++;
 			}
 		}
 	echo "</tbody></table>";
-	echo "<br /><b>There are $i commands for this server.</b>";
+		if($total_commands == 1)
+		{
+			echo "<br /><b>There is $total_commands command for this server.</b>";
+		}
+		else
+		{
+			echo "<br /><b>There are $total_commands commands for this server.</b>";
+		}
 	}
 	else
 	{
