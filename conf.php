@@ -3,7 +3,7 @@
 // ===========================================================
 //	Smart-Ass: The Userfriendly AAC
 //	Version: 2.0 Development Only
-//	Configuration Created: Sun, 17 Jun 2007 20:57:48 +0100
+//	Configuration Created: Mon, 18 Jun 2007 13:04:24 +0100
 //	
 //	USE OF THIS PROGRAM TO RELY ON IT FOR SERVER USE IS NOT
 // 	RECOMMENDED! THIS IS FOR TESTING ONLY.
@@ -84,7 +84,6 @@ $modules_commands = true;
 $modules_rules = true;
 $modules_voting = true;
 $modules_custom = true;
-$modules_calculator = true;
 $modules_videos = true;
 $modules_gallery = true;
 $modules_monsters = true;

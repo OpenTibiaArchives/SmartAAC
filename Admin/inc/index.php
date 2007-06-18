@@ -68,25 +68,28 @@ echo "<h1>Checking</h1><br />
 Version: $aac_version</p><br />";
 
 ?>
-<h1>Select an admin action</h1>
+<h2>Change the following:</h2>
 <ul>
-<li><a href="admin.php?action=CheckVersion">Check version</a></li>
-<li><a href="admin.php?action=Security">Change security</a></li>
-<li><a href="admin.php?action=PlayerItems">Change player items</a></li>
-<li><a href="admin.php?action=Modules">Activate/Deactivate modules</a></li>
-<li><a href="admin.php?action=SQL">Change MySQL settings</a></li>
-<li><a href="admin.php?action=Stats">Change statistic info</a></li>
-<li><a href="admin.php?action=Voting">Change voting questions/reset</a></li>
-<li><a href="admin.php?action=Videos">Add/Delete videos</a></li>
-<li><a href="admin.php?action=Gallery">Add/Delete images</a></li>
-<li><a href="admin.php?action=FieldLens">Change field lengths</a></li>
-<li><a href="admin.php?action=Items">Change player items</a></li>
-<li><a href="admin.php?action=PlayerLvls">Change player levels (hp, mana, maglvl)</a></li>
-<li><a href="admin.php?action=Towns">Change towns</a></li>
-<li><a href="admin.php?action=Maintenance">Change in/out of maintenance mode</a></li>
-<li><a href="admin.php?action=ImportDB">Import the Default OTServ DB</a></li>
+<li><a href="admin.php?action=Security">Security settings</a></li>
+<li><a href="admin.php?action=PlayerItems">Player items</a></li>
+<li><a href="admin.php?action=SQL">MySQL settings</a></li>
+<li><a href="admin.php?action=Stats">Statistic info</a></li>
+<li><a href="admin.php?action=Dirs">Data Directory</a></li>
+<li><a href="admin.php?action=Voting">Voting questions/reset</a></li>
+<li><a href="admin.php?action=FieldLens">AAC field lengths</a></li>
+<li><a href="admin.php?action=Items">Player items</a></li>
+<li><a href="admin.php?action=PlayerLvls">Player levels (hp, mana, maglvl)</a></li>
+<li><a href="admin.php?action=Towns">Towns</a></li>
+<li><a href="admin.php?action=Maintenance">In/out of maintenance mode</a></li>
 <li><a href="admin.php?action=Others">Change other stuff</a></li>
 <br />
+<hr>
+<br />
+<li><a href="admin.php?action=CheckVersion">Check version</a></li>
+<li><a href="admin.php?action=ImportDB">Import the Default OTServ DB</a></li>
+<li><a href="admin.php?action=Videos">Add/Delete videos</a></li>
+<li><a href="admin.php?action=Gallery">Add/Delete images</a></li>
+<li><a href="admin.php?action=Modules">Activate/Deactivate modules</a></li>
 <li><a href="admin.php?action=AdminCreds">Change admin credentials</a></li>
 </ul>
 <?

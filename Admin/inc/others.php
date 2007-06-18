@@ -38,7 +38,7 @@ if((!isset($_COOKIE["logged_in_user"]) || $_COOKIE["logged_in_user"] != md5($adm
 // Logged in
 else
 {
-	$title = 'Towns';
+	$title = 'Others';
 	$name = 'Admin Panel';
 	$bodySpecial = 'onload="NOTHING"';
 
@@ -116,6 +116,8 @@ else
 		<input type=\"text\" name=\"StartLookfeet\" value=\"$char_lookfeet\" /><br />
 		<label for=\"StartTown\">Start town:</label>
 		<input type=\"text\" name=\"StartTown\" value=\"$char_town\" /><br />
+		<label for=\"MapName\">Map name:</label>
+		<input type=\"text\" name=\"MapName\" value=\"$aac_mapname\" /><br />
 		<br />
 		<input type=\"submit\" name=\"submitbutton\" id=\"submitbutton\" value=\"Change\" />
 		</form>

@@ -130,7 +130,7 @@ else
 		<input type=\"text\" name=\"SQL_DB\" value=\"$sql_db\" /><br />
 		<br /><br />
 
-		<h1>Directories</h1>
+		<h1>Directories/Names</h1>
 		<label for=\"dataDir\">Data dir:</label>
 		<input type=\"text\" name=\"dataDir\" value=\"$aac_dataDir\" /><br /><br />
 
@@ -258,8 +258,6 @@ else
 		<input type=\"checkbox\" name=\"VotePage\" class=\"boxes\" /><br />
 		<label for=\"Custom\">Custom page:</label>
 		<input type=\"checkbox\" name=\"Custom\" class=\"boxes\" /><br />
-		<label for=\"Calculator\">Calculator page:</label>
-		<input type=\"checkbox\" name=\"Calculator\" class=\"boxes\" /><br />
 		<label for=\"Videos\">Videos page:</label>
 		<input type=\"checkbox\" name=\"Videos\" class=\"boxes\" /><br />
 		<label for=\"Gallery\">Gallery page:</label>
@@ -275,11 +273,11 @@ else
 			echo "
 			<h1>Character Values</h1>
 			<label for=\"char_maglevel_none\">No vocation Magic Level:</label>
-			<input type=\"text\" name=\"char_maglevel_none\" value=\"\" /><br />
+			<input type=\"text\" name=\"char_maglevel_none\" value=\"$char_maglevel_none\" /><br />
 			<label for=\"char_health_none\">No vocation Health:</label>
-			<input type=\"text\" name=\"char_health_none\" value=\"\" /><br />
+			<input type=\"text\" name=\"char_health_none\" value=\"$char_health_none\" /><br />
 			<label for=\"char_mana_none\">No vocation Mana:</label>
-			<input type=\"text\" name=\"char_mana_none\" value=\"\" /><br />
+			<input type=\"text\" name=\"char_mana_none\" value=\"$char_mana_none\" /><br />
 		";
 		}
 		elseif($char_rook == "false")
@@ -287,32 +285,32 @@ else
 			echo "
 			<h1>Character Values</h1>
 			<label for=\"char_maglevel_sorcerer\">Sorcerer Magic Level:</label>
-			<input type=\"text\" name=\"char_maglevel_sorcerer\" value=\"\" /><br />
+			<input type=\"text\" name=\"char_maglevel_sorcerer\" value=\"$char_maglevel_sorcerer\" /><br />
 			<label for=\"char_health_sorcerer\">Sorcerer Health:</label>
-			<input type=\"text\" name=\"char_health_sorcerer\" value=\"\" /><br />
+			<input type=\"text\" name=\"char_health_sorcerer\" value=\"$char_health_sorcerer\" /><br />
 			<label for=\"char_mana_sorcerer\">Sorcerer Mana:</label>
-			<input type=\"text\" name=\"char_mana_sorcerer\" value=\"\" /><br />
+			<input type=\"text\" name=\"char_mana_sorcerer\" value=\"$char_mana_sorcerer\" /><br />
 			
 			<label for=\"char_maglevel_druid\">Druid Magic Level:</label>
-			<input type=\"text\" name=\"char_maglevel_druid\" value=\"\" /><br />
+			<input type=\"text\" name=\"char_maglevel_druid\" value=\"$char_maglevel_druid\" /><br />
 			<label for=\"char_health_druid\">Druid Health:</label>
-			<input type=\"text\" name=\"char_health_druid\" value=\"\" /><br />
+			<input type=\"text\" name=\"char_health_druid\" value=\"$char_health_druid\" /><br />
 			<label for=\"char_mana_druid\">Druid Mana:</label>
-			<input type=\"text\" name=\"char_mana_druid\" value=\"\" /><br />
+			<input type=\"text\" name=\"char_mana_druid\" value=\"$char_mana_druid\" /><br />
 			
 			<label for=\"char_maglevel_paladin\">Paladin Magic Level:</label>
-			<input type=\"text\" name=\"char_maglevel_paladin\" value=\"\" /><br />
+			<input type=\"text\" name=\"char_maglevel_paladin\" value=\"$char_maglevel_paladin\" /><br />
 			<label for=\"char_health_paladin\">Paladin Health:</label>
-			<input type=\"text\" name=\"char_health_paladin\" value=\"\" /><br />
+			<input type=\"text\" name=\"char_health_paladin\" value=\"$char_health_paladin\" /><br />
 			<label for=\"char_mana_paladin\">Paladin Mana:</label>
-			<input type=\"text\" name=\"char_mana_paladin\" value=\"\" /><br />
+			<input type=\"text\" name=\"char_mana_paladin\" value=\"$char_mana_paladin\" /><br />
 			
 			<label for=\"char_maglevel_knight\">Knight Magic Level:</label>
-			<input type=\"text\" name=\"char_maglevel_knight\" value=\"\" /><br />
+			<input type=\"text\" name=\"char_maglevel_knight\" value=\"$char_maglevel_knight\" /><br />
 			<label for=\"char_health_knight\">Knight Health:</label>
-			<input type=\"text\" name=\"char_health_knight\" value=\"\" /><br />
+			<input type=\"text\" name=\"char_health_knight\" value=\"$char_health_knight\" /><br />
 			<label for=\"char_mana_knight\">Knight Mana:</label>
-			<input type=\"text\" name=\"char_mana_knight\" value=\"\" /><br />
+			<input type=\"text\" name=\"char_mana_knight\" value=\"$char_mana_knight\" /><br />
 			";
 		}
 

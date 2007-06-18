@@ -38,7 +38,7 @@ if((!isset($_COOKIE["logged_in_user"]) || $_COOKIE["logged_in_user"] != md5($adm
 // Logged in
 else
 {
-	$title = 'Modules';
+	$title = 'Directories';
 	$name = 'Admin Panel';
 	$bodySpecial = 'onload="NOTHING"';
 
@@ -90,46 +90,14 @@ else
 		}
 		</style>
 
-		<form action=\"save.php?save=modules\" method=\"POST\">
-		<label for=\"CharSearch\">Char search:</label>
-		<input type=\"checkbox\" name=\"CharSearch\" class=\"boxes\" /><br />
-		<label for=\"Feedback\">Feedback page:</label>
-		<input type=\"checkbox\" name=\"Feedback\" class=\"boxes\" /><br />
-		<label for=\"Affliates\">Affliates page:</label>
-		<input type=\"checkbox\" name=\"Affliates\" class=\"boxes\" /><br />
-		<label for=\"Guilds\">Guilds:</label>
-		<input type=\"checkbox\" name=\"Guilds\" class=\"boxes\" disabled=\"disabled\" /><br />
-		<label for=\"Houses\">Houses:</label>
-		<input type=\"checkbox\" name=\"Houses\" class=\"boxes\" /><br />
-		<label for=\"Highscores\">Highscores:</label>
-		<input type=\"checkbox\" name=\"Highscores\" class=\"boxes\" /><br />
-		<label for=\"InfoPage\">Info page:</label>
-		<input type=\"checkbox\" name=\"InfoPage\" class=\"boxes\" /><br />
-		<label for=\"ServerStats\">Server stats:</label>
-		<input type=\"checkbox\" name=\"ServerStats\" class=\"boxes\" /><br />
-		<label for=\"DownloadsPage\">Downloads page:</label>
-		<input type=\"checkbox\" name=\"DownloadsPage\" class=\"boxes\" /><br />
-		<label for=\"BannedPlayers\">Banned players:</label>
-		<input type=\"checkbox\" name=\"BannedPlayers\" class=\"boxes\" /><br />
-		<label for=\"InGameCommands\">In-game commands page:</label>
-		<input type=\"checkbox\" name=\"InGameCommands\" class=\"boxes\" /><br />
-		<label for=\"RulesPage\">Rules page:</label>
-		<input type=\"checkbox\" name=\"RulesPage\" class=\"boxes\" /><br />
-		<label for=\"VotePage\">Voting:</label>
-		<input type=\"checkbox\" name=\"VotePage\" class=\"boxes\" /><br />
-		<label for=\"Custom\">Custom page:</label>
-		<input type=\"checkbox\" name=\"Custom\" class=\"boxes\" /><br />
-		<label for=\"Videos\">Videos page:</label>
-		<input type=\"checkbox\" name=\"Videos\" class=\"boxes\" /><br />
-		<label for=\"Gallery\">Gallery page:</label>
-		<input type=\"checkbox\" name=\"Gallery\" class=\"boxes\" /><br />
-		<label for=\"Monsters\">Monsters page:</label>
-		<input type=\"checkbox\" name=\"Monsters\" class=\"boxes\" /><br />
-		<label for=\"Spells\">Spells page:</label>
-		<input type=\"checkbox\" name=\"Spells\" class=\"boxes\" /><br /><br />
+		<form action=\"save.php?save=dirs\" method=\"POST\">
+		<label for=\"DirPath\">Min Account Number Length:</label>
+		<input type=\"text\" name=\"DirPath\" value=\"$aac_dataDir\" /><br />
+
+		<br /><br />
 		
-		<br />
 		<input type=\"submit\" name=\"submitbutton\" id=\"submitbutton\" value=\"Change\" />
+			<br />
 		</form>
 		";
 

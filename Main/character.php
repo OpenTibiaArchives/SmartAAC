@@ -118,7 +118,14 @@ if($modules_charsearch)
 					echo ' ('. $guild_nick .')';
 				echo '<br /></td></tr>';
 			}
-			$lastlog = date('M d Y, H:i:s T', $lastlogin);
+			if($lastlogin == 0)
+			{
+				$lastlog = "Never";
+			}
+			else
+			{
+				$lastlog = date('M d Y, H:i:s T', $lastlogin);
+			}
 			echo '<tr><td width=200px>Last login:</td><td width=300px>'.$lastlog.'<br /></td></tr>';
 			echo '</table>';
 			echo '<br><br>';

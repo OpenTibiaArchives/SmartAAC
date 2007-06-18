@@ -68,6 +68,9 @@ switch($action)
 	include 'inc/items.php';
 	break;
 	
+	case "Dirs":
+	include 'inc/directories.php';
+	
 	default:
 	include 'inc/index.php';
 	break;

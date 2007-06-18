@@ -77,7 +77,6 @@ else
 	$conf_modules_RulesPage =			($_POST['RulesPage']) ? "true" : "false";
 	$conf_modules_VotePage =			($_POST['VotePage']) ? "true" : "false";
 	$conf_modules_Custom =				($_POST['Custom']) ? "true" : "false";
-	$conf_modules_Calculator =			($_POST['Calculator']) ? "true" : "false";
 	$conf_modules_Videos =				($_POST['Videos']) ? "true" : "false";
 	$conf_modules_Gallery =				($_POST['Gallery']) ? "true" : "false";
 	$conf_modules_Monsters =			($_POST['Monsters']) ? "true" : "false";
@@ -264,7 +263,6 @@ else
 \$modules_rules = $conf_modules_RulesPage;
 \$modules_voting = $conf_modules_VotePage;
 \$modules_custom = $conf_modules_Custom;
-\$modules_calculator = $conf_modules_Calculator;
 \$modules_videos = $conf_modules_Videos;
 \$modules_gallery = $conf_modules_Gallery;
 \$modules_monsters = $conf_modules_Monsters;

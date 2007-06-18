@@ -32,7 +32,6 @@ else
 	$modules_rules = ($modules_rules) ? "true" : "false";
 	$modules_voting = ($modules_voting) ? "true" : "false";
 	$modules_custom = ($modules_custom) ? "true" : "false";
-	$modules_calculator = ($modules_calculator) ? "true" : "false";
 	$modules_videos = ($modules_videos) ? "true" : "false";
 	$modules_gallery = ($modules_gallery) ? "true" : "false";
 	$modules_monsters = ($modules_monsters) ? "true" : "false";
@@ -112,7 +111,6 @@ $new_main_towns .= ')';
 		$modules_rules =				($_POST['RulesPage']) ? "true" : "false";
 		$modules_voting =				($_POST['VotePage']) ? "true" : "false";
 		$modules_custom =				($_POST['Custom']) ? "true" : "false";
-		$modules_calculator =			($_POST['Calculator']) ? "true" : "false";
 		$modules_videos =				($_POST['Videos']) ? "true" : "false";
 		$modules_gallery =				($_POST['Gallery']) ? "true" : "false";
 		$modules_monsters =				($_POST['Monsters']) ? "true" : "false";
@@ -236,6 +234,10 @@ $new_main_towns .= ')';
 		$admin_pass = createRandomPassword();
 		break;
 		
+		case "dirs":
+		$aac_dataDir = $_POST['DirPath'];
+		break;
+		
 		case "others":
 		$aac_servername = $_POST['ServerName'];
 		$main_highscores_result = $_POST['HighscoresResult'];
@@ -247,6 +249,7 @@ $new_main_towns .= ')';
 		$char_looklegs = $_POST['StartLooklegs'];
 		$char_lookfeet = $_POST['StartLookfeet'];
 		$char_town = $_POST['StartTown'];
+		$aac_mapname = $_POST['MapName'];
 		break;
 	}
 
@@ -339,7 +342,6 @@ $new_main_towns .= ')';
 \$modules_rules = $modules_rules;
 \$modules_voting = $modules_voting;
 \$modules_custom = $modules_custom;
-\$modules_calculator = $modules_calculator;
 \$modules_videos = $modules_videos;
 \$modules_gallery = $modules_gallery;
 \$modules_monsters = $modules_monsters;

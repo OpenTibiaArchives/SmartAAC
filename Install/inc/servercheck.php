@@ -42,7 +42,7 @@ $tpl->set('documentation', $documentation);
 echo $tpl->fetch('../Includes/Templates/Slick_minimal/top.tpl');
 
 $tests_passed = 0;
-$tests_to_pass = 4;
+$tests_to_pass = 6;
 
 if( version_compare(phpversion(), "5.0.0", ">=") )
 {
@@ -85,8 +85,34 @@ else
 	$conf_confirm = "<font color=\"red\">Fail</font>";
 }
 
+if(is_writable("../Install/"))
+{
+	$lock_confirm = "<font color=\"green\">Pass</font>";
+	$tests_passed++;
+}
+else
+{
+	$lock_confirm = "<font color=\"red\">Fail</font>";
+}
+
+if(is_writable("../Includes/counter/visits.txt") && is_writable("../Includes/counter/uniques.txt"))
+{
+	$counter_confirm = "<font color=\"green\">Pass</font>";
+	$tests_passed++;
+}
+else
+{
+	$counter_confirm = "<font color=\"red\">Fail</font>";
+}
+
 // Then all those confirm variables are stored in the confirms array to access
-$confirms = array("PHP Version" => $php_confirm, "GD Enabled" => $gd_confirm, "SimpleXML" => $simplexml_confirm, "Conf Writable" => $conf_confirm);
+$confirms = array(	"PHP Version" => $php_confirm,
+					"GD Enabled" => $gd_confirm,
+					"SimpleXML" => $simplexml_confirm,
+					"Conf writable" => $conf_confirm,
+					"Setup Lock" => $lock_confirm,
+					"Counter" => $counter_confirm
+					);
 
 
 echo '<h1>Testing</h1><p>Smart-Ass has tested out your server for testing. We do recommend you run Smart-Ass on an Apache server, since it was developed and tested on it.</p>';
@@ -95,28 +121,36 @@ echo "<div align=\"center\"><table style=\"text-align: left; height: 119px; widt
  border=\"0\" cellpadding=\"2\" cellspacing=\"2\">
   <tbody>
     <tr>
-      <td style=\"width: 169px;\"><h2>Component</h2></td>
+      <td style=\"width: 200px;\"><h2>Component</h2></td>
       <td style=\"width: 85px; text-align: center;\"><h2>Pass?</h2></td>
     </tr>
+	<tr>
+      <td style=\"width: 200px;\">&nbsp;</td>
+      <td style=\"width: 85px; text-align: center;\">&nbsp;</td>
+    </tr>
     <tr>
-      <td style=\"width: 169px;\"><b>PHP 5</b></td>
+      <td style=\"width: 200px;\"><b>PHP 5 installed</b></td>
       <td style=\"width: 85px; text-align: center;\">{$confirms['PHP Version']}</td>
     </tr>
     <tr>
-      <td style=\"width: 169px;\"><b>GD</b></td>
+      <td style=\"width: 200px;\"><b>GD enabled</b></td>
       <td style=\"width: 85px; text-align: center;\">{$confirms['GD Enabled']}</td>
     </tr>
 	<tr>
-      <td style=\"width: 169px;\"><b>SimpleXML</b></td>
+      <td style=\"width: 200px;\"><b>SimpleXML enabled</b></td>
       <td style=\"width: 85px; text-align: center;\">{$confirms['SimpleXML']}</td>
     </tr>
     <tr>
-      <td style=\"width: 169px;\"><b>Configuration writable</b></td>
-      <td style=\"width: 85px; text-align: center;\">{$confirms['Conf Writable']}</td>
+      <td style=\"width: 200px;\"><b>Configuration writable?</b></td>
+      <td style=\"width: 85px; text-align: center;\">{$confirms['Conf writable']}</td>
     </tr>
-    <tr>
-      <td style=\"width: 169px;\"><b></b></td>
-      <td style=\"width: 85px; text-align: center;\"></td>
+	<tr>
+      <td style=\"width: 200px;\"><b>Setup lock writable?</b></td>
+      <td style=\"width: 85px; text-align: center;\">{$confirms['Setup Lock']}</td>
+    </tr>
+	<tr>
+      <td style=\"width: 200px;\"><b>Counter stats writable?</b></td>
+      <td style=\"width: 85px; text-align: center;\">{$confirms['Counter']}</td>
     </tr>
   </tbody>
 </table></div>
@@ -147,6 +181,11 @@ elseif($tests_passed != $tests_to_pass)
    Dialog.alert("<h1>Failed</h1><br><p>You have passed at least too tests which means you should be able to move on, go ahead.</p>", {windowParameters: {className: "alphacube"}})
   }
 </script>
+<div align="center"><br /><br />
+<p>You can go forward if you know what you\'re doing however</p>
+<form action="install.php?step=2" method="post">
+<input type="submit" value="Keep going anyway" class="btn"/>
+</form></div>
 	';
 }
 
