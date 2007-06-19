@@ -58,15 +58,9 @@ if($modules_serverstats)
 	@$fp = fsockopen ($ip, 7171, $errno, $errstr, 1);
 	if (!$fp)
 	{
-		echo '<p>The server is offline or there is a problem contacting the server, I cannot get information.</p>';
-		
-		$offline = "Server is offline";
-		$image = imagecreatefrompng('sysuptime3.png');
-		header("Content-type: image/png");
-		$black = imagecolorallocate($image, 0, 0, 0);
-		Imagestring($image,2,(imagesy+5),(imagesy+23),$offline,$black);
-		imagepng($image);
-		imagedestroy($image);
+		echo '<p>The server is offline or there is a problem contacting the server, I cannot get information.</p>
+				<br /><h2>Forum/Site Image</h2><br /> <img src="uptimeimage.php?mode=1" />';
+	
 	}
 	else
 	{
@@ -128,20 +122,12 @@ if($modules_serverstats)
 		    </tr>
 		  </tbody>
 		</table>
+		
+		<br />
+		<br />
+		<h2>Forum/Site Image</h2><br />
+		<img src="uptimeimage.php?mode=2" />
 		';
-		$players = 'Players online: '.$info['online'].' / '.$info['max'];
-		$owner = 'Owner Name: '.$info['name'];
-		$uptime = 'Uptime: '.$hours.'h '.$minutes.'m';
-		//uncomment for debug
-		//print "$owner <br /> $uptime <br /> $players";
-		$image = imagecreatefrompng('sysuptime3.png');
-		header("Content-type: image/png");
-		$black = imagecolorallocate($image, 0, 0, 0);
-		Imagestring($image,2,(imagesy+5),(imagesy+9),$owner,$black);
-		Imagestring($image,2,(imagesy+5),(imagesy+23),$uptime,$black);
-		Imagestring($image,2,(imagesy+5),(imagesy+37),$players,$black);
-		imagepng($image);
-		imagedestroy($image);
 
 	}
 }
