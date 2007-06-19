@@ -75,6 +75,7 @@ if($modules_houses)
 		      <td style="width: 124px; text-align: center;"><b>Town</b></td>
 		      <td style="width: 124px; text-align: center;"><b>Rent</b></td>
 		      <td style="width: 124px; text-align: center;"><b>Size</b></td>
+			  <td style="width: 124px; text-align: center;"><b>Owner</b></td>
 		    </tr>
 			<tr>
 		      <td style="width: 139px;">&nbsp;</td>
@@ -82,6 +83,7 @@ if($modules_houses)
 		      <td style="width: 124px;">&nbsp;</td>
 		      <td style="width: 124px;">&nbsp;</td>
 		      <td style="width: 124px;">&nbsp;</td>
+			  <td style="width: 124px;">&nbsp;</td>
 		    </tr>
 		';
 
@@ -95,6 +97,7 @@ if($modules_houses)
 			echo '<td style="width: 124px; text-align: center;">' . $main_towns[$xml2->house[$i]->getAttribute('townid')] . '</td>';
 			echo '<td style="width: 124px; text-align: center;">' . $xml2->house[$i]->getAttribute('rent') . ' gp</td>';
 			echo '<td style="width: 124px; text-align: center;">' . $xml2->house[$i]->getAttribute('size') . ' sqm</td>';
+			echo '<td style="width: 124px; text-align: center;">' . getHouseOwner($xml2->house[$i]->getAttribute('houseid')) . '</td>';
 			echo '</tr>';
 		}
 	echo "</tbody></table></div>";
