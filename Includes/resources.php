@@ -270,22 +270,6 @@ function skills($skill)
 	return "level";
 }
 
-function getHouseOwner($houseid)
-{
-        include '../conf.php';
-       
-        $sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
-        mysql_select_db($sql_db, $sqlconnect);
-        $query = sqlquery('SELECT `owner` FROM `houses` WHERE `id` = '.intval($houseid).'');
-        while($row = mysql_fetch_array($query)) {
-                if($row['owner'] == 0)
-                        return 'Nobody';
-                else   
-                        return userFromId($row['owner']);
-        }
-        return false;
-} 
-
 class SimpleXMLElementExtended extends SimpleXMLElement{
    
     public function getAttribute($name){

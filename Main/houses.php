@@ -87,6 +87,17 @@ if($modules_houses)
 		    </tr>
 		';
 
+        $sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
+        mysql_select_db($sql_db, $sqlconnect);
+        $query = sqlquery('SELECT `id`, `owner` FROM `houses` ORDER BY `id`');
+		$owners = array();
+        while($row = mysql_fetch_array($query)) {
+                if($row['owner'] == 0)
+                        $owners[$row['id']] = 'Nobody';
+                else   
+                        $owners[$row['id']] = $row['owner'];
+        }
+
 		$scan_limit = $xml2->getChildrenCount();
 
 		for($i = 0; $i < $scan_limit; $i++)
@@ -97,7 +108,7 @@ if($modules_houses)
 			echo '<td style="width: 124px; text-align: center;">' . $main_towns[$xml2->house[$i]->getAttribute('townid')] . '</td>';
 			echo '<td style="width: 124px; text-align: center;">' . $xml2->house[$i]->getAttribute('rent') . ' gp</td>';
 			echo '<td style="width: 124px; text-align: center;">' . $xml2->house[$i]->getAttribute('size') . ' sqm</td>';
-			echo '<td style="width: 124px; text-align: center;">' . getHouseOwner($xml2->house[$i]->getAttribute('houseid')) . '</td>';
+			echo '<td style="width: 124px; text-align: center;">' . $owners[$xml2->house[$i]->getAttribute('houseid')] . '</td>';
 			echo '</tr>';
 		}
 	echo "</tbody></table></div>";
