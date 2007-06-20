@@ -27,6 +27,7 @@ include "../conf.php";
 // ===========================================================
 
 include '../conf.php';
+include '../Includes/resources.php';
 include '../Includes/stats/stats.php';
 include '../Includes/counter/counter.php';
 
@@ -38,7 +39,7 @@ if((!isset($_COOKIE["logged_in_user"]) || $_COOKIE["logged_in_user"] != md5($adm
 // Logged in
 else
 {
-	$title = 'Towns';
+	$title = 'Items';
 	$name = 'Admin Panel';
 	$bodySpecial = 'onload="NOTHING"';
 
@@ -95,24 +96,125 @@ else
 		}
 		</style>
 
-		<form action=\"save.php?save=changeadmincreds\" method=\"POST\">
-		<label for=\"Head\">Head:</label>
-		<input type=\"text\" name=\"HeadItem\" value=\"$char_items[11]['item_type']\" />
-		
+";
+echo "<h1>Items</h1><br />";
+
+$xml = new DOMDocument();
+$xml->load($aac_dataDir . '/items/items.xml');
+
+$items = array();
+foreach( $xml->getElementsByTagName('item') as $tag)
+{
+	$slot = false;
+	$container = false;
+	$slotType = '';
+	foreach( $tag->getElementsByTagName('attribute') as $attribute)
+	{
+		if( $attribute->getAttribute('key') == 'slotType')
+		{
+			$slot = true;
+			$slotType = $attribute->getAttribute('value');
+		}
+		elseif( $attribute->getAttribute('key') == 'containerSize')
+		{
+			$container = true;
+		}
+	}
+
+ // not wearable
+	if(!$slot)
+	{
+		continue;
+	}
+
+	$items[ $slotType ][ $tag->getAttribute('id') ] = array('name' => $tag->getAttribute('name'), 'container' => $container);
+}
+echo "<form action=\"save.php?save=items\" method=\"POST\">";
+
+echo '<select name="head">';
+echo '<option value=0 SELECTED>Head</option>';
+echo '<option>----</option>';
+foreach($items['head'] as $id => $item){
+	echo '<option value='.$id.'>'.$item['name'].'</option>';
+}
+echo '</select><br />';
+
+echo '<select name="neck">';
+echo '<option value=0 SELECTED>Neck</option>';
+echo '<option>----</option>';
+foreach($items['necklace'] as $id => $item){
+	echo '<option value='.$id.'>'.$item['name'].'</option>';
+}
+echo '</select><br />';
+
+echo '<select name="armor">';
+echo '<option value=0 SELECTED>Armor</option>';
+echo '<option>----</option>';
+foreach($items['body'] as $id => $item){
+	echo '<option value='.$id.'>'.$item['name'].'</option>';
+}
+echo '</select><br />';
+
+echo '<select name="legs">';
+echo '<option value=0 SELECTED>Legs</option>';
+echo '<option>----</option>';
+foreach($items['legs'] as $id => $item){
+	echo '<option value='.$id.'>'.$item['name'].'</option>';
+}
+echo '</select><br />';
+
+echo '<select name="feet">';
+echo '<option value=0 SELECTED>Feet</option>';
+echo '<option>----</option>';
+foreach($items['feet'] as $id => $item){
+	echo '<option value='.$id.'>'.$item['name'].'</option>';
+}
+echo '</select><br />';
+
+echo '<select name="ring">';
+echo '<option value=0 SELECTED>Ring</option>';
+echo '<option>----</option>';
+foreach($items['ring'] as $id => $item){
+	echo '<option value='.$id.'>'.$item['name'].'</option>';
+}
+echo '</select><br />';
+
+echo '<select name="ammo">';
+echo '<option value=0 SELECTED>Ammo</option>';
+echo '<option>----</option>';
+foreach($items as $item){
+	foreach($item as $id => $name){
+		echo '<option value='.$id.'>'.$name['name'].'</option>';
+	}
+}
+echo '</select><br />';
+
+echo '<select name="left">';
+echo '<option value=0 SELECTED>Left hand</option>';
+echo '<option>----</option>';
+foreach($items as $item){
+	foreach($item as $id => $name){
+		echo '<option value='.$id.'>'.$name['name'].'</option>';
+	}
+}
+echo '</select><br />';
+
+echo '<select name="right">';
+echo '<option value=0 SELECTED>Right hand</option>';
+echo '<option>----</option>';
+foreach($items as $item){
+	foreach($item as $id => $name){
+		echo '<option value='.$id.'>'.$name['name'].'</option>';
+	}
+}
+echo '</select><br />';
+
+echo "
 		<br /><br />
-		
-		
-		<input type=\"submit\" name=\"submitbutton\" id=\"submitbutton\" value=\"Change\" />
+		<input type=\"submit\" name=\"submitbutton\" id=\"submitbutton\" value=\"Go\" />
 			<br />
 		</form>
-		
-		
-		<br /><br />
-		<p>You can reset the password to a random one.</p>
-		<form action=\"save.php?save=resetadminpass\" method=\"POST\">
-		<input type=\"submit\" name=\"submitbutton2\" id=\"submitbutton2\" value=\"Randomize new password\" />
-		</form>
-		";
+";
 
 	echo $tpl->fetch('../Includes/Templates/Indigo/sidebarAdmin.tpl');
 	echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');

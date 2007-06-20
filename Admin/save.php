@@ -212,6 +212,9 @@ $new_main_towns .= ')';
 		}
 		$new_main_towns .= ')';
 		break;
+
+		case "items":
+		break;
 		
 		case "maintenance":
 		$aac_status_1a =	($_POST['MaintenanceMode']) ? "true" : "false";
