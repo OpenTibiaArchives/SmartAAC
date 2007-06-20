@@ -132,56 +132,56 @@ foreach( $xml->getElementsByTagName('item') as $tag)
 echo "<form action=\"save.php?save=items\" method=\"POST\">";
 
 echo '<select name="head">';
-echo '<option value=0 SELECTED>Head</option>';
-echo '<option>----</option>';
+echo '<optgroup label="Head">';
+//echo '<option value="NONE">----</option>';
 foreach($items['head'] as $id => $item){
 	echo '<option value='.$id.'>'.$item['name'].'</option>';
 }
 echo '</select><br />';
 
 echo '<select name="neck">';
-echo '<option value=0 SELECTED>Neck</option>';
-echo '<option>----</option>';
+echo '<optgroup label="Neck">';
+//echo '<option value="NONE">----</option>';
 foreach($items['necklace'] as $id => $item){
 	echo '<option value='.$id.'>'.$item['name'].'</option>';
 }
 echo '</select><br />';
 
 echo '<select name="armor">';
-echo '<option value=0 SELECTED>Armor</option>';
-echo '<option>----</option>';
+echo '<optgroup label="Armor">';
+//echo '<option value="NONE">----</option>';
 foreach($items['body'] as $id => $item){
 	echo '<option value='.$id.'>'.$item['name'].'</option>';
 }
 echo '</select><br />';
 
 echo '<select name="legs">';
-echo '<option value=0 SELECTED>Legs</option>';
-echo '<option>----</option>';
+echo '<optgroup label="Legs">';
+//echo '<option value="NONE">----</option>';
 foreach($items['legs'] as $id => $item){
 	echo '<option value='.$id.'>'.$item['name'].'</option>';
 }
 echo '</select><br />';
 
 echo '<select name="feet">';
-echo '<option value=0 SELECTED>Feet</option>';
-echo '<option>----</option>';
+echo '<optgroup label="Feet">';
+//echo '<option value="NONE">----</option>';
 foreach($items['feet'] as $id => $item){
 	echo '<option value='.$id.'>'.$item['name'].'</option>';
 }
 echo '</select><br />';
 
 echo '<select name="ring">';
-echo '<option value=0 SELECTED>Ring</option>';
-echo '<option>----</option>';
+echo '<optgroup label="Ring">';
+//echo '<option value="NONE">----</option>';
 foreach($items['ring'] as $id => $item){
 	echo '<option value='.$id.'>'.$item['name'].'</option>';
 }
 echo '</select><br />';
 
 echo '<select name="ammo">';
-echo '<option value=0 SELECTED>Ammo</option>';
-echo '<option>----</option>';
+echo '<optgroup label="Ammo">';
+//echo '<option value="NONE">----</option>';
 foreach($items as $item){
 	foreach($item as $id => $name){
 		echo '<option value='.$id.'>'.$name['name'].'</option>';
@@ -190,8 +190,8 @@ foreach($items as $item){
 echo '</select><br />';
 
 echo '<select name="left">';
-echo '<option value=0 SELECTED>Left hand</option>';
-echo '<option>----</option>';
+echo '<optgroup label="Left Hand">';
+///echo '<option value="NONE">----</option>';
 foreach($items as $item){
 	foreach($item as $id => $name){
 		echo '<option value='.$id.'>'.$name['name'].'</option>';
@@ -200,18 +200,18 @@ foreach($items as $item){
 echo '</select><br />';
 
 echo '<select name="right">';
-echo '<option value=0 SELECTED>Right hand</option>';
-echo '<option>----</option>';
+echo '<optgroup label="Right Hand">';
+//echo '<option value="NONE">----</option>';
 foreach($items as $item){
 	foreach($item as $id => $name){
 		echo '<option value='.$id.'>'.$name['name'].'</option>';
 	}
 }
-echo '</select><br />';
+echo '</select>';
 
 echo "
 		<br /><br />
-		<input type=\"submit\" name=\"submitbutton\" id=\"submitbutton\" value=\"Go\" />
+		<input type=\"submit\" name=\"submitbutton\" id=\"submitbutton\" value=\"Change\" />
 			<br />
 		</form>
 ";
