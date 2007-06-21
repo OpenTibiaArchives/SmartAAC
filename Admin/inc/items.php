@@ -133,7 +133,7 @@ echo "<form action=\"save.php?save=items\" method=\"POST\">";
 
 echo '<select name="head">';
 echo '<optgroup label="Head">';
-//echo '<option value="NONE">----</option>';
+echo '<option value=0>-None-</option>';
 foreach($items['head'] as $id => $item){
 	echo '<option value='.$id.'>'.$item['name'].'</option>';
 }
@@ -141,7 +141,7 @@ echo '</select><br />';
 
 echo '<select name="neck">';
 echo '<optgroup label="Neck">';
-//echo '<option value="NONE">----</option>';
+echo '<option value=0>-None-</option>';
 foreach($items['necklace'] as $id => $item){
 	echo '<option value='.$id.'>'.$item['name'].'</option>';
 }
@@ -149,7 +149,7 @@ echo '</select><br />';
 
 echo '<select name="armor">';
 echo '<optgroup label="Armor">';
-//echo '<option value="NONE">----</option>';
+echo '<option value=0>-None-</option>';
 foreach($items['body'] as $id => $item){
 	echo '<option value='.$id.'>'.$item['name'].'</option>';
 }
@@ -157,7 +157,7 @@ echo '</select><br />';
 
 echo '<select name="legs">';
 echo '<optgroup label="Legs">';
-//echo '<option value="NONE">----</option>';
+echo '<option value=0>-None-</option>';
 foreach($items['legs'] as $id => $item){
 	echo '<option value='.$id.'>'.$item['name'].'</option>';
 }
@@ -165,7 +165,7 @@ echo '</select><br />';
 
 echo '<select name="feet">';
 echo '<optgroup label="Feet">';
-//echo '<option value="NONE">----</option>';
+echo '<option value=0>-None-</option>';
 foreach($items['feet'] as $id => $item){
 	echo '<option value='.$id.'>'.$item['name'].'</option>';
 }
@@ -173,7 +173,7 @@ echo '</select><br />';
 
 echo '<select name="ring">';
 echo '<optgroup label="Ring">';
-//echo '<option value="NONE">----</option>';
+echo '<option value=0>-None-</option>';
 foreach($items['ring'] as $id => $item){
 	echo '<option value='.$id.'>'.$item['name'].'</option>';
 }
@@ -181,7 +181,7 @@ echo '</select><br />';
 
 echo '<select name="ammo">';
 echo '<optgroup label="Ammo">';
-//echo '<option value="NONE">----</option>';
+echo '<option value=0>-None-</option>';
 foreach($items as $item){
 	foreach($item as $id => $name){
 		echo '<option value='.$id.'>'.$name['name'].'</option>';
@@ -191,7 +191,7 @@ echo '</select><br />';
 
 echo '<select name="left">';
 echo '<optgroup label="Left Hand">';
-///echo '<option value="NONE">----</option>';
+/echo '<option value=0>-None-</option>';
 foreach($items as $item){
 	foreach($item as $id => $name){
 		echo '<option value='.$id.'>'.$name['name'].'</option>';
@@ -201,7 +201,7 @@ echo '</select><br />';
 
 echo '<select name="right">';
 echo '<optgroup label="Right Hand">';
-//echo '<option value="NONE">----</option>';
+echo '<option value=0>-None-</option>';
 foreach($items as $item){
 	foreach($item as $id => $name){
 		echo '<option value='.$id.'>'.$name['name'].'</option>';

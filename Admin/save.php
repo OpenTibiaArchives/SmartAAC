@@ -41,20 +41,16 @@ else
 	
 	$new_main_towns = 'array(';
 	foreach($main_towns as $id => $town) {
-	$new_main_towns .= $id . ' => \'' . $town . '\', ';
+		$new_main_towns .= $id . ' => \'' . $town . '\', ';
 	}
 	$new_main_towns .= ')';
 	
-	$new_char_items_11 = "array('slot' => 1, 'item_type' => " . $char_items[11]['item_type'] . ", 'count' => 1)";
-	$new_char_items_12 = "array('slot' => 2, 'item_type' => " . $char_items[12]['item_type'] . ", 'count' => 1)";
-	
-	$new_char_items_14 = "array('slot' => 4, 'item_type' => " . $char_items[14]['item_type'] . ", 'count' => 1)";
-	$new_char_items_15 = "array('slot' => 5, 'item_type' => " . $char_items[15]['item_type'] . ", 'count' => 1)";
-	$new_char_items_16 = "array('slot' => 6, 'item_type' => " . $char_items[16]['item_type'] . ", 'count' => 1)";
-	$new_char_items_17 = "array('slot' => 7, 'item_type' => " . $char_items[17]['item_type'] . ", 'count' => 1)";
-	$new_char_items_18 = "array('slot' => 8, 'item_type' => " . $char_items[18]['item_type'] . ", 'count' => 1)";
-	$new_char_items_19 = "array('slot' => 9, 'item_type' => " . $char_items[19]['item_type'] . ", 'count' => 1)";
-	$new_char_items_20 = "array('slot' => 10, 'item_type' => " . $char_items[20]['item_type'] . ", 'count' => 1)";
+	$new_char_items = array();
+	foreach($char_items as $arr) {
+		foreach($arr as $k) {
+			$new_char_items[$arr] = "array('slot' => ". $k['slot'] .", 'item_type' => ". $k['item_type'] .", 'count' => ". $k['count'] .")";
+		}
+	}
 	
 	if($char_rook == "true")
 	{
@@ -225,16 +221,16 @@ else
 		break;
 
 		case "items":
-		$new_char_items_11 = "array('slot' => 1, 'item_type' => " . $_POST['head'] . ", 'count' => 1)";
-		$new_char_items_12 = "array('slot' => 2, 'item_type' => " . $_POST['neck'] . ", 'count' => 1)";
-		
-		$new_char_items_14 = "array('slot' => 4, 'item_type' => " . $_POST['armor'] . ", 'count' => 1)";
-		$new_char_items_15 = "array('slot' => 5, 'item_type' => " . $_POST['right'] . ", 'count' => 1)";
-		$new_char_items_16 = "array('slot' => 6, 'item_type' => " . $_POST['left'] . ", 'count' => 1)";
-		$new_char_items_17 = "array('slot' => 7, 'item_type' => " . $_POST['legs'] . ", 'count' => 1)";
-		$new_char_items_18 = "array('slot' => 8, 'item_type' => " . $_POST['feet'] . ", 'count' => 1)";
-		$new_char_items_19 = "array('slot' => 9, 'item_type' => " . $_POST['ring'] . ", 'count' => 1)";
-		$new_char_items_20 = "array('slot' => 10, 'item_type' => " . $_POST['ammo'] . ", 'count' => 1)";
+		$new_char_items = array();
+		$slots = array(1 => 'head', 'neck', 'container', 'armor', 'right', 'left', 'legs', 'feet', 'ring', 'ammo');
+		$x = 11;
+		for($i=1; $i <= 10; $i++) {
+			if((int)$_POST[$slots[$i]] == 0)
+				continue;
+			$new_char_items[$x] = "array('slot' => $i, 'item_type' => ". (int)$_POST[$slots[$i]] .", 'count' => 1)";
+			$x++;
+		}
+		// Todo: BP-items
 		break;
 		
 		case "maintenance":
@@ -382,22 +378,16 @@ else
 \$char_lookfeet =		$char_lookfeet;
 \$char_town =			$char_town;
 
-// head, neck, container, armor, right hand, left hand, legs, feet, ring, ammo 	 
 \$pids = array(1 => 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 \$sid = 10; 	 
 \$char_items = array();
-\$char_items[11] = $new_char_items_11;
-\$char_items[12] = $new_char_items_12;
-\$char_items[13] = array('slot' => 3, 'item_type' => 1988, 'count' => 1); 	 
-\$char_items[14] = $new_char_items_14;
-\$char_items[15] = $new_char_items_15;
-\$char_items[16] = $new_char_items_16;
-\$char_items[17] = $new_char_items_17;
-\$char_items[18] = $new_char_items_18;
-\$char_items[19] = $new_char_items_19;
-\$char_items[20] = $new_char_items_20;
-\$char_items[21] = array('slot' => 11, 'item_type' => 2674, 'count' => 2); 	 
+";
+foreach($new_char_items as $arr) {
+	$write .= "\$char_items[$arr] = $new_char_items[$arr];";
+}
+// head, neck, container, armor, right hand, left hand, legs, feet, ring, ammo 	 
 
+$write .= "
 \$char_maglevel_none = $char_maglevel_none;
 \$char_health_none = $char_health_none;
 \$char_mana_none = $char_mana_none;
