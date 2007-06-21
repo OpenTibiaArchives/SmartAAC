@@ -41,15 +41,13 @@ else
 	
 	$new_main_towns = 'array(';
 	foreach($main_towns as $id => $town) {
-		$new_main_towns .= $id . ' => \'' . $town . '\', ';
+		$new_main_towns .= $id . ' => \'' . addslashes($town) . '\', ';
 	}
 	$new_main_towns .= ')';
 	
 	$new_char_items = array();
-	foreach($char_items as $arr) {
-		foreach($arr as $k) {
-			$new_char_items[$arr] = "array('slot' => ". $k['slot'] .", 'item_type' => ". $k['item_type'] .", 'count' => ". $k['count'] .")";
-		}
+	foreach($char_items as $id => $arr) {
+		$new_char_items[$id] = "array('slot' => ". $arr['slot'] .", 'item_type' => ". $arr['item_type'] .", 'count' => ". $arr['count'] .")";
 	}
 	
 	if($char_rook == "true")
@@ -382,8 +380,9 @@ else
 \$sid = 10; 	 
 \$char_items = array();
 ";
-foreach($new_char_items as $arr) {
-	$write .= "\$char_items[$arr] = $new_char_items[$arr];";
+ foreach($new_char_items as $id => $arr) {
+	 $write .= "\$char_items[$id] = $arr;
+";
 }
 // head, neck, container, armor, right hand, left hand, legs, feet, ring, ammo 	 
 

@@ -191,7 +191,7 @@ echo '</select><br />';
 
 echo '<select name="left">';
 echo '<optgroup label="Left Hand">';
-/echo '<option value=0>-None-</option>';
+echo '<option value=0>-None-</option>';
 foreach($items as $item){
 	foreach($item as $id => $name){
 		echo '<option value='.$id.'>'.$name['name'].'</option>';
