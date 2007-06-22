@@ -138,8 +138,10 @@ if($modules_charsearch)
 				}
 			}
 			echo '<table width=350px><tr>';
-			if($email)
+			if($email) {
+			if($main_showemails) {
 				echo '<tr><td width=200px>Email:</td><td width=300px>'.$email.'<br /></td></tr>';
+			} }
 			if($premdays >= 1)
 				echo '<tr><td width=200px>Account Status:</td><td width=300px>Premium Account<br /></td></tr>';
 			else
@@ -172,12 +174,14 @@ if($modules_charsearch)
 			if(mysql_num_rows($query) != 0) {
 				echo '
 	<center>
-	<table style="text-align: left; width: 20%;" border="1" cellpadding="0" cellspacing="2">
+	<h2>Character not found, here are similar matches:</h2><br />
+	
+	<table style="text-align: left; width: 20%;" border="0" cellpadding="0" cellspacing="2">
 	<tbody>
 	<tr>
 	<td style="width: 25%;">Name</td>
-	<td style="width: 10%;">Level</td>
-	<td style="width: 25%;">Vocation</td>
+	<td style="width: 20%;">Level</td>
+	<td style="width: 30%;">Vocation</td>
 	</tr>
 	</tbody>';
 				$vocations = array("None", "Sorcerer", "Druid", "Paladin", "Knight", "Master Sorcerer", "Elder Druid", "Royal Paladin", "Elite Knight");

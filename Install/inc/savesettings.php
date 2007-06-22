@@ -58,6 +58,7 @@ else
 	$conf_md5passwords =	($_POST["HashPass"]) ? "true" : "false";
 	$conf_imgver = 			($_POST["ImgVer"]) ? "true" : "false";
 	$conf_downloadswarning =($_POST["DownloadsWarning"]) ? "true" : "false";
+	$conf_showemails =($_POST["ShowEmails"]) ? "true" : "false";
 	$conf_enable_feedback =	$_POST['main_enable_feedback'];
 	$conf_main_email = 		$_POST['main_email'];
 	$conf_admin_user = 		$_POST['AdminUser'];
@@ -207,8 +208,8 @@ else
 // ===========================================================
 
 \$aac_status = 			\"Installed\";
-\$aac_version = 			\"2.0 Alpha 2\";
-\$aac_versioncode = 		199;
+\$aac_version = 			\"2.0 Beta\";
+\$aac_versioncode = 		200;
 \$aac_dataDir =			\"$conf_dataDir\";
 \$aac_mapname =			\"$conf_mapname\";
 
@@ -226,6 +227,7 @@ else
 \$aac_md5passwords =	$conf_md5passwords;
 \$aac_imgver = 			$conf_imgver;
 \$main_downloads_warning = $conf_downloadswarning;
+\$main_showemails = 	$conf_showemails;
 \$admin_user =			\"$conf_admin_user\";
 \$admin_pass = 			\"$conf_admin_pass\";
 

@@ -70,7 +70,8 @@ switch($action)
 	
 	case "Dirs":
 	include 'inc/directories.php';
-	
+	break;
+
 	default:
 	include 'inc/index.php';
 	break;

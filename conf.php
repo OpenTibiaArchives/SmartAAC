@@ -3,7 +3,7 @@
 // ===========================================================
 //	Smart-Ass: The Userfriendly AAC
 //	Version: 2.0 Development Only
-//	Configuration Created: Thu, 21 Jun 2007 00:45:13 +0100
+//	Configuration Created: Fri, 22 Jun 2007 00:49:44 +0100
 //	
 //	USE OF THIS PROGRAM TO RELY ON IT FOR SERVER USE IS NOT
 // 	RECOMMENDED! THIS IS FOR TESTING ONLY.
@@ -28,8 +28,8 @@
 // ===========================================================
 
 $aac_status = 			"Installed";
-$aac_version = 			"2.0 Alpha 2";
-$aac_versioncode = 		199;
+$aac_version = 			"2.0 Beta";
+$aac_versioncode = 		200;
 $aac_dataDir =			"C:/Dev-Cpp/otserv/data";
 $aac_mapname =			"map";
 
@@ -47,6 +47,7 @@ $net_port = 			"7171";
 $aac_md5passwords =	false;
 $aac_imgver = 			true;
 $main_downloads_warning = false;
+$main_showemails = 	true;
 $admin_user =			"yo";
 $admin_pass = 			"z50r4su8";
 
@@ -100,21 +101,10 @@ $char_looklegs =		10;
 $char_lookfeet =		10;
 $char_town =			1;
 
-// head, neck, container, armor, right hand, left hand, legs, feet, ring, ammo 	 
 $pids = array(1 => 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 $sid = 10; 	 
 $char_items = array();
-$char_items[11] = array('slot' => 1, 'item_type' => 6578, 'count' => 1);
-$char_items[12] = array('slot' => 2, 'item_type' => 2126, 'count' => 1);
-$char_items[13] = array('slot' => 3, 'item_type' => 1988, 'count' => 1); 	 
-$char_items[14] = array('slot' => 4, 'item_type' => 2464, 'count' => 1);
-$char_items[15] = array('slot' => 5, 'item_type' => 2657, 'count' => 1);
-$char_items[16] = array('slot' => 6, 'item_type' => 2465, 'count' => 1);
-$char_items[17] = array('slot' => 7, 'item_type' => 2468, 'count' => 1);
-$char_items[18] = array('slot' => 8, 'item_type' => 2195, 'count' => 1);
-$char_items[19] = array('slot' => 9, 'item_type' => 2121, 'count' => 1);
-$char_items[20] = array('slot' => 10, 'item_type' => 6107, 'count' => 1);
-$char_items[21] = array('slot' => 11, 'item_type' => 2674, 'count' => 2); 	 
+$char_items[11] = array('slot' => 4, 'item_type' => 2463, 'count' => 1);
 
 $char_maglevel_none = "";
 $char_health_none = "";

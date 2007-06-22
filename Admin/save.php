@@ -13,7 +13,6 @@ else
 	include "../Includes/resources.php";
 	$save = $_GET['save'];
 
-	$aac_status = "Installed";
 	/* Evaluation of booleans */
 	$aac_md5passwords = ($aac_md5passwords) ? "true" : "false";
 	$aac_imgver = ($aac_imgver) ? "true" : "false";
@@ -99,6 +98,7 @@ else
 		$aac_md5passwords =				($_POST["HashPass"]) ? "true" : "false";
 		$aac_imgver = 					($_POST["ImgVer"]) ? "true" : "false";
 		$main_downloads_warning =		($_POST["DownloadsWarning"]) ? "true" : "false";
+		$main_showemails =				($_POST["ShowEmails"]) ? "true" : "false";
 		break;
 		
 		case "modules":
@@ -304,8 +304,8 @@ else
 // ===========================================================
 
 \$aac_status = 			\"$aac_status\";
-\$aac_version = 			\"2.0 Alpha 2\";
-\$aac_versioncode = 		199;
+\$aac_version = 			\"2.0 Beta\";
+\$aac_versioncode = 		200;
 \$aac_dataDir =			\"$aac_dataDir\";
 \$aac_mapname =			\"$aac_mapname\";
 
@@ -323,6 +323,7 @@ else
 \$aac_md5passwords =	$aac_md5passwords;
 \$aac_imgver = 			$aac_imgver;
 \$main_downloads_warning = $main_downloads_warning;
+\$main_showemails = 	$main_showemails;
 \$admin_user =			\"$admin_user\";
 \$admin_pass = 			\"$admin_pass\";
 
@@ -412,6 +413,8 @@ $write .= "
 	fwrite($confFile, $write);
 	fclose($confFile);
 
-	echo "File written <a href=\"index.php\">Go to index</a>";
+	echo "<div align=\"center\"><br /><img src=\"../Includes/images/Smart-Ass2Logo.png\" /><br /><br /><font face=\"Verdana, sans-serif\" size=\"+1\">The configuration has been updated, refreshing in 4 seconds.<br /> If you don't wish to wait, <a href=\"index.php\">click here</a>.</font></div>";
+	echo '<meta http-equiv="refresh" content="4;url=admin.php">';	
+	
 }
 ?>

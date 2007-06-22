@@ -142,7 +142,10 @@ else
 		<input type=\"checkbox\" name=\"ImgVer\" class=\"boxes\" /><br /><br />
 		
 		<label for=\"DownloadsWarning\">Display downloads warnings?</label>
-		<input type=\"checkbox\" name=\"DownloadsWarning\" class=\"boxes\" /><br /><br />
+		<input type=\"checkbox\" name=\"DownloadsWarning\" class=\"boxes\" /><br />
+		
+		<label for=\"ShowEmails\">Show players emails?</label>
+		<input type=\"checkbox\" name=\"ShowEmails\" class=\"boxes\" /><br /><br />
 		
 		<label for=\"AdminUser\">Admin Username:</label>
 		<input type=\"text\" name=\"AdminUser\" value=\"$admin_user\" /><br />

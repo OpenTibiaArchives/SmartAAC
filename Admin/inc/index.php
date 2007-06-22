@@ -58,20 +58,20 @@ else
 	$currVersion = file_get_contents("http://smart.pekay.co.uk/smartass_version");
 	if($currVersion != $aac_versioncode)
 	{
-		echo "<p>Smart-Ass isn't up to date. Updates are there to bring new features, security fixes and other stuff.</p>";
-		echo '<p>Goto check version to upgrade</p>';
+		echo "<p><b>Smart-Ass isn't up to date. Updates are there to bring new features, security fixes and other stuff.<br />";
+		echo 'Goto check version to upgrade</b></p>';
 	}
 	
 
 echo "<h1>Checking</h1><br />
-<p>Main AAC Status: $aac_status<br />
-Version: $aac_version</p><br />";
+<p><i>Main AAC Status: $aac_status<br />
+Version: $aac_version<br />
+Version Code: $aac_versioncode</i></p><br />";
 
 ?>
-<h2>Change the following:</h2>
+<h2>Change the following:</h2><br />
 <ul>
 <li><a href="admin.php?action=Security">Security settings</a></li>
-<li><a href="admin.php?action=PlayerItems">Player items</a></li>
 <li><a href="admin.php?action=SQL">MySQL settings</a></li>
 <li><a href="admin.php?action=Stats">Statistic info</a></li>
 <li><a href="admin.php?action=Dirs">Data Directory</a></li>
@@ -82,8 +82,6 @@ Version: $aac_version</p><br />";
 <li><a href="admin.php?action=Towns">Towns</a></li>
 <li><a href="admin.php?action=Maintenance">In/out of maintenance mode</a></li>
 <li><a href="admin.php?action=Others">Change other stuff</a></li>
-<br />
-<hr>
 <br />
 <li><a href="admin.php?action=CheckVersion">Check version</a></li>
 <li><a href="admin.php?action=ImportDB">Import the Default OTServ DB</a></li>
