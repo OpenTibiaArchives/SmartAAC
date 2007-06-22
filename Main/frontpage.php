@@ -58,7 +58,7 @@ $tpl->set('Unique_Visits', $total_uniques);
 
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
-include('../Admin/new_news/news.php');
+include('../Admin/news/news.php');
 $want = $_GET['want'];
 $own_text = file_get_contents("FrontpageText.txt");
 
@@ -85,7 +85,7 @@ switch($want)
 	default:
 		echo $own_text;
 	
-		echo "<hr><br /><h1>News</h1>";
+		echo "<br /><br /><h1>News</h1>";
 		show_news(5);
 		echo "
 		<br /><br /><div align=\"right\"><b>

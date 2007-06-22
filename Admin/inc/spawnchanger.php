@@ -38,7 +38,7 @@ if((!isset($_COOKIE["logged_in_user"]) || $_COOKIE["logged_in_user"] != md5($adm
 // Logged in
 else
 {
-	$title = 'Security';
+	$title = 'Mass Spawn Changer';
 	$name = 'Admin Panel';
 	$bodySpecial = 'onload="NOTHING"';
 
@@ -83,29 +83,28 @@ else
 		margin-left: 120px;
 		margin-top: 5px;
 		width: 90px;
+		
+		#submitbutton2{
+		margin-left: 120px;
+		margin-top: 5px;
+		width: 200px;
 		}
 
 		br{
 		clear: left;
 		}
 		</style>
+	
+		<p>Leave blank to not change spawn position</p><br />
+		
+		<form action=\"save.php?save=spawnchange\" method=\"POST\">
+		<label for=\"XPos\">X Position:</label>
+		<input type=\"text\" name=\"XPos\" value=\"\" /><br />
+		<label for=\"YPos\">Y Position:</label>
+		<input type=\"text\" name=\"YPos\" value=\"\" /><br />
+		<label for=\"ZPos\">Z Position:</label>
+		<input type=\"text\" name=\"ZPos\" value=\"\" /><br />
 
-		<form action=\"save.php?save=security\" method=\"POST\">
-		<label for=\"HashPass\">Use MD5 passwords?</label>
-		<input type=\"checkbox\" name=\"HashPass\" class=\"boxes\" /><br /><br />
-
-		<label for=\"ImgVer\">Image verification?</label>
-		<input type=\"checkbox\" name=\"ImgVer\" class=\"boxes\" /><br /><br />
-		
-		<label for=\"DownloadsWarning\">Display downloads warnings?</label>
-		<input type=\"checkbox\" name=\"DownloadsWarning\" class=\"boxes\" /><br /><br />
-		
-		<label for=\"ShowEmails\">Show players emails?</label>
-		<input type=\"checkbox\" name=\"ShowEmails\" class=\"boxes\" /><br /><br />
-		
-		<label for=\"PickAccNo\">Let users pick acc numbers?</label>
-		<input type=\"checkbox\" name=\"PickAccNo\" class=\"boxes\" /><br /><br />
-		
 		<br />
 		<input type=\"submit\" name=\"submitbutton\" id=\"submitbutton\" value=\"Change\" />
 		</form>

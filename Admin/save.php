@@ -17,6 +17,8 @@ else
 	$aac_md5passwords = ($aac_md5passwords) ? "true" : "false";
 	$aac_imgver = ($aac_imgver) ? "true" : "false";
 	$main_downloads_warning = ($main_downloads_warning) ? "true" : "false";
+	$main_showemails = ($main_showemails) ? "true" : "false";
+	$aac_randomaccnum = ($aac_randomaccnum) ? "true" : "false";
 	$modules_charsearch = ($modules_charsearch) ? "true" : "false";
 	$modules_feedback = ($modules_feedback) ? "true" : "false";
 	$modules_affliates = ($modules_affliates) ? "true" : "false";
@@ -99,6 +101,7 @@ else
 		$aac_imgver = 					($_POST["ImgVer"]) ? "true" : "false";
 		$main_downloads_warning =		($_POST["DownloadsWarning"]) ? "true" : "false";
 		$main_showemails =				($_POST["ShowEmails"]) ? "true" : "false";
+		$aac_randomaccnum =				($_POST["PickAccNo"]) ? "true" : "false";
 		break;
 		
 		case "modules":
@@ -220,7 +223,7 @@ else
 
 		case "items":
 		$new_char_items = array();
-		$slots = array(1 => 'head', 'neck', 'container', 'armor', 'right', 'left', 'legs', 'feet', 'ring', 'ammo');
+		$slots = array(1 => 'head', 'neck', 'backpack','container', 'armor', 'right', 'left', 'legs', 'feet', 'ring', 'ammo');
 		$x = 11;
 		for($i=1; $i <= 10; $i++) {
 			if((int)$_POST[$slots[$i]] == 0)
@@ -246,18 +249,59 @@ else
 		case "changeadmincreds":
 		$admin_user = $_POST['adminuser'];
 		$admin_pass = $_POST['adminpass'];
+		
+		$encryptedAdminPass = crypt($admin_pass);
+		$newsUserFile = fopen("news/data/users.txt", "w");
+	$write2 = "
+<user>
+0
+$admin_user
+$encryptedAdminPass
+</user>";
+	
+		fwrite($newsUserFile, $write2);
+		fclose($newsUserFile);
 		break;
 		
 		case "resetadminpass":
-		$admin_pass = createRandomPassword();
+		$admin_pass = $_POST['hiddenrandpass'];
+		
+		$encryptedAdminPass = crypt($admin_pass);
+		$newsUserFile = fopen("news/data/users.txt", "w");
+		$write2 = "
+<user>
+0
+$admin_user
+$encryptedAdminPass
+</user>";
+	
+		fwrite($newsUserFile, $write2);
+		fclose($newsUserFile);
 		break;
 		
 		case "dirs":
 		$aac_dataDir = $_POST['DirPath'];
 		break;
 		
+		case "spawnchange":
+		$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die("MySQL Error: mysql_error (mysql_errno()).\n");
+		mysql_select_db($sql_db, $sqlconnect);
+		
+		$posx = $_POST['XPos'];
+		$posy = $_POST['YPos'];
+		$posz = $_POST['ZPos'];
+
+		if($posx != "") {
+		sqlquery('UPDATE `players` SET `posx` = \''.$posx.'\' WHERE 1'); }
+		if($posy != "") {
+		sqlquery('UPDATE `players` SET `posy` = \''.$posy.'\' WHERE 1'); }
+		if($posz != "") {
+		sqlquery('UPDATE `players` SET `posz` = \''.$posz.'\' WHERE 1'); }
+		break;
+		
 		case "others":
 		$aac_servername = $_POST['ServerName'];
+		$aac_maxplayers = $_POST['MaxPlayers'];
 		$main_highscores_result = $_POST['HighscoresResult'];
 		$char_exp = $_POST['StartEXP'];
 		$char_cap = $_POST['StartCAP'];
@@ -309,6 +353,7 @@ else
 \$aac_dataDir =			\"$aac_dataDir\";
 \$aac_mapname =			\"$aac_mapname\";
 
+\$aac_maxplayers = 		$aac_maxplayers;
 \$aac_minacclen = 		$aac_minacclen;
 \$aac_maxacclen = 		$aac_maxacclen;
 \$aac_minpasslen = 		$aac_minpasslen;
@@ -320,12 +365,13 @@ else
 \$net_ipaddress =		\"$net_ipaddress\";
 \$net_port = 			\"$net_port\";
 
-\$aac_md5passwords =	$aac_md5passwords;
-\$aac_imgver = 			$aac_imgver;
-\$main_downloads_warning = $main_downloads_warning;
-\$main_showemails = 	$main_showemails;
-\$admin_user =			\"$admin_user\";
-\$admin_pass = 			\"$admin_pass\";
+\$aac_md5passwords =			$aac_md5passwords;
+\$aac_imgver = 				$aac_imgver;
+\$main_downloads_warning = 	$main_downloads_warning;
+\$main_showemails = 			$main_showemails;
+\$aac_randomaccnum =			$aac_randomaccnum;
+\$admin_user =				\"$admin_user\";
+\$admin_pass = 				\"$admin_pass\";
 
 \$sql_host =			\"$sql_host\";
 \$sql_user =			\"$sql_user\";

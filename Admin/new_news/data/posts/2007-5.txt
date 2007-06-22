@@ -1,5 +1,0 @@
-<post>
-1178460599
-AAC Installed!
-Smart-Ass AAC has been installed successfully (well, you can see this news :p). You can goto the Admin Panel and goto the News area, where you can manage catagories and stuff :D.
-</post>

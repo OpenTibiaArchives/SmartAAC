@@ -3,7 +3,7 @@
 // ===========================================================
 //	Smart-Ass: The Userfriendly AAC
 //	Version: 2.0 Development Only
-//	Configuration Created: Fri, 22 Jun 2007 00:49:44 +0100
+//	Configuration Created: Sat, 23 Jun 2007 00:37:27 +0100
 //	
 //	USE OF THIS PROGRAM TO RELY ON IT FOR SERVER USE IS NOT
 // 	RECOMMENDED! THIS IS FOR TESTING ONLY.
@@ -33,6 +33,7 @@ $aac_versioncode = 		200;
 $aac_dataDir =			"C:/Dev-Cpp/otserv/data";
 $aac_mapname =			"map";
 
+$aac_maxplayers = 		25;
 $aac_minacclen = 		4;
 $aac_maxacclen = 		20;
 $aac_minpasslen = 		4;
@@ -44,12 +45,13 @@ $aac_servername = 		"TestName";
 $net_ipaddress =		"127.0.0.1";
 $net_port = 			"7171";
 
-$aac_md5passwords =	false;
-$aac_imgver = 			true;
-$main_downloads_warning = false;
-$main_showemails = 	true;
-$admin_user =			"yo";
-$admin_pass = 			"z50r4su8";
+$aac_md5passwords =			false;
+$aac_imgver = 				true;
+$main_downloads_warning = 	true;
+$main_showemails = 			true;
+$aac_randomaccnum =			false;
+$admin_user =				"admin";
+$admin_pass = 				"htccbr4y";
 
 $sql_host =			"localhost";
 $sql_user =			"root";
@@ -59,13 +61,13 @@ $sql_db = 				"otserv";
 $main_highscores_result = 	20;
 $main_ugrp_nolist =		2;
 $main_votequestion = "What should the server add?";
-$main_voteanswer1 = "More monsterssss";
-$main_voteanswer2 = "More hunting areasssss";
-$main_voteanswer3 = "More housessss";
-$main_voteanswer4 = "New townssss";
+$main_voteanswer1 = "More monsters";
+$main_voteanswer2 = "More hunting areas";
+$main_voteanswer3 = "More houses";
+$main_voteanswer4 = "New towns";
 $main_enable_feedback = false;
 $main_mail = "none@none.nodomain";
-$main_towns = array(1 => 'Tharkas', 2 => 'Khal-Tar', );
+$main_towns = array(1 => 'Town 1', 2 => 'Town 2', 3 => 'Town 3', 4 => 'Town 4', 5 => 'Town 5', );
 
 $info_os =				"Debian Linux";
 $info_connection =		"5 Mbit";
@@ -104,7 +106,11 @@ $char_town =			1;
 $pids = array(1 => 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 $sid = 10; 	 
 $char_items = array();
-$char_items[11] = array('slot' => 4, 'item_type' => 2463, 'count' => 1);
+$char_items[11] = array('slot' => 3, 'item_type' => 1988, 'count' => 1);
+$char_items[12] = array('slot' => 4, 'item_type' => 2650, 'count' => 1);
+$char_items[13] = array('slot' => 5, 'item_type' => 2382, 'count' => 1);
+$char_items[14] = array('slot' => 6, 'item_type' => 2050, 'count' => 1);
+$char_items[15] = array('slot' => 11, 'item_type' => 2674, 'count' => 2);
 
 $char_maglevel_none = "";
 $char_health_none = "";

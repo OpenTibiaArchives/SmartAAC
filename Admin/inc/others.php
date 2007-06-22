@@ -98,6 +98,8 @@ else
 		<form action=\"save.php?save=others\" method=\"POST\">
 		<label for=\"ServerName\">Servername:</label>
 		<input type=\"text\" name=\"ServerName\" value=\"$aac_servername\" /><br />
+		<label for=\"MaxPlayers\">Max players allowed:</label>
+		<input type=\"text\" name=\"MaxPlayers\" value=\"$aac_maxplayers\" /><br />
 		<label for=\"HighscoresResult\">Highscores results:</label>
 		<input type=\"text\" name=\"HighscoresResult\" value=\"$main_highscores_result\" /><br />
 		<label for=\"StartEXP\">Start EXP:</label>

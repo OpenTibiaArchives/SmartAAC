@@ -55,6 +55,8 @@ if($modules_gallery)
 {
 	echo "<h1>Gallery</h1><br />";
 	
+	$total_pics = 0;
+	
 	// START PICTURE FOLDER SCAN =)
 	$d = opendir("pictures");
 		while($f = readdir($d))
@@ -63,8 +65,14 @@ if($modules_gallery)
 		  continue;
 
 		  echo "<a href=\"pictures/$f\" title=\"$f\" class=\"thickbox\"><img src=\"pictures/$f\" alt=\"$f\" width=\"260\" height=\"220\" border=\"0\"/></a>&nbsp;";
+		  $total_pics++;
 		}
 	// END
+	
+	if($total_pics == 0)
+	{
+		echo "<p>There are no pictures to display on the gallery.</p>";
+	}
 
 	echo "<br /><br />";
 }

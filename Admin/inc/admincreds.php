@@ -29,6 +29,7 @@ include "../conf.php";
 include '../conf.php';
 include '../Includes/stats/stats.php';
 include '../Includes/counter/counter.php';
+include "../Includes/resources.php";
 
 // Not logged in
 if((!isset($_COOKIE["logged_in_user"]) || $_COOKIE["logged_in_user"] != md5($admin_user)) || (!isset($_COOKIE["logged_in_pass"]) || $_COOKIE["logged_in_pass"] != md5($admin_pass)))
@@ -38,7 +39,7 @@ if((!isset($_COOKIE["logged_in_user"]) || $_COOKIE["logged_in_user"] != md5($adm
 // Logged in
 else
 {
-	$title = 'Towns';
+	$title = 'Admin Credentials';
 	$name = 'Admin Panel';
 	$bodySpecial = 'onload="NOTHING"';
 
@@ -53,6 +54,8 @@ else
 	$tpl->set('Total_Visits', $total);
 	$tpl->set('Unique_Visits', $total_uniques);
 
+	$random_password = createRandomPassword();
+	
 	echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
 		echo "
@@ -95,6 +98,8 @@ else
 		}
 		</style>
 
+		<p>This section can update your admin panel & news system user and password.</p>
+		
 		<form action=\"save.php?save=changeadmincreds\" method=\"POST\">
 		<label for=\"adminuser\">Username:</label>
 		<input type=\"text\" name=\"adminuser\" value=\"$admin_user\" /><br />
@@ -107,10 +112,11 @@ else
 		</form>
 		
 		
-		<br /><br />
-		<p>You can reset the password to a random one.</p>
+		<br /><br /><br />
+		<p>Random password: <i>$random_password</i> <br />Press 'Change to new password' for a new random password.</p>
 		<form action=\"save.php?save=resetadminpass\" method=\"POST\">
-		<input type=\"submit\" name=\"submitbutton2\" id=\"submitbutton2\" value=\"Randomize new password\" />
+		<input type=\"hidden\" name=\"hiddenrandpass\" value=\"$random_password\">
+		<input type=\"submit\" name=\"submitbutton2\" id=\"submitbutton2\" value=\"Change to new password\" />
 		</form>
 		";
 

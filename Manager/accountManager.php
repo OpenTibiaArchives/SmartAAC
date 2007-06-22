@@ -97,6 +97,7 @@ $rowz = mysql_num_rows($result);
 if($rowz == 1)
 {
 	$chars = sqlquery('SELECT `name` FROM `players` WHERE `account_id` = ' . intval($M2_acc) . '');
+	$char_count = 0;
 	while ($line = mysql_fetch_array($chars, MYSQL_ASSOC))
 	{
 		foreach ($line as $char)
@@ -104,20 +105,6 @@ if($rowz == 1)
 			$query = sqlquery('SELECT * FROM `players` WHERE `name` = \''. mysql_real_escape_string($char) .'\' LIMIT 1;');
 			if(mysql_num_rows($query) == 1)
 			{
-				while($row = mysql_fetch_array($query))
-				{
-					$pid = $row['id'];
-					$accno = $row['account_id'];
-					$name = $row['name'];
-					$groupid = $row['group_id'];
-					$sex = $row['sex'];
-					$vocation = $row['vocation'];
-					$level = $row['level'];
-					$town = $row['town_id'];
-					$guild = $row['rank_id'];
-					$guild_nick = $row['guildnick'];
-					$lastlogin = $row['lastlogin'];
-				}
 				echo "
 					<tr>
 				      <td style=\"width: 231px; height: 20px;\" class=\"lolhovermanager\"><a href=\"../Main/character.php?char=$char\" target=\"_blank\"><b>$char</b></a></td>
@@ -129,6 +116,8 @@ if($rowz == 1)
 					</tr>
 
 					";
+				$char_count++;
+			
 			}
 		}
 	}
@@ -140,6 +129,20 @@ if($rowz == 1)
 ?>
   </tbody>
 </table>
+<?php
+if($char_count == 0)
+{
+	echo "<b>You have no characters in your account. Why not <a href=\"index.php?act=addchar\">create</a> one?</b><br />";
+}
+elseif($char_count == 1)
+{
+	echo "You have 1 character in this account.";
+}
+else
+{
+	echo "You have $char_count characters in this account.";
+}
+?>
 
 
 

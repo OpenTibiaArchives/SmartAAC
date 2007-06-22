@@ -120,6 +120,7 @@ if ( (isset($M2_account) && !empty($M2_account)) && (isset($M2_password) && !emp
 else
 {
 	// What to do here? lol :P
+	// nothing?
 }
 
 if (!$created_Account)
@@ -153,8 +154,52 @@ echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 	  <tbody>
 	    <tr>
 	      <td>Account Number: </td>
-	      <td><input name="M2_account" type="text" maxlength="<?php echo $aac_maxacclen; ?>" class="textfield"></td>
-	      <td style="width: 218px;"><font color="red">* <i>(<?php echo "$aac_minacclen - $aac_maxacclen numbers"; ?>)</i></font></td>
+<?php
+	
+	if($aac_randomaccnum) {
+	$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die("MySQL Error: mysql_error 								(mysql_errno()).\n");
+			mysql_select_db($sql_db, $sqlconnect);
+	$random = rand(0, 999999);
+    $accno = $random;
+
+	while(true)
+	{
+		$result = sqlquery("SELECT * FROM `accounts` WHERE `id` = '$accno';");
+		$rowz = mysql_num_rows($result);
+		if($rowz == 1)
+		{
+			$accno++;
+		}
+		// If we have got to an account number that doesn't exist, break the while statement, YAY we got a number!
+		elseif($rowz == 0)
+		{
+			break;
+		}
+		
+		// we need to re-set
+	    if($accno > 999999)
+	    {
+	        $accno = 0;
+	    }
+
+	    // we checked all possibilities
+	    if($accno == $random)
+	    {
+	        die('Sorry... there are no free account number at the moment, lol :D.');
+	    }
+	}
+	echo '<td><input name="M2_account" type="text" maxlength="' . $aac_maxacclen . '" value="' . $accno . '" class="textfield" readonly></td>
+	<td style="width: 218px;"><font color="red">* <i>(Not choosable!)</i></font></td>';
+}
+
+else
+{
+	echo '<td><input name="M2_account" type="text" maxlength="' . $aac_maxacclen . '" class="textfield"></td>
+	<td style="width: 218px;"><font color="red">* <i>(<?php echo "$aac_minacclen - $aac_maxacclen numbers"; ?>)</i></font></td>';
+}
+?>
+
+	     	      
 	    </tr>
 	    <tr>
 	      <td>Password: </td>

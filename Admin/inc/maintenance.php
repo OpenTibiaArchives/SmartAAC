@@ -92,7 +92,7 @@ else
 
 		<form action=\"save.php?save=maintenance\" method=\"POST\">
 		<label for=\"MaintenanceMode\">Turn on maintenance?</label>
-		<input type=\"checkbox\" name=\"MaintenanceMode\" class=\"boxes\" /><br /><br />
+		<input type=\"checkbox\" name=\"MaintenanceMode\" class=\"boxes\" "; if($aac_status == "Maintenance") { echo "checked"; } echo "/><br /><br />
 		<br /><br />
 		
 		<input type=\"submit\" name=\"submitbutton\" id=\"submitbutton\" value=\"Go\" />

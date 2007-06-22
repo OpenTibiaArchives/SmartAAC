@@ -27,6 +27,7 @@
 
 session_start();
 
+include "../Includes/resources.php";
 include "../conf.php";
 include '../Includes/stats/stats.php';
 include '../Includes/counter/counter.php';
@@ -50,7 +51,7 @@ $tpl->set('stats', $global_stats);
 $tpl->set('AAC_Version', $aac_version);
 $tpl->set('Total_Visits', $total);
 $tpl->set('Unique_Visits', $total_uniques);
-		
+
 $M2_acc = "";
 $M2_pass = "";
 $M2_acc = $_SESSION['M2_account'];
@@ -91,16 +92,47 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null)
 
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
-?>
-<h2>Create a new character:</h2><br>
+$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die("MySQL Error: mysql_error (mysql_errno()).\n");
+mysql_select_db($sql_db, $sqlconnect);
 
+$result = sqlquery('SELECT * FROM `accounts` WHERE `id` = ' . intval($M2_acc) . '');
+$rowz = mysql_num_rows($result);
+if($rowz == 1)
+{
+	$chars = sqlquery('SELECT `name` FROM `players` WHERE `account_id` = ' . intval($M2_acc) . '');
+	$char_count = 0;
+	while ($line = mysql_fetch_array($chars, MYSQL_ASSOC))
+	{
+		foreach ($line as $char)
+		{
+			$query = sqlquery('SELECT * FROM `players` WHERE `name` = \''. mysql_real_escape_string($char) .'\' LIMIT 1;');
+			if(mysql_num_rows($query) == 1)
+			{
+				$char_count++;
+			}
+		}
+	}
+}
+
+?>
+<h2>Create a new character:</h2><br /><br />
+<?php
+if($char_count >= $aac_maxplayers)
+{
+	echo "Sorry! You are not allowed to make more than $aac_maxplayers players.
+	<br /><a href=\"index.php?act=manager\">Go back</a>";
+}
+else
+{
+?>
 <form action="index.php?act=savechar" method="POST">
 <table>
 <tr>
-<td><p><b>Name:</b></td><td><input type="text" name="name" maxlength="<?php echo $aac_maxplayerlen; ?>" class="textfield"><font color="red"><i> (<?php echo "$aac_minplayerlen - $aac_maxplayerlen"; ?> letters and blankspaces)</p></i></font><br><hr></td>
+<td><p><b>Name:</b></td><td><input type="text" name="name" maxlength="<?php echo $aac_maxplayerlen; ?>" class="textfield"><font color="red"><i> (<?php echo "$aac_minplayerlen - $aac_maxplayerlen"; ?> letters and blankspaces)</p></i></font><br></td>
 </tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
 <tr>
-<td><p><b>Vocation:</b></p></td>
+<td style="width: 110px;"><p><b>Vocation:</b></p></td>
 <td>
 <?php
 if($char_rook) {
@@ -115,7 +147,7 @@ else {
 	";
 }
 ?>
-<br><hr>
+<br />
 </td>
 </tr>
 
@@ -128,10 +160,11 @@ else {
 </tr>
 <tr>
 <td><p><input type="submit" value="Create"></p></td>
+</form>
 </tr>
-
 </table>
 <?PHP
+}
 
 echo $tpl->fetch('../Includes/Templates/Indigo/sidebarManagerLoggedIn.tpl');
 echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');

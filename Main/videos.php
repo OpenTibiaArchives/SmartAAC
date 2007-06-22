@@ -57,8 +57,9 @@ echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 if($modules_videos)
 {
 
+echo "<h1>Videos</h1><br />";
 
-
+/* UNUSED NOW */
 // Video 1
 // Change file too to your FLV file
 // COPY FROM HERE TO HAVE ANOTHER VIDEO
@@ -75,6 +76,7 @@ if($modules_videos)
 
 // END COPY
 
+$total_vids = 0;
 
 // New system for videos =)
 $d = opendir("video/flvs");
@@ -91,10 +93,13 @@ $d = opendir("video/flvs");
 	s1.addVariable(\"image\",\"video/preview.png\");
 	s1.write(\"player1\");
 </script> ";
+	$total_vids++;
 }
 
-
-
+	if($total_vids == 0)
+	{
+		echo "<p>There's no videos available :(</p>";
+	}
 
 }
 else

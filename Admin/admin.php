@@ -71,6 +71,10 @@ switch($action)
 	case "Dirs":
 	include 'inc/directories.php';
 	break;
+	
+	case "MassSpawnChange":
+	include 'inc/spawnchanger.php';
+	break;
 
 	default:
 	include 'inc/index.php';

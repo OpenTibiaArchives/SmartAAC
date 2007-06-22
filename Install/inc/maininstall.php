@@ -145,7 +145,10 @@ else
 		<input type=\"checkbox\" name=\"DownloadsWarning\" class=\"boxes\" /><br />
 		
 		<label for=\"ShowEmails\">Show players emails?</label>
-		<input type=\"checkbox\" name=\"ShowEmails\" class=\"boxes\" /><br /><br />
+		<input type=\"checkbox\" name=\"ShowEmails\" class=\"boxes\" /><br />
+		
+		<label for=\"PickAccNo\">Let users pick acc numbers?</label>
+		<input type=\"checkbox\" name=\"PickAccNo\" class=\"boxes\" /><br /><br />
 		
 		<label for=\"AdminUser\">Admin Username:</label>
 		<input type=\"text\" name=\"AdminUser\" value=\"$admin_user\" /><br />
@@ -215,6 +218,8 @@ else
 		<h1>Character settings</h1>
 		<label for=\"char_group\">Group ID:</label>
 		<input type=\"text\" name=\"char_group\" value=\"$char_group\" /><br />
+		<label for=\"MaxChars\">Max chars allowed:</label>
+		<input type=\"text\" name=\"MaxChars\" value=\"$aac_maxplayers\" /><br />
 		<label for=\"char_exp\">Experience:</label>
 		<input type=\"text\" name=\"char_exp\" value=\"$char_exp\" /><br />
 		<label for=\"char_cap\">Cap:</label>

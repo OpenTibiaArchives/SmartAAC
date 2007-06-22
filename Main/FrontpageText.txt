@@ -1,3 +1,3 @@
 <h1>Welcome</h1>
-<p>Grats on finding our new AAC site for the server. If you are the administrator, goto <a href="FrontpageText.txt">/Main/FrontpageText.txt</a> 
+<p style="font-family: courier;">Grats on finding our new AAC site for the server. If you are the administrator, goto <a href="FrontpageText.txt">/Main/FrontpageText.txt</a> 
 and change the contents of the file to what YOU want :]</p>

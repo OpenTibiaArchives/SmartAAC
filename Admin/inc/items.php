@@ -207,6 +207,16 @@ foreach($items as $item){
 		echo '<option value='.$id.'>'.$name['name'].'</option>';
 	}
 }
+echo '</select><br />';
+
+echo '<select name="backpack">';
+echo '<optgroup label="bag/Backpack">';
+echo '<option value=0>-None-</option>';
+foreach($items as $item){
+	foreach($item as $id => $name){
+		echo '<option value='.$id.'>'.$name['name'].'</option>';
+	}
+}
 echo '</select>';
 
 echo "

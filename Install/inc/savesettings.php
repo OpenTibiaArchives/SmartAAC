@@ -58,7 +58,8 @@ else
 	$conf_md5passwords =	($_POST["HashPass"]) ? "true" : "false";
 	$conf_imgver = 			($_POST["ImgVer"]) ? "true" : "false";
 	$conf_downloadswarning =($_POST["DownloadsWarning"]) ? "true" : "false";
-	$conf_showemails =($_POST["ShowEmails"]) ? "true" : "false";
+	$conf_showemails =		($_POST["ShowEmails"]) ? "true" : "false";
+	$conf_pickaccno =		($_POST["PickAccNo"]) ? "true" : "false";
 	$conf_enable_feedback =	$_POST['main_enable_feedback'];
 	$conf_main_email = 		$_POST['main_email'];
 	$conf_admin_user = 		$_POST['AdminUser'];
@@ -86,6 +87,7 @@ else
 	$char_rook_use = 		$_POST['char_rook'];
 	$conf_char_town =		$_POST["char_town"];
 	$conf_char_group =		$_POST["char_group"];
+	$conf_char_max =		$_POST["MaxChars"];
 	$conf_char_exp =		$_POST["char_exp"];
 	$conf_char_cap =		$_POST["char_cap"];
 	$conf_char_level =		$_POST["char_level"];
@@ -213,6 +215,7 @@ else
 \$aac_dataDir =			\"$conf_dataDir\";
 \$aac_mapname =			\"$conf_mapname\";
 
+\$aac_maxplayers =		$conf_char_max;
 \$aac_minacclen = 		$conf_minacclen;
 \$aac_maxacclen = 		$conf_maxacclen;
 \$aac_minpasslen = 		$conf_minpasslen;
@@ -228,6 +231,7 @@ else
 \$aac_imgver = 			$conf_imgver;
 \$main_downloads_warning = $conf_downloadswarning;
 \$main_showemails = 	$conf_showemails;
+\$aac_randomaccnum =	$conf_pickaccno;
 \$admin_user =			\"$conf_admin_user\";
 \$admin_pass = 			\"$conf_admin_pass\";
 
@@ -315,6 +319,21 @@ else
 
 	fwrite($confFile, $write);
 	fclose($confFile);
+	
+	////// End Conf saving
+	////// Start News user/pass saving in con-junction
+	
+	$encryptedAdminPass = crypt($conf_admin_pass);
+	$newsUserFile = fopen("../Admin/news/data/users.txt", "w");
+	$write2 = "
+<user>
+0
+$conf_admin_user
+$encryptedAdminPass
+</user>";
+	
+	fwrite($newsUserFile, $write2);
+	fclose($newsUserFile);
 	
 	// End: Saving
 	

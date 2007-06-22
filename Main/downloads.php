@@ -55,6 +55,9 @@ if($modules_downloads)
 {
 echo "<h1>Downloads</h1><br />";
 
+if($main_downloads_warning == "true") { echo '<p><b>Warning!</b> If you use the Tibia client, you could breaking Tibias Service Agreement!</p><br />'; }
+
+$total_downloads = 0;
 $d = opendir("downloads");
 	while($f = readdir($d))
 	{
@@ -63,6 +66,12 @@ $d = opendir("downloads");
 	continue;
 
 		echo "<p><a href=\"$f\">$f</a><br />";
+		$total_downloads++;
+		
+		if($total_downloads == 0)
+		{
+			echo "<p>Theres no downloads available.</p>";
+		}
 }
 	
 }

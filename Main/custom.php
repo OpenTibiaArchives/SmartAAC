@@ -55,6 +55,8 @@ if($modules_custom)
 {
 	echo "<h1>Custom Pages</h1><br />";
 	
+	$total_customs = 0;
+	
 	$d = opendir("customs");
 		while($f = readdir($d))
 		{
@@ -62,8 +64,13 @@ if($modules_custom)
 		  continue;
 
 		  echo "<a href=\"customs/$f\" title=\"$f\">$f</a><br />";
+		  $total_customs++;
 		}
 
+	if($total_customs == 0)
+	{
+		echo "<p>There are no custom pages to view</p>";
+	}
 	echo "<br /><br />";
 }
 else
