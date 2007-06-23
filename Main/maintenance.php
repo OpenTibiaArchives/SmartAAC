@@ -26,11 +26,15 @@
 //    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // ===========================================================
 
+include '../conf.php';
+
 echo '<div align="center"><img src="../Includes/images/Smart-Ass2Logo.png" />';
 
 echo '
 <p style="font-family: Verdana, sans-serif; size: 14px;">Sorry, the AAC is down for maintenance, come back later.
-<br />If you are the administrator or staff, goto the <a href="../Admin/">admin panel</a> for configuration.</p></div>
+<br />If you are the administrator or staff, you can goto the <a href="../Admin/">admin panel</a> for configuration.</p></div>
 ';
+
+echo "<hr><p style=\"font-family: Verdana, sans-serif; size: 14px;\"><b>Reason</b>:<br />$aac_maintenanceReason</p>";
 
 ?>

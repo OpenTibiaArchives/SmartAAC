@@ -52,7 +52,7 @@ else
 
 	$license_decide = $_POST['agreeordisagree'];
 	$char_rook = $_POST['char_rook'];
-	$main_enable_feedback = $_POST['main_enable_feedback'];
+	$main_enable_mailer = $_POST['main_enable_mailer'];
 	$admin_pass_generated = createRandomPassword();
 
  	if($license_decide == "Disagree")
@@ -114,7 +114,7 @@ else
 
 		<form action=\"install.php?step=5\" method=\"POST\">
 		<input type=\"hidden\" name=\"char_rook\" value=\"$char_rook\">
-		<input type=\"hidden\" name=\"main_enable_feedback\" value=\"$main_enable_feedback\">
+		<input type=\"hidden\" name=\"main_enable_mailer\" value=\"$main_enable_mailer\">
 		
 		<h1>MySQL Database Details</h1>
 		<label for=\"SQL_Host\">MySQL Host:</label>
@@ -135,7 +135,7 @@ else
 		<input type=\"text\" name=\"dataDir\" value=\"$aac_dataDir\" /><br /><br />
 
 		<h1>Security Options</h1>
-		<label for=\"HashPass\">Use MD5 passwords?</label>
+		<label for=\"HashPass\">Use MD5 hash passwords?</label>
 		<input type=\"checkbox\" name=\"HashPass\" class=\"boxes\" /><br /><br />
 
 		<label for=\"ImgVer\">Image verification?</label>

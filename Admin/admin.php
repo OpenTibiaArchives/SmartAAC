@@ -75,6 +75,10 @@ switch($action)
 	case "MassSpawnChange":
 	include 'inc/spawnchanger.php';
 	break;
+	
+	case "FrontpageText":
+	include 'inc/frontpagetext.php';
+	break;
 
 	default:
 	include 'inc/index.php';

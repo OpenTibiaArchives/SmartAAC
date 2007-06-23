@@ -31,7 +31,7 @@
 <head>
 
   <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
-  <title>.</title>
+  <title>Login to the admin panel</title>
 
 
   <style type="text/css">

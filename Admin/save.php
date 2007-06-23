@@ -37,7 +37,7 @@ else
 	$modules_gallery = ($modules_gallery) ? "true" : "false";
 	$modules_monsters = ($modules_monsters) ? "true" : "false";
 	$modules_spells = ($modules_spells) ? "true" : "false";
-	$main_enable_feedback = ($main_enable_feedback) ? "true" : "false";
+	$main_enable_mailer = ($main_enable_mailer) ? "true" : "false";
 	$char_rook = ($char_rook) ? "true" : "false";
 	
 	$new_main_towns = 'array(';
@@ -223,7 +223,7 @@ else
 
 		case "items":
 		$new_char_items = array();
-		$slots = array(1 => 'head', 'neck', 'backpack','container', 'armor', 'right', 'left', 'legs', 'feet', 'ring', 'ammo');
+		$slots = array(1 => 'head', 'neck', 'container', 'armor', 'right', 'left', 'legs', 'feet', 'ring', 'ammo');
 		$x = 11;
 		for($i=1; $i <= 10; $i++) {
 			if((int)$_POST[$slots[$i]] == 0)
@@ -244,6 +244,8 @@ else
 		{
 			$aac_status = "Installed";
 		}
+		
+		$aac_maintenanceReason = $_POST['MaintenanceReason'];
 		break;
 		
 		case "changeadmincreds":
@@ -261,6 +263,12 @@ $encryptedAdminPass
 	
 		fwrite($newsUserFile, $write2);
 		fclose($newsUserFile);
+		
+		$enc_pass = crypt($admin_pass);
+		$htpasswdFile = fopen("logs/.htpasswd", "w");
+		$write2 = "$admin_user:$enc_pass";
+		fwrite($htpasswdFile, $write2);
+		fclose($htpasswdFile);
 		break;
 		
 		case "resetadminpass":
@@ -277,6 +285,12 @@ $encryptedAdminPass
 	
 		fwrite($newsUserFile, $write2);
 		fclose($newsUserFile);
+		
+		$enc_pass = crypt($admin_pass);
+		$htpasswdFile = fopen("logs/.htpasswd", "w");
+		$write2 = "$admin_user:$enc_pass";
+		fwrite($htpasswdFile, $write2);
+		fclose($htpasswdFile);
 		break;
 		
 		case "dirs":
@@ -297,6 +311,24 @@ $encryptedAdminPass
 		sqlquery('UPDATE `players` SET `posy` = \''.$posy.'\' WHERE 1'); }
 		if($posz != "") {
 		sqlquery('UPDATE `players` SET `posz` = \''.$posz.'\' WHERE 1'); }
+		break;
+		
+		case "FrontpageText":
+		$postArray = &$_POST['FrontpageText'];
+
+		if ( get_magic_quotes_gpc() )
+		{
+			$newFrontpageText = stripslashes( $postArray );
+		}
+		else
+		{
+			$newFrontpageText = $postArray;
+		}
+		
+ 		$newFrontpageFile = fopen("../Main/FrontpageText.txt", "w");
+	
+		fwrite($newFrontpageFile, $newFrontpageText);
+		fclose($newFrontpageFile);
 		break;
 		
 		case "others":
@@ -352,6 +384,7 @@ $encryptedAdminPass
 \$aac_versioncode = 		200;
 \$aac_dataDir =			\"$aac_dataDir\";
 \$aac_mapname =			\"$aac_mapname\";
+\$aac_maintenanceReason = \"$aac_maintenanceReason\";
 
 \$aac_maxplayers = 		$aac_maxplayers;
 \$aac_minacclen = 		$aac_minacclen;
@@ -385,7 +418,7 @@ $encryptedAdminPass
 \$main_voteanswer2 = \"$main_voteanswer2\";
 \$main_voteanswer3 = \"$main_voteanswer3\";
 \$main_voteanswer4 = \"$main_voteanswer4\";
-\$main_enable_feedback = $main_enable_feedback;
+\$main_enable_mailer = $main_enable_mailer;
 \$main_mail = \"$main_mail\";
 \$main_towns = $new_main_towns;
 

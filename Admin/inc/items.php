@@ -209,8 +209,8 @@ foreach($items as $item){
 }
 echo '</select><br />';
 
-echo '<select name="backpack">';
-echo '<optgroup label="bag/Backpack">';
+echo '<select name="container">';
+echo '<optgroup label="Container">';
 echo '<option value=0>-None-</option>';
 foreach($items as $item){
 	foreach($item as $id => $name){

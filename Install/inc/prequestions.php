@@ -67,12 +67,12 @@ $license_decide = $_POST['agreeordisagree'];
 			  <td>&nbsp;</td>
 			</tr>
 		    <tr>
-		      <td style="width: 236px;">Enable Feedback system (requires a SMTP server)</td>
-		      <td style="width: 60px; text-align: center;"><input type="radio" name="main_enable_feedback" value="true"></td>
+		      <td style="width: 236px;">Enable mailer (requires a SMTP server)</td>
+		      <td style="width: 60px; text-align: center;"><input type="radio" name="main_enable_mailer" value="true"></td>
 		    </tr>
 		    <tr>
-		      <td style="width: 236px;">Disable Feedback system</td>
-		      <td style="width: 60px; text-align: center;"><input type="radio" name="main_enable_feedback" value="false"></td>
+		      <td style="width: 236px;">Disable mailer</td>
+		      <td style="width: 60px; text-align: center;"><input type="radio" name="main_enable_mailer" value="false"></td>
 		    </tr>
 		  </tbody>
 		</table>

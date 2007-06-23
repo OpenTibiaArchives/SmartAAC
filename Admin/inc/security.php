@@ -91,7 +91,7 @@ else
 		</style>
 
 		<form action=\"save.php?save=security\" method=\"POST\">
-		<label for=\"HashPass\">Use MD5 passwords?</label>
+		<label for=\"HashPass\">Use MD5 hash passwords?</label>
 		<input type=\"checkbox\" name=\"HashPass\" class=\"boxes\" /><br /><br />
 
 		<label for=\"ImgVer\">Image verification?</label>

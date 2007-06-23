@@ -54,7 +54,7 @@ else
 	$tpl->set('Unique_Visits', $total_uniques);
 
 	echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
-
+		
 		echo "
 		<style type=\"text/css\">
 
@@ -93,6 +93,9 @@ else
 		<form action=\"save.php?save=maintenance\" method=\"POST\">
 		<label for=\"MaintenanceMode\">Turn on maintenance?</label>
 		<input type=\"checkbox\" name=\"MaintenanceMode\" class=\"boxes\" "; if($aac_status == "Maintenance") { echo "checked"; } echo "/><br /><br />
+		
+		<label for=\"MaintenanceReason\">Reason:</label>
+		<textarea name=\"MaintenanceReason\" cols=\"70\" rows=\"10\">$aac_maintenanceReason</textarea>
 		<br /><br />
 		
 		<input type=\"submit\" name=\"submitbutton\" id=\"submitbutton\" value=\"Go\" />

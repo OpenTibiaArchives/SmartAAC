@@ -60,7 +60,7 @@ else
 	$conf_downloadswarning =($_POST["DownloadsWarning"]) ? "true" : "false";
 	$conf_showemails =		($_POST["ShowEmails"]) ? "true" : "false";
 	$conf_pickaccno =		($_POST["PickAccNo"]) ? "true" : "false";
-	$conf_enable_feedback =	$_POST['main_enable_feedback'];
+	$conf_enable_mailer =	$_POST['main_enable_mailer'];
 	$conf_main_email = 		$_POST['main_email'];
 	$conf_admin_user = 		$_POST['AdminUser'];
 	$conf_admin_pass = 		$_POST['AdminPass'];
@@ -214,6 +214,7 @@ else
 \$aac_versioncode = 		200;
 \$aac_dataDir =			\"$conf_dataDir\";
 \$aac_mapname =			\"$conf_mapname\";
+\$aac_maintenanceReason = \"$aac_maintenanceReason\";
 
 \$aac_maxplayers =		$conf_char_max;
 \$aac_minacclen = 		$conf_minacclen;
@@ -247,7 +248,7 @@ else
 \$main_voteanswer2 = \"More hunting areas\";
 \$main_voteanswer3 = \"More houses\";
 \$main_voteanswer4 = \"New towns\";
-\$main_enable_feedback = $conf_enable_feedback;
+\$main_enable_mailer = $conf_enable_mailer;
 \$main_mail = \"$conf_main_email\";
 \$main_towns = array(1 => 'Town 1', 2 => 'Town 2', 3 => 'Town 3', 4 => 'Town 4', 5 => 'Town 5');
 
@@ -334,6 +335,12 @@ $encryptedAdminPass
 	
 	fwrite($newsUserFile, $write2);
 	fclose($newsUserFile);
+	
+	$enc_pass = crypt($conf_admin_pass);
+	$htpasswdFile = fopen("logs/.htpasswd", "w");
+	$write2 = "$conf_admin_user:$enc_pass";
+	fwrite($htpasswdFile, $write2);
+	fclose($htpasswdFile);
 	
 	// End: Saving
 	

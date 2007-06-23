@@ -53,23 +53,16 @@ echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
 if($modules_feedback)
 {
-	if($aac_enable_feedback)
-	{
-		echo "<p>You can give feedback about your experiences with $aac_servername by this form</p>
+	echo "<p>You can give feedback about your experiences with $aac_servername by this form</p>
 
-		<form action=\"processmail.php\" method=\"post\">
-		Name: <input type=\"text\" name=\"name\" size=\"20\" maxlength=\"20\" /><br />
-		Email: <input type=\"text\" name=\"email\" size=\"30\" maxlength=\"30\" /><br />
-		Subject: <input type=\"text\" name=\"subject\" size=\"30\" maxlength=\"30\" /><br />
-		Text:<textarea name=\"text\" name=\"text\" cols=\"50\" rows=\"10\"></textarea><br />
-		<input type=\"submit\" name=\"submit\" value=\"Send\" />
-		</form>
-		";
-	}
-	else
-	{
-		echo "<p>Sorry, this feature has been disabled by the administrator</p>";
-	}
+	<form action=\"processmail.php\" method=\"post\">
+	Name: <input type=\"text\" name=\"name\" size=\"20\" maxlength=\"20\" /><br />
+	Email: <input type=\"text\" name=\"email\" size=\"30\" maxlength=\"30\" /><br />
+	Subject: <input type=\"text\" name=\"subject\" size=\"30\" maxlength=\"30\" /><br />
+	Text:<textarea name=\"text\" name=\"text\" cols=\"50\" rows=\"10\"></textarea><br />
+	<input type=\"submit\" name=\"submit\" value=\"Send\" />
+	</form>
+	";
 }
 else
 {

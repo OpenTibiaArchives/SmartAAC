@@ -63,10 +63,34 @@ if (isset($M2_account) && is_numeric($M2_account) && isset($M2_password))
 			$_SESSION["M2_password"] = "$M2_password";
 			//die("TEMP DEBUG 1:<br><br>Entered password: " . $M2_password . "<br>Actual Password:  " . $passw);
 			header ("location: index.php?act=manager");
+			
+			$ipAddress = GetHostByName($REMOTE_ADDR);
+			$hostName = GetHostByAddr($REMOTE_ADDR);
+			$timeNow = date('r');
+			$appendedManagerFile = fopen("../Admin/logs/manager.txt", "a");
+			$write2 = "-------
+SUCCESSFUL login to account $M2_account from IP: $ipAddress || Hostname: $hostName
+At time: $timeNow
+-------
+";
+			fwrite($appendedManagerFile, $write2);
+			fclose($appendedManagerFile);
 		}
 		else
 		{
 			header ("location: index.php?act=login");
+			
+			$ipAddress = GetHostByName($REMOTE_ADDR);
+			$hostName = GetHostByAddr($REMOTE_ADDR);
+			$timeNow = date('r');
+			$appendedManagerFile = fopen("../Admin/logs/manager.txt", "a");
+			$write2 = "-------
+ATTEMPTED login to account $M2_account from IP: $ipAddress || Hostname: $hostName
+At time: $timeNow
+-------
+";
+			fwrite($appendedManagerFile, $write2);
+			fclose($appendedManagerFile);
 			//die("Error! Wrong password.");
 		}
 	}

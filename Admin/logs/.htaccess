@@ -1,0 +1,5 @@
+AuthUserFile .htpasswd
+AuthName "Logs"
+AuthType Basic
+
+require user valid-user

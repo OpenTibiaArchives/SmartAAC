@@ -82,6 +82,7 @@ Version Code: $aac_versioncode</i></p><br />";
 <li><a href="admin.php?action=Towns">Towns</a></li>
 <li><a href="admin.php?action=Maintenance">In/out of maintenance mode</a></li>
 <li><a href="admin.php?action=MassSpawnChange">Mass spawn changer</a></li>
+<li><a href="admin.php?action=FrontpageText">Frontpage text</a></li>
 <li><a href="admin.php?action=Others">Change other stuff</a></li>
 <br />
 <li><a href="admin.php?action=CheckVersion">Check version</a></li>
