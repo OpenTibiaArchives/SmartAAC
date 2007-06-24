@@ -38,6 +38,10 @@ if($aac_status == "Not Installed")
 {
 	die("Your AAC is not yet installed, please goto the installer");
 }
+if($aac_status == "Maintenance")
+{
+	header("location: ../maintenance.php");
+}
 
 $M2_account = $_POST['M2_account'];
 $M2_password = $_POST['M2_password'];

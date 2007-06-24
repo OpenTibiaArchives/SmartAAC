@@ -103,7 +103,7 @@ else
 		<label for=\"ShowEmails\">Show players emails?</label>
 		<input type=\"checkbox\" name=\"ShowEmails\" class=\"boxes\" /><br /><br />
 		
-		<label for=\"PickAccNo\">Let users pick acc numbers?</label>
+		<label for=\"PickAccNo\">Auto generate acc numbers?</label>
 		<input type=\"checkbox\" name=\"PickAccNo\" class=\"boxes\" /><br /><br />
 		
 		<br />

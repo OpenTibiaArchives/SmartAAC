@@ -83,7 +83,7 @@ switch($want)
 	break;
 	
 	default:
-		echo $own_text;
+		echo "<div class=\"dashed\">" .$own_text. "</div>";
 	
 		echo "<br /><br /><h1>News</h1>";
 		show_news(5);

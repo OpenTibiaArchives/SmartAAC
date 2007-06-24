@@ -32,7 +32,7 @@ include '../Includes/stats/stats.php';
 include '../Includes/counter/counter.php';
 if($aac_status == "Maintenance")
 {
-	header("location: maintenance.php");
+	header("location: ../Main/maintenance.php");
 }
 
 

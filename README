@@ -1,10 +1,10 @@
-=============================================
-=== Smart-Ass 2.0			===
-=== Codename: Tricky Dicky		===
-=== Alpha 2/Beta 1 Release		===
-=============================================
-=== WEBSITE: http://smart.pekay.co.uk ===
-=============================================
+===============================================
+=== Smart-Ass 2.0							===
+=== Codename: Lord Snot						===
+=== Alpha 2/Beta 1 Release					===
+===============================================
+=== WEBSITE: http://smart.pekay.co.uk		===
+===============================================
 
 Short readme for people to read BEFORE they touch Smart-Ass.
 We have developed Smart-Ass 2, been updated for the new
@@ -31,6 +31,13 @@ What you basicly need:
 To get started off:
 * Just goto index.php and you should be redirected to the Installation
 * You'll be asked things, etc etc, and asked to fill out fields
+
+--------
+
+Admin/News/Logs section access:
+
+Your username and password you set during the installation will give you access to
+the admin panel, news panel and the logs directory
 
 --------
 

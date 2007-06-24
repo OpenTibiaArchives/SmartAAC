@@ -34,6 +34,11 @@ if($aac_status == "Not Installed")
 	die("Your AAC is not yet installed, please goto the installer");
 }
 
+if($aac_status == "Maintenance")
+{
+	header("location: ../Main/maintenance.php");
+}
+
 $title = 'Login';
 $name = $aac_servername;
 $bodySpecial = 'onload="NOTHING"';
