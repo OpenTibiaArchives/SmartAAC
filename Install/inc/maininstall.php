@@ -54,7 +54,8 @@ else
 	$char_rook = $_POST['char_rook'];
 	$main_enable_mailer = $_POST['main_enable_mailer'];
 	$admin_pass_generated = createRandomPassword();
-
+	$currentWorkingDir = getcwd();
+	
  	if($license_decide == "Disagree")
 	{
 		echo '<script type="text/javascript">
@@ -130,16 +131,17 @@ else
 		<input type=\"text\" name=\"SQL_DB\" value=\"$sql_db\" /><br />
 		<br /><br />
 
-		<h1>Directories/Names</h1>
-		<label for=\"dataDir\">Data dir:</label>
-		<input type=\"text\" name=\"dataDir\" value=\"$aac_dataDir\" /><br /><br />
+		<h1>Directories</h1>
+		<label for=\"dataDir\">OTServ data dir:</label>
+		<input type=\"text\" name=\"dataDir\" value=\"$aac_dataDir\" /><br />
+		<i>Current working directory: $currentWorkingDir</i><br /><br />
 
 		<h1>Security Options</h1>
 		<label for=\"HashPass\">Use MD5 hash passwords?</label>
-		<input type=\"checkbox\" name=\"HashPass\" class=\"boxes\" /><br /><br />
+		<input type=\"checkbox\" name=\"HashPass\" class=\"boxes\" /><br />
 
 		<label for=\"ImgVer\">Image verification?</label>
-		<input type=\"checkbox\" name=\"ImgVer\" class=\"boxes\" /><br /><br />
+		<input type=\"checkbox\" name=\"ImgVer\" class=\"boxes\" /><br />
 		
 		<label for=\"DownloadsWarning\">Display downloads warnings?</label>
 		<input type=\"checkbox\" name=\"DownloadsWarning\" class=\"boxes\" /><br />
@@ -147,7 +149,7 @@ else
 		<label for=\"ShowEmails\">Show players emails?</label>
 		<input type=\"checkbox\" name=\"ShowEmails\" class=\"boxes\" /><br />
 		
-		<label for=\"PickAccNo\">Let users pick acc numbers?</label>
+		<label for=\"PickAccNo\">Auto generate acc numbers?</label>
 		<input type=\"checkbox\" name=\"PickAccNo\" class=\"boxes\" /><br /><br />
 		
 		<label for=\"AdminUser\">Admin Username:</label>

@@ -337,7 +337,7 @@ $encryptedAdminPass
 	fclose($newsUserFile);
 	
 	$enc_pass = crypt($conf_admin_pass);
-	$htpasswdFile = fopen("logs/.htpasswd", "w");
+	$htpasswdFile = fopen("../Admin/logs/.htpasswd", "w");
 	$write2 = "$conf_admin_user:$enc_pass";
 	fwrite($htpasswdFile, $write2);
 	fclose($htpasswdFile);
