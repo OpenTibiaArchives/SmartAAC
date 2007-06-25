@@ -20,6 +20,7 @@ can do some wierd things. You have been warned.
 --------
 
 What you basicly need:
+
 * A web server (preferably Apache)
 * PHP 5
 * MySQL
@@ -29,6 +30,7 @@ What you basicly need:
 --------
 
 To get started off:
+
 * Just goto index.php and you should be redirected to the Installation
 * You'll be asked things, etc etc, and asked to fill out fields
 
@@ -38,6 +40,20 @@ Admin/News/Logs section access:
 
 Your username and password you set during the installation will give you access to
 the admin panel, news panel and the logs directory
+
+--------
+
+Credits:
+
+* Pekay - Writer
+* Bazetts - Writer (mostly MySQL, but others too ;p)
+* wrzasq - Helped with alot, for example SQL security, items.xml reading, and alot more :P
+
+Testers:
+
+* Nikolas
+* SuperKakan
+* Winghawk
 
 --------
 
