@@ -54,7 +54,16 @@ echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
 if($modules_guilds)
 {
-	$act = $_REQUEST['act'];
+	?>
+	<td width="13%" valign="top"><table width="130" border="0" align="right" cellpadding="2" cellspacing="1">
+	<tr><td><div align="center"><a href="guilds.php?act=manage">Manage</a></td></div></tr>
+	<tr><td><div align="center"><a href="guilds.php?act=view">View</a></td></div></tr>
+	<tr><td><div align="center"><a href="guilds.php?act=create">Create</a></td></div></tr>
+	<tr><td><div align="center"><a href="guilds.php?act=leave">Leave</a></td></div></tr>
+	<tr><td><div align="center"><a href="guilds.php?act=disband">Disband</a></td></div></tr>
+	</table>
+	<?php
+	$act = $_GET['act'];
 	if(isset($act))
 	{
 		switch($act)
@@ -68,51 +77,37 @@ if($modules_guilds)
 				}
 				break;
 			case "view":
-				if(isset($_REQUEST['guild'])) { // Show guild
+				if(isset($_GET['guild'])) { // Show guild
 					$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
 					mysql_select_db($sql_db, $sqlconnect);
 					
-					$query = sqlquery('SELECT `id` FROM `guilds` WHERE `name` = \''. mysql_real_escape_string($_REQUEST['guild']) .'\'');
+					$query = sqlquery('SELECT * FROM `guilds` WHERE `name` = \''. mysql_real_escape_string($_GET['guild']) .'\'');
 					if(mysql_num_rows($query) == 1) {
-						while($row = mysql_fetch_array($query)) {
-							$guild_id = $row['id'];
-						}
+						$guild = mysql_fetch_array($query);
 						
-						$i = 1;
-						$query = sqlquery('SELECT `id`, `name`, `level` FROM `guild_ranks` WHERE `guild_id` = '. $guild_id .'');
+						$guild_rank = array();
+						$query = sqlquery('SELECT `id`, `name`, `level` FROM `guild_ranks` WHERE `guild_id` = '. $guild['id'] .'');
 						while($row = mysql_fetch_array($query)) {
 							$guild_rank[$row['id']] = array('name' => $row['name'], 'level' => $row['level']);
-							$guild_ranks[$i] = $row['id'];
-							$i++;
-						}
-						$guild_ranks[0] = $i - 1;
-
-						for($i = 1; $i <= $guild_ranks[0]; $i++) // wrooong
-						{
-							if($guild_ranks[0] == $i) {
-								if($guild_ranks[$i - 1] > $guild_ranks[$i]) { $t = $guild_ranks[$i]; $guild_ranks[$i] = $guild_ranks[$i - 1]; $guild_ranks[$i - 1] = $t; }
-							}
-							else {
-								if($guild_ranks[$i] > $guild_ranks[$i + 1]) { $t = $guild_ranks[$i + 1]; $guild_ranks[$i + 1] = $guild_ranks[$i]; $guild_ranks[$i] = $t; }
-							}
 						}
 
 					echo '
 	<center>
-	<table style="text-align: left; width: 25%;" border="1" cellpadding="0" cellspacing="2">
+	<h4>The guild was founded on '. date('M d Y, H:i:s T', $guild['creationdata']) .' by <a href="character.php?char='. userFromID($guild['ownerid']) .'">'. userFromID($guild['ownerid']) .'</a></h4>
+	<table style="text-align: left; width: 35%;" border="1" cellpadding="0" cellspacing="2">
 	<tbody>
 	<tr>
-	<td style="width: 20%;">Rank</td>
-	<td style="width: 70%;">Name (Title)</td>
+	<td style="width: 40%;">Rank</td>
+	<td style="width: 60%;">Name (Title)</td>
 	</tr>
 	</tbody>';
-						for($x = $guild_ranks[1]; $x <= $x + $guild_ranks[0]; $x++) // or something x.x
+						foreach($guild_rank as $id => $info)
 						{
-							$query = sqlquery('SELECT `name`, `rank_id`, `guildnick` FROM `players` WHERE `rank_id` = '. $x .'');
+							$query = sqlquery('SELECT `name`, `rank_id`, `guildnick` FROM `players` WHERE `rank_id` = '. $id .'');
 							while($row = mysql_fetch_array($query)) {
 								echo '
 								<tr>
-								<td><center>'. $guild_rank[$x]['name'] .'</center></td>
+								<td><center>'. $info['name'] .'</center></td>
 								<td><center><a href="character.php?char='. $row['name'] .'">'. $row['name'] .'</a>';
 								if($row['guildnick'])
 									echo ' ('. $row['guildnick'] .')';
@@ -125,13 +120,13 @@ if($modules_guilds)
 					}
 				}
 				else { // List of guilds
-					echo '
+	echo '
 	<center>
-	<table style="text-align: left; width: 20%;" border="1" cellpadding="0" cellspacing="2">
+	<table style="text-align: left; width: 30%;" border="1" cellpadding="0" cellspacing="2">
 	<tbody>
 	<tr>
-	<td style="width: 10%;">Guild Name</td>
-	<td style="width: 10%;">Owner</td>
+	<td style="width: 50%;">Guild Name</td>
+	<td style="width: 40%;">Owner</td>
 	<td style="width: 10%;">View</td>
 	</tr>
 	</tbody>';
@@ -173,7 +168,10 @@ if($modules_guilds)
 					die("<center><a href=\"../Manager/loginInterface.php\">Please login first!</a></center>");
 				}
 				else { // logged in
-				
+					$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
+					mysql_select_db($sql_db, $sqlconnect);
+					
+					//$query = sqlquery('SELECT * FROM `guilds` WHERE `ownerid` = '.  .'');
 				}
 				break;
 			default:
@@ -181,15 +179,6 @@ if($modules_guilds)
 				break;
 		}
 	}
-	?>
-	<td width="13%" valign="top"><table width="130" border="0" align="right" cellpadding="2" cellspacing="1">
-	<tr><td><div align="center"><a href="guilds.php?act=manage">Manage</a></td></div></tr>
-	<tr><td><div align="center"><a href="guilds.php?act=view">View</a></td></div></tr>
-	<tr><td><div align="center"><a href="guilds.php?act=create">Create</a></td></div></tr>
-	<tr><td><div align="center"><a href="guilds.php?act=leave">Leave</a></td></div></tr>
-	<tr><td><div align="center"><a href="guilds.php?act=disband">Disband</a></td></div></tr>
-	</table>
-	<?php
 }
 else
 {
