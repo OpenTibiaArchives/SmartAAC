@@ -28,7 +28,7 @@
 // ===========================================================
 
 $aac_status = 			"Not Installed";
-$aac_version = 			"2.0 Beta";
+$aac_version = 			"2.0.0";
 $aac_versioncode = 		200;
 $aac_dataDir =			"C:/Dev-Cpp/otserv/data";
 $aac_mapname =			"map";

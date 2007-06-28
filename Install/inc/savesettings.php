@@ -210,7 +210,7 @@ else
 // ===========================================================
 
 \$aac_status = 			\"Installed\";
-\$aac_version = 			\"2.0 Beta\";
+\$aac_version = 			\"2.0.0\";
 \$aac_versioncode = 		200;
 \$aac_dataDir =			\"$conf_dataDir\";
 \$aac_mapname =			\"$conf_mapname\";

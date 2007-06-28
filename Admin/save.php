@@ -380,7 +380,7 @@ $encryptedAdminPass
 // ===========================================================
 
 \$aac_status = 			\"$aac_status\";
-\$aac_version = 			\"2.0 Beta\";
+\$aac_version = 			\"2.0.0\";
 \$aac_versioncode = 		200;
 \$aac_dataDir =			\"$aac_dataDir\";
 \$aac_mapname =			\"$aac_mapname\";
