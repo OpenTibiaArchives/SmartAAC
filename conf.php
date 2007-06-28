@@ -3,7 +3,7 @@
 // ===========================================================
 //	Smart-Ass: The Userfriendly AAC
 //	Version: 2.0 Development Only
-//	Configuration Created: Sun, 24 Jun 2007 22:13:28 +0100
+//	Configuration Created: Thu, 28 Jun 2007 21:07:42 +0100
 //	
 //	USE OF THIS PROGRAM TO RELY ON IT FOR SERVER USE IS NOT
 // 	RECOMMENDED! THIS IS FOR TESTING ONLY.
@@ -32,7 +32,7 @@ $aac_version = 			"2.0 Beta";
 $aac_versioncode = 		200;
 $aac_dataDir =			"C:/Dev-Cpp/otserv/data";
 $aac_mapname =			"map";
-$aac_maintenanceReason = "";
+$aac_maintenanceReason = "<p>No reason set.</p>";
 
 $aac_maxplayers = 		25;
 $aac_minacclen = 		4;
@@ -47,12 +47,12 @@ $net_ipaddress =		"127.0.0.1";
 $net_port = 			"7171";
 
 $aac_md5passwords =			false;
-$aac_imgver = 				true;
-$main_downloads_warning = 	true;
+$aac_imgver = 				false;
+$main_downloads_warning = 	false;
 $main_showemails = 			false;
-$aac_randomaccnum =			true;
+$aac_randomaccnum =			false;
 $admin_user =				"admin";
-$admin_pass = 				"chxkoofe";
+$admin_pass = 				"yr0gjzo6";
 
 $sql_host =			"localhost";
 $sql_user =			"root";
@@ -77,7 +77,7 @@ $info_uptimetype =		"24/7";
 $modules_charsearch = true;
 $modules_feedback = true;
 $modules_affliates = true;
-$modules_guilds = false;
+$modules_guilds = true;
 $modules_houses = true;
 $modules_highscores = true;
 $modules_infopage = true;

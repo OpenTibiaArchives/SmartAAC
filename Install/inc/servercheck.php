@@ -144,27 +144,27 @@ echo "<div align=\"center\"><table style=\"text-align: left; height: 119px; widt
       <td style=\"width: 85px; text-align: center;\">{$confirms['PHP Version']}</td>
     </tr>
     <tr>
-      <td style=\"width: 200px;\"><b>GD enabled</b></td>
+      <td style=\"width: 200px;\"><b><acronym title=\"This generates images for the signature image and image verifcation.\">GD enabled</acronym></b></td>
       <td style=\"width: 85px; text-align: center;\">{$confirms['GD Enabled']}</td>
     </tr>
 	<tr>
-      <td style=\"width: 200px;\"><b>SimpleXML enabled</b></td>
+      <td style=\"width: 200px;\"><b><acronym title=\"This reads and writes XML files.\">SimpleXML enabled</acronym></b></td>
       <td style=\"width: 85px; text-align: center;\">{$confirms['SimpleXML']}</td>
     </tr>
     <tr>
-      <td style=\"width: 200px;\"><b>Configuration writable?</b></td>
+      <td style=\"width: 200px;\"><b><acronym title=\"The configuration is located at ROOT/conf.php.\">Configuration writable?</acronym></b></td>
       <td style=\"width: 85px; text-align: center;\">{$confirms['Conf writable']}</td>
     </tr>
 	<tr>
-      <td style=\"width: 200px;\"><b>Setup lock writable?</b></td>
+      <td style=\"width: 200px;\"><b><acronym title=\"The install directory (ROOT/Install) needs to be writable.\">Install lock writable?</acronym></b></td>
       <td style=\"width: 85px; text-align: center;\">{$confirms['Setup Lock']}</td>
     </tr>
 	<tr>
-      <td style=\"width: 200px;\"><b>Counter stats writable?</b></td>
+      <td style=\"width: 200px;\"><b><acronym title=\"Files called unique.txt and visits.txt in ROOT/Includes/counter/ need to be writable.\">Counter stats writable?</acronym></b></td>
       <td style=\"width: 85px; text-align: center;\">{$confirms['Counter']}</td>
     </tr>
 	<tr>
-      <td style=\"width: 200px;\"><b>Logs writable?</b></td>
+      <td style=\"width: 200px;\"><b><acronym title=\"The directory ROOT/Admin/logs needs to be writable.\">Logs writable?</acronym></b></td>
       <td style=\"width: 85px; text-align: center;\">{$confirms['Logs']}</td>
     </tr>
   </tbody>
@@ -178,7 +178,7 @@ if($tests_passed == $tests_to_pass)
 	echo '
 <script type="text/javascript">
   function openAlert() {
-   Dialog.alert("<h1>Passed</h1><br><p>You have passed at least too tests which means you should be able to move on, go ahead.</p>", {windowParameters: {className: "alphacube"}})
+   Dialog.alert("<h1>Passed</h1><br><p>You have passed at least ' . $tests_to_pass . ' tests which means you should be able to move on, go ahead.</p>", {windowParameters: {className: "alphacube"}})
   }
 </script>
 <br>
@@ -193,7 +193,7 @@ elseif($tests_passed != $tests_to_pass)
 	echo '
 <script type="text/javascript">
   function openAlert() {
-   Dialog.alert("<h1>Failed</h1><br><p>You have passed at least too tests which means you should be able to move on, go ahead.</p>", {windowParameters: {className: "alphacube"}})
+   Dialog.alert("<h1>Failed</h1><br><p>You haven\'t passed ' . $tests_to_pass . ' tests so some parts of Smart-Ass may not work properly, hover over the tests on this page to find out what those components are.</p>", {windowParameters: {className: "alphacube"}})
   }
 </script>
 <div align="center"><br /><br />

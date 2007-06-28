@@ -112,7 +112,13 @@ if($modules_houses)
 			echo '</tr>';
 		}
 	echo "</tbody></table></div>";
-	echo "<br /><p><b>There are $i houses for this server.</b></p><br />";
+	if($i == 1)
+	{
+		echo "<br /><p><b>There is 1 house for this server.</b></p><br />";
+	}
+	else
+	{
+		echo "<br /><p><b>There are $i houses for this server.</b></p><br />";
 	}
 	else
 	{

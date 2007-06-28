@@ -98,7 +98,7 @@ else
 		<label for=\"Affliates\">Affliates page:</label>
 		<input type=\"checkbox\" name=\"Affliates\" class=\"boxes\" /><br />
 		<label for=\"Guilds\">Guilds:</label>
-		<input type=\"checkbox\" name=\"Guilds\" class=\"boxes\" disabled=\"disabled\" /><br />
+		<input type=\"checkbox\" name=\"Guilds\" class=\"boxes\" /><br />
 		<label for=\"Houses\">Houses:</label>
 		<input type=\"checkbox\" name=\"Houses\" class=\"boxes\" /><br />
 		<label for=\"Highscores\">Highscores:</label>

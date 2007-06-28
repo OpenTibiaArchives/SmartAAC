@@ -29,6 +29,7 @@ include "../conf.php";
 include '../conf.php';
 include '../Includes/stats/stats.php';
 include '../Includes/counter/counter.php';
+include("../Includes/fckeditor/fckeditor.php") ;
 
 // Not logged in
 if((!isset($_COOKIE["logged_in_user"]) || $_COOKIE["logged_in_user"] != md5($admin_user)) || (!isset($_COOKIE["logged_in_pass"]) || $_COOKIE["logged_in_pass"] != md5($admin_pass)))
@@ -95,7 +96,15 @@ else
 		<input type=\"checkbox\" name=\"MaintenanceMode\" class=\"boxes\" "; if($aac_status == "Maintenance") { echo "checked"; } echo "/><br /><br />
 		
 		<label for=\"MaintenanceReason\">Reason:</label>
-		<textarea name=\"MaintenanceReason\" cols=\"70\" rows=\"10\">$aac_maintenanceReason</textarea>
+		";
+		
+		$oFCKeditor = new FCKeditor('MaintenanceReason') ;
+		$oFCKeditor->BasePath = '../Includes/fckeditor/';
+		$oFCKeditor->ToolbarSet = 'MyToolbar';
+		$oFCKeditor->Value = $aac_maintenanceReason;
+		$oFCKeditor->Create() ;
+
+		echo "
 		<br /><br />
 		
 		<input type=\"submit\" name=\"submitbutton\" id=\"submitbutton\" value=\"Go\" />

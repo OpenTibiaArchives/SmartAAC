@@ -42,7 +42,7 @@ else
 
 
 	$conf_dataDir =			$_POST["dataDir"];
-	$conf_mapname =		$_POST["MapName"];
+	$conf_mapname =			$_POST["MapName"];
 
 	$conf_minacclen = 		$_POST["MinAccLen"];
 	$conf_maxacclen = 		$_POST["MaxAccLen"];
