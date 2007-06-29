@@ -33,6 +33,7 @@ if($aac_status == "Maintenance")
 {
 	header("location: maintenance.php");
 }
+define("PIC_DIRECTORY", "pictures");
 
 $title = 'Gallery';
 $name = $aac_servername;
@@ -58,7 +59,7 @@ if($modules_gallery)
 	$total_pics = 0;
 	
 	// START PICTURE FOLDER SCAN =)
-	$d = opendir("pictures");
+	$d = opendir(PIC_DIRECTORY);
 		while($f = readdir($d))
 		{
 		  if(is_dir($f))

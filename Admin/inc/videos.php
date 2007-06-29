@@ -29,6 +29,7 @@ include "../conf.php";
 include '../conf.php';
 include '../Includes/stats/stats.php';
 include '../Includes/counter/counter.php';
+define("VID_DIRECTORY", "../Main/video/flvs");
 
 // Not logged in
 if((!isset($_COOKIE["logged_in_user"]) || $_COOKIE["logged_in_user"] != md5($admin_user)) || (!isset($_COOKIE["logged_in_pass"]) || $_COOKIE["logged_in_pass"] != md5($admin_pass)))
@@ -55,12 +56,44 @@ else
 
 	echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
-		echo "
+		/*echo "
 		<p>There is no management for Videos yet, but you can follow these instructions to add videos to your AAC</p>
 		<p>1. Convert your video to FLV format and name it to something unique<br />
 		2. Open Main/video/flvs, and put the file there<br />
-		3. Smart-Ass should see the file and embed it to the page ;)</p>
-		";
+		3. Smart-Ass should see the file and embed it to the page ;)</p><br /><br />
+		";*/
+		
+	$d = opendir(VID_DIRECTORY);
+	$total_vids = 0;
+	$totalsize = 0;
+	echo "<h2>Videos in videos/flvs directory</h2><br /><ul>";
+	while($f = readdir($d))
+	{
+		if(is_dir($f))
+		continue;
+
+		$totalsize = $totalsize + filesize(VID_DIRECTORY . "/$f");
+		echo "<li>$f - <a href=\"save.php?save=delvideo&delete=$f\">Delete?</a></li>";
+		$total_vids++;
+	}
+	echo "</ul>";
+	
+	if($total_vids == 0)
+	{
+		echo "<p>You haven't got any videos, upload one?</p>";
+	}
+	
+	$totalsize = round(($totalsize/1024),2);
+	echo "<p>Total directory size: $totalsize kb</p>";
+	
+	echo "<br /><h2>Upload videos</h2><br />";
+	echo '
+		<form action="save.php?save=uploadvideo" method="post" enctype="multipart/form-data">
+	File:&nbsp;<input type="file" name="uplfile"><br>
+	<input type="submit" value="Upload">
+	</form>
+	';
+	
 
 	echo $tpl->fetch('../Includes/Templates/Indigo/sidebarAdmin.tpl');
 	echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');

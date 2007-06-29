@@ -29,6 +29,7 @@ include "../conf.php";
 include '../conf.php';
 include '../Includes/stats/stats.php';
 include '../Includes/counter/counter.php';
+define("PIC_DIRECTORY", "../Main/pictures");
 
 // Not logged in
 if((!isset($_COOKIE["logged_in_user"]) || $_COOKIE["logged_in_user"] != md5($admin_user)) || (!isset($_COOKIE["logged_in_pass"]) || $_COOKIE["logged_in_pass"] != md5($admin_pass)))
@@ -55,12 +56,43 @@ else
 
 	echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
-		echo "
+/* 		echo "
 		<p>There is no management for the Gallery yet, but you can follow these instructions to add images to your AAC's gallery:</p>
 		<p>1. Put all the images into Main/pictures<br />
 		2. Smart-Ass should see the file and display it</p>
-		";
+		"; */
+		
+	$d = opendir(PIC_DIRECTORY);
+	$total_pics = 0;
+	$totalsize = 0;
+	echo "<h2>Videos in videos/flvs directory</h2><br /><ul>";
+	while($f = readdir($d))
+	{
+		if(is_dir($f))
+		continue;
 
+		$totalsize = $totalsize + filesize(PIC_DIRECTORY . "/$f");
+		echo "<li>$f - <a href=\"save.php?save=delpic&delete=$f\">Delete?</a></li>";
+		$total_pics++;
+	}
+	echo "</ul>";
+	
+	if($total_pics == 0)
+	{
+		echo "<p>You haven't got any pics, upload one?</p>";
+	}
+	
+	$totalsize = round(($totalsize/1024),2);
+	echo "<p>Total directory size: $totalsize kb</p>";
+	
+	echo "<br /><h2>Upload images</h2><br />";
+	echo '
+		<form action="save.php?save=uploadpic" method="post" enctype="multipart/form-data">
+	File:&nbsp;<input type="file" name="uplfile"><br>
+	<input type="submit" value="Upload">
+	</form>
+	';
+	
 	echo $tpl->fetch('../Includes/Templates/Indigo/sidebarAdmin.tpl');
 	echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
 	echo $tpl->fetch('../Includes/Templates/Indigo/bottom.tpl');

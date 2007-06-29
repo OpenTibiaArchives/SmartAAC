@@ -36,6 +36,7 @@ if($aac_status == "Maintenance")
 }
 
 $xml_data = file_get_contents($aac_dataDir . '/commands.xml');
+define("VID_DIRECTORY", "video/flvs");
 
 $title = 'Videos';
 $name = $aac_servername;
@@ -58,30 +59,12 @@ if($modules_videos)
 {
 
 echo "<h1>Videos</h1><br />";
-
-/* UNUSED NOW */
-// Video 1
-// Change file too to your FLV file
-// COPY FROM HERE TO HAVE ANOTHER VIDEO
-
-/* <h1>Video 1</h1>
-<p id="player1"><a href="http://www.macromedia.com/go/getflashplayer">Get the Flash Player</a> to see this player.</p>
-<script type="text/javascript">
-	var s1 = new SWFObject("mediaplayer.swf","single","400","300","7");
-	s1.addParam("allowfullscreen","true");
-	s1.addVariable("file","video/test.flv");
-	s1.addVariable("image","video/preview.png");
-	s1.write("player1");
-</script> */
-
-// END COPY
-
 $total_vids = 0;
 
-// New system for videos =)
-$d = opendir("video/flvs");
-	while($f = readdir($d))
-	{
+$d = opendir(VID_DIRECTORY);
+	
+while($f = readdir($d))
+{
 	if(is_dir($f))
 	continue;
 

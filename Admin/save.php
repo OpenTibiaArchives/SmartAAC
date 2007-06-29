@@ -1,5 +1,6 @@
 <?
 include "../conf.php";
+
 // Not logged in
 if((!isset($_COOKIE["logged_in_user"]) || $_COOKIE["logged_in_user"] != md5($admin_user)) || (!isset($_COOKIE["logged_in_pass"]) || $_COOKIE["logged_in_pass"] != md5($admin_pass)))
 {
@@ -211,6 +212,118 @@ else
 		
 		case "switchplayerlvls":
 		$char_rook = ($_POST['SwitchLevels']) ? "true" : "false";
+		break;
+		
+		
+		
+		
+		case "uploadvideo":
+		// The folder where the files will be uploaded to
+		$upload_dir = '../Main/video/flvs/';
+		// The allowed file extensions, separated with a comma and no space
+		$filetypes = 'flv';
+		// The largest allowed filesize (50 MB), don't put (1024^2*50) since that will bugg
+		$maxsize = (1048576*50);
+
+		// This checks a file was chosen
+		if(empty($_FILES['uplfile']['name']))
+			die('No file was chosen.');
+
+		// This checks that the size ain't too big
+		if($_FILES['uplfile']['size'] > $maxsize)
+			die('The file you chose was too large. The max filesize is '.(string)($maxsize/1048576).' MB.');
+
+		// This checks that the file extension is allowed
+		$types = explode(',', $filetypes);
+		$file = explode('.', $_FILES['uplfile']['name']);
+		$extension = $file[sizeof($file)-1];
+		if(!in_array(strtolower($extension), $types))
+			die('The filetype you chose ain\'t allowed. The allowed file extensions are: .flv.');
+
+		// Generates random name
+		$bokstav = array('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6');
+		$thefile = $_FILES['uplfile']['name'];
+		while (file_exists($upload_dir.$thefile)) { $img = $bokstav[rand(0, count($bokstav)-1)].$thefile; }
+
+		// Moves the file to the correct folder
+		if (is_uploaded_file($_FILES['uplfile']['tmp_name']) && move_uploaded_file($_FILES['uplfile']['tmp_name'],$upload_dir.$thefile)) {
+			echo '<small>The file was successfully uploaded!</small><br />';
+
+			/*
+			The upload was completed.
+			Here you can put eventually put in exta code for like database structure etc.
+			The filename is in $thefile.
+			More fields in the form you can like normally get with $_POST
+			*/
+
+		} else {
+			echo 'A problem occured, please go <a href="admin.php?action=Videos">back</a> and try again!';
+
+			/*
+			The upload failed.
+			*/
+		}
+		break;
+		
+		case "uploadpic":
+		// The folder where the files will be uploaded to
+		$upload_dir = '../Main/pictures/';
+		// The allowed file extensions, separated with a comma and no space
+		$filetypes = 'jpg,jpeg,gif,png,bmp';
+		// The largest allowed filesize (50 MB), don't put (1024^2*50) since that will bugg
+		$maxsize = (1048576*50);
+
+		// This checks a file was chosen
+		if(empty($_FILES['uplfile']['name']))
+			die('No file was chosen.');
+
+		// This checks that the size ain't too big
+		if($_FILES['uplfile']['size'] > $maxsize)
+			die('The file you chose was too large. The max filesize is '.(string)($maxsize/1048576).' MB.');
+
+		// This checks that the file extension is allowed
+		$types = explode(',', $filetypes);
+		$file = explode('.', $_FILES['uplfile']['name']);
+		$extension = $file[sizeof($file)-1];
+		if(!in_array(strtolower($extension), $types))
+			die('The filetype you chose ain\'t allowed. The allowed file extensions are: .jpg, .jpeg, .gif, .png, .bmp.');
+
+		// Generates random name
+		$bokstav = array('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6');
+		$thefile = $_FILES['uplfile']['name'];
+		while (file_exists($upload_dir.$thefile)) { $img = $bokstav[rand(0, count($bokstav)-1)].$thefile; }
+
+		// Moves the file to the correct folder
+		if (is_uploaded_file($_FILES['uplfile']['tmp_name']) && move_uploaded_file($_FILES['uplfile']['tmp_name'],$upload_dir.$thefile)) {
+			echo '<small>The file was successfully uploaded!</small><br />';
+
+			/*
+			The upload was completed.
+			Here you can put eventually put in exta code for like database structure etc.
+			The filename is in $thefile.
+			More fields in the form you can like normally get with $_POST
+			*/
+
+		} else {
+			echo 'A problem occured, please go <a href="admin.php?action=Gallery">back</a> and try again!';
+
+			/*
+			The upload failed.
+			*/
+		}
+		break;
+		
+		
+		case "delpic":
+		$deletepicture = $_GET['delete'];
+		// CAUTION!
+		unlink('../Main/pictures/' . $deletepicture);
+		break;		
+		
+		case "delvideo":
+		$deletevideo = $_GET['delete'];
+		// CAUTION!
+		unlink('../Main/video/flvs/' . $deletevideo);
 		break;
 			
 		case "towns":
