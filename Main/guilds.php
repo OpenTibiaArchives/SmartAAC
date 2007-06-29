@@ -26,6 +26,8 @@
 //    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // ===========================================================
 
+session_start();
+
 include '../conf.php';
 include '../Includes/resources.php';
 include '../Includes/stats/stats.php';
@@ -70,7 +72,7 @@ if($modules_guilds)
 		{
 			case "manage":
 				if(!$_SESSION['M2_account'] || !$_SESSION['M2_password']){ // not logged in
-					die("<center><a href=\"../Manager/loginInterface.php\">Please login first!</a></center>");
+					echo "<center><a href=\"../Manager/loginInterface.php\">Please login first!</a></center>";
 				}
 				else { // logged in
 				
@@ -149,15 +151,46 @@ if($modules_guilds)
 				break;
 			case "create":
 				if(!$_SESSION['M2_account'] || !$_SESSION['M2_password']){ // not logged in
-					die("<center><a href=\"../Manager/loginInterface.php\">Please login first!</a></center>");
+					echo "<center><a href=\"../Manager/loginInterface.php\">Please login first!</a></center>";
 				}
 				else { // logged in
-				
+					if($_POST['guildname'] && $_POST['char']){
+						$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
+						mysql_select_db($sql_db, $sqlconnect);
+						$query = sqlquery('SELECT `rank_id` FROM `players` WHERE `name` = \''. mysql_real_escape_string($_POST['char']) .'\'');
+						$rank_id = mysql_fetch_array($query);
+						if($rank_id[0] != 0) {
+							echo 'That character is already in a guild!';
+						}
+						else {
+							$query = sqlquery('SELECT `name` FROM `guilds` WHERE `name` = \''. mysql_real_escape_string($_POST['guildname']) .'\'');
+							$guildcheck = mysql_fetch_array($query);
+							if($guildcheck[0]) {
+								echo 'That guildname already exist.';
+							}
+							else {
+								sqlquery('INSERT INTO `guilds` (`name`, `ownerid`, `creationdata`) VALUES(\''. mysql_real_escape_string($_POST['guildname']) .'\', '. userByID(mysql_real_escape_string($_POST['char'])) .', '. time() .')') or die('Error: '.mysql_error().' ('.mysql_errno().')');
+								echo 'The guild has been made. <a href="guilds.php?act=manage">Click here</a> to manage it.';
+							}
+						}
+					}
+					else {
+						$chars = getChars($_SESSION['M2_account']);
+						echo '<center><form action="guilds.php?act=create" method="post">';
+						echo 'Character: <select name="char">';
+						foreach($chars as $char){
+							echo '<option value="'. $char .'">'. $char .'</option>';
+						}
+						echo '</select><br />';
+						echo 'Guild Name: <input type="text" name="guildname" />';
+						echo '<br /><br /><input type="submit" value="create" />';
+						echo '</form></center>';
+					}
 				}
 				break;
 			case "leave":
 				if(!$_SESSION['M2_account'] || !$_SESSION['M2_password']){ // not logged in
-					die("<center><a href=\"../Manager/loginInterface.php\">Please login first!</a></center>");
+					echo "<center><a href=\"../Manager/loginInterface.php\">Please login first!</a></center>";
 				}
 				else { // logged in
 				
@@ -165,7 +198,7 @@ if($modules_guilds)
 				break;
 			case "disband":
 				if(!$_SESSION['M2_account'] || !$_SESSION['M2_password']){ // not logged in
-					die("<center><a href=\"../Manager/loginInterface.php\">Please login first!</a></center>");
+					echo "<center><a href=\"../Manager/loginInterface.php\">Please login first!</a></center>";
 				}
 				else { // logged in
 					$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
