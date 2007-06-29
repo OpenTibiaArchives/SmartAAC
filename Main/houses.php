@@ -66,12 +66,12 @@ if($modules_houses)
 	{
 		echo '
 		<div class="tableforme">
-		<table style="text-align: left; width: 500px; font-size:14px;" border="0"
+		<table style="text-align: left; width: 600px; font-size:14px;" border="0"
 		 cellpadding="4" cellspacing="3">
 		  <tbody>
 		    <tr class="tableheaders">
-		      <td style="width: 139px; text-align: center;"><b>ID</b></td>
-		      <td style="width: 124px; text-align: center;"><b>House name</b></td>
+		      <td style="width: 124px; text-align: center;"><b>ID</b></td>
+		      <td style="width: 160px; text-align: center;"><b>House name</b></td>
 		      <td style="width: 124px; text-align: center;"><b>Town</b></td>
 		      <td style="width: 124px; text-align: center;"><b>Rent</b></td>
 		      <td style="width: 124px; text-align: center;"><b>Size</b></td>
@@ -112,13 +112,14 @@ if($modules_houses)
 			echo '</tr>';
 		}
 	echo "</tbody></table></div>";
-	if($i == 1)
-	{
-		echo "<br /><p><b>There is 1 house for this server.</b></p><br />";
-	}
-	else
-	{
-		echo "<br /><p><b>There are $i houses for this server.</b></p><br />";
+		if($i == 1)
+		{
+			echo "<br /><p><b>There is 1 house for this server.</b></p><br />";
+		}
+		else
+		{
+			echo "<br /><p><b>There are $i houses for this server.</b></p><br />";
+		}
 	}
 	else
 	{
