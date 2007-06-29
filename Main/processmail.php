@@ -13,7 +13,7 @@ if($main_enable_mailer)
 }
 else
 {
-	$ipAddress = GetHostByName($REMOTE_ADDR);
+	$ipAddress = $_SERVER['REMOTE_ADDR'];
 	$appendedFeedbackFile = fopen("../Admin/logs/feedback.txt", "a");
 		
 	$write2 = "-------

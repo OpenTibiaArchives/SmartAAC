@@ -64,8 +64,8 @@ if (isset($M2_account) && is_numeric($M2_account) && isset($M2_password))
 			//die("TEMP DEBUG 1:<br><br>Entered password: " . $M2_password . "<br>Actual Password:  " . $passw);
 			header ("location: index.php?act=manager");
 			
-			$ipAddress = GetHostByName($REMOTE_ADDR);
-			$hostName = GetHostByAddr($REMOTE_ADDR);
+			$ipAddress = $_SERVER['REMOTE_ADDR'];
+			$hostName = gethostbyaddr($ipAddress);
 			$timeNow = date('r');
 			$appendedManagerFile = fopen("../Admin/logs/manager.txt", "a");
 			$write2 = "-------
@@ -80,8 +80,8 @@ At time: $timeNow
 		{
 			header ("location: index.php?act=login");
 			
-			$ipAddress = GetHostByName($REMOTE_ADDR);
-			$hostName = GetHostByAddr($REMOTE_ADDR);
+			$ipAddress = $_SERVER['REMOTE_ADDR'];
+			$hostName = gethostbyaddr($ipAddress);
 			$timeNow = date('r');
 			$appendedManagerFile = fopen("../Admin/logs/manager.txt", "a");
 			$write2 = "-------

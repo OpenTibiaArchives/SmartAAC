@@ -13,8 +13,8 @@
 	if($login_user_name != $admin_user || $login_password != $admin_pass) {
 		header("Location: login.php?message=Invalid");
 		
-		$ipAddress = GetHostByName($REMOTE_ADDR);
-		$hostName = GetHostByAddr($REMOTE_ADDR);
+		$ipAddress = $_SERVER['REMOTE_ADDR'];
+		$hostName = gethostbyaddr($ipAddress);
 		$timeNow = date('r');
 		$appendedAdminFile = fopen("logs/admin.txt", "a");
 		$write2 = "-------
@@ -32,8 +32,8 @@ At time: $timeNow
 		setcookie("logged_in_pass", md5($login_password), time()+60*60*24*$logged_in_for);
 		header("Location: index.php");
 		
-		$ipAddress = GetHostByName($REMOTE_ADDR);
-		$hostName = GetHostByAddr($REMOTE_ADDR);
+		$ipAddress = $_SERVER['REMOTE_ADDR'];
+		$hostName = gethostbyaddr($ipAddress);
 		$timeNow = date('r');
 		$appendedAdminFile = fopen("logs/admin.txt", "a");
 		$write2 = "-------
