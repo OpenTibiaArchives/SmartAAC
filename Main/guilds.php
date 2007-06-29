@@ -70,7 +70,7 @@ if($modules_guilds)
 	{
 		switch($act)
 		{
-			case "manage":
+			case "manage": // kick, change rank-names, promote/demote
 				if(!$_SESSION['M2_account'] || !$_SESSION['M2_password']){ // not logged in
 					echo "<center><a href=\"../Manager/loginInterface.php\">Please login first!</a></center>";
 				}
@@ -170,7 +170,8 @@ if($modules_guilds)
 							}
 							else {
 								sqlquery('INSERT INTO `guilds` (`name`, `ownerid`, `creationdata`) VALUES(\''. mysql_real_escape_string($_POST['guildname']) .'\', '. userByID(mysql_real_escape_string($_POST['char'])) .', '. time() .')') or die('Error: '.mysql_error().' ('.mysql_errno().')');
-								echo 'The guild has been made. <a href="guilds.php?act=manage">Click here</a> to manage it.';
+								//sqlquery('UPDATE `players` SET `rank_id` = '. .' WHERE `name` = '. mysql_real_escape_string($_POST['char']) .'');
+								echo '<center>The guild has been made. <a href="guilds.php?act=manage">Click here</a> to manage it.</center>';
 							}
 						}
 					}
@@ -193,7 +194,40 @@ if($modules_guilds)
 					echo "<center><a href=\"../Manager/loginInterface.php\">Please login first!</a></center>";
 				}
 				else { // logged in
-				
+					if($_POST['char']){
+						if(($_POST['agreeacc'] == $_SESSION['M2_account']) && ($_POST['agreepass'] == $_SESSION['M2_password'])){
+							$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
+							mysql_select_db($sql_db, $sqlconnect);
+							
+							$query = sqlquery('UPDATE `players` SET `rank_id` = 0 WHERE `id` = '. userByID(mysql_real_escape_string($_POST['char'])) .'');
+							if(mysql_num_rows($query) == 1)
+								echo '<center>You have left your guild.</center>';
+							else
+								echo '<center>Error! Couldn\'t leave the guild!</center>';
+						}
+						else {
+							echo '<center><form action="guilds.php?act=leave" method="post">';
+							echo 'Account Number: <input type="password" name="agreeacc" /><br />';
+							echo 'Account Password: <input type="password" name="agreepass" /><br />';
+							echo '<input type="hidden" name="char" value="'. $_POST['char'] .'" />';
+							echo '<br /><br /><input type="submit" value="Delete" />';
+							echo '</form></center>';
+						}
+					}
+					else {
+						$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
+						mysql_select_db($sql_db, $sqlconnect);
+						
+						$chars = getChars($_SESSION['M2_account']);
+						echo '<center><form action="guilds.php?act=leave" method="post">';
+						echo 'Select a Character: <select name="char">';
+						foreach($chars as $char){
+							echo '<option value="'. $char .'">'. $char .'</option>';
+						}
+						echo '</select>';
+						echo '<br /><br /><input type="submit" value="Continue" />';
+						echo '</form></center>';
+					}
 				}
 				break;
 			case "disband":
@@ -201,10 +235,54 @@ if($modules_guilds)
 					echo "<center><a href=\"../Manager/loginInterface.php\">Please login first!</a></center>";
 				}
 				else { // logged in
-					$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
-					mysql_select_db($sql_db, $sqlconnect);
+					if($_POST['char']){
+						if(($_POST['agreeacc'] == $_SESSION['M2_account']) && ($_POST['agreepass'] == $_SESSION['M2_password'])){
+							$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
+							mysql_select_db($sql_db, $sqlconnect);
+							
+							if(sqlquery('DELETE FROM `guilds` WHERE `ownerid` = '. userByID(mysql_real_escape_string($_POST['char'])) .''))
+								echo '<center>Your guild has been deleted.</center>';
+							else
+								echo '<center>Error! Your guild could not be deleted!</center>';
+						}
+						else {
+							echo '<center><form action="guilds.php?act=disband" method="post">';
+							echo 'Account Number: <input type="password" name="agreeacc" /><br />';
+							echo 'Account Password: <input type="password" name="agreepass" /><br />';
+							echo '<input type="hidden" name="char" value="'. $_POST['char'] .'" />';
+							echo '<br /><br /><input type="submit" value="Delete" />';
+							echo '</form></center>';
+						}
+					}
+					else {
+						$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
+						mysql_select_db($sql_db, $sqlconnect);
+						
+						$chars = getChars($_SESSION['M2_account']);
+						echo '<center><form action="guilds.php?act=disband" method="post">';
+						echo 'Select a Character: <select name="char">';
+						foreach($chars as $char){
+							echo '<option value="'. $char .'">'. $char .'</option>';
+						}
+						echo '</select>';
+						echo '<br /><br /><input type="submit" value="Continue" />';
+						echo '</form></center>';
+						
+						//$query = sqlquery('SELECT * FROM `guilds` WHERE `ownerid` = '.  .'');
+					}
+				}
+				break;
+			case "join":
+				if(!$_SESSION['M2_account'] || !$_SESSION['M2_password']){ // not logged in
+					echo "<center><a href=\"../Manager/loginInterface.php\">Please login first!</a></center>";
+				}
+				else { // logged in
+					if($_POST['guild']){
 					
-					//$query = sqlquery('SELECT * FROM `guilds` WHERE `ownerid` = '.  .'');
+					}
+					else {
+						//$query = sqlquery('SELECT * FROM `guild_invites` WHERE `player_id` = 0');
+					}
 				}
 				break;
 			default:
