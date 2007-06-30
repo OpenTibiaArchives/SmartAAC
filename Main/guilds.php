@@ -120,6 +120,27 @@ if($modules_guilds)
 							}
 						}
 						echo '</table></center>';
+						echo '<br /><br />';
+						$query = sqlquery('SELECT `player_id` FROM `guild_invites` WHERE `guild_id` = '. $guild['id'] .'');
+						if(mysql_num_rows($query) != 0) {
+							echo '
+							<center>
+							<h4>Invited Players:</h4>
+							<table style="text-align: left; width: 15%;" border="1" cellpadding="0" cellspacing="2">
+							<tbody>
+							<tr>
+							<td style="width: 10%;">Name</td>
+							</tr>
+							</tbody>';
+							while($row = mysql_fetch_array($query)){
+								echo '
+								<tr>
+								<td><center><a href="character.php?char='. userFromID($row['player_id']) .'">'. userFromID($row['player_id']) .'</a></center></td>
+								</tr>
+								';
+							}
+							echo '</table><center><a href="guilds.php?act=join">Join</a></center>';
+						}
 					}
 				}
 				else { // List of guilds
@@ -200,14 +221,19 @@ if($modules_guilds)
 				else { // logged in
 					if($_POST['char']){
 						if(($_POST['agreeacc'] == $_SESSION['M2_account']) && ($_POST['agreepass'] == $_SESSION['M2_password'])){
-							$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
-							mysql_select_db($sql_db, $sqlconnect);
+							if(in_array($_POST['char'], getChars($_SESSION['M2_account']))){
+								$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
+								mysql_select_db($sql_db, $sqlconnect);
 							
-							$query = sqlquery('UPDATE `players` SET `rank_id` = 0 WHERE `id` = '. userByID(mysql_real_escape_string($_POST['char'])) .'');
-							if(mysql_num_rows($query) == 1)
-								echo '<center>You have left your guild.</center>';
-							else
-								echo '<center>Error! Couldn\'t leave the guild!</center>';
+								$query = sqlquery('UPDATE `players` SET `rank_id` = 0 WHERE `id` = '. userByID(mysql_real_escape_string($_POST['char'])) .'');
+								if(mysql_num_rows($query) == 1)
+									echo '<center>You have left your guild.</center>';
+								else
+									echo '<center>Error! Couldn\'t leave the guild!</center>';
+							}
+							else {
+								die('Nice hack-attempt, but didn\'t work =)');
+							}
 						}
 						else {
 							echo '<center><h4>Please type your account number and password to leave the guild.</h4><br />';
@@ -242,13 +268,18 @@ if($modules_guilds)
 				else { // logged in
 					if($_POST['char']){
 						if(($_POST['agreeacc'] == $_SESSION['M2_account']) && ($_POST['agreepass'] == $_SESSION['M2_password'])){
-							$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
-							mysql_select_db($sql_db, $sqlconnect);
+							if(in_array($_POST['char'], getChars($_SESSION['M2_account']))){
+								$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
+								mysql_select_db($sql_db, $sqlconnect);
 							
-							if(sqlquery('DELETE FROM `guilds` WHERE `ownerid` = '. userByID(mysql_real_escape_string($_POST['char'])) .''))
-								echo '<center>Your guild has been deleted.</center>';
-							else
-								echo '<center>Error! Your guild could not be deleted!</center>';
+								if(sqlquery('DELETE FROM `guilds` WHERE `ownerid` = '. userByID(mysql_real_escape_string($_POST['char'])) .''))
+									echo '<center>Your guild has been deleted.</center>';
+								else
+									echo '<center>Error! Your guild could not be deleted!</center>';
+							}
+							else {
+								die('Nice hack-attempt, but didn\'t work =)');
+							}
 						}
 						else {
 							echo '<center><h4>Please type your account number and password to disband the guild.</h4><br />';
@@ -283,11 +314,64 @@ if($modules_guilds)
 					echo "<center><a href=\"../Manager/loginInterface.php\">Please login first!</a></center>";
 				}
 				else { // logged in
-					if($_POST['guild']){
-					
+					if($_POST['char']){
+						if($_POST['guild']){
+							$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
+							mysql_select_db($sql_db, $sqlconnect);
+							if(in_array($_POST['char'], getChars($_SESSION['M2_account']))){
+								sqlquery('DELETE FROM `guild_invites` WHERE `player_id` = '. userByID(mysql_real_escape_string($_POST['char'])) .' AND `guild_id` = '. intval($_POST['guild_id']) .'') or die('<center><h4>Error! Couldn\'t join the guild, please contact the webmaster! ('.mysql_error().' ('.mysql_errno().'))</h4></center>');
+								sqlquery('UPDATE `players`, `guilds`, `guild_ranks`, `guild_invites` SET `players`.`rank_id` = `guild_ranks`.`id` WHERE `players`.`id` = `guild_invites`.`player_id` AND `guild_invites`.`guild_id` = '. intval($_POST['guild_id']) .' AND `guild_ranks`.`level` = 1') or die('<center><h4>Error! Couldn\'t join the guild, please contact the webmaster! ('.mysql_error().' ('.mysql_errno().'))</h4></center>');
+								
+								echo '<center><h4>Successfully joined the guild.</h4></center>';
+							}
+							else {
+								die('Nice hack-attempt, but didn\'t work =)');
+							}
+						}
+						else {
+							$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
+							mysql_select_db($sql_db, $sqlconnect);
+						
+							$query = sqlquery('SELECT `guild_id` FROM `guild_invites` WHERE `player_id` = '. userByID(mysql_real_escape_string($_POST['char'])) .'');
+							if(mysql_num_rows($query) != 0){
+								echo '
+								<center>
+								<h4>Guilds:</h4>
+								<table style="text-align: left; width: 20%;" border="1" cellpadding="0" cellspacing="2">
+								<tbody>
+								<tr>
+								<td style="width: 80%;">Guild Name</td>
+								<td style="width: 20%;"></td>
+								</tr>
+								</tbody>';
+								while($row = mysql_fetch_array($query)){
+									echo '
+									<tr>
+									<td><center><a href="guilds.php?act=view&guild='. getGuildFromID($row['guild_id']) .'">'. getGuildFromID($row['guild_id']) .'</a></center></td>
+									<td><center><form action="guilds.php?act=join" method="post"><input type="hidden" name="guild" value="'. $row['guild_id'] .'" /><input type="hidden" name="char" value="'. $_POST['char'] .'"/><input type="submit" value="Join"/></form></center></td>
+									</tr>
+									';
+								}
+								echo '</table></center>';
+							}
+							else {
+								echo '<center><h4>You are not invited to any guilds.</h4></center>';
+							}
+						}
 					}
 					else {
-						//$query = sqlquery('SELECT * FROM `guild_invites` WHERE `player_id` = 0');
+						$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
+						mysql_select_db($sql_db, $sqlconnect);
+						
+						$chars = getChars($_SESSION['M2_account']);
+						echo '<center><form action="guilds.php?act=join" method="post">';
+						echo 'Select a Character: <select name="char">';
+						foreach($chars as $char){
+							echo '<option value="'. $char .'">'. $char .'</option>';
+						}
+						echo '</select>';
+						echo '<br /><br /><input type="submit" value="Continue" />';
+						echo '</form></center>';
 					}
 				}
 				break;

@@ -274,6 +274,18 @@ function getChars($accno)
 	return $chars;
 }
 
+function getGuildFromID($id){
+	include '../conf.php';
+	
+	$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
+	mysql_select_db($sql_db, $sqlconnect);
+	$query = sqlquery('SELECT `name` FROM `guilds` WHERE `id` = '.intval($id).'');
+	while($row = mysql_fetch_array($query)) {
+		return $row['name'];
+	}
+	return false;
+}
+
 function skills($skill)
 {
 	if($skill == "level" || $skill == "magic" || $skill == "fist" || $skill == "club" || $skill == "sword" || $skill == "axe" || $skill == "distance" || $skill == "shielding" || $skill == "fishing")
