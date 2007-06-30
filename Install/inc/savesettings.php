@@ -158,24 +158,29 @@ else
 			if(empty($conf_char_mana_knight)) { $conf_char_mana_knight = 100; }
 	}
 
-	if(isset($_POST['SQL_Pass']))
-	{
-		$conf_host =			$_POST["SQL_Host"];
-		$conf_user =			$_POST["SQL_User"];
-		$conf_pass = 			$_POST["SQL_Pass"];
-		$conf_db = 			$_POST["SQL_DB"];
-	}
-	else
-	{
-		$conf_host =		"";
-		$conf_user =		"";
-		$conf_user =		"";
-		$conf_db =		"";
-	}
+	$conf_host =			$_POST["SQL_Host"];
+	$conf_user =			$_POST["SQL_User"];
+	$conf_pass =			$_POST["SQL_Pass"];
+	$conf_db =				$_POST["SQL_DB"];
 
 	$conf_os =			    $_POST["HostOS"];
 	$conf_connection =		$_POST["HostConnection"];
 	$conf_uptimetype =		$_POST["HostUptime"];
+	
+	// Create table "guild_invites"
+	$sqlquery = 'CREATE TABLE `guild_invites` (
+	`player_id` INT NOT NULL ,
+	`guild_id` INT NOT NULL,
+	FOREIGN KEY (`player_id`) REFERENCES `players` (`id`),
+	FOREIGN KEY (`guild_id`) REFERENCES `guilds` (`id`)
+	) ENGINE = InnoDB';
+
+	$sqlconnect = mysql_connect($conf_host, $conf_user, $conf_pass) or die('Couldn\'t connect to MySQL server: '.mysql_error().' ('.mysql_errno().')');
+	mysql_select_db($conf_db, $sqlconnect) or die('Couldn\'t select MySQL database: '.mysql_error().' ('.mysql_errno().')');
+	
+	$query = mysql_query($sqlquery) or die('Couldn\'t create MySQL table guild_invites: '.mysql_error().' ('.mysql_errno().')');
+	
+	// End: Create table "guild_invites"
 
 	$confFile = fopen("../conf.php", "w");
 	$timeCreated = date('r');

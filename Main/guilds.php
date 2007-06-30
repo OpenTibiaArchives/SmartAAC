@@ -60,6 +60,7 @@ if($modules_guilds)
 	<td width="13%" valign="top"><table width="130" border="0" align="right" cellpadding="2" cellspacing="1">
 	<tr><td><div align="center"><a href="guilds.php?act=manage">Manage</a></td></div></tr>
 	<tr><td><div align="center"><a href="guilds.php?act=view">View</a></td></div></tr>
+	<tr><td><div align="center"><a href="guilds.php?act=join">Join</a></td></div></tr>
 	<tr><td><div align="center"><a href="guilds.php?act=create">Create</a></td></div></tr>
 	<tr><td><div align="center"><a href="guilds.php?act=leave">Leave</a></td></div></tr>
 	<tr><td><div align="center"><a href="guilds.php?act=disband">Disband</a></td></div></tr>
@@ -169,9 +170,12 @@ if($modules_guilds)
 								echo 'That guildname already exist.';
 							}
 							else {
-								sqlquery('INSERT INTO `guilds` (`name`, `ownerid`, `creationdata`) VALUES(\''. mysql_real_escape_string($_POST['guildname']) .'\', '. userByID(mysql_real_escape_string($_POST['char'])) .', '. time() .')') or die('Error: '.mysql_error().' ('.mysql_errno().')');
-								sqlquery('UPDATE `players`, `guild_ranks`, `guilds` SET `players`.`rank_id` = `guild_ranks`.`id` WHERE `players`.`id` = '. userByID(mysql_real_escape_string($_POST['char'])) .' AND `guilds`.`ownerid` = `players`.`id` AND `guild_ranks`.`guild_id` = `guilds`.`id` AND `guild_ranks`.`level` = 3');
-								echo '<center>The guild has been made. <a href="guilds.php?act=manage">Click here</a> to manage it.</center>';
+								$query = sqlquery('INSERT INTO `guilds` (`name`, `ownerid`, `creationdata`) VALUES(\''. mysql_real_escape_string($_POST['guildname']) .'\', '. userByID(mysql_real_escape_string($_POST['char'])) .', '. time() .')') or die('Error: '.mysql_error().' ('.mysql_errno().')');
+								$query2 = sqlquery('UPDATE `players`, `guild_ranks`, `guilds` SET `players`.`rank_id` = `guild_ranks`.`id` WHERE `players`.`id` = '. userByID(mysql_real_escape_string($_POST['char'])) .' AND `guilds`.`ownerid` = `players`.`id` AND `guild_ranks`.`guild_id` = `guilds`.`id` AND `guild_ranks`.`level` = 3');
+								if(mysql_num_rows($query) == 1 && mysql_num_rows($query2) == 1)
+									echo '<center>The guild has been made. <a href="guilds.php?act=manage">Click here</a> to manage it.</center>';
+								else
+									echo '<center>Couldn\'t create the guild, please contact the webmaster!</center>';
 							}
 						}
 					}
@@ -206,7 +210,8 @@ if($modules_guilds)
 								echo '<center>Error! Couldn\'t leave the guild!</center>';
 						}
 						else {
-							echo '<center><form action="guilds.php?act=leave" method="post">';
+							echo '<center><h4>Please type your account number and password to leave the guild.</h4><br />';
+							echo '<form action="guilds.php?act=leave" method="post">';
 							echo 'Account Number: <input type="password" name="agreeacc" /><br />';
 							echo 'Account Password: <input type="password" name="agreepass" /><br />';
 							echo '<input type="hidden" name="char" value="'. $_POST['char'] .'" />';
@@ -246,7 +251,8 @@ if($modules_guilds)
 								echo '<center>Error! Your guild could not be deleted!</center>';
 						}
 						else {
-							echo '<center><form action="guilds.php?act=disband" method="post">';
+							echo '<center><h4>Please type your account number and password to disband the guild.</h4><br />';
+							echo '<form action="guilds.php?act=disband" method="post">';
 							echo 'Account Number: <input type="password" name="agreeacc" /><br />';
 							echo 'Account Password: <input type="password" name="agreepass" /><br />';
 							echo '<input type="hidden" name="char" value="'. $_POST['char'] .'" />';
