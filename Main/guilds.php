@@ -170,7 +170,7 @@ if($modules_guilds)
 							}
 							else {
 								sqlquery('INSERT INTO `guilds` (`name`, `ownerid`, `creationdata`) VALUES(\''. mysql_real_escape_string($_POST['guildname']) .'\', '. userByID(mysql_real_escape_string($_POST['char'])) .', '. time() .')') or die('Error: '.mysql_error().' ('.mysql_errno().')');
-								//sqlquery('UPDATE `players` SET `rank_id` = '. .' WHERE `name` = '. mysql_real_escape_string($_POST['char']) .'');
+								sqlquery('UPDATE `players`, `guild_ranks`, `guilds` SET `players`.`rank_id` = `guild_ranks`.`id` WHERE `players`.`id` = '. userByID(mysql_real_escape_string($_POST['char'])) .' AND `guilds`.`ownerid` = `players`.`id` AND `guild_ranks`.`guild_id` = `guilds`.`id` AND `guild_ranks`.`level` = 3');
 								echo '<center>The guild has been made. <a href="guilds.php?act=manage">Click here</a> to manage it.</center>';
 							}
 						}
