@@ -26,6 +26,7 @@
 //    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // ===========================================================
 
+session_start();
 include '../conf.php';
 include '../Includes/resources.php';
 include '../Includes/stats/stats.php';
@@ -165,7 +166,10 @@ else
 	echo "<h1>Module has been disabled by the admin</h1>";
 }
 
-echo $tpl->fetch('../Includes/Templates/Indigo/sidebar.tpl');
+if(isset($_SESSION['M2_account']) && isset($_SESSION['M2_password']))
+	echo $tpl->fetch('../Includes/Templates/Indigo/sidebarManagerLoggedIn.tpl');
+else
+	echo $tpl->fetch('../Includes/Templates/Indigo/sidebar.tpl');
 echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
 echo $tpl->fetch('../Includes/Templates/Indigo/bottom.tpl');
 ?>

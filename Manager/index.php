@@ -63,6 +63,10 @@ switch($act)
 	case "register":
 	include "accountCreate.php";
 	break;
+
+	case "logout":
+	include "accountLogout.php";
+	break;
 	
 	default:
 	include "loginInterface.php";

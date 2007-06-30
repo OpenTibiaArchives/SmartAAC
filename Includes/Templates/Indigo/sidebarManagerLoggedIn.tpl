@@ -3,8 +3,8 @@
 		<div class="sidenav">
 			<h1>My Account</h1>
 			<ul>
-				<li><a href="index.php?act=manager">My Account</a></li>
-				<li><a href="index.php?act=logout">Logout</a></li>
+				<li><a href="../Manager/index.php?act=manager">My Account</a></li>
+				<li><a href="../Manager/index.php?act=logout">Logout</a></li>
 
 			</ul>		
 

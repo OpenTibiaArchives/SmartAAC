@@ -13,8 +13,8 @@
 	exit;
 	}
 	if($_GET["logout"] == "yes") {
-	setcookie("logged_in_user", "", time()+1);
-	setcookie("logged_in_pass", "", time()+1);
+	setcookie("logged_in_user", "", mktime(12,0,0,1, 1, 1990));
+	setcookie("logged_in_pass", "", mktime(12,0,0,1, 1, 1990));
 	header("Location: index.php");
 	exit;
 	}

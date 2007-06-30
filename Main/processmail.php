@@ -1,4 +1,5 @@
 <?PHP
+
 include '../conf.php';
 
 @extract($_POST);
