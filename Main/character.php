@@ -114,7 +114,7 @@ if($modules_charsearch)
 				$guild_rank = $guildrow['guildrank'];
 			}
 			if($guild_name && $guild_rank) {
-				echo '<tr><td width=200px>Guild membership:</td><td width=300px> '. $guild_rank .' of the '.$guild_name;
+				echo '<tr><td width=200px>Guild membership:</td><td width=300px> '. $guild_rank .' of the <a href="guilds.php?act=view&guild='.$guild_name.'">'.$guild_name.'</a>';
 				if(!empty($guild_nick))
 					echo ' ('. $guild_nick .')';
 				echo '<br /></td></tr>';

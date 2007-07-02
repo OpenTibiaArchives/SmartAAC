@@ -28,13 +28,7 @@
 
 
 function sqlquery($query) {
-	$result = mysql_query($query);
-	if(!$result)
-	{
-	echo '<font style="font-family: Verdana; size: 12px;">';
-	echo 'MySQL error #' . mysql_errno() . '.<br><br> ' . mysql_error();
-	echo '</font>';
-	}
+	$result = mysql_query($query) or die('<font style="font-family: Verdana; size: 12px;">MySQL error #'. mysql_errno() .'.<br/><br/> '. mysql_error().'</font>');
 
 	return $result;
 }
@@ -87,7 +81,7 @@ function list_monsters($dir)
    {
 		if($file != 'monsters.xml')
 		{
-			if(eregi("\.xml$", $file))
+			if(eregi(".xml$", $file))
 			{
 				$xml = new SimpleXMLElement(file_get_contents("$dir/monster/$file"));
         
@@ -102,7 +96,7 @@ function list_monsters($dir)
 				if($summon == NULL)
 					$summon = "-";
             
-				echo "<tr><td>$name</td>";
+				echo "<tr><td><a href=\"monsters.php?monster=$name\">$name</a></td>";
 				echo "<td>$exp</td>";
 				echo "<td>$health</td>";
 				echo "<td>$summon</td></tr>";
@@ -110,6 +104,43 @@ function list_monsters($dir)
 		}
 	}
 	echo "</table>";
+}
+
+function get_monster($dir)
+{
+   $open_dir = opendir("$dir/monster/");
+   $monster = $_GET['monster'];
+   
+   while($file = readdir($open_dir))
+   {
+		if($file != 'monsters.xml')
+		{
+			if(eregi(".xml$", $file))
+			{
+				$xml = new SimpleXMLElement(file_get_contents("$dir/monster/$file"));
+        
+				$name = $xml['name'];
+				if($name == $monster)
+				{
+					$exp = $xml['experience'];
+					$health = $xml->health['max'];
+					$summon = $xml->summons->summon['name'];
+
+					if($exp == NULL)
+						$exp = 0;
+	                
+					if($summon == NULL)
+						$summon = "-";
+	            
+					echo "<br />";
+					echo "<img src=\"../Includes/monster_imgs/$name.gif\" alt=\"$name\" /><br /><br />";
+					echo "<p>EXP: $exp <br /> Health: $health <br /> Summons? $summon</p>";
+					
+					echo "<a href=\"monsters.php\">Back to the listing</a>";
+				}
+			}
+		}
+	}
 }
 
 function checkModuleLinks()
