@@ -55,8 +55,18 @@ echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
 if($modules_monsters)
 {
-	echo '<h1>Monsters</h1><br />';
-	list_monsters($aac_dataDir);
+	$monster = $_GET['monster'];
+	
+	if(isset($monster))
+	{
+		echo "<h1>$monster</h1>";
+		get_monster($aac_dataDir);
+	}
+	else
+	{
+		echo '<h1>Monsters</h1><br />';
+		list_monsters($aac_dataDir);
+	}
 }
 else
 {
