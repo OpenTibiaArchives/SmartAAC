@@ -168,6 +168,7 @@ else
 	$conf_uptimetype =		$_POST["HostUptime"];
 	
 	// Create table "guild_invites"
+	$query2 = 'DROP TABLE IF EXISTS `guild_invites`';
 	$sqlquery = 'CREATE TABLE `guild_invites` (
 	`player_id` INT NOT NULL ,
 	`guild_id` INT NOT NULL,
@@ -178,6 +179,7 @@ else
 	$sqlconnect = mysql_connect($conf_host, $conf_user, $conf_pass) or die('Couldn\'t connect to MySQL server: '.mysql_error().' ('.mysql_errno().')');
 	mysql_select_db($conf_db, $sqlconnect) or die('Couldn\'t select MySQL database: '.mysql_error().' ('.mysql_errno().')');
 	
+	$query2 = mysql_query($query2) or die('Couldn\'t proceed MySQL query: '.mysql_error().' ('.mysql_errno().')');
 	$query = mysql_query($sqlquery) or die('Couldn\'t create MySQL table guild_invites: '.mysql_error().' ('.mysql_errno().')');
 	
 	// End: Create table "guild_invites"

@@ -532,11 +532,8 @@ if($modules_guilds)
 								$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
 								mysql_select_db($sql_db, $sqlconnect);
 							
-								$query = sqlquery('UPDATE `players` SET `rank_id` = 0 WHERE `id` = '. userByID(mysql_real_escape_string($_POST['char'])) .'');
-								if(mysql_num_rows($query) == 1)
-									echo '<center>You have left your guild.</center>';
-								else
-									echo '<center>Error! Couldn\'t leave the guild!</center>';
+								sqlquery('UPDATE `players` SET `rank_id` = 0 WHERE `id` = '. userByID(mysql_real_escape_string($_POST['char'])) .'');
+								echo '<center><h4>You have left your guild.</h4></center>';
 							}
 							else {
 								die('Nice hack-attempt, but didn\'t work =)');
