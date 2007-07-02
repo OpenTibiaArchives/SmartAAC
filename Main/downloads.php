@@ -66,7 +66,9 @@ $d = opendir("downloads");
 	if(is_dir($f))
 	continue;
 
-		echo "<p><a href=\"$f\">$f</a><br />";
+		$fsize = filesize("downloads/$f");
+		$fsize = round(($fsize/1024),2);
+		echo "<p><a href=\"$f\">$f</a> - ($fsize kb)<br />";
 		$total_downloads++;
 		
 		if($total_downloads == 0)

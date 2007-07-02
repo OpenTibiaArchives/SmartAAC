@@ -57,6 +57,7 @@ if($modules_custom)
 	echo "<h1>Custom Pages</h1><br />";
 	
 	$total_customs = 0;
+	echo "<p>";
 	
 	$d = opendir("customs");
 		while($f = readdir($d))

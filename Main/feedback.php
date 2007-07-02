@@ -55,13 +55,33 @@ echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 if($modules_feedback)
 {
 	echo "<p>You can give feedback about your experiences with $aac_servername by this form</p>
+<form action=\"processmail.php\" method=\"post\">
+<table style=\"text-align: left; width: 300px;\" border=\"0\" cellpadding=\"2\" cellspacing=\"4\">
+  <tbody>
+    <tr>
+      <td>Name:</td>
+      <td><input type=\"text\" name=\"name\" size=\"30\" maxlength=\"20\" /></td>
+    </tr>
+    <tr>
+      <td>Email:</td>
+      <td><input type=\"text\" name=\"email\" size=\"30\" maxlength=\"30\" /></td>
+    </tr>
+    <tr>
+      <td>Subject:</td>
+      <td><input type=\"text\" name=\"subject\" size=\"30\" maxlength=\"30\" /></td>
+    </tr>
+    <tr>
+      <td>Message:</td>
+      <td><textarea name=\"text\" name=\"text\" cols=\"50\" rows=\"10\"></textarea></td>
+	</tr>
+	<tr>
+	<td><input type=\"submit\" name=\"submit\" value=\"Send\" /></td>
+	<td>&nbsp;</td>
+	</tr>
+	  </tbody>
+</table>
 
-	<form action=\"processmail.php\" method=\"post\">
-	Name: <input type=\"text\" name=\"name\" size=\"20\" maxlength=\"20\" /><br />
-	Email: <input type=\"text\" name=\"email\" size=\"30\" maxlength=\"30\" /><br />
-	Subject: <input type=\"text\" name=\"subject\" size=\"30\" maxlength=\"30\" /><br />
-	Text:<textarea name=\"text\" name=\"text\" cols=\"50\" rows=\"10\"></textarea><br />
-	<input type=\"submit\" name=\"submit\" value=\"Send\" />
+	
 	</form>
 	";
 }
