@@ -91,7 +91,7 @@ else
 		</style>
 
 		<form action=\"save.php?save=dirs\" method=\"POST\">
-		<label for=\"DirPath\">Min Account Number Length:</label>
+		<label for=\"DirPath\">Data Directory:</label>
 		<input type=\"text\" name=\"DirPath\" value=\"$aac_dataDir\" /><br />
 
 		<br /><br />
