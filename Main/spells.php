@@ -66,14 +66,23 @@ if($modules_spells)
 		// Instant spells
 		echo "<h2>Instant Spells</h2><br />";
 		echo '
-		<table width="500" bordercolor="black" border="1"> 
-		<tr> 
-	    <th>Spell name:</th> 
-	    <th>Words:</th> 
-	    <th>Mana:</th> 
-	    <th>Level:</th> 
-	    <th>Magic Level:</th> 
-	    <th>Premium:</th> 
+		<table style="text-align: left; width: 720px; font-size:14px;" border="0" cellpadding="4" cellspacing="2"><tbody>
+		<tr class="tableheaders">
+	    <td style="width: 280px; text-align: center;"><b>Spell name:</b></td>
+	    <td style="width: 400px; text-align: center;"><b>Words:</b></td>
+	    <td style="width: 139px; text-align: center;"><b>Mana:</b></td>
+	    <td style="width: 139px; text-align: center;"><b>Level:</b></td>
+	    <td style="width: 150px; text-align: center;"><b>Magic Level:</b></td>
+	    <td style="width: 139px; text-align: center;"><b>Premium:</b></td>
+		</tr>
+		<tr>
+		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
+		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
+		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
+		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
+		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
+		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
+		      <td style="width: 124px; background: #FFFFFF;">&nbsp;</td>
 		</tr>
 		';
 	
@@ -81,30 +90,39 @@ if($modules_spells)
 		{
 			if($spell['enabled'] == true)
 			{
-				echo "<tr>";
-				echo "<td>".$spell['name']."</td>";
-				echo "<td>".$spell['words']."</td>";
-				if(isset($spell['mana'])) { echo "<td>".$spell['mana']."</td>"; } else { echo "<td>N/A</td>"; }
-				if(isset($spell['lvl'])) { echo "<td>".$spell['lvl']."</td>"; } else { echo "<td>N/A</td>"; }
-				if(isset($spell['maglv'])) { echo "<td>".$spell['maglv']."</td>"; } else { echo "<td>N/A</td>"; }
-				if($spell['prem']==true) { echo "<td>Yes</td>"; } else { echo "<td>No</td>"; }
+				echo "<tr class=\"lolhover\">";
+				echo "<td style=\"width: 280px;\">".$spell['name']."</td>";
+				echo "<td style=\"width: 400px;\">".$spell['words']."</td>";
+				if(isset($spell['mana'])) { echo "<td style=\"text-align: center;\">".$spell['mana']."</td>"; } else { echo "<td style=\"text-align: center;\"><i>N/A</i></td>"; }
+				if(isset($spell['lvl'])) { echo "<td style=\"text-align: center;\">".$spell['lvl']."</td>"; } else { echo "<td style=\"text-align: center;\"><i>N/A</i></td>"; }
+				if(isset($spell['maglv'])) { echo "<td style=\"text-align: center;\">".$spell['maglv']."</td>"; } else { echo "<td style=\"text-align: center;\"><i>N/A</i></td>"; }
+				if($spell['prem']==true) { echo "<td style=\"text-align: center;\">Yes</td>"; } else { echo "<td style=\"text-align: center;\">No</td>"; }
 				echo "</tr>";
 			}
 		}
 	
-		echo '</table><br />';
+		echo '</tbody></table><br />';
 		
 		// Conjure spells		
 		echo "<h2>Conjure Spells</h2><br />";
 		echo '
-		<table width="500" bordercolor="black" border="1"> 
-		<tr> 
-	    <th>Spell name:</th> 
-	    <th>Words:</th> 
-	    <th>Mana:</th> 
-	    <th>Level:</th> 
-	    <th>Magic Level:</th> 
-	    <th>Premium:</th> 
+		<table style="text-align: left; width: 720px; font-size:14px;" border="0" cellpadding="4" cellspacing="2"><tbody>
+		<tr class="tableheaders"> 
+	    <td style="width: 139px; text-align: center;"><b>Spell name:</b></td> 
+	    <td style="width: 139px; text-align: center;"><b>Words:</b></td> 
+	    <td style="width: 139px; text-align: center;"><b>Mana:</b></td>
+	    <td style="width: 139px; text-align: center;"><b>Level:</b></td>
+	    <td style="width: 139px; text-align: center;"><b>Magic Level:</b></td> 
+	    <td style="width: 139px; text-align: center;"><b>Premium:</b></td>
+		</tr>
+		<tr>
+		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
+		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
+		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
+		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
+		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
+		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
+		      <td style="width: 124px; background: #FFFFFF;">&nbsp;</td>
 		</tr>
 		';
 	

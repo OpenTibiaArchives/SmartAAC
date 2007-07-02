@@ -67,7 +67,7 @@ if($modules_commands)
 	{
 		echo '
 		<table style="text-align: left; width: 283px; font-size:14px;" border="0"
-		 cellpadding="4" cellspacing="0">
+		 cellpadding="4" cellspacing="2">
 		  <tbody>
 		    <tr class="tableheaders">
 		      <td style="width: 139px; text-align: center;"><b>Command</b></td>

@@ -74,8 +74,23 @@ function createRandomPassword() {
 /* Credits to Nostradamus (on otfans.net) for this function */
 function list_monsters($dir)
 {
-   $open_dir = opendir("$dir/monster/");
-   echo "<table border=1><th>Name</th><th>Exp</th><th>Health</th><th>Summon</th>";
+	$open_dir = opendir("$dir/monster/");
+	echo '<table style="text-align: left; width: 500px; font-size:14px;" border="0"
+		 cellpadding="4" cellspacing="2"><tbody>';
+	echo '
+			<tr class="tableheaders">
+		      <td style="width: 139px; text-align: center;"><b>Name</b></td>
+		      <td style="width: 139px; text-align: center;"><b>Exp</b></td>
+		      <td style="width: 124px; text-align: center;"><b>Health</b></td>
+		      <td style="width: 124px; text-align: center;"><b>Summons</b></td>
+		    </tr>
+			<tr>
+		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
+		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
+		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
+		      <td style="width: 124px; background: #FFFFFF;">&nbsp;</td>
+		    </tr>
+		';
    
    while($file = readdir($open_dir))
    {
@@ -96,14 +111,15 @@ function list_monsters($dir)
 				if($summon == NULL)
 					$summon = "-";
             
-				echo "<tr><td><a href=\"monsters.php?monster=$name\">$name</a></td>";
-				echo "<td>$exp</td>";
-				echo "<td>$health</td>";
-				echo "<td>$summon</td></tr>";
+				echo "<tr class=\"lolhover\">";
+				echo "<td style=\"width: 300px; text-align: left;\"><a href=\"monsters.php?monster=$name\">$name</a></td>";
+				echo "<td style=\"width: 124px; text-align: left;\">$exp</td>";
+				echo "<td style=\"width: 124px; text-align: left;\">$health</td>";
+				echo "<td style=\"width: 500px; text-align: center;\">$summon</td></tr>";
 			}
 		}
 	}
-	echo "</table>";
+	echo "</tbody></table>";
 }
 
 function get_monster($dir)
@@ -120,6 +136,7 @@ function get_monster($dir)
 				$xml = new SimpleXMLElement(file_get_contents("$dir/monster/$file"));
         
 				$name = $xml['name'];
+				$loname = str_replace(' ', '', strtolower($name));
 				if($name == $monster)
 				{
 					$exp = $xml['experience'];
@@ -133,7 +150,7 @@ function get_monster($dir)
 						$summon = "-";
 	            
 					echo "<br />";
-					echo "<img src=\"../Includes/monster_imgs/$name.gif\" alt=\"$name\" /><br /><br />";
+					echo "<img src=\"../Includes/monster_imgs/$loname.gif\" alt=\"$loname image is not available\" /><br /><br />";
 					echo "<p>EXP: $exp <br /> Health: $health <br /> Summons? $summon</p>";
 					
 					echo "<a href=\"monsters.php\">Back to the listing</a>";
