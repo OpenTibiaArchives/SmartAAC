@@ -81,7 +81,7 @@ function list_monsters($dir)
    {
 		if($file != 'monsters.xml')
 		{
-			if(eregi(".xml$", $file))
+			if(eregi("\.xml$", $file))
 			{
 				$xml = new SimpleXMLElement(file_get_contents("$dir/monster/$file"));
         
