@@ -23,12 +23,24 @@ while(true)
 	}
 }
 
-
-
-$accNo = sqlquery('SELECT `id` FROM `accounts` WHERE `recovery` = \'X28BU8EV-FR8UM5IK-VKFX8MPA-3BIEHBOO\'');
-
-echo "The key you entered is: $reckey <br /><br />";
-echo "Account Number: $aacNo<br />";
-echo "Password: ";
+if($foundKey)
+{
+	$accNo = sqlquery('SELECT * FROM `accounts` WHERE `recovery` = \''.$reckey.'\'');
+	while ($row = mysql_fetch_assoc($accNo))
+	{
+		$accountNo = $row["id"];
+	}
+	$newPass = createRandomPassword();
+	sqlquery('UPDATE `'.$sql_db.'`.`accounts` SET `password` = \''.$newPass.'\' WHERE `accounts`.`id` ='.$accountNo.';');
+	
+	//echo "The key you entered is: $reckey <br /><br />";
+	echo "Account reset, here are the credentials <br /><br />";
+	echo "Account Number: $accountNo<br />";
+	echo "Password: $newPass";
+}
+else
+{
+	echo "Key doesn't exist";
+}
 
 ?>
