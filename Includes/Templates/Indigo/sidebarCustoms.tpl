@@ -20,7 +20,7 @@
 				      </tr>
 					  <tr>
 				        <td style="width: 90px;"></td>
-				        <td style="width: 157px;">Lost Password</td>
+				        <td style="width: 157px;"><a href="../Manager/index.php?act=lost">Lost Password</a></td>
 				      </tr>
 				      <tr>
 				        <td style="width: 90px;"><input type="Submit" value="Login"></form></td>

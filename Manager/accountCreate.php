@@ -111,12 +111,29 @@ if ( (isset($M2_account) && !empty($M2_account)) && (isset($M2_password) && !emp
 			else {
 				sqlquery('INSERT INTO `accounts` ( id, password , email , blocked , premdays )
 					VALUES ( ' . intval($M2_account) . ', \'' . mysql_real_escape_string($M2_password) . '\', \'' . mysql_real_escape_string($M2_email) . '\', 0, 0 );');
-					
+				
+				$reckey = createRecoveryKey();
+				while(true)
+				{
+					$result = sqlquery("SELECT * FROM `accounts` WHERE `recovery` = '$reckey';");
+					$rowz = mysql_num_rows($result);
+					if($rowz == 1)
+					{
+						$reckey = createRecoveryKey();
+					}
+					elseif($rowz == 0)
+					{
+						break;
+					}
+				}
+			
+				sqlquery('UPDATE `'.$sql_db.'`.`accounts` SET `recovery` = \''.$reckey.'\' WHERE `accounts`.`id` ='.intval($M2_account).' LIMIT 1 ;');
+			
 				$created_Account = true;
 				session_unset();
 			//	doInfoBox("Your account has been successfully created. Login <a href=\"loginInterface.php\">here</a> to create your first character in the account!<br><br>
 			//		Your account number is: $M2_account</font>");
-				echo '<meta http-equiv="refresh" content="0;url=index.php?act=login" />';
+				echo '<meta http-equiv="refresh" content="0;url=index.php?act=login&key='.$reckey.'" />';
 			}
 		}
 	}
@@ -199,7 +216,7 @@ echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 else
 {
 	echo '<td><input name="M2_account" type="text" maxlength="' . $aac_maxacclen . '" class="textfield"></td>
-	<td style="width: 218px;"><font color="red">* <i>(<?php echo "$aac_minacclen - $aac_maxacclen numbers"; ?>)</i></font></td>';
+	<td style="width: 218px;"><font color="red">* <i>('.$aac_minacclen .' - '. $aac_maxacclen.' numbers)</i></font></td>';
 }
 ?>
 

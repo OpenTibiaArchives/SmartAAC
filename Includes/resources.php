@@ -71,6 +71,51 @@ function createRandomPassword() {
 
 }
 
+function createRecoveryKey() {
+
+    $chars = "ABCDEFGHIJKMNOPQRSTUVWXYZ023456789";
+    srand((double)microtime()*1000000);
+    $i = 0;
+    $pass = '' ;
+    $pass2 = '' ;
+    $pass3 = '' ;
+    $pass4 = '' ;
+
+    while ($i <= 7) {
+        $num = rand() % 33;
+        $tmp = substr($chars, $num, 1);
+        $pass = $pass . $tmp;
+        $i++;
+    }
+	
+	$i = 0;
+	while ($i <= 7) {
+        $num = rand() % 33;
+        $tmp = substr($chars, $num, 1);
+        $pass2 = $pass2 . $tmp;
+        $i++;
+    }
+	
+	$i = 0;
+	while ($i <= 7) {
+        $num = rand() % 33;
+        $tmp = substr($chars, $num, 1);
+        $pass3 = $pass3 . $tmp;
+        $i++;
+    }
+	
+	$i = 0;
+	while ($i <= 7) {
+        $num = rand() % 33;
+        $tmp = substr($chars, $num, 1);
+        $pass4 = $pass4 . $tmp;
+        $i++;
+    }
+
+    return $pass . '-' . $pass2 . '-' . $pass3 . '-' . $pass4;
+
+}
+
 /* Credits to Nostradamus (on otfans.net) for this function */
 function list_monsters($dir)
 {

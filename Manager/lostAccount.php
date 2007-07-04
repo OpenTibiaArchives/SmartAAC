@@ -25,56 +25,37 @@
 //    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // ===========================================================
 
+include "../conf.php";
+include "../Includes/resources.php";
+include '../Includes/stats/stats.php';
+include '../Includes/counter/counter.php';
 
-//header("location: start.php");
+$title = 'Register';
+$name = $aac_servername;
+$bodySpecial = 'onload="NOTHING"';
 
-$act = $_GET['act'];
+include_once('../Includes/Templates/bTemplate.php');
+$tpl = new bTemplate();
 
-switch($act)
-{
-	case "login":
-	include "loginInterface.php";
-	break;
-	
-	case "auth":
-	include "login.php";
-	break;
-	
-	case "manager":
-	include "accountManager.php";
-	break;
-	
-	case "delete":
-	include "deletePlayer.php";
-	break;
-	
-	case "addchar":
-	include "accountAddCharacter.php";
-	break;
-	
-	case "savechar":
-	include "accountSaveCharacter.php";
-	break;
-	
-	case "changepassword":
-	include "accountPassChange.php";
-	break;
-	
-	case "register":
-	include "accountCreate.php";
-	break;
+$tpl->set('title', $title);
+$tpl->set('strayline', $name);
+$tpl->set('bodySpecial', $bodySpecial);
+$tpl->set('stats', $global_stats);
+$tpl->set('AAC_Version', $aac_version);
+$tpl->set('Total_Visits', $total);
+$tpl->set('Unique_Visits', $total_uniques);
 
-	case "logout":
-	include "accountLogout.php";
-	break;
-	
-	case "lost":
-	include "lostAccount.php";
-	break;
-	
-	default:
-	include "loginInterface.php";
-	break;
-}
+echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
+?>
+<form name="input" action="lostAccountWork.php" method="post">
+<label>Recovery Key: </label><br />
+<input type="text" name="key">
+<input type="submit" value="Submit">
+</form>
+<?php
+
+echo $tpl->fetch('../Includes/Templates/Indigo/sidebarOutterMain.tpl');
+echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
+echo $tpl->fetch('../Includes/Templates/Indigo/bottom.tpl');
 ?>

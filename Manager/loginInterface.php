@@ -54,6 +54,7 @@ $tpl->set('AAC_Version', $aac_version);
 $tpl->set('Total_Visits', $total);
 $tpl->set('Unique_Visits', $total_uniques);
 
+$reckey = $_GET['key'];
 $M2_account = $_SESSION['M2_account'];
 $M2_password = $_SESSION['M2_password'];
 
@@ -62,7 +63,11 @@ if (!(isset($M2_account) && isset($M2_password) && $M2_account != null && $M2_ac
 echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 ?>
 <h2>Login to your account:</h2><br />
-	
+<?php
+if(isset($reckey)) {
+	echo "<b>Account created!<br />Your recovery key is $reckey, please keep this safe and discreet.</b><br /><br />";
+}
+?>
 
 	<form action="index.php?act=auth" method="POST">
 	<table>
