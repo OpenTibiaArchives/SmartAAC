@@ -1,0 +1,8 @@
+-------
+SUCCESSFUL login to the admin panel from IP: 127.0.0.1 || Hostname: localhost
+At time: Thu, 05 Jul 2007 22:18:41 +0100
+-------
+-------
+SUCCESSFUL login to the admin panel from IP: 127.0.0.1 || Hostname: localhost
+At time: Thu, 05 Jul 2007 22:30:12 +0100
+-------

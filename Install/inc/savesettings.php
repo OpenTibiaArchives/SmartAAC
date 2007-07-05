@@ -182,7 +182,7 @@ else
 	
 	$query2 = mysql_query($query2) or die('Couldn\'t proceed MySQL query: '.mysql_error().' ('.mysql_errno().')');
 	$query = mysql_query($sqlquery) or die('Couldn\'t create MySQL table guild_invites: '.mysql_error().' ('.mysql_errno().')');
-	//$makeRecoveryField = mysql_query($makeRecoveryField) or die('Couldn\'t create MySQL field in accounts table, "recovery": '.mysql_error().' ('.mysql_errno().')<br /><br />(Already got a field called "recovery"? Drop it, empty or something. And go back a step.)');
+	$makeRecoveryField = mysql_query($makeRecoveryField) or die('Couldn\'t create MySQL field in accounts table, "recovery": '.mysql_error().' ('.mysql_errno().')<br /><br />(Already got a field called "recovery"? Drop it, empty or something. And go back a step.)');
 	
 	// End: Create table "guild_invites"
 
@@ -222,7 +222,7 @@ else
 \$aac_versioncode = 				200;
 \$aac_dataDir =					\"$conf_dataDir\";
 \$aac_mapname =					\"$conf_mapname\";
-\$aac_maintenanceReason =		\"$aac_maintenanceReason\";
+\$aac_maintenanceReason =		\"<p>No reason set.</p>\";
 
 # Lengths of commonly used fields in the AAC
 \$aac_maxplayers =				$conf_char_max;
@@ -372,8 +372,10 @@ $encryptedAdminPass
 	echo $tpl->fetch('../Includes/Templates/Slick_minimal/top.tpl');
 
 	echo "
-	<h2>Saved</h2>
-	
+	<h2>Installed</h2>
+	<p><b>- Made guild_invites table in database<br />
+	- Made recovery field in accounts table in database<br />
+	- Wrote configuration (conf.php)</b><br /></p>
 	<p>Go forward</p>
 	<div align=\"center\">
 	<form action=\"install.php?step=6\" method=\"post\">

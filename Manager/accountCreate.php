@@ -40,7 +40,7 @@ if($aac_status == "Not Installed")
 }
 if($aac_status == "Maintenance")
 {
-	header("location: ../maintenance.php");
+	header("location: ../Main/maintenance.php");
 }
 
 $M2_account = $_POST['M2_account'];

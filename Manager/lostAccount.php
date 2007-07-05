@@ -30,6 +30,15 @@ include "../Includes/resources.php";
 include '../Includes/stats/stats.php';
 include '../Includes/counter/counter.php';
 
+if($aac_status == "Not Installed")
+{
+	die("Your AAC is not yet installed, please goto the installer");
+}
+if($aac_status == "Maintenance")
+{
+	header("location: ../Main/maintenance.php");
+}
+
 $title = 'Lost Account';
 $name = $aac_servername;
 $bodySpecial = 'onload="NOTHING"';

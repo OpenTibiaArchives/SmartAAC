@@ -160,7 +160,7 @@ else
 		<br /><br />
 		";
 		
-		if($main_enable_feedback == "true")
+		if($main_enable_mailer == "true")
 		{
 			echo "
 			<h1>Feedback Settings:</h2>
@@ -168,7 +168,7 @@ else
 			<input type=\"text\" name=\"main_email\" value=\"$main_email\" /><br /><br />
 			";
 		}
-		elseif($main_enable_feedback == "false")
+		elseif($main_enable_mailer == "false")
 		{
 			echo "
 			<input type=\"hidden\" name=\"main_email\" value=\"none@none.nodomain\" />
