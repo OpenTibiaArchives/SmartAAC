@@ -42,7 +42,7 @@ $tpl->set('documentation', $documentation);
 echo $tpl->fetch('../Includes/Templates/Slick_minimal/top.tpl');
 
 $tests_passed = 0;
-$tests_to_pass = 7;
+$tests_to_pass = 8;
 
 if( version_compare(phpversion(), "5.0.0", ">=") )
 {
@@ -115,6 +115,16 @@ else
 	$logs_confirm = "<font color=\"red\">Fail</font>";
 }
 
+if(is_writable("../Admin/news/data/users.txt"))
+{
+	$newsusers_confirm = "<font color=\"green\">Pass</font>";
+	$tests_passed++;
+}
+else
+{
+	$newsusers_confirm = "<font color=\"red\">Fail</font>";
+}
+
 // Then all those confirm variables are stored in the confirms array to access
 $confirms = array(	"PHP Version" => $php_confirm,
 					"GD Enabled" => $gd_confirm,
@@ -122,7 +132,8 @@ $confirms = array(	"PHP Version" => $php_confirm,
 					"Conf writable" => $conf_confirm,
 					"Setup Lock" => $lock_confirm,
 					"Counter" => $counter_confirm,
-					"Logs" => $logs_confirm
+					"Logs" => $logs_confirm,
+					"News Users" => $newsusers_confirm
 					);
 
 
@@ -166,6 +177,10 @@ echo "<div align=\"center\"><table style=\"text-align: left; height: 119px; widt
 	<tr>
       <td style=\"width: 200px;\"><b><acronym title=\"The directory ROOT/Admin/logs needs to be writable.\">Logs writable?</acronym></b></td>
       <td style=\"width: 85px; text-align: center;\">{$confirms['Logs']}</td>
+    </tr>
+	<tr>
+      <td style=\"width: 200px;\"><b><acronym title=\"The file at ROOT/Admin/news/data/users.txt needs to be writable.\">News-users writable?</acronym></b></td>
+      <td style=\"width: 85px; text-align: center;\">{$confirms['News Users']}</td>
     </tr>
   </tbody>
 </table></div>

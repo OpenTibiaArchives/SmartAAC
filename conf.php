@@ -2,11 +2,9 @@
 
 // ===========================================================
 //	Smart-Ass: The Userfriendly AAC
-//	Version: 2.0 Development Only
-//	Configuration Created: Thu, 28 Jun 2007 21:07:42 +0100
+//	Version: 2.0.0
+//	Configuration Created: Thu, 05 Jul 2007 22:05:42 +0100
 //	
-//	USE OF THIS PROGRAM TO RELY ON IT FOR SERVER USE IS NOT
-// 	RECOMMENDED! THIS IS FOR TESTING ONLY.
 //
 //	Main configuration for the AAC system
 // ===========================================================
@@ -27,109 +25,120 @@
 //    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // ===========================================================
 
-$aac_status = 			"Not Installed";
-$aac_version = 			"2.0.0";
-$aac_versioncode = 		200;
-$aac_dataDir =			"C:/Dev-Cpp/otserv/data";
-$aac_mapname =			"map";
-$aac_maintenanceReason = "<p>No reason set.</p>";
+# The basic and sane settings for the AAC to run properly
+$aac_status = 					"Installed";
+$aac_version = 					"2.0.0";
+$aac_versioncode = 				200;
+$aac_dataDir =					"C:/Dev-Cpp/otserv/data";
+$aac_mapname =					"map";
+$aac_maintenanceReason = 		"<p>No reason set.</p>";
 
-$aac_maxplayers = 		25;
-$aac_minacclen = 		4;
-$aac_maxacclen = 		20;
-$aac_minpasslen = 		4;
-$aac_maxpasslen = 		20;
-$aac_minplayerlen =	3;
-$aac_maxplayerlen =	10;
+# Lengths of commonly used fields in the AAC
+$aac_maxplayers = 				25;
+$aac_minacclen = 				4;
+$aac_maxacclen = 				20;
+$aac_minpasslen = 				4;
+$aac_maxpasslen = 				20;
+$aac_minplayerlen =				3;
+$aac_maxplayerlen =				10;
 
-$aac_servername = 		"TestName";
-$net_ipaddress =		"127.0.0.1";
-$net_port = 			"7171";
+# Used to get statistical information for your site. E.G. Players online, peak, max, etc
+$aac_servername = 				"TestName";
+$net_ipaddress =				"127.0.0.1";
+$net_port = 					"7171";
 
-$aac_md5passwords =			false;
-$aac_imgver = 				false;
-$main_downloads_warning = 	false;
-$main_showemails = 			false;
-$aac_randomaccnum =			false;
-$admin_user =				"admin";
-$admin_pass = 				"yr0gjzo6";
+# Security switches and username/password
+$aac_md5passwords =				false;
+$aac_imgver = 					false;
+$main_downloads_warning = 		false;
+$main_showemails = 				false;
+$aac_randomaccnum =				false;
+$admin_user =					"admin";
+$admin_pass = 					"hr3ofzr0";
 
-$sql_host =			"localhost";
-$sql_user =			"root";
-$sql_pass = 			"";
-$sql_db = 				"otserv";
+# MySQL Server connection credentials to get into the MySQL server and use your otserv database
+$sql_host =						"localhost";
+$sql_user =						"root";
+$sql_pass = 					"";
+$sql_db = 						"otserv";
 
-$main_highscores_result = 	20;
-$main_ugrp_nolist =		2;
-$main_votequestion = "What should the server add?";
-$main_voteanswer1 = "More monsters";
-$main_voteanswer2 = "More hunting areas";
-$main_voteanswer3 = "More houses";
-$main_voteanswer4 = "New towns";
-$main_enable_mailer = false;
-$main_mail = "";
-$main_towns = array(1 => 'Town 1', 2 => 'Town 2', 3 => 'Town 3', 4 => 'Town 4', 5 => 'Town 5', );
+# Settings for Highscores, Voting, Feedback mail, Towns
+$main_highscores_result = 		20;
+$main_ugrp_nolist =				2;
+$main_votequestion = 			"What should the server add?";
+$main_voteanswer1 = 			"More monsters";
+$main_voteanswer2 = 			"More hunting areas";
+$main_voteanswer3 = 			"More houses";
+$main_voteanswer4 = 			"New towns";
+$main_enable_mailer = 			false;
+$main_mail = 					"";
+$main_towns = 					array(1 => 'Town 1', 2 => 'Town 2', 3 => 'Town 3', 4 => 'Town 4', 5 => 'Town 5', );
 
-$info_os =				"Debian Linux";
-$info_connection =		"5 Mbit";
-$info_uptimetype =		"24/7";
+# Information for the statistics page, is not used with the AAC, and not exactly important
+$info_os =						"Debian Linux";
+$info_connection =				"5 Mbit";
+$info_uptimetype =				"24/7";
 
-$modules_charsearch = true;
-$modules_feedback = true;
-$modules_affliates = true;
-$modules_guilds = true;
-$modules_houses = true;
-$modules_highscores = true;
-$modules_infopage = true;
-$modules_serverstats = true;
-$modules_downloads = true;
-$modules_bannedplayers = true;
-$modules_commands = true;
-$modules_rules = true;
-$modules_voting = true;
-$modules_custom = true;
-$modules_videos = true;
-$modules_gallery = true;
-$modules_monsters = true;
-$modules_spells = true;
+# Modules for the AAC, can be enabled/disabled from the admin panel
+$modules_charsearch = 			false;
+$modules_feedback = 			false;
+$modules_affliates = 			false;
+$modules_guilds = 				false;
+$modules_houses = 				false;
+$modules_highscores = 			false;
+$modules_infopage = 			false;
+$modules_serverstats = 			false;
+$modules_downloads = 			false;
+$modules_bannedplayers = 		false;
+$modules_commands = 			false;
+$modules_rules = 				false;
+$modules_voting = 				false;
+$modules_custom = 				false;
+$modules_videos = 				false;
+$modules_gallery = 				false;
+$modules_monsters = 			false;
+$modules_spells = 				false;
 
-$char_rook =			false;
-$char_group =			1;
-$char_exp =			98800;
-$char_cap =			2000;
-$char_level =			20;
-$char_lookhead =		10;
-$char_lookbody =		10;
-$char_looklegs =		10;
-$char_lookfeet =		10;
-$char_town =			1;
+# Character settings
+$char_rook =					false;
+$char_group =					1;
+$char_exp =						98800;
+$char_cap =						2000;
+$char_level =					20;
+$char_lookhead =				10;
+$char_lookbody =				10;
+$char_looklegs =				10;
+$char_lookfeet =				10;
+$char_town =					1;
 
-$pids = array(1 => 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-$sid = 10; 	 
-$char_items = array();
-$char_items[11] = array('slot' => 3, 'item_type' => 1988, 'count' => 1);
-$char_items[12] = array('slot' => 4, 'item_type' => 2650, 'count' => 1);
-$char_items[13] = array('slot' => 5, 'item_type' => 2382, 'count' => 1);
-$char_items[14] = array('slot' => 6, 'item_type' => 2050, 'count' => 1);
-$char_items[15] = array('slot' => 11, 'item_type' => 2674, 'count' => 2);
+# Character item settings
+$pids = 						array(1 => 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+$sid = 							10; 	 
+$char_items = 					array();
+$char_items[11] = 				array('slot' => 3, 'item_type' => 1988, 'count' => 1);
+$char_items[12] = 				array('slot' => 4, 'item_type' => 2650, 'count' => 1);
+$char_items[13] = 				array('slot' => 5, 'item_type' => 2382, 'count' => 1);
+$char_items[14] = 				array('slot' => 6, 'item_type' => 2050, 'count' => 1);
+$char_items[15] = 				array('slot' => 11, 'item_type' => 2674, 'count' => 2);
 
-$char_maglevel_none = "";
-$char_health_none = "";
-$char_mana_none = "";
+# Character levels (Magic, HP, Mana)
+$char_maglevel_none = 			"";
+$char_health_none = 			"";
+$char_mana_none = 				"";
 
-$char_maglevel_sorcerer = 2;
-$char_health_sorcerer = 100;
-$char_mana_sorcerer = 100;
+$char_maglevel_sorcerer = 		100;
+$char_health_sorcerer = 		100;
+$char_mana_sorcerer = 			100;
 
-$char_maglevel_druid = 100;
-$char_health_druid = 100;
-$char_mana_druid = 100;
+$char_maglevel_druid = 			100;
+$char_health_druid = 			100;
+$char_mana_druid = 				100;
 
-$char_maglevel_paladin = 100;
-$char_health_paladin = 100;
-$char_mana_paladin = 100;
+$char_maglevel_paladin = 		100;
+$char_health_paladin = 			100;
+$char_mana_paladin = 			100;
 
-$char_maglevel_knight = 100;
-$char_health_knight = 100;
-$char_mana_knight = 100;
+$char_maglevel_knight = 		100;
+$char_health_knight = 			100;
+$char_mana_knight = 			100;
 ?>

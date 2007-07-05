@@ -467,11 +467,9 @@ $encryptedAdminPass
 
 // ===========================================================
 //	Smart-Ass: The Userfriendly AAC
-//	Version: 2.0 Development Only
+//	Version: 2.0.0
 //	Configuration Created: $timeCreated
 //	
-//	USE OF THIS PROGRAM TO RELY ON IT FOR SERVER USE IS NOT
-// 	RECOMMENDED! THIS IS FOR TESTING ONLY.
 //
 //	Main configuration for the AAC system
 // ===========================================================
@@ -492,113 +490,124 @@ $encryptedAdminPass
 //    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // ===========================================================
 
-\$aac_status = 			\"$aac_status\";
-\$aac_version = 			\"2.0.0\";
-\$aac_versioncode = 		200;
-\$aac_dataDir =			\"$aac_dataDir\";
-\$aac_mapname =			\"$aac_mapname\";
-\$aac_maintenanceReason = \"$aac_maintenanceReason\";
+# The basic and sane settings for the AAC to run properly
+\$aac_status = 					\"$aac_status\";
+\$aac_version = 					\"2.0.0\";
+\$aac_versioncode = 				200;
+\$aac_dataDir =					\"$aac_dataDir\";
+\$aac_mapname =					\"$aac_mapname\";
+\$aac_maintenanceReason = 		\"$aac_maintenanceReason\";
 
-\$aac_maxplayers = 		$aac_maxplayers;
-\$aac_minacclen = 		$aac_minacclen;
-\$aac_maxacclen = 		$aac_maxacclen;
-\$aac_minpasslen = 		$aac_minpasslen;
-\$aac_maxpasslen = 		$aac_maxpasslen;
-\$aac_minplayerlen =	$aac_minplayerlen;
-\$aac_maxplayerlen =	$aac_maxplayerlen;
+# Lengths of commonly used fields in the AAC
+\$aac_maxplayers = 				$aac_maxplayers;
+\$aac_minacclen = 				$aac_minacclen;
+\$aac_maxacclen = 				$aac_maxacclen;
+\$aac_minpasslen = 				$aac_minpasslen;
+\$aac_maxpasslen = 				$aac_maxpasslen;
+\$aac_minplayerlen =				$aac_minplayerlen;
+\$aac_maxplayerlen =				$aac_maxplayerlen;
 
-\$aac_servername = 		\"$aac_servername\";
-\$net_ipaddress =		\"$net_ipaddress\";
-\$net_port = 			\"$net_port\";
+# Used to get statistical information for your site. E.G. Players online, peak, max, etc
+\$aac_servername = 				\"$aac_servername\";
+\$net_ipaddress =				\"$net_ipaddress\";
+\$net_port = 					\"$net_port\";
 
-\$aac_md5passwords =			$aac_md5passwords;
-\$aac_imgver = 				$aac_imgver;
-\$main_downloads_warning = 	$main_downloads_warning;
-\$main_showemails = 			$main_showemails;
-\$aac_randomaccnum =			$aac_randomaccnum;
-\$admin_user =				\"$admin_user\";
-\$admin_pass = 				\"$admin_pass\";
+# Security switches and username/password
+\$aac_md5passwords =				$aac_md5passwords;
+\$aac_imgver = 					$aac_imgver;
+\$main_downloads_warning = 		$main_downloads_warning;
+\$main_showemails = 				$main_showemails;
+\$aac_randomaccnum =				$aac_randomaccnum;
+\$admin_user =					\"$admin_user\";
+\$admin_pass = 					\"$admin_pass\";
 
-\$sql_host =			\"$sql_host\";
-\$sql_user =			\"$sql_user\";
-\$sql_pass = 			\"$sql_pass\";
-\$sql_db = 				\"$sql_db\";
+# MySQL Server connection credentials to get into the MySQL server and use your otserv database
+\$sql_host =						\"$sql_host\";
+\$sql_user =						\"$sql_user\";
+\$sql_pass = 					\"$sql_pass\";
+\$sql_db = 						\"$sql_db\";
 
-\$main_highscores_result = 	20;
-\$main_ugrp_nolist =		2;
-\$main_votequestion = \"$main_votequestion\";
-\$main_voteanswer1 = \"$main_voteanswer1\";
-\$main_voteanswer2 = \"$main_voteanswer2\";
-\$main_voteanswer3 = \"$main_voteanswer3\";
-\$main_voteanswer4 = \"$main_voteanswer4\";
-\$main_enable_mailer = $main_enable_mailer;
-\$main_mail = \"$main_mail\";
-\$main_towns = $new_main_towns;
+# Settings for Highscores, Voting, Feedback mail, Towns
+\$main_highscores_result = 		20;
+\$main_ugrp_nolist =				2;
+\$main_votequestion = 			\"$main_votequestion\";
+\$main_voteanswer1 = 			\"$main_voteanswer1\";
+\$main_voteanswer2 = 			\"$main_voteanswer2\";
+\$main_voteanswer3 = 			\"$main_voteanswer3\";
+\$main_voteanswer4 = 			\"$main_voteanswer4\";
+\$main_enable_mailer = 			$main_enable_mailer;
+\$main_mail = 					\"$main_mail\";
+\$main_towns = 					$new_main_towns;
 
-\$info_os =				\"$info_os\";
-\$info_connection =		\"$info_connection\";
-\$info_uptimetype =		\"$info_uptimetype\";
+# Information for the statistics page, is not used with the AAC, and not exactly important
+\$info_os =						\"$info_os\";
+\$info_connection =				\"$info_connection\";
+\$info_uptimetype =				\"$info_uptimetype\";
 
-\$modules_charsearch = $modules_charsearch;
-\$modules_feedback = $modules_feedback;
-\$modules_affliates = $modules_affliates;
-\$modules_guilds = $modules_guilds;
-\$modules_houses = $modules_houses;
-\$modules_highscores = $modules_highscores;
-\$modules_infopage = $modules_infopage;
-\$modules_serverstats = $modules_serverstats;
-\$modules_downloads = $modules_downloads;
-\$modules_bannedplayers = $modules_bannedplayers;
-\$modules_commands = $modules_commands;
-\$modules_rules = $modules_rules;
-\$modules_voting = $modules_voting;
-\$modules_custom = $modules_custom;
-\$modules_videos = $modules_videos;
-\$modules_gallery = $modules_gallery;
-\$modules_monsters = $modules_monsters;
-\$modules_spells = $modules_spells;
+# Modules for the AAC, can be enabled/disabled from the admin panel
+\$modules_charsearch = 			$modules_charsearch;
+\$modules_feedback = 			$modules_feedback;
+\$modules_affliates = 			$modules_affliates;
+\$modules_guilds = 				$modules_guilds;
+\$modules_houses = 				$modules_houses;
+\$modules_highscores = 			$modules_highscores;
+\$modules_infopage = 			$modules_infopage;
+\$modules_serverstats = 			$modules_serverstats;
+\$modules_downloads = 			$modules_downloads;
+\$modules_bannedplayers = 		$modules_bannedplayers;
+\$modules_commands = 			$modules_commands;
+\$modules_rules = 				$modules_rules;
+\$modules_voting = 				$modules_voting;
+\$modules_custom = 				$modules_custom;
+\$modules_videos = 				$modules_videos;
+\$modules_gallery = 				$modules_gallery;
+\$modules_monsters = 			$modules_monsters;
+\$modules_spells = 				$modules_spells;
 
-\$char_rook =			$char_rook;
-\$char_group =			$char_group;
-\$char_exp =			$char_exp;
-\$char_cap =			$char_cap;
-\$char_level =			$char_level;
-\$char_lookhead =		$char_lookhead;
-\$char_lookbody =		$char_lookbody;
-\$char_looklegs =		$char_looklegs;
-\$char_lookfeet =		$char_lookfeet;
-\$char_town =			$char_town;
+# Character settings
+\$char_rook =					$char_rook;
+\$char_group =					$char_group;
+\$char_exp =						$char_exp;
+\$char_cap =						$char_cap;
+\$char_level =					$char_level;
+\$char_lookhead =				$char_lookhead;
+\$char_lookbody =				$char_lookbody;
+\$char_looklegs =				$char_looklegs;
+\$char_lookfeet =				$char_lookfeet;
+\$char_town =					$char_town;
 
-\$pids = array(1 => 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-\$sid = 10; 	 
-\$char_items = array();
+# Character item settings
+\$pids = 						array(1 => 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+\$sid = 							10; 	 
+\$char_items = 					array();
 ";
  foreach($new_char_items as $id => $arr) {
-	 $write .= "\$char_items[$id] = $arr;
+	 $write .= "\$char_items[$id] = 				$arr;
 ";
 }
 // head, neck, container, armor, right hand, left hand, legs, feet, ring, ammo 	 
 
 $write .= "
-\$char_maglevel_none = $char_maglevel_none;
-\$char_health_none = $char_health_none;
-\$char_mana_none = $char_mana_none;
+# Character levels (Magic, HP, Mana)
+\$char_maglevel_none = 			$char_maglevel_none;
+\$char_health_none = 			$char_health_none;
+\$char_mana_none = 				$char_mana_none;
 
-\$char_maglevel_sorcerer = $char_maglevel_sorcerer;
-\$char_health_sorcerer = $char_health_sorcerer;
-\$char_mana_sorcerer = $char_mana_sorcerer;
+\$char_maglevel_sorcerer = 		$char_maglevel_sorcerer;
+\$char_health_sorcerer = 		$char_health_sorcerer;
+\$char_mana_sorcerer = 			$char_mana_sorcerer;
 
-\$char_maglevel_druid = $char_maglevel_druid;
-\$char_health_druid = $char_health_druid;
-\$char_mana_druid = $char_mana_druid;
+\$char_maglevel_druid = 			$char_maglevel_druid;
+\$char_health_druid = 			$char_health_druid;
+\$char_mana_druid = 				$char_mana_druid;
 
-\$char_maglevel_paladin = $char_maglevel_paladin;
-\$char_health_paladin = $char_health_paladin;
-\$char_mana_paladin = $char_mana_paladin;
+\$char_maglevel_paladin = 		$char_maglevel_paladin;
+\$char_health_paladin = 			$char_health_paladin;
+\$char_mana_paladin = 			$char_mana_paladin;
 
-\$char_maglevel_knight = $char_maglevel_knight;
-\$char_health_knight = $char_health_knight;
-\$char_mana_knight = $char_mana_knight;
+\$char_maglevel_knight = 		$char_maglevel_knight;
+\$char_health_knight = 			$char_health_knight;
+\$char_mana_knight = 			$char_mana_knight;
 ?>
 ";
 

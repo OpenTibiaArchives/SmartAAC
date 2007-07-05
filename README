@@ -1,20 +1,18 @@
 ===============================================
-=== Smart-Ass 2.0							===
-=== Codename: Lord Snot						===
-=== Alpha 2/Beta 1 Release					===
+=== Smart-Ass 2.0 (Smart-AAC)				===
+=== Codename: The Next Generation			===
+=== 										===
 ===============================================
 === WEBSITE: http://smart.pekay.co.uk		===
 ===============================================
 
 Short readme for people to read BEFORE they touch Smart-Ass.
 We have developed Smart-Ass 2, been updated for the new
-DB structure, and on.
+DB structure for otserv, and on.
 
-As this is a development release/preview, we don't particularly
-support people installing this to be absolutly stable :p.
-
-Remember! Development releases may not be ready fully or
-can do some wierd things. You have been warned.
+We recommend you use this software on an Apache Server, and operates with an otserver from the SVN repositories.
+If you don't know where those respositories are to compile an otserver
+goto http://youdie.de and goto the SVN part of the OpenTibia project.
 
 
 --------
@@ -25,7 +23,12 @@ What you basicly need:
 * PHP 5
 * MySQL
 * GD, SimpleXML to be working
-* Write permissions for the webserver to write to the Smart-Ass directory!
+* Write permissions for the webserver to write to the Smart-Ass directory! (Or well the following directories)
+	* /conf.php
+	* /Install/
+	* /Includes/counter/
+	* /Admin/logs/
+	* /Admin/news/data/users.txt
 
 --------
 
@@ -39,7 +42,9 @@ To get started off:
 Admin/News/Logs section access:
 
 Your username and password you set during the installation will give you access to
-the admin panel, news panel and the logs directory
+the admin panel, news panel and the logs directory.	
+
+The logs are located in a directory in the 'Admin' directory.
 
 --------
 
@@ -48,12 +53,23 @@ Credits:
 * Pekay - Writer
 * Bazetts - Writer (mostly MySQL, but others too ;p)
 * wrzasq - Helped with alot, for example SQL security, items.xml reading, and alot more :P
+* ArkoldThos - Minor help on Smart-Ass during the end of development
 
 Testers:
 
 * Nikolas
 * SuperKakan
 * Winghawk
+* A few other people (sorry if I missed you out)
+
+--------
+
+
+--------
+
+There are images that are images of CIPSofts monsters from Tibia. We take no responsibility for the use of the images of the creatures/monsters,
+they were just put in to the software to boost our own knowledge of programming PHP (as why this project was created originally;
+Smart-Ass). 
 
 --------
 

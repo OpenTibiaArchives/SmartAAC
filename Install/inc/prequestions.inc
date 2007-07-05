@@ -3,5 +3,5 @@
 
 <br /><br />
 
-<h2>What is the license?</h2>
+<h2>What are these?</h2>
 <p>This is just simple questions before we begin the installation</p>

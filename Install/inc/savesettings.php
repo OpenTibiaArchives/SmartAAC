@@ -182,7 +182,7 @@ else
 	
 	$query2 = mysql_query($query2) or die('Couldn\'t proceed MySQL query: '.mysql_error().' ('.mysql_errno().')');
 	$query = mysql_query($sqlquery) or die('Couldn\'t create MySQL table guild_invites: '.mysql_error().' ('.mysql_errno().')');
-	$makeRecoveryField = mysql_query($makeRecoveryField) or die('Couldn\'t create MySQL field in accounts table, "recovery": '.mysql_error().' ('.mysql_errno().')<br /><br />(Already got a field called "recovery"? Drop it, empty or something. And go back a step.)');
+	//$makeRecoveryField = mysql_query($makeRecoveryField) or die('Couldn\'t create MySQL field in accounts table, "recovery": '.mysql_error().' ('.mysql_errno().')<br /><br />(Already got a field called "recovery"? Drop it, empty or something. And go back a step.)');
 	
 	// End: Create table "guild_invites"
 
@@ -193,11 +193,9 @@ else
 
 // ===========================================================
 //	Smart-Ass: The Userfriendly AAC
-//	Version: 2.0 Development Only
+//	Version: 2.0.0
 //	Configuration Created: $timeCreated
 //	
-//	USE OF THIS PROGRAM TO RELY ON IT FOR SERVER USE IS NOT
-// 	RECOMMENDED! THIS IS FOR TESTING ONLY.
 //
 //	Main configuration for the AAC system
 // ===========================================================
@@ -218,112 +216,123 @@ else
 //    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // ===========================================================
 
-\$aac_status = 			\"Installed\";
-\$aac_version = 			\"2.0.0\";
-\$aac_versioncode = 		200;
-\$aac_dataDir =			\"$conf_dataDir\";
-\$aac_mapname =			\"$conf_mapname\";
-\$aac_maintenanceReason = \"$aac_maintenanceReason\";
+# The basic and sane settings for the AAC to run properly
+\$aac_status = 					\"Installed\";
+\$aac_version = 					\"2.0.0\";
+\$aac_versioncode = 				200;
+\$aac_dataDir =					\"$conf_dataDir\";
+\$aac_mapname =					\"$conf_mapname\";
+\$aac_maintenanceReason =		\"$aac_maintenanceReason\";
 
-\$aac_maxplayers =		$conf_char_max;
-\$aac_minacclen = 		$conf_minacclen;
-\$aac_maxacclen = 		$conf_maxacclen;
-\$aac_minpasslen = 		$conf_minpasslen;
-\$aac_maxpasslen = 		$conf_maxpasslen;
-\$aac_minplayerlen =	$conf_minplayerlen;
-\$aac_maxplayerlen =	$conf_maxplayerlen;
+# Lengths of commonly used fields in the AAC
+\$aac_maxplayers =				$conf_char_max;
+\$aac_minacclen = 				$conf_minacclen;
+\$aac_maxacclen = 				$conf_maxacclen;
+\$aac_minpasslen = 				$conf_minpasslen;
+\$aac_maxpasslen = 				$conf_maxpasslen;
+\$aac_minplayerlen =				$conf_minplayerlen;
+\$aac_maxplayerlen =				$conf_maxplayerlen;
 
-\$aac_servername = 		\"$conf_servername\";
-\$net_ipaddress =		\"$conf_ipaddress\";
-\$net_port = 			\"$conf_port\";
+# Used to get statistical information for your site. E.G. Players online, peak, max, etc
+\$aac_servername = 				\"$conf_servername\";
+\$net_ipaddress =				\"$conf_ipaddress\";
+\$net_port = 					\"$conf_port\";
 
-\$aac_md5passwords =	$conf_md5passwords;
-\$aac_imgver = 			$conf_imgver;
-\$main_downloads_warning = $conf_downloadswarning;
-\$main_showemails = 	$conf_showemails;
-\$aac_randomaccnum =	$conf_pickaccno;
-\$admin_user =			\"$conf_admin_user\";
-\$admin_pass = 			\"$conf_admin_pass\";
+# Security switches and username/password
+\$aac_md5passwords =				$conf_md5passwords;
+\$aac_imgver = 					$conf_imgver;
+\$main_downloads_warning =		$conf_downloadswarning;
+\$main_showemails = 				$conf_showemails;
+\$aac_randomaccnum =				$conf_pickaccno;
+\$admin_user =					\"$conf_admin_user\";
+\$admin_pass = 					\"$conf_admin_pass\";
 
-\$sql_host =			\"$conf_host\";
-\$sql_user =			\"$conf_user\";
-\$sql_pass = 			\"$conf_pass\";
-\$sql_db = 				\"$conf_db\";
+# MySQL Server connection credentials to get into the MySQL server and use your otserv database
+\$sql_host =						\"$conf_host\";
+\$sql_user =						\"$conf_user\";
+\$sql_pass = 					\"$conf_pass\";
+\$sql_db = 						\"$conf_db\";
 
-\$main_highscores_result = 	20;
-\$main_ugrp_nolist =		2;
-\$main_votequestion = \"What should the server add?\";
-\$main_voteanswer1 = \"More monsters\";
-\$main_voteanswer2 = \"More hunting areas\";
-\$main_voteanswer3 = \"More houses\";
-\$main_voteanswer4 = \"New towns\";
-\$main_enable_mailer = $conf_enable_mailer;
-\$main_mail = \"$conf_main_email\";
-\$main_towns = array(1 => 'Town 1', 2 => 'Town 2', 3 => 'Town 3', 4 => 'Town 4', 5 => 'Town 5');
+# Settings for Highscores, Voting, Feedback mail, Towns
+\$main_highscores_result =		20;
+\$main_ugrp_nolist =				2;
+\$main_votequestion = 				\"What should the server add?\";
+\$main_voteanswer1 = 				\"More monsters\";
+\$main_voteanswer2 = 				\"More hunting areas\";
+\$main_voteanswer3 = 				\"More houses\";
+\$main_voteanswer4 = 				\"New towns\";
+\$main_enable_mailer = 			$conf_enable_mailer;
+\$main_mail = 					\"$conf_main_email\";
+\$main_towns =					array(1 => 'Town 1', 2 => 'Town 2', 3 => 'Town 3', 4 => 'Town 4', 5 => 'Town 5');
 
-\$info_os =				\"$conf_os\";
-\$info_connection =		\"$conf_connection\";
-\$info_uptimetype =		\"$conf_uptimetype\";
+# Information for the statistics page, is not used with the AAC, and not exactly important
+\$info_os =						\"$conf_os\";
+\$info_connection =				\"$conf_connection\";
+\$info_uptimetype =				\"$conf_uptimetype\";
 
-\$modules_charsearch = $conf_modules_CharSearch;
-\$modules_feedback = $conf_modules_Feedback;
-\$modules_affliates = $conf_modules_Affliates;
-\$modules_guilds = $conf_modules_Guilds;
-\$modules_houses = $conf_modules_Houses;
-\$modules_highscores = $conf_modules_Highscores;
-\$modules_infopage = $conf_modules_InfoPage;
-\$modules_serverstats = $conf_modules_ServerStats;
-\$modules_downloads = $conf_modules_DownloadsPage;
-\$modules_bannedplayers = $conf_modules_BannedPlayers;
-\$modules_commands = $conf_modules_InGameCommands;
-\$modules_rules = $conf_modules_RulesPage;
-\$modules_voting = $conf_modules_VotePage;
-\$modules_custom = $conf_modules_Custom;
-\$modules_videos = $conf_modules_Videos;
-\$modules_gallery = $conf_modules_Gallery;
-\$modules_monsters = $conf_modules_Monsters;
-\$modules_spells = $conf_modules_Spells;
+# Modules for the AAC, can be enabled/disabled from the admin panel
+\$modules_charsearch = 			$conf_modules_CharSearch;
+\$modules_feedback = 			$conf_modules_Feedback;
+\$modules_affliates = 			$conf_modules_Affliates;
+\$modules_guilds = 				$conf_modules_Guilds;
+\$modules_houses = 				$conf_modules_Houses;
+\$modules_highscores = 			$conf_modules_Highscores;
+\$modules_infopage = 			$conf_modules_InfoPage;
+\$modules_serverstats = 			$conf_modules_ServerStats;
+\$modules_downloads = 			$conf_modules_DownloadsPage;
+\$modules_bannedplayers = 		$conf_modules_BannedPlayers;
+\$modules_commands = 			$conf_modules_InGameCommands;
+\$modules_rules = 				$conf_modules_RulesPage;
+\$modules_voting = 				$conf_modules_VotePage;
+\$modules_custom = 				$conf_modules_Custom;
+\$modules_videos = 				$conf_modules_Videos;
+\$modules_gallery = 				$conf_modules_Gallery;
+\$modules_monsters = 			$conf_modules_Monsters;
+\$modules_spells = 				$conf_modules_Spells;
 
-\$char_rook =			$char_rook_use;
-\$char_group =			$conf_char_group;
-\$char_exp =			$conf_char_exp;
-\$char_cap =			$conf_char_cap;
-\$char_level =			$conf_char_level;
-\$char_lookhead =		$conf_char_lookhead;
-\$char_lookbody =		$conf_char_lookbody;
-\$char_looklegs =		$conf_char_looklegs;
-\$char_lookfeet =		$conf_char_lookfeet;
-\$char_town =			$conf_char_town;
+# Character settings
+\$char_rook =					$char_rook_use;
+\$char_group =					$conf_char_group;
+\$char_exp =						$conf_char_exp;
+\$char_cap =						$conf_char_cap;
+\$char_level =					$conf_char_level;
+\$char_lookhead =				$conf_char_lookhead;
+\$char_lookbody =				$conf_char_lookbody;
+\$char_looklegs =				$conf_char_looklegs;
+\$char_lookfeet =				$conf_char_lookfeet;
+\$char_town =					$conf_char_town;
 
+# Character item settings
 // head, neck, container, armor, right hand, left hand, legs, feet, ring, ammo 	 
-\$pids = array(1 => 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-\$sid = 10; 	 
-\$char_items = array(); 	 
-\$char_items[11] = array('slot' => 3, 'item_type' => 1988, 'count' => 1); 	 
-\$char_items[12] = array('slot' => 4, 'item_type' => 2650, 'count' => 1); 	 
-\$char_items[13] = array('slot' => 5, 'item_type' => 2382, 'count' => 1); 	 
-\$char_items[14] = array('slot' => 6, 'item_type' => 2050, 'count' => 1); 	 
-\$char_items[15] = array('slot' => 11, 'item_type' => 2674, 'count' => 2); 	 
+\$pids = 						array(1 => 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+\$sid = 							10; 	 
+\$char_items = 					array(); 	 
+\$char_items[11] = 				array('slot' => 3, 'item_type' => 1988, 'count' => 1); 	 
+\$char_items[12] = 				array('slot' => 4, 'item_type' => 2650, 'count' => 1); 	 
+\$char_items[13] = 				array('slot' => 5, 'item_type' => 2382, 'count' => 1); 	 
+\$char_items[14] = 				array('slot' => 6, 'item_type' => 2050, 'count' => 1); 	 
+\$char_items[15] = 				array('slot' => 11, 'item_type' => 2674, 'count' => 2); 	 
 
-\$char_maglevel_none = $conf_char_maglevel_none;
-\$char_health_none = $conf_char_health_none;
-\$char_mana_none = $conf_char_mana_none;
+# Character levels (Magic, HP, Mana)
+\$char_maglevel_none = 			$conf_char_maglevel_none;
+\$char_health_none =				$conf_char_health_none;
+\$char_mana_none = 				$conf_char_mana_none;
 
-\$char_maglevel_sorcerer = $conf_char_maglevel_sorcerer;
-\$char_health_sorcerer = $conf_char_health_sorcerer;
-\$char_mana_sorcerer = $conf_char_mana_sorcerer;
+\$char_maglevel_sorcerer = 		$conf_char_maglevel_sorcerer;
+\$char_health_sorcerer = 		$conf_char_health_sorcerer;
+\$char_mana_sorcerer = 			$conf_char_mana_sorcerer;
 
-\$char_maglevel_druid = $conf_char_maglevel_druid;
-\$char_health_druid = $conf_char_health_druid;
-\$char_mana_druid = $conf_char_mana_druid;
+\$char_maglevel_druid = 			$conf_char_maglevel_druid;
+\$char_health_druid = 			$conf_char_health_druid;
+\$char_mana_druid = 				$conf_char_mana_druid;
 
-\$char_maglevel_paladin = $conf_char_maglevel_paladin;
-\$char_health_paladin = $conf_char_health_paladin;
-\$char_mana_paladin = $conf_char_mana_paladin;
+\$char_maglevel_paladin = 		$conf_char_maglevel_paladin;
+\$char_health_paladin = 			$conf_char_health_paladin;
+\$char_mana_paladin = 			$conf_char_mana_paladin;
 
-\$char_maglevel_knight = $conf_char_maglevel_knight;
-\$char_health_knight = $conf_char_health_knight;
-\$char_mana_knight = $conf_char_mana_knight;
+\$char_maglevel_knight =			$conf_char_maglevel_knight;
+\$char_health_knight = 			$conf_char_health_knight;
+\$char_mana_knight = 			$conf_char_mana_knight;
 ?>
 ";
 
