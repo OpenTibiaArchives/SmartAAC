@@ -37,7 +37,7 @@ if($aac_status == "Not Installed")
 	die("Your AAC is not yet installed, please goto the installer");
 }
 
-$title = 'Login';
+$title = 'Add Character';
 $name = $aac_servername;
 $bodySpecial = 'onload="NOTHING"';
 

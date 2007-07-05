@@ -37,7 +37,7 @@ if($aac_status == "Not Installed")
 	die("Your AAC is not yet installed, please goto the installer");
 }
 
-$title = 'Frontpage';
+$title = 'Change Password';
 $name = $aac_servername;
 $bodySpecial = 'onload="NOTHING"';
 
@@ -147,13 +147,13 @@ echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 <form action="accountPassChange.php?result=change" method="POST">
 <table>
 <tr>
-<td><p><b>Old Password:</b></td><td><input type="password" name="oldpass" maxlength="<?php echo $aac_maxpasslen; ?>" class="textfield"></p><br><hr></td>
+<td><p><b>Old Password:</b></td><td><input type="password" name="oldpass" maxlength="<?php echo $aac_maxpasslen; ?>" class="textfield"></p><br></td>
 </tr>
 <tr>
-<td><p><b>New Password:</b></td><td><input type="password" name="newpass" maxlength="<?php echo $aac_maxpasslen; ?>" class="textfield"></p><br><hr></td>
+<td><p><b>New Password:</b></td><td><input type="password" name="newpass" maxlength="<?php echo $aac_maxpasslen; ?>" class="textfield"></p><br></td>
 </tr>
 <tr>
-<td><p><b>New Password (again):</b></td><td><input type="password" name="newpass2" maxlength="<?php echo $aac_maxpasslen; ?>" class="textfield"></p><br><hr></td>
+<td><p><b>New Password (again):</b></td><td><input type="password" name="newpass2" maxlength="<?php echo $aac_maxpasslen; ?>" class="textfield"></p><br></td>
 </tr>
 
 <tr>

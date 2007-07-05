@@ -182,7 +182,7 @@ else
 	
 	$query2 = mysql_query($query2) or die('Couldn\'t proceed MySQL query: '.mysql_error().' ('.mysql_errno().')');
 	$query = mysql_query($sqlquery) or die('Couldn\'t create MySQL table guild_invites: '.mysql_error().' ('.mysql_errno().')');
-	$makeRecoveryField = mysql_query($makeRecoveryField) or die('Couldn\'t create MySQL field in accounts table, "recovery": '.mysql_error().' ('.mysql_errno().')');
+	$makeRecoveryField = mysql_query($makeRecoveryField) or die('Couldn\'t create MySQL field in accounts table, "recovery": '.mysql_error().' ('.mysql_errno().')<br /><br />(Already got a field called "recovery"? Drop it, empty or something. And go back a step.)');
 	
 	// End: Create table "guild_invites"
 

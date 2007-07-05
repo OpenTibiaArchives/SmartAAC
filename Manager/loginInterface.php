@@ -65,7 +65,7 @@ echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 <h2>Login to your account:</h2><br />
 <?php
 if(isset($reckey)) {
-	echo "<b>Account created!<br />Your recovery key is $reckey, please keep this safe and discreet.</b><br /><br />";
+	echo "<b>Account created!<br /><br />Your recovery key is: <font size=\"+1\">$reckey</font>. <br />Please keep this safe and discreet.</b><br /><br />";
 }
 ?>
 

@@ -60,7 +60,7 @@ $license_decide = $_POST['agreeordisagree'];
 		    </tr>
 		    <tr>
 		      <td style="width: 50px;">Disable rook settings</td>
-		      <td style="width: 60px; text-align: center;"><input type="radio" name="char_rook" value="false"></td>
+		      <td style="width: 60px; text-align: center;"><input type="radio" name="char_rook" value="false" checked></td>
 		    </tr>
 			<tr>
 			  <td>&nbsp;</td>
@@ -72,7 +72,7 @@ $license_decide = $_POST['agreeordisagree'];
 		    </tr>
 		    <tr>
 		      <td style="width: 236px;">Disable mailer</td>
-		      <td style="width: 60px; text-align: center;"><input type="radio" name="main_enable_mailer" value="false"></td>
+		      <td style="width: 60px; text-align: center;"><input type="radio" name="main_enable_mailer" value="false" checked></td>
 		    </tr>
 		  </tbody>
 		</table>

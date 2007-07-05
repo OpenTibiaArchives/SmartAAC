@@ -1,2 +1,2 @@
-<h1>Welcome to Smart-Ass 2!</h1>
-<p style="font-family: courier;">Grats on finding our new AAC site for the server. If you are the administrator, goto <a href="FrontpageText.txt">/Main/FrontpageText.txt</a>  and change the contents of the file to what YOU want <img alt="" src="/Smart-Ass/Includes/fckeditor/editor/images/smiley/msn/regular_smile.gif" /></p>
+<h1>Welcome to Smart-Ass 2!</h1><br />
+<p style="font-family: courier;">Grats on finding our new AAC site for the server. You can find the contents of this in <a href="FrontpageText.txt">/Main/FrontpageText.txt</a> or goto the <a href="../Admin/">Admin Panel</a> and edit this there! <img alt="" src="../Includes/fckeditor/editor/images/smiley/msn/regular_smile.gif" />.</p>

@@ -2,6 +2,23 @@
 
 include '../conf.php';
 include '../Includes/resources.php';
+include '../Includes/stats/stats.php';
+include '../Includes/counter/counter.php';
+
+$title = 'Lost Account';
+$name = $aac_servername;
+$bodySpecial = 'onload="NOTHING"';
+
+include_once('../Includes/Templates/bTemplate.php');
+$tpl = new bTemplate();
+
+$tpl->set('title', $title);
+$tpl->set('strayline', $name);
+$tpl->set('bodySpecial', $bodySpecial);
+$tpl->set('stats', $global_stats);
+$tpl->set('AAC_Version', $aac_version);
+$tpl->set('Total_Visits', $total);
+$tpl->set('Unique_Visits', $total_uniques);
 
 $sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die("MySQL Error: mysql_error 								(mysql_errno()).\n");
 			  mysql_select_db($sql_db, $sqlconnect);
@@ -23,6 +40,8 @@ while(true)
 	}
 }
 
+echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
+
 if($foundKey)
 {
 	$accNo = sqlquery('SELECT * FROM `accounts` WHERE `recovery` = \''.$reckey.'\'');
@@ -31,16 +50,28 @@ if($foundKey)
 		$accountNo = $row["id"];
 	}
 	$newPass = createRandomPassword();
-	sqlquery('UPDATE `'.$sql_db.'`.`accounts` SET `password` = \''.$newPass.'\' WHERE `accounts`.`id` ='.$accountNo.';');
+	if($aac_md5passwords) {
+		$newPass2 = md5($newPass);
+		sqlquery('UPDATE `'.$sql_db.'`.`accounts` SET `password` = \''.$newPass2.'\' WHERE `accounts`.`id` ='.$accountNo.';');
+	}
+	else
+	{
+		sqlquery('UPDATE `'.$sql_db.'`.`accounts` SET `password` = \''.$newPass.'\' WHERE `accounts`.`id` ='.$accountNo.';');
+	}
+	
 	
 	//echo "The key you entered is: $reckey <br /><br />";
-	echo "Account reset, here are the credentials <br /><br />";
+	echo "<p>Account reset, here are the credentials <br /><br />";
 	echo "Account Number: $accountNo<br />";
-	echo "Password: $newPass";
+	echo "Password: $newPass</p>";
 }
 else
 {
-	echo "Key doesn't exist";
+	echo "<p>Sorry, the key you entered doesn't exist. <a href=\"lostAccount.php\">Go Back</a></p>";
 }
+
+echo $tpl->fetch('../Includes/Templates/Indigo/sidebarOutterMain.tpl');
+echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
+echo $tpl->fetch('../Includes/Templates/Indigo/bottom.tpl');
 
 ?>

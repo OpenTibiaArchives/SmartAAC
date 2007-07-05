@@ -30,7 +30,7 @@ include "../Includes/resources.php";
 include '../Includes/stats/stats.php';
 include '../Includes/counter/counter.php';
 
-$title = 'Register';
+$title = 'Lost Account';
 $name = $aac_servername;
 $bodySpecial = 'onload="NOTHING"';
 
@@ -50,9 +50,12 @@ echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 ?>
 <form name="input" action="lostAccountWork.php" method="post">
 <label>Recovery Key: </label><br />
-<input type="text" name="key">
+<input type="text" size="35" name="key">
 <input type="submit" value="Submit">
 </form>
+
+<br /><br />
+<p><i>Your recovery key was given to you when you created your account and should be like this:<br /> XXXXXXXX-XXXXXXXX-XXXXXXXX-XXXXXXXX.</i></p>
 <?php
 
 echo $tpl->fetch('../Includes/Templates/Indigo/sidebarOutterMain.tpl');
