@@ -59,15 +59,13 @@ if($modules_guilds)
 	?>
 	<td width="13%" valign="top"><table width="130" border="0" align="right" cellpadding="2" cellspacing="1">
 	<tr><td><div align="center"><a href="guilds.php?act=manage">Manage</a></td></div></tr>
-	<tr><td><div align="center"><a href="guilds.php?act=view">View</a></td></div></tr>
+	<tr><td><div align="center"><a href="guilds.php">View</a></td></div></tr>
 	<tr><td><div align="center"><a href="guilds.php?act=join">Join</a></td></div></tr>
 	<tr><td><div align="center"><a href="guilds.php?act=create">Create</a></td></div></tr>
 	<tr><td><div align="center"><a href="guilds.php?act=leave">Leave</a></td></div></tr>
 	</table>
 	<?php
 	$act = $_GET['act'];
-	if(isset($act))
-	{
 		switch($act)
 		{
 			case "manage": // kick, change rank-names, promote/demote
@@ -337,9 +335,9 @@ if($modules_guilds)
 										mysql_select_db($sql_db, $sqlconnect);
 										if(in_array($_POST['char'], getChars($_SESSION['M2_account']))){
 											if($level['level'] == 3){
-												sqlquery('UPDATE `guild_ranks` SET `name` = \''. $_POST['rank_leader'] .'\' WHERE `guild_id` = '. intval($level['guild_id']) .' AND `level` = 3');
-												sqlquery('UPDATE `guild_ranks` SET `name` = \''. $_POST['rank_vice'] .'\' WHERE `guild_id` = '. intval($level['guild_id']) .' AND `level` = 2');
-												sqlquery('UPDATE `guild_ranks` SET `name` = \''. $_POST['rank_member'] .'\' WHERE `guild_id` = '. intval($level['guild_id']) .' AND `level` = 1');
+												sqlquery('UPDATE `guild_ranks` SET `name` = \''. mysql_real_escape_string($_POST['rank_leader']) .'\' WHERE `guild_id` = '. intval($level['guild_id']) .' AND `level` = 3');
+												sqlquery('UPDATE `guild_ranks` SET `name` = \''. mysql_real_escape_string($_POST['rank_vice']) .'\' WHERE `guild_id` = '. intval($level['guild_id']) .' AND `level` = 2');
+												sqlquery('UPDATE `guild_ranks` SET `name` = \''. mysql_real_escape_string($_POST['rank_member']) .'\' WHERE `guild_id` = '. intval($level['guild_id']) .' AND `level` = 1');
 												echo '<center><h4>Successfully changed the rank names.</h4></center>';
 											}
 											else {
@@ -389,98 +387,6 @@ if($modules_guilds)
 					}
 				}
 				break;
-			case "view":
-				if(isset($_GET['guild'])) { // Show guild
-					$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
-					mysql_select_db($sql_db, $sqlconnect);
-					
-					$query = sqlquery('SELECT * FROM `guilds` WHERE `name` = \''. mysql_real_escape_string($_GET['guild']) .'\'');
-					if(mysql_num_rows($query) == 1) {
-						$guild = mysql_fetch_array($query);
-						
-						$guild_rank = array();
-						$query = sqlquery('SELECT `id`, `name`, `level` FROM `guild_ranks` WHERE `guild_id` = '. $guild['id'] .'');
-						while($row = mysql_fetch_array($query)) {
-							$guild_rank[$row['id']] = array('name' => $row['name'], 'level' => $row['level']);
-						}
-
-					echo '
-	<center>
-	<h4>The guild was founded on '. date('M d Y, H:i:s T', $guild['creationdata']) .' by <a href="character.php?char='. userFromID($guild['ownerid']) .'">'. userFromID($guild['ownerid']) .'</a></h4>
-	<table style="text-align: left; width: 35%;" border="1" cellpadding="0" cellspacing="2">
-	<tbody>
-	<tr>
-	<td style="width: 40%;">Rank</td>
-	<td style="width: 60%;">Name (Title)</td>
-	</tr>
-	</tbody>';
-						foreach($guild_rank as $id => $info)
-						{
-							$query = sqlquery('SELECT `name`, `rank_id`, `guildnick` FROM `players` WHERE `rank_id` = '. $id .'');
-							while($row = mysql_fetch_array($query)) {
-								echo '
-								<tr>
-								<td><center>'. $info['name'] .'</center></td>
-								<td><center><a href="character.php?char='. $row['name'] .'">'. $row['name'] .'</a>';
-								if($row['guildnick'])
-									echo ' ('. $row['guildnick'] .')';
-								echo '</center></td>
-								</tr>
-								';
-							}
-						}
-						echo '</table></center>';
-						echo '<br /><br />';
-						$query = sqlquery('SELECT `player_id` FROM `guild_invites` WHERE `guild_id` = '. $guild['id'] .'');
-						if(mysql_num_rows($query) != 0) {
-							echo '
-							<center>
-							<h4>Invited Players:</h4>
-							<table style="text-align: left; width: 15%;" border="1" cellpadding="0" cellspacing="2">
-							<tbody>
-							<tr>
-							<td style="width: 10%;">Name</td>
-							</tr>
-							</tbody>';
-							while($row = mysql_fetch_array($query)){
-								echo '
-								<tr>
-								<td><center><a href="character.php?char='. userFromID($row['player_id']) .'">'. userFromID($row['player_id']) .'</a></center></td>
-								</tr>
-								';
-							}
-							echo '</table><center><a href="guilds.php?act=join">Join</a></center>';
-						}
-					}
-				}
-				else { // List of guilds
-	echo '
-	<center>
-	<table style="text-align: left; width: 30%;" border="1" cellpadding="0" cellspacing="2">
-	<tbody>
-	<tr>
-	<td style="width: 50%;">Guild Name</td>
-	<td style="width: 40%;">Owner</td>
-	<td style="width: 10%;">View</td>
-	</tr>
-	</tbody>';
-					$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
-					mysql_select_db($sql_db, $sqlconnect);
-					
-					$query = sqlquery('SELECT `name`, `ownerid` FROM `guilds` ORDER BY `name` ASC');
-					while($row = mysql_fetch_array($query)) {
-						echo '
-						<tr>
-						<td><center>'. $row['name'] .'</center></td>
-						<td><center><a href="character.php?char='. userFromID($row['ownerid']) .'">'. userFromID($row['ownerid']) .'</a></center></td>
-						<td><center><a href="guilds.php?act=view&guild='.$row['name'].'">View</a></center></td>
-						</tr>
-						';
-						$i++;
-					}
-					echo '</table></center>';
-				}
-				break;
 			case "create":
 				if(!$_SESSION['M2_account'] || !$_SESSION['M2_password']){ // not logged in
 					echo "<center><a href=\"../Manager/loginInterface.php\">Please login first!</a></center>";
@@ -492,7 +398,7 @@ if($modules_guilds)
 						$query = sqlquery('SELECT `rank_id` FROM `players` WHERE `name` = \''. mysql_real_escape_string($_POST['char']) .'\'');
 						$rank_id = mysql_fetch_array($query);
 						if($rank_id[0] != 0) {
-							echo 'That character is already in a guild!';
+							echo '<center><h4>That character is already in a guild!</h4></center>';
 						}
 						else {
 							$query = sqlquery('SELECT `name` FROM `guilds` WHERE `name` = \''. mysql_real_escape_string($_POST['guildname']) .'\'');
@@ -503,7 +409,7 @@ if($modules_guilds)
 							else {
 								$query = sqlquery('INSERT INTO `guilds` (`name`, `ownerid`, `creationdata`) VALUES(\''. mysql_real_escape_string($_POST['guildname']) .'\', '. userByID(mysql_real_escape_string($_POST['char'])) .', '. time() .')') or die('<center>Couldn\'t create the guild, please contact the webmaster!</center> ('.mysql_error().' ('.mysql_errno().'))');
 								$query2 = sqlquery('UPDATE `players`, `guild_ranks`, `guilds` SET `players`.`rank_id` = `guild_ranks`.`id` WHERE `players`.`id` = '. userByID(mysql_real_escape_string($_POST['char'])) .' AND `guilds`.`ownerid` = `players`.`id` AND `guild_ranks`.`guild_id` = `guilds`.`id` AND `guild_ranks`.`level` = 3') or die('<center>Couldn\'t create the guild, please contact the webmaster!</center> ('.mysql_error().' ('.mysql_errno().'))');
-								echo '<center>The guild has been made. <a href="guilds.php?act=manage">Click here</a> to manage it.</center>';
+								echo '<center><h4>The guild has been made. <a href="guilds.php?act=manage">Click here</a> to manage it.</h4></center>';
 							}
 						}
 					}
@@ -632,10 +538,98 @@ if($modules_guilds)
 				}
 				break;
 			default:
-				die("Error! Please contact an admin by using the feedback function <a href=\"feedback.php\">HERE</a>!");
+				if(isset($_GET['guild'])) { // Show guild
+					$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
+					mysql_select_db($sql_db, $sqlconnect);
+					
+					$query = sqlquery('SELECT * FROM `guilds` WHERE `name` = \''. mysql_real_escape_string($_GET['guild']) .'\'');
+					if(mysql_num_rows($query) == 1) {
+						$guild = mysql_fetch_array($query);
+						
+						$guild_rank = array();
+						$query = sqlquery('SELECT `id`, `name`, `level` FROM `guild_ranks` WHERE `guild_id` = '. $guild['id'] .'');
+						while($row = mysql_fetch_array($query)) {
+							$guild_rank[$row['id']] = array('name' => $row['name'], 'level' => $row['level']);
+						}
+
+					echo '
+	<center>
+	<h4>The guild was founded on '. date('M d Y, H:i:s T', $guild['creationdata']) .' by <a href="character.php?char='. userFromID($guild['ownerid']) .'">'. userFromID($guild['ownerid']) .'</a></h4>
+	<table style="text-align: left; width: 35%;" border="1" cellpadding="0" cellspacing="2">
+	<tbody>
+	<tr>
+	<td style="width: 40%;">Rank</td>
+	<td style="width: 60%;">Name (Title)</td>
+	</tr>
+	</tbody>';
+						foreach($guild_rank as $id => $info)
+						{
+							$query = sqlquery('SELECT `name`, `rank_id`, `guildnick` FROM `players` WHERE `rank_id` = '. $id .'');
+							while($row = mysql_fetch_array($query)) {
+								echo '
+								<tr>
+								<td><center>'. $info['name'] .'</center></td>
+								<td><center><a href="character.php?char='. $row['name'] .'">'. $row['name'] .'</a>';
+								if($row['guildnick'])
+									echo ' ('. $row['guildnick'] .')';
+								echo '</center></td>
+								</tr>
+								';
+							}
+						}
+						echo '</table></center>';
+						echo '<br /><br />';
+						$query = sqlquery('SELECT `player_id` FROM `guild_invites` WHERE `guild_id` = '. $guild['id'] .'');
+						if(mysql_num_rows($query) != 0) {
+							echo '
+							<center>
+							<h4>Invited Players:</h4>
+							<table style="text-align: left; width: 15%;" border="1" cellpadding="0" cellspacing="2">
+							<tbody>
+							<tr>
+							<td style="width: 10%;">Name</td>
+							</tr>
+							</tbody>';
+							while($row = mysql_fetch_array($query)){
+								echo '
+								<tr>
+								<td><center><a href="character.php?char='. userFromID($row['player_id']) .'">'. userFromID($row['player_id']) .'</a></center></td>
+								</tr>
+								';
+							}
+							echo '</table><center><a href="guilds.php?act=join">Join</a></center>';
+						}
+					}
+				}
+				else { // List of guilds
+	echo '
+	<center>
+	<table style="text-align: left; width: 30%;" border="1" cellpadding="0" cellspacing="2">
+	<tbody>
+	<tr>
+	<td style="width: 50%;">Guild Name</td>
+	<td style="width: 40%;">Owner</td>
+	<td style="width: 10%;">View</td>
+	</tr>
+	</tbody>';
+					$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
+					mysql_select_db($sql_db, $sqlconnect);
+					
+					$query = sqlquery('SELECT `name`, `ownerid` FROM `guilds` ORDER BY `name` ASC');
+					while($row = mysql_fetch_array($query)) {
+						echo '
+						<tr>
+						<td><center>'. $row['name'] .'</center></td>
+						<td><center><a href="character.php?char='. userFromID($row['ownerid']) .'">'. userFromID($row['ownerid']) .'</a></center></td>
+						<td><center><a href="guilds.php?act=view&guild='.$row['name'].'">View</a></center></td>
+						</tr>
+						';
+						$i++;
+					}
+					echo '</table></center>';
+				}
 				break;
 		}
-	}
 }
 else
 {
