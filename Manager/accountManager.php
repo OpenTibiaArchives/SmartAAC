@@ -81,7 +81,7 @@ else if ($result == "pass_success") {
 }
 
 
-echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
+echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/top.tpl');
 ?>
 <h1>Your Account</h1><br>
 
@@ -165,7 +165,7 @@ else
 
 <?php
 }
-echo $tpl->fetch('../Includes/Templates/Indigo/sidebarManagerLoggedIn.tpl');
-echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
-echo $tpl->fetch('../Includes/Templates/Indigo/bottom.tpl');
+echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebarManagerLoggedIn.tpl');
+echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/footer.tpl');
+echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/bottom.tpl');
 ?>

@@ -144,7 +144,7 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null)
 		}
 	}
 	
-echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
+echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/top.tpl');
 ?>
 <h2>Change password:</h2><br>
 
@@ -166,8 +166,8 @@ echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
 
 </table>
 <?php
-echo $tpl->fetch('../Includes/Templates/Indigo/sidebarManagerLoggedIn.tpl');
-echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
-echo $tpl->fetch('../Includes/Templates/Indigo/bottom.tpl');
+echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebarManagerLoggedIn.tpl');
+echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/footer.tpl');
+echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/bottom.tpl');
 }
 ?>

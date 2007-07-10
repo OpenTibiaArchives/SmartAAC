@@ -94,7 +94,7 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null)
 		}
 	}
 
-echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
+echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/top.tpl');
 
 $sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die("MySQL Error: mysql_error (mysql_errno()).\n");
 mysql_select_db($sql_db, $sqlconnect);
@@ -170,8 +170,8 @@ else {
 <?PHP
 }
 
-echo $tpl->fetch('../Includes/Templates/Indigo/sidebarManagerLoggedIn.tpl');
-echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
-echo $tpl->fetch('../Includes/Templates/Indigo/bottom.tpl');
+echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebarManagerLoggedIn.tpl');
+echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/footer.tpl');
+echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/bottom.tpl');
 }
 ?>

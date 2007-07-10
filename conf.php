@@ -3,7 +3,7 @@
 // ===========================================================
 //	Smart-Ass: The Userfriendly AAC
 //	Version: 2.0.0
-//	Configuration Created: Thu, 05 Jul 2007 22:34:23 +0100
+//	Configuration Created: Tue, 10 Jul 2007 22:58:14 +0100
 //	
 //
 //	Main configuration for the AAC system
@@ -31,16 +31,17 @@ $aac_version = 					"2.0.0";
 $aac_versioncode = 				200;
 $aac_dataDir =					"C:/Dev-Cpp/otserv/data";
 $aac_mapname =					"map";
-$aac_maintenanceReason =		"<p>No reason set.</p>";
+$aac_maintenanceReason = 		"<p>No reason set.</p>";
+$aac_layout =					"Indigo";
 
 # Lengths of commonly used fields in the AAC
-$aac_maxplayers =				25;
+$aac_maxplayers = 				25;
 $aac_minacclen = 				4;
-$aac_maxacclen = 				20;
+$aac_maxacclen = 				10;
 $aac_minpasslen = 				4;
 $aac_maxpasslen = 				20;
 $aac_minplayerlen =				3;
-$aac_maxplayerlen =				10;
+$aac_maxplayerlen =				20;
 
 # Used to get statistical information for your site. E.G. Players online, peak, max, etc
 $aac_servername = 				"TestName";
@@ -50,7 +51,7 @@ $net_port = 					"7171";
 # Security switches and username/password
 $aac_md5passwords =				false;
 $aac_imgver = 					false;
-$main_downloads_warning =		false;
+$main_downloads_warning = 		false;
 $main_showemails = 				false;
 $aac_randomaccnum =				false;
 $admin_user =					"admin";
@@ -63,16 +64,16 @@ $sql_pass = 					"";
 $sql_db = 						"otserv";
 
 # Settings for Highscores, Voting, Feedback mail, Towns
-$main_highscores_result =		20;
+$main_highscores_result = 		20;
 $main_ugrp_nolist =				2;
-$main_votequestion = 				"What should the server add?";
-$main_voteanswer1 = 				"More monsters";
-$main_voteanswer2 = 				"More hunting areas";
-$main_voteanswer3 = 				"More houses";
-$main_voteanswer4 = 				"New towns";
+$main_votequestion = 			"What should the server add?";
+$main_voteanswer1 = 			"More monsters";
+$main_voteanswer2 = 			"More hunting areas";
+$main_voteanswer3 = 			"More houses";
+$main_voteanswer4 = 			"New towns";
 $main_enable_mailer = 			false;
 $main_mail = 					"none@none.nodomain";
-$main_towns =					array(1 => 'Town 1', 2 => 'Town 2', 3 => 'Town 3', 4 => 'Town 4', 5 => 'Town 5');
+$main_towns = 					array(1 => 'Town 1', 2 => 'Town 2', 3 => 'Town 3', 4 => 'Town 4', 5 => 'Town 5', );
 
 # Information for the statistics page, is not used with the AAC, and not exactly important
 $info_os =						"Debian Linux";
@@ -112,19 +113,18 @@ $char_lookfeet =				10;
 $char_town =					1;
 
 # Character item settings
-// head, neck, container, armor, right hand, left hand, legs, feet, ring, ammo 	 
 $pids = 						array(1 => 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 $sid = 							10; 	 
-$char_items = 					array(); 	 
-$char_items[11] = 				array('slot' => 3, 'item_type' => 1988, 'count' => 1); 	 
-$char_items[12] = 				array('slot' => 4, 'item_type' => 2650, 'count' => 1); 	 
-$char_items[13] = 				array('slot' => 5, 'item_type' => 2382, 'count' => 1); 	 
-$char_items[14] = 				array('slot' => 6, 'item_type' => 2050, 'count' => 1); 	 
-$char_items[15] = 				array('slot' => 11, 'item_type' => 2674, 'count' => 2); 	 
+$char_items = 					array();
+$char_items[11] = 				array('slot' => 3, 'item_type' => 1988, 'count' => 1);
+$char_items[12] = 				array('slot' => 4, 'item_type' => 2650, 'count' => 1);
+$char_items[13] = 				array('slot' => 5, 'item_type' => 2382, 'count' => 1);
+$char_items[14] = 				array('slot' => 6, 'item_type' => 2050, 'count' => 1);
+$char_items[15] = 				array('slot' => 11, 'item_type' => 2674, 'count' => 2);
 
 # Character levels (Magic, HP, Mana)
 $char_maglevel_none = 			"";
-$char_health_none =				"";
+$char_health_none = 			"";
 $char_mana_none = 				"";
 
 $char_maglevel_sorcerer = 		100;
@@ -139,7 +139,7 @@ $char_maglevel_paladin = 		100;
 $char_health_paladin = 			100;
 $char_mana_paladin = 			100;
 
-$char_maglevel_knight =			100;
+$char_maglevel_knight = 		100;
 $char_health_knight = 			100;
 $char_mana_knight = 			100;
 ?>

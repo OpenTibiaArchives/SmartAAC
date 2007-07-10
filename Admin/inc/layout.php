@@ -27,6 +27,7 @@ include "../conf.php";
 // ===========================================================
 
 include '../conf.php';
+include '../Includes/resources.php';
 include '../Includes/stats/stats.php';
 include '../Includes/counter/counter.php';
 
@@ -38,7 +39,7 @@ if((!isset($_COOKIE["logged_in_user"]) || $_COOKIE["logged_in_user"] != md5($adm
 // Logged in
 else
 {
-	$title = 'Mass Spawn Changer';
+	$title = 'Items';
 	$name = 'Admin Panel';
 	$bodySpecial = 'onload="NOTHING"';
 
@@ -94,24 +95,37 @@ else
 		clear: left;
 		}
 		</style>
-	
-		<p>Leave blank to not change spawn position</p><br />
-		
-		<form action=\"save.php?save=spawnchange\" method=\"POST\">
-		<label for=\"XPos\">X Position:</label>
-		<input type=\"text\" name=\"XPos\" value=\"\" /><br />
-		<label for=\"YPos\">Y Position:</label>
-		<input type=\"text\" name=\"YPos\" value=\"\" /><br />
-		<label for=\"ZPos\">Z Position:</label>
-		<input type=\"text\" name=\"ZPos\" value=\"\" /><br />
 
-		<br />
+";
+echo "<h1>Pick a layout</h1><br />";
+
+}
+echo "<form action=\"save.php?save=layout\" method=\"POST\">";
+
+echo '<select name="layoutname" size="5">';
+$d = opendir("../Includes/Templates");
+	while($f = readdir($d))
+	{
+	
+	if(is_dir($f))
+	continue;
+
+		if($f != "bTemplate.php" && $f != "index.php" && $f != "Slick_minimal")
+			echo '<option value="'.$f.'">'.$f.'</option>';
+
+}
+	
+
+echo '</select><br />';
+
+echo "
+		<br /><br />
 		<input type=\"submit\" name=\"submitbutton\" id=\"submitbutton\" value=\"Change\" />
+			<br />
 		</form>
-		";
+";
 
 	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebarAdmin.tpl');
 	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/footer.tpl');
 	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/bottom.tpl');
-}
 ?>

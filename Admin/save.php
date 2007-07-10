@@ -157,6 +157,10 @@ else
 		fclose($voteFile);
 		break;
 		
+		case "layout":
+		$aac_layout = $_POST['layoutname'];
+		break;
+		
 		case "fieldlens":
 		$aac_minacclen = 		$_POST["MinAccLen"];
 		$aac_maxacclen = 		$_POST["MaxAccLen"];
@@ -497,6 +501,7 @@ $encryptedAdminPass
 \$aac_dataDir =					\"$aac_dataDir\";
 \$aac_mapname =					\"$aac_mapname\";
 \$aac_maintenanceReason = 		\"$aac_maintenanceReason\";
+\$aac_layout =					\"$aac_layout\";
 
 # Lengths of commonly used fields in the AAC
 \$aac_maxplayers = 				$aac_maxplayers;

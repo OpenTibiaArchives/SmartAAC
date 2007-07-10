@@ -93,7 +93,7 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null) {
 			
 			if (!isset($passin) || $passin == "")
 			{
-			echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
+			echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/top.tpl');
 ?>
 <font color="red" size="+2">Character deletion!</font><br><br>
 To delete your character we must ask you to enter your password for this account.
@@ -103,9 +103,9 @@ Password: <input type="password" name="M2_password"><br>
 <input type="submit" value="Continue"> <font color="red"><i>Note. By pressing this you agree that your character (<?php echo $char; ?>) will be permanently deleted from our servers.</i></font>
 </form>
 <?php
-			echo $tpl->fetch('../Includes/Templates/Indigo/sidebarManagerLoggedIn.tpl');
-			echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
-			echo $tpl->fetch('../Includes/Templates/Indigo/bottom.tpl');
+			echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebarManagerLoggedIn.tpl');
+			echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/footer.tpl');
+			echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/bottom.tpl');
 			}
 			else
 			{

@@ -60,7 +60,7 @@ $M2_password = $_SESSION['M2_password'];
 
 if (!(isset($M2_account) && isset($M2_password) && $M2_account != null && $M2_account != "" && $M2_password != null && $M2_password != ""))
 {
-echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
+echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/top.tpl');
 ?>
 <h2>Login to your account:</h2><br />
 <?php
@@ -82,9 +82,9 @@ if(isset($reckey)) {
 	<input type="submit" name="submit" class="plswhy" value="Login">
 	</form>
 <?
-echo $tpl->fetch('../Includes/Templates/Indigo/sidebarOutterMain.tpl');
-echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
-echo $tpl->fetch('../Includes/Templates/Indigo/bottom.tpl');
+echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebarOutterMain.tpl');
+echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/footer.tpl');
+echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/bottom.tpl');
 }
 else
 {

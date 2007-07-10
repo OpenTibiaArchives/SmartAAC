@@ -57,7 +57,7 @@ $tpl->set('AAC_Version', $aac_version);
 $tpl->set('Total_Visits', $total);
 $tpl->set('Unique_Visits', $total_uniques);
 
-echo $tpl->fetch('../Includes/Templates/Slick/top.tpl');
+echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/top.tpl');
 
 include('../Admin/news/news.php');
 $want = $_GET['want'];
@@ -99,9 +99,9 @@ switch($want)
 
 
 if(isset($_SESSION['M2_account']) && isset($_SESSION['M2_password']))
-	echo $tpl->fetch('../Includes/Templates/Indigo/sidebarManagerLoggedIn.tpl');
+	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebarManagerLoggedIn.tpl');
 else
-	echo $tpl->fetch('../Includes/Templates/Slick/sidebar.tpl');
-echo $tpl->fetch('../Includes/Templates/Slick/footer.tpl');
-echo $tpl->fetch('../Includes/Templates/Slick/bottom.tpl');
+	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebar.tpl');
+echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/footer.tpl');
+echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/bottom.tpl');
 ?>

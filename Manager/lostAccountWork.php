@@ -50,7 +50,7 @@ while(true)
 	}
 }
 
-echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
+echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/top.tpl');
 
 if($foundKey)
 {
@@ -80,8 +80,8 @@ else
 	echo "<p>Sorry, the key you entered doesn't exist. <a href=\"lostAccount.php\">Go Back</a></p>";
 }
 
-echo $tpl->fetch('../Includes/Templates/Indigo/sidebarOutterMain.tpl');
-echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
-echo $tpl->fetch('../Includes/Templates/Indigo/bottom.tpl');
+echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebarOutterMain.tpl');
+echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/footer.tpl');
+echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/bottom.tpl');
 
 ?>

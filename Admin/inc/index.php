@@ -53,7 +53,7 @@ else
 	$tpl->set('Total_Visits', $total);
 	$tpl->set('Unique_Visits', $total_uniques);
 
-	echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
+	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/top.tpl');
 
 	$currVersion = file_get_contents("http://smart.pekay.co.uk/smartass_version");
 	if($currVersion != $aac_versioncode)
@@ -83,6 +83,7 @@ Version Code: $aac_versioncode</i></p><br />";
 <li><a href="admin.php?action=Maintenance">In/out of maintenance mode</a></li>
 <li><a href="admin.php?action=MassSpawnChange">Mass spawn changer</a></li>
 <li><a href="admin.php?action=FrontpageText">Frontpage text</a></li>
+<li><a href="admin.php?action=Layout">Layout</a></li>
 <li><a href="admin.php?action=Others">Change other stuff</a></li>
 <br />
 <li><a href="admin.php?action=CheckVersion">Check version</a></li>
@@ -98,8 +99,8 @@ Version Code: $aac_versioncode</i></p><br />";
 
 echo "<br /><br />";
 
-	echo $tpl->fetch('../Includes/Templates/Indigo/sidebarAdmin.tpl');
-	echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
-	echo $tpl->fetch('../Includes/Templates/Indigo/bottom.tpl');
+	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebarAdmin.tpl');
+	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/footer.tpl');
+	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/bottom.tpl');
 }
 ?>

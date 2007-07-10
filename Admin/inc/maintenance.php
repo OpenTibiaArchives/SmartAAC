@@ -54,7 +54,7 @@ else
 	$tpl->set('Total_Visits', $total);
 	$tpl->set('Unique_Visits', $total_uniques);
 
-	echo $tpl->fetch('../Includes/Templates/Indigo/top.tpl');
+	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/top.tpl');
 		
 		echo "
 		<style type=\"text/css\">
@@ -112,8 +112,8 @@ else
 		</form>
 		";
 
-	echo $tpl->fetch('../Includes/Templates/Indigo/sidebarAdmin.tpl');
-	echo $tpl->fetch('../Includes/Templates/Indigo/footer.tpl');
-	echo $tpl->fetch('../Includes/Templates/Indigo/bottom.tpl');
+	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebarAdmin.tpl');
+	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/footer.tpl');
+	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/bottom.tpl');
 }
 ?>

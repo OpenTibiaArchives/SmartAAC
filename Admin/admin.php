@@ -79,6 +79,10 @@ switch($action)
 	case "FrontpageText":
 	include 'inc/frontpagetext.php';
 	break;
+	
+	case "Layout":
+	include 'inc/layout.php';
+	break;
 
 	default:
 	include 'inc/index.php';

@@ -223,6 +223,7 @@ else
 \$aac_dataDir =					\"$conf_dataDir\";
 \$aac_mapname =					\"$conf_mapname\";
 \$aac_maintenanceReason =		\"<p>No reason set.</p>\";
+\$aac_layout = 					\"Indigo\";
 
 # Lengths of commonly used fields in the AAC
 \$aac_maxplayers =				$conf_char_max;
