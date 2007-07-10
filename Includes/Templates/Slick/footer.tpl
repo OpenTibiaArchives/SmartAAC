@@ -1,6 +1,6 @@
-	<div class="footer">
+<!-- 	<div class="footer">
 	
-			<div class="col3">
+		<div class="col3">
 
 				<h2>Go somewhere</h2>
 				<ul>
@@ -34,3 +34,5 @@
 					<li><a href="http://php.net/">PHP.net</a></li>
 					<li><a href="http://httpd.apache.org/">Apache HTTPD</a></li>
 				</ul>
+				
+	</div> -->

@@ -3,3 +3,91 @@ input.btn{
    font-family:'trebuchet ms',helvetica,sans-serif;
    font-size: 37px;
    font-weight:bold;}
+
+   
+/* .submit input, .submit input:focus, .button, .button:focus {
+	background: url(img/fade-butt.png);
+	border: 3px double #999;
+	border-left-color: #ccc;
+	border-top-color: #ccc;
+	color: #333;
+	padding: 0.25em;
+} */
+
+/* input.plswhy {
+	background: url(img/fade-butt.png);
+	border: 3px double #999;
+	border-left-color: #ccc;
+	border-top-color: #ccc;
+	color: #333;
+	padding: 0.25em;
+} */
+
+ .submit input:active, .button:active {
+	background: #f4f4f4;
+	/*border: 3px double #ccc;
+	border-left-color: #999;
+	border-top-color: #999;*/
+}
+
+.button, .button:focus {
+	padding: 0.15em;
+}
+
+form, label input {
+	margin: 0;
+	padding: 0;
+} */
+
+input:focus, textarea:focus{
+	background: #EFFDFF;
+	border: 2px solid #686868;
+}
+
+input:hover, textarea:hover{
+	background: #E4F7FA;
+	border: 1px dashed #686868;
+}
+
+ label:hover {
+	background: #E4F7FA;
+}
+
+textarea, input, select {
+	background: #f4f4f4;
+	border: 1px solid #b2b2b2;
+	color: #000;
+	font:  13px Verdana, Arial, Helvetica, sans-serif;
+	margin: 1px;
+	padding: 3px;
+}
+
+.submit, .editform th, #postcustomsubmit {
+	text-align: right;
+}
+
+textarea.all-options, input.all-options {
+	width: 250px;
+}
+
+div.tableforme {
+  padding-left: 28px;
+  border: 0px solid;
+}
+
+tr.tableheaders td {
+	background: #DFDFDF;
+}
+
+tr.lolhover:hover { background-color: #EFEFEF; }
+td.lolhovermanager:hover { background-color: #EFEFEF; }
+
+div.dashed {
+border: 2px dashed #FFF;
+padding: 5px;
+background-color: #3F3F3F;
+}
+
+div.dashed:hover {
+background-color: #4F4F4F;
+}

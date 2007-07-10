@@ -14,7 +14,8 @@ Feel free to use and modify but please provide credits.
 	padding: 0;
 }
 
-a {text-decoration: none;}
+a {text-decoration: none; color: #FFF;}
+a:hover {text-decoration: underline; color: #FFF;}
 
 body {
 	background: #111 url(img/bg.jpg) repeat-y center top;
@@ -186,6 +187,7 @@ h2 {
 	color: #666;
 	clear: both;
 	font-size: 1.1em;
+	padding: 10px;
 }
 .bottom a {color: #888;}
 

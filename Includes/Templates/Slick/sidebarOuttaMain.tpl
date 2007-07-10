@@ -31,7 +31,7 @@
 				    </tbody>
 					</form>
 				  </table>
-				  <a href="../Manager/index.php?act=register">Not got an account? Register Here</a>
+				  <a href="index.php?act=register">Not got an account? Register Here</a>
 							
 			</div>
 			
@@ -46,32 +46,32 @@
 			
 			<h1>Community</h1>
 			<ul>
-				<li><a href="character.php">Search Characters</a></li>
-				<li><a href="guilds.php">Guild List</a></li>
-				<li><a href="houses.php">House List</a></li>
-				<li><a href="highscores.php">Highscores</a></li>
-				<li><a href="banned.php">Banned Players</a></li>
+				<li><a href="../Main/character.php">Search Characters</a></li>
+				<li><a href="../Main/guilds.php">Guild List</a></li>
+				<li><a href="../Main/houses.php">House List</a></li>
+				<li><a href="../Main/highscores.php">Highscores</a></li>
+				<li><a href="../Main/banned.php">Banned Players</a></li>
 				<li><a href="../Main/vote.php">Voting</a></li>
 			</ul>
 
 			<h1>Information</h1>
 			<ul>
-				<li><a href="information.php">General Information</a></li>
-				<li><a href="serverstats.php">Server Statistics</a></li>
+				<li><a href="../Main/information.php">General Information</a></li>
+				<li><a href="../Main/serverstats.php">Server Statistics</a></li>
 				<li><a href="../Main/affliates.php">Affliates</a></li>
-				<li><a href="commands.php">In-game Commands</a></li>
+				<li><a href="../Main/commands.php">In-game Commands</a></li>
 			</ul>
 
 			<h1>Extras</h1>
 			<ul>
-				<li><a href="downloads.php">Downloads</a></li>
-				<li><a href="custom.php">Custom Pages</a></li>
-				<li><a href="monsters.php">Monsters</a></li>
-				<li><a href="spells.php">Spells</a></li>
-				<li><a href="gallery.php">Gallery</a></li>
-				<li><a href="videos.php">Videos</a></li>
-				<li><a href="rules.php">Rules</a></li>
-				<li><a href="feedback.php">Feedback</a></li>
+				<li><a href="../Main/downloads.php">Downloads</a></li>
+				<li><a href="../Main/custom.php">Custom Pages</a></li>
+				<li><a href="../Main/monsters.php">Monsters</a></li>
+				<li><a href="../Main/spells.php">Spells</a></li>
+				<li><a href="../Main/gallery.php">Gallery</a></li>
+				<li><a href="../Main/videos.php">Videos</a></li>
+				<li><a href="../Main/rules.php">Rules</a></li>
+				<li><a href="../Main/feedback.php">Feedback</a></li>
 				<li><a href="../Admin/">Admin Panel</a></li>
 			</ul>
 			<br /><br /><br />

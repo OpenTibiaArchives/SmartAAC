@@ -1,13 +1,15 @@
-		</div>
+</div></div>
+		<div class="right">
 
-		<div class="sidenav">
+			<div class="subnav">
+
+							
+						
 			<h1>Login</h1>
-
+			
 			<div>			
-				<form method="post" action="../../Manager/login.php"
-				 name="Login">
-				  <table style="text-align: left; height: 112px; width: 296px;"
-				 border="0" cellpadding="2" cellspacing="2">
+				<form method="post" action="../../Manager/login.php" name="Login">
+				  <table style="text-align: left; height: 112px; width: 296px;" border="0" cellpadding="2" cellspacing="2">
 				    <tbody>
 				      <tr>
 				        <td style="width: 90px;">
@@ -23,21 +25,24 @@
 				        <td style="width: 157px;"><a href="../../Manager/index.php?act=lost">Lost Account</a></td>
 				      </tr>
 				      <tr>
-				        <td style="width: 90px;"><input type="Submit" value="Login"></form></td>
+				        <td style="width: 90px;"><input type="Submit" value="Login"></a></td>
 				        <td style="width: 157px;"></td>
 				      </tr>
 				    </tbody>
+					</form>
 				  </table>
 				  <a href="../../Manager/index.php?act=register">Not got an account? Register Here</a>
-								
+							
 			</div>
-
+			
+			<br />
 			<h1>Status</h1>
 			<br />
 			<div style="font-size: 14px;" align="center">
 			<tag:stats />
 			</div>
-
+			
+			<br /><br />
 			
 			<h1>Community</h1>
 			<ul>
@@ -89,10 +94,12 @@
 			
 			<br /><br />
 
+
+
+			</div>
+
 		</div>
-	
+
 		<div class="clearer"><span></span></div>
 
 	</div>
-
-</div>
