@@ -168,21 +168,23 @@ else
 	$conf_uptimetype =		$_POST["HostUptime"];
 	
 	// Create table "guild_invites"
-	$query2 = 'DROP TABLE IF EXISTS `guild_invites`';
-	$sqlquery = 'CREATE TABLE `guild_invites` (
+	$guild_invites = 'DROP TABLE IF EXISTS `guild_invites`;
+	CREATE TABLE `guild_invites` (
 	`player_id` INT NOT NULL ,
 	`guild_id` INT NOT NULL,
 	FOREIGN KEY (`player_id`) REFERENCES `players` (`id`),
 	FOREIGN KEY (`guild_id`) REFERENCES `guilds` (`id`)
-	) ENGINE = InnoDB';
-	$makeRecoveryField = 'ALTER TABLE `accounts` ADD `recovery` VARCHAR(255) NULL ;';
+	) ENGINE = InnoDB;';
+	$recoveryExist = 1;
+	sqlquery('SELECT `recovery` FROM `accounts LIMIT 1 ;`') or $recoveryExist = 0;
+	$recoveryField = 'ALTER TABLE `accounts` ADD `recovery` VARCHAR(255) NULL ;';
 
 	$sqlconnect = mysql_connect($conf_host, $conf_user, $conf_pass) or die('Couldn\'t connect to MySQL server: '.mysql_error().' ('.mysql_errno().')');
 	mysql_select_db($conf_db, $sqlconnect) or die('Couldn\'t select MySQL database: '.mysql_error().' ('.mysql_errno().')');
 	
-	$query2 = mysql_query($query2) or die('Couldn\'t proceed MySQL query: '.mysql_error().' ('.mysql_errno().')');
-	$query = mysql_query($sqlquery) or die('Couldn\'t create MySQL table guild_invites: '.mysql_error().' ('.mysql_errno().')');
-	$makeRecoveryField = mysql_query($makeRecoveryField) or die('Couldn\'t create MySQL field in accounts table, "recovery": '.mysql_error().' ('.mysql_errno().')<br /><br />(Already got a field called "recovery"? Drop it, empty or something. And go back a step.)');
+	mysql_query($guild_invites) or die('Couldn\'t create MySQL table guild_invites: '.mysql_error().' ('.mysql_errno().')');
+	if($recoveryExist = 1)
+		mysql_query($recoveryField) or die('Couldn\'t create MySQL field in accounts table, "recovery": '.mysql_error().' ('.mysql_errno().')<br /><br />(Already got a field called "recovery"? Drop it, empty or something. And go back a step.)');
 	
 	// End: Create table "guild_invites"
 
