@@ -167,6 +167,9 @@ else
 	$conf_connection =		$_POST["HostConnection"];
 	$conf_uptimetype =		$_POST["HostUptime"];
 	
+	$sqlconnect = mysql_connect($conf_host, $conf_user, $conf_pass) or die('Couldn\'t connect to MySQL server: '.mysql_error().' ('.mysql_errno().')');
+	mysql_select_db($conf_db, $sqlconnect) or die('Couldn\'t select MySQL database: '.mysql_error().' ('.mysql_errno().')');
+	
 	// Create table "guild_invites"
 	$guild_invites = 'DROP TABLE IF EXISTS `guild_invites`;
 	CREATE TABLE `guild_invites` (
@@ -179,9 +182,6 @@ else
 	mysql_query('SELECT `recovery` FROM `accounts LIMIT 1 ;`') or $recoveryExist = 0;
 	$recoveryField = 'ALTER TABLE `accounts` ADD `recovery` VARCHAR(255) NULL ;';
 
-	$sqlconnect = mysql_connect($conf_host, $conf_user, $conf_pass) or die('Couldn\'t connect to MySQL server: '.mysql_error().' ('.mysql_errno().')');
-	mysql_select_db($conf_db, $sqlconnect) or die('Couldn\'t select MySQL database: '.mysql_error().' ('.mysql_errno().')');
-	
 	mysql_query($guild_invites) or die('Couldn\'t create MySQL table guild_invites: '.mysql_error().' ('.mysql_errno().')');
 	if($recoveryExist = 1)
 		mysql_query($recoveryField) or die('Couldn\'t create MySQL field in accounts table, "recovery": '.mysql_error().' ('.mysql_errno().')<br /><br />(Already got a field called "recovery"? Drop it, empty or something. And go back a step.)');
