@@ -176,7 +176,7 @@ else
 	FOREIGN KEY (`guild_id`) REFERENCES `guilds` (`id`)
 	) ENGINE = InnoDB;';
 	$recoveryExist = 1;
-	sqlquery('SELECT `recovery` FROM `accounts LIMIT 1 ;`') or $recoveryExist = 0;
+	mysql_query('SELECT `recovery` FROM `accounts LIMIT 1 ;`') or $recoveryExist = 0;
 	$recoveryField = 'ALTER TABLE `accounts` ADD `recovery` VARCHAR(255) NULL ;';
 
 	$sqlconnect = mysql_connect($conf_host, $conf_user, $conf_pass) or die('Couldn\'t connect to MySQL server: '.mysql_error().' ('.mysql_errno().')');
