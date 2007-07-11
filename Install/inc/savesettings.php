@@ -171,8 +171,8 @@ else
 	mysql_select_db($conf_db, $sqlconnect) or die('Couldn\'t select MySQL database: '.mysql_error().' ('.mysql_errno().')');
 	
 	// Create table "guild_invites"
-	$guild_invites = 'DROP TABLE IF EXISTS `guild_invites`;
-	CREATE TABLE `guild_invites` (
+	$guild_invites_drop = 'DROP TABLE IF EXISTS `guild_invites`';
+	$guild_invites = 'CREATE TABLE `guild_invites` (
 	`player_id` INT NOT NULL ,
 	`guild_id` INT NOT NULL,
 	FOREIGN KEY (`player_id`) REFERENCES `players` (`id`),
@@ -182,6 +182,7 @@ else
 	mysql_query('SELECT `recovery` FROM `accounts LIMIT 1 ;`') or $recoveryExist = 0;
 	$recoveryField = 'ALTER TABLE `accounts` ADD `recovery` VARCHAR(255) NULL ;';
 
+	mysql_query($guild_invites_drop) or die('MySQL error: '.mysql_error().'('.mysql_errno().')');
 	mysql_query($guild_invites) or die('Couldn\'t create MySQL table guild_invites: '.mysql_error().' ('.mysql_errno().')');
 	if($recoveryExist = 1)
 		mysql_query($recoveryField) or die('Couldn\'t create MySQL field in accounts table, "recovery": '.mysql_error().' ('.mysql_errno().')<br /><br />(Already got a field called "recovery"? Drop it, empty or something. And go back a step.)');
