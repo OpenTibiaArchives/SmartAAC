@@ -92,41 +92,41 @@ else
 
 		<form action=\"save.php?save=modules\" method=\"POST\">
 		<label for=\"CharSearch\">Char search:</label>
-		<input type=\"checkbox\" name=\"CharSearch\" class=\"boxes\" /><br />
+		<input type=\"checkbox\" name=\"CharSearch\" class=\"boxes\" "; if($modules_charsearch) { echo "checked"; } echo "/><br />
 		<label for=\"Feedback\">Feedback page:</label>
-		<input type=\"checkbox\" name=\"Feedback\" class=\"boxes\" /><br />
+		<input type=\"checkbox\" name=\"Feedback\" class=\"boxes\" "; if($modules_feedback) { echo "checked"; } echo "/><br />
 		<label for=\"Affliates\">Affliates page:</label>
-		<input type=\"checkbox\" name=\"Affliates\" class=\"boxes\" /><br />
+		<input type=\"checkbox\" name=\"Affliates\" class=\"boxes\" "; if($modules_affliates) { echo "checked"; } echo "/><br />
 		<label for=\"Guilds\">Guilds:</label>
-		<input type=\"checkbox\" name=\"Guilds\" class=\"boxes\" /><br />
+		<input type=\"checkbox\" name=\"Guilds\" class=\"boxes\" "; if($modules_guilds) { echo "checked"; } echo "/><br />
 		<label for=\"Houses\">Houses:</label>
-		<input type=\"checkbox\" name=\"Houses\" class=\"boxes\" /><br />
+		<input type=\"checkbox\" name=\"Houses\" class=\"boxes\" "; if($modules_houses) { echo "checked"; } echo "/><br />
 		<label for=\"Highscores\">Highscores:</label>
-		<input type=\"checkbox\" name=\"Highscores\" class=\"boxes\" /><br />
+		<input type=\"checkbox\" name=\"Highscores\" class=\"boxes\" "; if($modules_highscores) { echo "checked"; } echo "/><br />
 		<label for=\"InfoPage\">Info page:</label>
-		<input type=\"checkbox\" name=\"InfoPage\" class=\"boxes\" /><br />
+		<input type=\"checkbox\" name=\"InfoPage\" class=\"boxes\" "; if($modules_infopage) { echo "checked"; } echo "/><br />
 		<label for=\"ServerStats\">Server stats:</label>
-		<input type=\"checkbox\" name=\"ServerStats\" class=\"boxes\" /><br />
+		<input type=\"checkbox\" name=\"ServerStats\" class=\"boxes\" "; if($modules_serverstats) { echo "checked"; } echo "/><br />
 		<label for=\"DownloadsPage\">Downloads page:</label>
-		<input type=\"checkbox\" name=\"DownloadsPage\" class=\"boxes\" /><br />
+		<input type=\"checkbox\" name=\"DownloadsPage\" class=\"boxes\" "; if($modules_downloads) { echo "checked"; } echo "/><br />
 		<label for=\"BannedPlayers\">Banned players:</label>
-		<input type=\"checkbox\" name=\"BannedPlayers\" class=\"boxes\" /><br />
+		<input type=\"checkbox\" name=\"BannedPlayers\" class=\"boxes\" "; if($modules_bannedplayers) { echo "checked"; } echo "/><br />
 		<label for=\"InGameCommands\">In-game commands page:</label>
-		<input type=\"checkbox\" name=\"InGameCommands\" class=\"boxes\" /><br />
+		<input type=\"checkbox\" name=\"InGameCommands\" class=\"boxes\" "; if($modules_commands) { echo "checked"; } echo "/><br />
 		<label for=\"RulesPage\">Rules page:</label>
-		<input type=\"checkbox\" name=\"RulesPage\" class=\"boxes\" /><br />
+		<input type=\"checkbox\" name=\"RulesPage\" class=\"boxes\" "; if($modules_rules) { echo "checked"; } echo "/><br />
 		<label for=\"VotePage\">Voting:</label>
-		<input type=\"checkbox\" name=\"VotePage\" class=\"boxes\" /><br />
+		<input type=\"checkbox\" name=\"VotePage\" class=\"boxes\" "; if($modules_voting) { echo "checked"; } echo "/><br />
 		<label for=\"Custom\">Custom page:</label>
-		<input type=\"checkbox\" name=\"Custom\" class=\"boxes\" /><br />
+		<input type=\"checkbox\" name=\"Custom\" class=\"boxes\" "; if($modules_custom) { echo "checked"; } echo "/><br />
 		<label for=\"Videos\">Videos page:</label>
-		<input type=\"checkbox\" name=\"Videos\" class=\"boxes\" /><br />
+		<input type=\"checkbox\" name=\"Videos\" class=\"boxes\" "; if($modules_videos) { echo "checked"; } echo "/><br />
 		<label for=\"Gallery\">Gallery page:</label>
-		<input type=\"checkbox\" name=\"Gallery\" class=\"boxes\" /><br />
+		<input type=\"checkbox\" name=\"Gallery\" class=\"boxes\" "; if($modules_gallery) { echo "checked"; } echo "/><br />
 		<label for=\"Monsters\">Monsters page:</label>
-		<input type=\"checkbox\" name=\"Monsters\" class=\"boxes\" /><br />
+		<input type=\"checkbox\" name=\"Monsters\" class=\"boxes\" "; if($modules_monsters) { echo "checked"; } echo "/><br />
 		<label for=\"Spells\">Spells page:</label>
-		<input type=\"checkbox\" name=\"Spells\" class=\"boxes\" /><br /><br />
+		<input type=\"checkbox\" name=\"Spells\" class=\"boxes\" "; if($modules_spells) { echo "checked"; } echo "/><br /><br />
 		
 		<br />
 		<input type=\"submit\" name=\"submitbutton\" id=\"submitbutton\" value=\"Change\" />
