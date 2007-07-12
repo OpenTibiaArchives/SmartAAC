@@ -76,7 +76,7 @@ $uptime = floor($uptime / 24);
 $days = $uptime % 365;
 
 
-@$fp = fsockopen ($ip, 7171, $errno, $errstr, 1);
+@$fp = fsockopen ($ip, $port, $errno, $errstr, 1);
 if (!$fp)
 {
 	$global_stats = '<b>Server Offline</b>';
