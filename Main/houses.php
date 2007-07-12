@@ -37,7 +37,7 @@ if($aac_status == "Maintenance")
 }
 
 
-$xml_data = file_get_contents($aac_dataDir . '/world/'. $aac_mapname .'-house.xml');
+$xml_data = file_get_contents("$aac_dataDir/$aac_worldDirName/$aac_mapname-house.xml");
 
 $title = 'Houses';
 $name = $aac_servername;
@@ -63,7 +63,7 @@ if($modules_houses)
 
 	echo "<h1>Houses</h1><br />";
 
-	if (file_exists($aac_dataDir . '/world/'. $aac_mapname .'-house.xml'))
+	if (file_exists("$aac_dataDir/$aac_worldDirName/$aac_mapname-house.xml"))
 	{
 		echo '
 		<div class="tableforme">

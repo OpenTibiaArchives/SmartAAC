@@ -244,7 +244,7 @@ else
 		<input type=\"checkbox\" name=\"CharSearch\" class=\"boxes\" /><br />
 		<label for=\"Feedback\">Feedback page:</label>
 		<input type=\"checkbox\" name=\"Feedback\" class=\"boxes\" /><br />
-		<label for=\"Affliates\">Affliates page:</label>
+		<label for=\"Affliates\">Affiliates page:</label>
 		<input type=\"checkbox\" name=\"Affliates\" class=\"boxes\" /><br />
 		<label for=\"Guilds\">Guilds:</label>
 		<input type=\"checkbox\" name=\"Guilds\" class=\"boxes\" /><br />

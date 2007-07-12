@@ -71,19 +71,19 @@ Version Code: $aac_versioncode</i></p><br />";
 ?>
 <h2>Change the following:</h2><br />
 <ul>
+<li><a href="admin.php?action=Towns">Towns</a></li>
+<li><a href="admin.php?action=Items">Player items</a></li>
+<li><a href="admin.php?action=FrontpageText">Frontpage text</a></li>
 <li><a href="admin.php?action=Security">Security settings</a></li>
 <li><a href="admin.php?action=SQL">MySQL settings</a></li>
 <li><a href="admin.php?action=Stats">Statistic info</a></li>
-<li><a href="admin.php?action=Dirs">Data Directory</a></li>
+<li><a href="admin.php?action=Dirs">OtServ Data Directory & Related directories</a></li>
 <li><a href="admin.php?action=Voting">Voting questions/reset</a></li>
 <li><a href="admin.php?action=FieldLens">AAC field lengths</a></li>
-<li><a href="admin.php?action=Items">Player items</a></li>
 <li><a href="admin.php?action=PlayerLvls">Player levels (hp, mana, maglvl)</a></li>
-<li><a href="admin.php?action=Towns">Towns</a></li>
 <li><a href="admin.php?action=Maintenance">In/out of maintenance mode</a></li>
 <li><a href="admin.php?action=MassSpawnChange">Mass spawn changer</a></li>
-<li><a href="admin.php?action=FrontpageText">Frontpage text</a></li>
-<li><a href="admin.php?action=Layout">Layout</a></li>
+<li><a href="admin.php?action=Layout">Site/AAC Layout</a></li>
 <li><a href="admin.php?action=Others">Change other stuff</a></li>
 <br />
 <li><a href="admin.php?action=CheckVersion">Check version</a></li>

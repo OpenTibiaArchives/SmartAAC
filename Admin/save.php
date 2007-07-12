@@ -412,6 +412,10 @@ $encryptedAdminPass
 		
 		case "dirs":
 		$aac_dataDir = $_POST['DirPath'];
+		
+		$aac_worldDirName = $_POST['WorldDirName'];
+		$aac_monstersDirName = $_POST['MonstersDirName'];
+		$aac_spellsDirName = $_POST['SpellsDirName'];
 		break;
 		
 		case "spawnchange":
@@ -496,9 +500,12 @@ $encryptedAdminPass
 
 # The basic and sane settings for the AAC to run properly
 \$aac_status = 					\"$aac_status\";
-\$aac_version = 					\"2.0.0\";
-\$aac_versioncode = 				200;
+\$aac_version = 					\"2.0.1\";
+\$aac_versioncode = 				201;
 \$aac_dataDir =					\"$aac_dataDir\";
+\$aac_worldDirName = 			\"$aac_worldDirName\";
+\$aac_monstersDirName =			\"$aac_monstersDirName\";
+\$aac_spellsDirName =			\"$aac_spellsDirName\";
 \$aac_mapname =					\"$aac_mapname\";
 \$aac_maintenanceReason = 		\"$aac_maintenanceReason\";
 \$aac_layout =					\"$aac_layout\";

@@ -119,7 +119,9 @@ function createRecoveryKey() {
 /* Credits to Nostradamus (on otfans.net) for this function */
 function list_monsters($dir)
 {
-	$open_dir = opendir("$dir/monster/");
+	include '../conf.php';
+
+	$open_dir = opendir("$dir/$aac_monstersDirName/");
 	echo '<table style="text-align: left; width: 500px; font-size:14px;" border="0"
 		 cellpadding="4" cellspacing="2"><tbody>';
 	echo '
@@ -143,7 +145,7 @@ function list_monsters($dir)
 		{
 			if(eregi("\.xml$", $file))
 			{
-				$xml = new SimpleXMLElement(file_get_contents("$dir/monster/$file"));
+				$xml = new SimpleXMLElement(file_get_contents("$dir/$aac_monstersDirName/$file"));
         
 				$name = $xml['name'];
 				$exp = $xml['experience'];
@@ -169,7 +171,9 @@ function list_monsters($dir)
 
 function get_monster($dir)
 {
-   $open_dir = opendir("$dir/monster/");
+	include '../conf.php';
+
+   $open_dir = opendir("$dir/$aac_monstersDirName/");
    $monster = $_GET['monster'];
    
    while($file = readdir($open_dir))
@@ -178,7 +182,7 @@ function get_monster($dir)
 		{
 			if(eregi(".xml$", $file))
 			{
-				$xml = new SimpleXMLElement(file_get_contents("$dir/monster/$file"));
+				$xml = new SimpleXMLElement(file_get_contents("$dir/$aac_monstersDirName/$file"));
         
 				$name = $xml['name'];
 				$loname = str_replace(' ', '', strtolower($name));

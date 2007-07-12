@@ -92,7 +92,16 @@ else
 
 		<form action=\"save.php?save=dirs\" method=\"POST\">
 		<label for=\"DirPath\">Data Directory:</label>
-		<input type=\"text\" name=\"DirPath\" value=\"$aac_dataDir\" /><br />
+		<input type=\"text\" name=\"DirPath\" value=\"$aac_dataDir\" /><br /><br />
+		
+		<label for=\"WorldDirName\">World Dir name:</label>
+		<input type=\"text\" name=\"WorldDirName\" value=\"$aac_worldDirName\" /><br /><br />
+		
+		<label for=\"MonstersDirName\">Monsters dir name:</label>
+		<input type=\"text\" name=\"MonstersDirName\" value=\"$aac_monstersDirName\" /><br /><br />
+		
+		<label for=\"SpellsDirName\">Spells dir name:</label>
+		<input type=\"text\" name=\"SpellsDirName\" value=\"$aac_spellsDirName\" /><br />
 
 		<br /><br />
 		

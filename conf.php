@@ -3,7 +3,7 @@
 // ===========================================================
 //	Smart-Ass: The Userfriendly AAC
 //	Version: 2.0.0
-//	Configuration Created: Tue, 10 Jul 2007 22:58:14 +0100
+//	Configuration Created: Thu, 12 Jul 2007 19:24:25 +0100
 //	
 //
 //	Main configuration for the AAC system
@@ -27,9 +27,12 @@
 
 # The basic and sane settings for the AAC to run properly
 $aac_status = 					"Not Installed";
-$aac_version = 					"2.0.0";
-$aac_versioncode = 				200;
+$aac_version = 					"2.0.1";
+$aac_versioncode = 				201;
 $aac_dataDir =					"C:/Dev-Cpp/otserv/data";
+$aac_worldDirName = 			"world";
+$aac_monstersDirName =			"monster";
+$aac_spellsDirName =			"spells";
 $aac_mapname =					"map";
 $aac_maintenanceReason = 		"<p>No reason set.</p>";
 $aac_layout =					"Indigo";

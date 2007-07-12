@@ -36,7 +36,7 @@ if($aac_status == "Maintenance")
 	header("location: maintenance.php");
 }
 
-$xml_data = file_get_contents($aac_dataDir . '/spells/spells.xml');
+$xml_data = file_get_contents($aac_dataDir . '/' . $aac_spellsDirName . '/spells.xml');
 
 $title = 'Spells';
 $name = $aac_servername;
@@ -61,7 +61,7 @@ if($modules_spells)
 
 	echo "<h1>Spells</h1><br /><br />";
 
-	if (file_exists($aac_dataDir . '/spells/spells.xml'))// Check the data dir later on
+	if (file_exists($aac_dataDir . '/' . $aac_spellsDirName . '/spells.xml'))// Check the data dir later on
 	{
 		// Instant spells
 		echo "<h2>Instant Spells</h2><br />";

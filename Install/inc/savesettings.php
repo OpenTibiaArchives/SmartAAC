@@ -221,9 +221,12 @@ else
 
 # The basic and sane settings for the AAC to run properly
 \$aac_status = 					\"Installed\";
-\$aac_version = 					\"2.0.0\";
-\$aac_versioncode = 				200;
+\$aac_version = 					\"2.0.1\";
+\$aac_versioncode = 				201;
 \$aac_dataDir =					\"$conf_dataDir\";
+\$aac_worldDirName = 			\"world\";
+\$aac_monstersDirName =			\"monster\";
+\$aac_spellsDirName =			\"spells\";
 \$aac_mapname =					\"$conf_mapname\";
 \$aac_maintenanceReason =		\"<p>No reason set.</p>\";
 \$aac_layout = 					\"Indigo\";

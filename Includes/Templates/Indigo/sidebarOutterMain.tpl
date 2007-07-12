@@ -53,7 +53,7 @@
 			<ul>
 				<li><a href="../Main/information.php">General Information</a></li>
 				<li><a href="../Main/serverstats.php">Server Statistics</a></li>
-				<li><a href="../Main/affliates.php">Affliates</a></li>
+				<li><a href="../Main/affiliates.php">Affiliates</a></li>
 				<li><a href="../Main/commands.php">In-game Commands</a></li>
 			</ul>
 
