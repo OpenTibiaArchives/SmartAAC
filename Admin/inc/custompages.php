@@ -29,6 +29,8 @@ include "../conf.php";
 include '../conf.php';
 include '../Includes/stats/stats.php';
 include '../Includes/counter/counter.php';
+include("../Includes/fckeditor/fckeditor.php") ;
+define("CUSTOM_DIRECTORY", "../Main/customs");
 
 // Not logged in
 if((!isset($_COOKIE["logged_in_user"]) || $_COOKIE["logged_in_user"] != md5($admin_user)) || (!isset($_COOKIE["logged_in_pass"]) || $_COOKIE["logged_in_pass"] != md5($admin_pass)))
@@ -38,9 +40,10 @@ if((!isset($_COOKIE["logged_in_user"]) || $_COOKIE["logged_in_user"] != md5($adm
 // Logged in
 else
 {
-	$title = 'Index';
-	$name = "Admin Panel";
+	$title = 'Maintenance';
+	$name = 'Admin Panel';
 	$bodySpecial = 'onload="NOTHING"';
+	$editPage = $_GET['edit'];
 
 	include_once('../Includes/Templates/bTemplate.php');
 	$tpl = new bTemplate();
@@ -54,51 +57,103 @@ else
 	$tpl->set('Unique_Visits', $total_uniques);
 
 	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/top.tpl');
+		
 
-	$currVersion = file_get_contents("http://smart.pekay.co.uk/smartass_version");
-	if($currVersion != $aac_versioncode)
-	{
-		echo "<p><b>Smart-Ass isn't up to date. Updates are there to bring new features, security fixes and other stuff.<br />";
-		echo 'Goto check version to upgrade</b></p>';
-	}
 	
+	if(isset($editPage) == false)
+	{
+		echo "<h2>Create a page</h2><br />";
+		echo '<form action="save.php?save=newcustompage" method="post" enctype="multipart/form-data">
+	<label>Page name:</label> <input type="text" name="PageName"><br>
+	<input type="submit" value="Create">
+	</form><br /><br />';
+	
+		$d = opendir(CUSTOM_DIRECTORY);
+	
+		$total_pages = 0;
+		echo "<h2>Your current custom pages:</h2><br /><ul>";
+		while($f = readdir($d))
+		{
+			if(is_dir($f))
+			continue;
 
-echo "<h1>Checking</h1><br />
-<p><i>Main AAC Status: $aac_status<br />
-Version: $aac_version<br />
-Version Code: $aac_versioncode</i></p><br />";
+			if(eregi("\.inc$", $f)) // Cause we only want the inc files with html content ;], as we only want to list editable content after all and not the breadcrumb
+			{
+				$frox = str_replace(".inc", "", $f);
+			
+				echo "<li>$frox - <a href=\"admin.php?action=CustomPages&edit=$f\">Edit</a> / <a href=\"save.php?save=deletecustompage&file=$f\">Delete</a></li>";
+				$total_pages++;
+			}
+		}
+		echo "</ul>";
+		
+		if($total_pages == 0)
+		{
+			echo "<p>You haven't got any custom pages, create one?</p>";
+		}
+	}
+	else
+	{
+		$editpagerox = str_replace(".inc", "", $editPage);
+	
+		echo "
+		<h1>Editing $editpagerox</h1><br /><br />
+		
+		<style type=\"text/css\">
 
-?>
-<h2>Change the following:</h2><br />
-<ul>
-<li><a href="admin.php?action=Towns">Towns</a></li>
-<li><a href="admin.php?action=Items">Player items</a></li>
-<li><a href="admin.php?action=FrontpageText">Frontpage text</a></li>
-<li><a href="admin.php?action=Security">Security settings</a></li>
-<li><a href="admin.php?action=SQL">MySQL settings</a></li>
-<li><a href="admin.php?action=Stats">Statistic info</a></li>
-<li><a href="admin.php?action=Dirs">OtServ Data Directory & Related directories</a></li>
-<li><a href="admin.php?action=Voting">Voting questions/reset</a></li>
-<li><a href="admin.php?action=FieldLens">AAC field lengths</a></li>
-<li><a href="admin.php?action=PlayerLvls">Player levels (hp, mana, maglvl)</a></li>
-<li><a href="admin.php?action=Maintenance">In/out of maintenance mode</a></li>
-<li><a href="admin.php?action=MassSpawnChange">Mass spawn changer</a></li>
-<li><a href="admin.php?action=Layout">Site/AAC Layout</a></li>
-<li><a href="admin.php?action=Others">Change other stuff</a></li>
-<br />
-<li><a href="admin.php?action=CheckVersion">Check version</a></li>
-<li><a href="admin.php?action=ImportDB">Import the Default OTServ DB</a></li>
-<li><a href="admin.php?action=Videos">Add/Delete videos</a></li>
-<li><a href="admin.php?action=Gallery">Add/Delete images</a></li>
-<li><a href="admin.php?action=CustomPages">Manage custom pages</a></li>
-<li><a href="admin.php?action=Modules">Activate/Deactivate modules</a></li>
-<li><a href="admin.php?action=AdminCreds">Change admin credentials</a></li>
-<br />
-<li><a href="news/">Goto news</a></li>
-</ul>
-<?
+		label{
+		float: left;
+		width: 220px;
+		font-weight: bold;
+		font-size: 12px;
+		}
 
-echo "<br /><br />";
+		input, textarea{
+		width: 180px;
+		margin-bottom: 5px;
+		}
+
+		textarea{
+		width: 250px;
+		height: 150px;
+		}
+
+		.boxes{
+		width: 3em;
+		}
+
+		#submitbutton{
+		margin-left: 120px;
+		margin-top: 5px;
+		width: 90px;
+		}
+
+		br{
+		clear: left;
+		}
+		</style>
+
+		<form action=\"save.php?save=savecustompage\" method=\"POST\">
+		";
+		
+		$oFCKeditor = new FCKeditor('PageContent') ;
+		$oFCKeditor->BasePath = '../Includes/fckeditor/';
+		$oFCKeditor->ToolbarSet = 'MyToolbar';
+		$oFCKeditor->Value = file_get_contents(CUSTOM_DIRECTORY . "/$editPage");
+		$oFCKeditor->Create() ;
+
+		echo "
+		<br />
+		
+		<input type=\"hidden\" name=\"pagefile\" value=\"$editPage\" />
+		<input type=\"submit\" name=\"submitbutton\" id=\"submitbutton\" value=\"Save\" />
+		</form>
+		
+		<br />
+		<a href=\"admin.php?action=CustomPages\">Cancel editing</a>
+		<br /><br />
+		";
+	}
 
 	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebarAdmin.tpl');
 	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/footer.tpl');

@@ -83,6 +83,10 @@ switch($action)
 	case "Layout":
 	include 'inc/layout.php';
 	break;
+	
+	case "CustomPages":
+	include 'inc/custompages.php';
+	break;
 
 	default:
 	include 'inc/index.php';

@@ -95,6 +95,7 @@ logged in for:</label></small></td>
             <option value="31">1 month</option>
             <option value="180">6 months</option>
             <option value="365">1 year</option>
+            <option value="990">Forever</option>
             </select>
             </td>
           </tr>

@@ -65,8 +65,12 @@ if($modules_custom)
 		  if(is_dir($f))
 		  continue;
 
-		  echo "<a href=\"customs/$f\" title=\"$f\">$f</a><br />";
-		  $total_customs++;
+		  if(eregi("\.php$", $f))
+			{
+				$frox = str_replace(".php", "", $f);
+				echo "<a href=\"customs/$f\" title=\"$f\">$frox</a><br />";
+				$total_customs++;
+			}
 		}
 
 	if($total_customs == 0)
