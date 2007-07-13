@@ -83,11 +83,19 @@ if($modules_guilds)
 						if($level && intval($level['level']) >= 2){
 							echo '<form action="guilds.php?act=manage&sub=disband" method="post"><input type="hidden" name="char" value="'. $_POST['char'] .'"/><input type="submit" value="Disband"/></form>';
 							echo '<form action="guilds.php?act=manage&sub=invite" method="post"><input type="hidden" name="char" value="'. $_POST['char'] .'"/><input type="submit" value="Invite"/></form>';
+							echo '<form action="guilds.php?act=manage&sub=revoke" method="post"><input type="hidden" name="char" value="'. $_POST['char'] .'"/><input type="submit" value="Revoke Invitation"/></form>';
 							echo '<form action="guilds.php?act=manage&sub=kick" method="post"><input type="hidden" name="char" value="'. $_POST['char'] .'"/><input type="submit" value="Kick"/></form>';
 							echo '<form action="guilds.php?act=manage&sub=alter" method="post"><input type="hidden" name="char" value="'. $_POST['char'] .'"/><input type="submit" value="Alter Positions"/></form>';
 							echo '<form action="guilds.php?act=manage&sub=title" method="post"><input type="hidden" name="char" value="'. $_POST['char'] .'"/><input type="submit" value="Set Title"/></form>';
 							echo '<form action="guilds.php?act=manage&sub=pass" method="post"><input type="hidden" name="char" value="'. $_POST['char'] .'"/><input type="submit" value="Pass Leadership"/></form>';
 							echo '<form action="guilds.php?act=manage&sub=rank" method="post"><input type="hidden" name="char" value="'. $_POST['char'] .'"/><input type="submit" value="Edit Ranks"/></form>';
+							
+							// Load guild-ids
+							$guild_rank = array();
+							$query = sqlquery('SELECT `id`, `name`, `level` FROM `guild_ranks` WHERE `guild_id` = '. $level['guild_id'] .'');
+							while($row = mysql_fetch_array($query)) {
+								$guild_rank[$row['id']] = array('name' => $row['name'], 'level' => $row['level']);
+							}
 							
 							switch($_GET['sub']){
 								case "disband":
@@ -150,6 +158,33 @@ if($modules_guilds)
 										echo '</form></center>';
 									}
 									break;
+								case "revoke":
+									if($_POST['revokechar']){
+										$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
+										mysql_select_db($sql_db, $sqlconnect);
+										if(in_array($_POST['char'], getChars($_SESSION['M2_account']))){
+											$query = sqlquery('DELETE FROM `guild_invites` WHERE `player_id` = '. intval($_POST['revokechar']) .' AND `guild_id` = '. intval($level['guild_id']) .'');
+											echo '<center><h4>Successfully revoked the invitation of '. userFromID($_POST['revokechar']) .'.</h4></center>';
+										}
+										else {
+											die('Nice hack-attempt, but didn\'t work =)');
+										}
+									}
+									else {
+										echo '<center><h4>Please select the character you want to revoke the invitation of.</h4><br />';
+										echo '<form action="guilds.php?act=manage&sub=revoke" method="post">';
+										echo 'Character: <select name="revokechar">';
+										$query = sqlquery('SELECT `player_id` FROM `guild_invites` WHERE `guild_id` = '. $level['guild_id'] .'');
+										while($row = mysql_fetch_array($query))
+										{
+											echo '<option value="'. $row['player_id'] .'">'. userFromID($row['player_id']) .'</option>';
+										}
+										echo '</select>';
+										echo '<input type="hidden" name="char" value="'. $_POST['char'] .'"/>';
+										echo '<br /><br /><input type="submit" value="Revoke" />';
+										echo '</form></center>';
+									}
+									break;
 								case "kick":
 									if($_POST['kickchar']){
 										$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die('Error: '.mysql_error().' ('.mysql_errno().')');
@@ -157,15 +192,20 @@ if($modules_guilds)
 										if(in_array($_POST['char'], getChars($_SESSION['M2_account']))){
 											$query = sqlquery('SELECT `guild_ranks`.`guild_id` FROM `guild_ranks`, `players` WHERE `players`.`name` = \''. mysql_real_escape_string($_POST['char']) .'\' AND `players`.`rank_id` = `guild_ranks`.`id`');
 											$check = mysql_fetch_array($query);
-											$query2 = sqlquery('SELECT `guild_ranks`.`guild_id` FROM `guild_ranks`, `players` WHERE `players`.`name` = \''. mysql_real_escape_string($_POST['kickchar']) .'\' AND `players`.`rank_id` = `guild_ranks`.`id`');
+											$query2 = sqlquery('SELECT `guild_ranks`.`guild_id`, `guild_ranks`.`level` FROM `guild_ranks`, `players` WHERE `players`.`name` = \''. mysql_real_escape_string($_POST['kickchar']) .'\' AND `players`.`rank_id` = `guild_ranks`.`id`');
 											$check2 = mysql_fetch_array($query2);
 											if($check && $check2 && $check['guild_id'] == $check2['guild_id']){
-												if(intval($level['level']) == 3){
-													sqlquery('UPDATE `players` SET `rank_id` = 0 WHERE `name` = \''. mysql_real_escape_string($_POST['kickchar']) .'\'') or die('Couldn\'t kick player, please contact the webmaster! (Error: '.mysql_error().' ('.mysql_errno().'))');
-													echo '<center><h4>Successfully kicked '. $_POST['kickchar'] .' from the guild.</h4></center>';
+												if($check2['level'] == 3) {
+													echo '<center><h4>Sorry, you can\'t kick the leader of the guild.</h4></center>';
 												}
 												else {
-													echo '<center><h4>Sorry, only the leader can kick players.</h4></center>';
+													if(intval($level['level']) == 3){
+														sqlquery('UPDATE `players` SET `rank_id` = 0 WHERE `name` = \''. mysql_real_escape_string($_POST['kickchar']) .'\'') or die('Couldn\'t kick player, please contact the webmaster! (Error: '.mysql_error().' ('.mysql_errno().'))');
+														echo '<center><h4>Successfully kicked '. $_POST['kickchar'] .' from the guild.</h4></center>';
+													}
+													else {
+														echo '<center><h4>Sorry, only the leader can kick players.</h4></center>';
+													}
 												}
 											}
 											else {
@@ -177,10 +217,18 @@ if($modules_guilds)
 										}
 									}
 									else {
-										echo '<center><h4>Please type the name of the character you want to kick.</h4><br />';
+										echo '<center><h4>Please select the character you want to kick.</h4><br />';
 										echo '<form action="guilds.php?act=manage&sub=kick" method="post">';
-										echo 'Character: <input type="text" name="kickchar" /><br />';
-										echo '<input type="hidden" name="char" value="'. $_POST['char'] .'" />';
+										echo 'Character: <select name="kickchar">';
+										foreach($guild_rank as $id => $info)
+										{
+											$query = sqlquery('SELECT `name`, `rank_id`, `guildnick` FROM `players` WHERE `rank_id` = '. $id .'');
+											while($row = mysql_fetch_array($query)) {
+												echo '<option value="'. $row['name'] .'">'. $row['name'] .'</option>';
+											}
+										}
+										echo '</select>';
+										echo '<input type="hidden" name="char" value="'. $_POST['char'] .'"/>';
 										echo '<br /><br /><input type="submit" value="Kick" />';
 										echo '</form></center>';
 									}
@@ -229,7 +277,15 @@ if($modules_guilds)
 									else {
 										echo '<center><h4>Please type the name of the character you want to change position of.</h4><br />';
 										echo '<form action="guilds.php?act=manage&sub=alter" method="post">';
-										echo 'Character: <input type="text" name="alterchar" /><br /><br />';
+										echo 'Character: <select name="alterchar">';
+										foreach($guild_rank as $id => $info)
+										{
+											$query = sqlquery('SELECT `name`, `rank_id`, `guildnick` FROM `players` WHERE `rank_id` = '. $id .'');
+											while($row = mysql_fetch_array($query)) {
+												echo '<option value="'. $row['name'] .'">'. $row['name'] .'</option>';
+											}
+										}
+										echo '</select><br />';
 										echo 'Promote <input type="radio" name="pos" value="promote" /><br />';
 										echo 'Demote <input type="radio" name="pos" value="demote" /><br />';
 										echo '<input type="hidden" name="char" value="'. $_POST['char'] .'" />';
@@ -248,7 +304,7 @@ if($modules_guilds)
 											$check2 = mysql_fetch_array($query2);
 											if($check && $check2 && $check['guild_id'] == $check2['guild_id']){
 												$newtitle = "";
-												if($_POST['title'] != "clear")
+												if(isset($_POST['title']))
 													$newtitle = $_POST['title'];
 												sqlquery('UPDATE `players` SET `guildnick` = \''. mysql_real_escape_string($newtitle) .'\' WHERE `name` = \''. mysql_real_escape_string($_POST['titlechar']) .'\'') or die('Couldn\'t change title, please contact the webmaster. (Error: '.mysql_error().' ('.mysql_errno().'))');
 												if($newtitle == "")
@@ -265,10 +321,18 @@ if($modules_guilds)
 										}
 									}
 									else {
-										echo '<center><h4>Please type the name of the character you want to change title of.</h4><br />';
+										echo '<center><h4>Please select the character you want to change title of.</h4><br />';
 										echo '<form action="guilds.php?act=manage&sub=title" method="post">';
-										echo 'Character: <input type="text" name="titlechar" /><br />';
-										echo 'Title(type "clear" to remove): <input type="text" name="title" /><br />';
+										echo 'Character: <select name="titlechar">';
+										foreach($guild_rank as $id => $info)
+										{
+											$query = sqlquery('SELECT `name`, `rank_id`, `guildnick` FROM `players` WHERE `rank_id` = '. $id .'');
+											while($row = mysql_fetch_array($query)) {
+												echo '<option value="'. $row['name'] .'">'. $row['name'] .'</option>';
+											}
+										}
+										echo '</select><br />';
+										echo 'Title(leave empty to remove): <input type="text" name="title" /><br />';
 										echo '<input type="hidden" name="char" value="'. $_POST['char'] .'" />';
 										echo '<br /><br /><input type="submit" value="Change" />';
 										echo '</form></center>';
@@ -321,9 +385,17 @@ if($modules_guilds)
 										}
 									}
 									else {
-										echo '<center><h4>Please type the name of the character you want to pass the leadership to.</h4><br />';
+										echo '<center><h4>Please select the character you want to pass the leadership to.</h4><br />';
 										echo '<form action="guilds.php?act=manage&sub=pass" method="post">';
-										echo 'New Leader: <input type="text" name="newleader" /><br />';
+										echo 'New Leader: <select name="newleader">';
+										foreach($guild_rank as $id => $info)
+										{
+											$query = sqlquery('SELECT `name`, `rank_id`, `guildnick` FROM `players` WHERE `rank_id` = '. $id .'');
+											while($row = mysql_fetch_array($query)) {
+												echo '<option value="'. $row['name'] .'">'. $row['name'] .'</option>';
+											}
+										}
+										echo '</select><br />';
 										echo '<input type="hidden" name="char" value="'. $_POST['char'] .'" />';
 										echo '<br /><br /><input type="submit" value="Pass Leadership" />';
 										echo '</form></center>';
