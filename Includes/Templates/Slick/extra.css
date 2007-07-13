@@ -76,11 +76,11 @@ div.tableforme {
 }
 
 tr.tableheaders td {
-	background: #DFDFDF;
+	background: #191919;
 }
 
-tr.lolhover:hover { background-color: #EFEFEF; }
-td.lolhovermanager:hover { background-color: #EFEFEF; }
+tr.lolhover:hover { background-color: #3F3B3B; }
+td.lolhovermanager:hover { background-color: #3F3B3B; }
 
 div.dashed {
 border: 2px dashed #FFF;
@@ -90,4 +90,13 @@ background-color: #3F3F3F;
 
 div.dashed:hover {
 background-color: #4F4F4F;
+}
+
+tr.voteheader td {
+background: #000;
+color: #FFF;
+}
+
+td.deletemanagercolor {
+background: #000;
 }

@@ -112,7 +112,7 @@ if($rowz == 1)
 				echo "
 					<tr>
 				      <td style=\"width: 231px; height: 20px;\" class=\"lolhovermanager\"><a href=\"../Main/character.php?char=$char\" target=\"_blank\"><b>$char</b></a></td>
-				      <td style=\"width: 106px; text-align: center; background: #EFFFF0;\"><a href=\"index.php?act=delete&char=$char\">Delete?</a></td>
+				      <td style=\"width: 106px; text-align: center;\" class=\"deletemanagercolor\"><a href=\"index.php?act=delete&char=$char\">Delete?</a></td>
 				    </tr>
 					<tr>
 				      <td>&nbsp;</td>

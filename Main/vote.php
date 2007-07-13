@@ -85,7 +85,7 @@ if($modules_voting)
 
 	<table border="0" cellpadding="15" cellspacing="5">
 		<tr>
-			<td style="background: #eee; color: #000; text-align: center">
+			<td style="text-align: center" class="voteheader">
 			<h1>&nbsp;<?=$main_votequestion?>&nbsp;</h2>
 			</td>
 		</tr>

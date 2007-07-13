@@ -76,13 +76,13 @@ if($modules_spells)
 	    <td style="width: 139px; text-align: center;"><b>Premium:</b></td>
 		</tr>
 		<tr>
-		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
-		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
-		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
-		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
-		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
-		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
-		      <td style="width: 124px; background: #FFFFFF;">&nbsp;</td>
+		      <td style="width: 139px;">&nbsp;</td>
+		      <td style="width: 139px;">&nbsp;</td>
+		      <td style="width: 139px;">&nbsp;</td>
+		      <td style="width: 139px;">&nbsp;</td>
+		      <td style="width: 139px;">&nbsp;</td>
+		      <td style="width: 139px;">&nbsp;</td>
+		      <td style="width: 124px;">&nbsp;</td>
 		</tr>
 		';
 	
@@ -116,13 +116,13 @@ if($modules_spells)
 	    <td style="width: 139px; text-align: center;"><b>Premium:</b></td>
 		</tr>
 		<tr>
-		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
-		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
-		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
-		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
-		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
-		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
-		      <td style="width: 124px; background: #FFFFFF;">&nbsp;</td>
+		      <td style="width: 139px;">&nbsp;</td>
+		      <td style="width: 139px;">&nbsp;</td>
+		      <td style="width: 139px;">&nbsp;</td>
+		      <td style="width: 139px;">&nbsp;</td>
+		      <td style="width: 139px;">&nbsp;</td>
+		      <td style="width: 139px;">&nbsp;</td>
+		      <td style="width: 124px;">&nbsp;</td>
 		</tr>
 		';
 	
@@ -156,13 +156,13 @@ if($modules_spells)
 	    <td style="width: 139px; text-align: center;"><b>Premium:</b></td> 
 		</tr>
 		<tr>
-		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
-		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
-		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
-		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
-		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
-		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
-		      <td style="width: 124px; background: #FFFFFF;">&nbsp;</td>
+		      <td style="width: 139px;">&nbsp;</td>
+		      <td style="width: 139px;">&nbsp;</td>
+		      <td style="width: 139px;">&nbsp;</td>
+		      <td style="width: 139px;">&nbsp;</td>
+		      <td style="width: 139px;">&nbsp;</td>
+		      <td style="width: 139px;">&nbsp;</td>
+		      <td style="width: 124px;">&nbsp;</td>
 		</tr>
 		';
 	

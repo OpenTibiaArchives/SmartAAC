@@ -165,7 +165,7 @@ $tpl->set('Unique_Visits', $total_uniques);
 echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/top.tpl');
 ?>
 
-<h2>Please fill out the appropiate fields:</h2>
+<h2>Please fill out the appropriate fields:</h2>
 <br />
 
 <form action="<?php echo $PHP_SELF; ?>" method="POST">

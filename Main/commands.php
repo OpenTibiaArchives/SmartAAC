@@ -74,8 +74,8 @@ if($modules_commands)
 		      <td style="width: 124px; text-align: center;"><b>Access Level</b></td>
 		    </tr>
 			<tr>
-		      <td style="width: 139px; background: #FFFFFF;">&nbsp;</td>
-		      <td style="width: 124px; background: #FFFFFF;">&nbsp;</td>
+		      <td style="width: 139px;">&nbsp;</td>
+		      <td style="width: 124px;">&nbsp;</td>
 		    </tr>
 		';
 		$total_commands = 0;
