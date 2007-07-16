@@ -1,5 +1,5 @@
 <?PHP
-include "../conf.php";
+
 // ===========================================================
 //	Smart-Ass: The Userfriendly AAC
 //	Version: 2.0 Development Only
@@ -56,28 +56,32 @@ else
 	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/top.tpl');
 
 	$currVersion = file_get_contents("http://smart.pekay.co.uk/smartass_version");
-	if($currVersion != $aac_versioncode)
+	if($currVersion > $aac_versioncode)
 	{
 		echo "<p><b>Smart-Ass isn't up to date. Updates are there to bring new features, security fixes and other stuff.<br />";
 		echo 'Goto check version to upgrade</b></p>';
 	}
+	elseif($currVersion < $aac_versioncode)
+	{
+		echo "<p><b>This is version of Smart-Ass appears to be a development version.</b><br />";
+	}
 	
 
 echo "<h1>Checking</h1><br />
-<p><i>Main AAC Status: $aac_status<br />
-Version: $aac_version<br />
+<p>Main AAC Status: $aac_status<br />
+<i>Version: $aac_version<br />
 Version Code: $aac_versioncode</i></p><br />";
 
 ?>
-<h2>Change the following:</h2><br />
+<h1>Administration</h1><br />
 <ul>
-<li><a href="admin.php?action=Towns">Towns</a></li>
 <li><a href="admin.php?action=Items">Player items</a></li>
 <li><a href="admin.php?action=FrontpageText">Frontpage text</a></li>
 <li><a href="admin.php?action=Security">Security settings</a></li>
 <li><a href="admin.php?action=SQL">MySQL settings</a></li>
 <li><a href="admin.php?action=Stats">Statistic info</a></li>
 <li><a href="admin.php?action=Dirs">OtServ Data Directory & Related directories</a></li>
+<br />
 <li><a href="admin.php?action=Voting">Voting questions/reset</a></li>
 <li><a href="admin.php?action=FieldLens">AAC field lengths</a></li>
 <li><a href="admin.php?action=PlayerLvls">Player levels (hp, mana, maglvl)</a></li>
@@ -86,15 +90,15 @@ Version Code: $aac_versioncode</i></p><br />";
 <li><a href="admin.php?action=Layout">Site/AAC Layout</a></li>
 <li><a href="admin.php?action=Others">Change other stuff</a></li>
 <br />
+<li><a href="admin.php?action=Towns">Detect Towns</a></li>
 <li><a href="admin.php?action=CheckVersion">Check version</a></li>
-<li><a href="admin.php?action=ImportDB">Import the Default OTServ DB</a></li>
+<!--<li><a href="admin.php?action=ImportDB">Import the Default OTServ DB</a></li>-->
 <li><a href="admin.php?action=Videos">Add/Delete videos</a></li>
 <li><a href="admin.php?action=Gallery">Add/Delete images</a></li>
 <li><a href="admin.php?action=CustomPages">Manage custom pages</a></li>
 <li><a href="admin.php?action=Modules">Activate/Deactivate modules</a></li>
 <li><a href="admin.php?action=AdminCreds">Change admin credentials</a></li>
-<br />
-<li><a href="news/">Goto news</a></li>
+<li><a href="news/">Goto the news panel</a></li>
 </ul>
 <?
 

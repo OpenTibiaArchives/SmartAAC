@@ -13,7 +13,7 @@
 			
 			<h1>Main Menu</h1>
 			<ul>
-				<li><a href="admin.php">Index</a></li>
+				<li><a href="admin.php">Admin Panel</a></li>
 				<li><a href="../">Back to AAC</a></li>
 				<li><a href="login.php?logout=yes">Logout</a></li>
 			</ul>			

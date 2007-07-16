@@ -55,8 +55,10 @@ else
 
 	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/top.tpl');
 
+	$actNow = $_GET['now'];
+	if(isset($actNow))
+	{
 		$total_towns = count($main_towns);
-	
 		echo "
 		<style type=\"text/css\">
 
@@ -93,7 +95,7 @@ else
 		</style>
 
 		<h1>Towns</h1>
-		<p>The towns are already set in your map, press Change to update your Smart-Ass configuration</p>
+		<p>Towns have been successfully detected in your mapfile.</p>
 		
 		<br />
 		<h2>Detected towns</h2>
@@ -119,6 +121,15 @@ else
 			<br />
 		</form>
 		";
+	}
+	else
+	{
+		echo '<p>Smart-Ass can detect what towns you have in your map which is situated in your data directory, press detect below to get the towns.<br /><br /><b>Note: This could take time (depending on the size of the mapfile), also please ensure maximum execution time is enough.</b><br /><br /></p>';
+	
+		echo '<form action="admin.php?action=Towns&now=now" method="POST">
+		<input type="submit" value="Detect" />
+		</form>';
+	}
 
 	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebarAdmin.tpl');
 	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/footer.tpl');

@@ -56,14 +56,22 @@ else
 	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/top.tpl');
 
 	$currVersion = file_get_contents("http://smart.pekay.co.uk/smartass_version");
-	if($currVersion != $aac_versioncode)
+	if($currVersion > $aac_versioncode)
 	{
 		echo "<p>Smart-Ass isn't up to date. Updates are there to bring new features, security fixes and other stuff.</p>";
-		echo '<form action="http://smart.pekay.co.uk/upgrade.php?version='.$aac_versioncode.'" method="post"><input name="submit" tabindex="4" type="submit" value="Upgrade to '.$currVersion.'" /></form>';
+		echo '<form action="http://smart.pekay.co.uk/upgrade.php?version='.$aac_versioncode.'" method="post"><input name="submit" tabindex="4" type="submit" value="Upgrade to '.$currVersion.'" /></form> <br /><a href=\"admin.php\">Go back</a>';
+	}
+	elseif($currVersion < $aac_versioncode)
+	{
+		echo "<p><b>This is version of Smart-Ass appears to be a development version either from the SVN respository or via some other method.</b><br /> <br /><a href=\"admin.php\">Go back</a>";
 	}
 	elseif($currVersion == $aac_versioncode)
 	{
-		echo "Your version of Smart-Ass is up to date. Panic over!";
+		echo "<p>Your version of Smart-Ass is up to date. Panic over! <br /><a href=\"admin.php\">Go back</a></p>";
+	}
+	else
+	{
+		echo "<p>Unable to determine version numbers, fatal. <br /><a href=\"admin.php\">Go back</a></p>";
 	}
 
 	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebarAdmin.tpl');
