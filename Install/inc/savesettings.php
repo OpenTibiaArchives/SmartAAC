@@ -99,12 +99,9 @@ else
 	if($char_rook_use == "true")
 	{
 
-		$conf_char_maglevel_none = $_POST["char_maglevel_none"];
-			if(empty($conf_char_maglevel_none)) { $conf_char_maglevel_none = 100; }
-		$conf_char_health_none = $_POST["char_health_none"];
-			if(empty($conf_char_health_none)) { $conf_char_health_none = 100; }
-		$conf_char_mana_none = $_POST["char_mana_none"];
-			if(empty($conf_char_mana_none)) { $conf_char_mana_none = 100; }
+		$conf_char_maglevel_none = (int)$_POST["char_maglevel_none"];
+		$conf_char_health_none = (int)$_POST["char_health_none"];
+		$conf_char_mana_none = (int)$_POST["char_mana_none"];
 		
 		$conf_char_maglevel_sorcerer = '""';
 		$conf_char_health_sorcerer = '""';
@@ -126,36 +123,24 @@ else
 		$conf_char_mana_none = '""';
 		
 		
-		$conf_char_maglevel_sorcerer = $_POST["char_maglevel_sorcerer"];
-			if(empty($conf_char_maglevel_sorcerer)) { $conf_char_maglevel_sorcerer = 100; }
-		$conf_char_health_sorcerer = $_POST["char_health_sorcerer"];
-			if(empty($conf_char_health_sorcerer)) { $conf_char_health_sorcerer = 100; }
-		$conf_char_mana_sorcerer = $_POST["char_mana_sorcerer"];
-			if(empty($conf_char_mana_sorcerer)) { $conf_char_mana_sorcerer = 100; }
+		$conf_char_maglevel_sorcerer = (int)$_POST["char_maglevel_sorcerer"];
+		$conf_char_health_sorcerer = (int)$_POST["char_health_sorcerer"];
+		$conf_char_mana_sorcerer = (int)$_POST["char_mana_sorcerer"];
 	
 	
-		$conf_char_maglevel_druid = $_POST["char_maglevel_druid"];
-			if(empty($conf_char_maglevel_druid)) { $conf_char_maglevel_druid = 100; }
-		$conf_char_health_druid = $_POST["char_health_druid"];
-			if(empty($conf_char_health_druid)) { $conf_char_health_druid = 100; }
-		$conf_char_mana_druid = $_POST["char_mana_druid"];
-			if(empty($conf_char_mana_druid)) { $conf_char_mana_druid = 100; }
+		$conf_char_maglevel_druid = (int)$_POST["char_maglevel_druid"];
+		$conf_char_health_druid = (int)$_POST["char_health_druid"];
+		$conf_char_mana_druid = (int)$_POST["char_mana_druid"];
 		
 	
-		$conf_char_maglevel_paladin = $_POST["char_maglevel_paladin"];
-			if(empty($conf_char_maglevel_paladin)) { $conf_char_maglevel_paladin = 100; }
-		$conf_char_health_paladin = $_POST["char_health_paladin"];
-			if(empty($conf_char_health_paladin)) { $conf_char_health_paladin = 100; }
-		$conf_char_mana_paladin = $_POST["char_mana_paladin"];
-			if(empty($conf_char_mana_paladin)) { $conf_char_mana_paladin = 100; }
+		$conf_char_maglevel_paladin = (int)$_POST["char_maglevel_paladin"];
+		$conf_char_health_paladin = (int)$_POST["char_health_paladin"];
+		$conf_char_mana_paladin = (int)$_POST["char_mana_paladin"];
 	
 	
-		$conf_char_maglevel_knight = $_POST["char_maglevel_knight"];
-			if(empty($conf_char_maglevel_knight)) { $conf_char_maglevel_knight = 100; }
-		$conf_char_health_knight = $_POST["char_health_knight"];
-			if(empty($conf_char_health_knight)) { $conf_char_health_knight = 100; }
-		$conf_char_mana_knight = $_POST["char_mana_knight"];
-			if(empty($conf_char_mana_knight)) { $conf_char_mana_knight = 100; }
+		$conf_char_maglevel_knight = (int)$_POST["char_maglevel_knight"];
+		$conf_char_health_knight = (int)$_POST["char_health_knight"];
+		$conf_char_mana_knight = (int)$_POST["char_mana_knight"];
 	}
 
 	$conf_host =			$_POST["SQL_Host"];
