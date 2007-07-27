@@ -138,11 +138,6 @@ if ( (isset($M2_account) && !empty($M2_account)) && (isset($M2_password) && !emp
 		}
 	}
 }
-else
-{
-	// What to do here? lol :P
-	// nothing?
-}
 
 if (!$created_Account)
 {

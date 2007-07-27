@@ -34,21 +34,14 @@ $sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die("MySQL Error
 			  mysql_select_db($sql_db, $sqlconnect);
 
 $reckey = $_POST['key'];
-while(true)
+$foundKey = false;
+$result = sqlquery('SELECT * FROM `accounts` WHERE `recovery` = \''. mysql_real_escape_string($reckey) .'\';');
+$rowz = mysql_num_rows($result);
+if($rowz == 1)
 {
-	$result = sqlquery("SELECT * FROM `accounts` WHERE `recovery` = '$reckey';");
-	$rowz = mysql_num_rows($result);
-	if($rowz == 1)
-	{
-		$foundKey = true;
-		break;
-	}
-	elseif($rowz == 0)
-	{
-		$foundKey = false;
-		break;
-	}
+	$foundKey = true;
 }
+
 
 echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/top.tpl');
 
