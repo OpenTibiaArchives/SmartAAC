@@ -135,7 +135,8 @@ if ($M2_acc != "" && $M2_acc != null && $M2_pass != "" && $M2_pass != null)
 
 					$result = sqlquery('UPDATE `accounts` SET `password` = \'' . mysql_real_escape_string($newpass) . '\' WHERE `id` = ' . intval($M2_acc) . '');
 					session_unset();
-					header("Location: index.php?act=login");
+					//header("Location: index.php?act=login");
+					echo '<meta http-equiv="refresh" content="0;url=index.php?act=login">';
 			}
 		}
 		else
