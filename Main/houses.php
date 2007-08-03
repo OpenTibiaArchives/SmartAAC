@@ -96,7 +96,7 @@ if($modules_houses)
                 if($row['owner'] == 0)
                         $owners[$row['id']] = 'Nobody';
                 else   
-                        $owners[$row['id']] = $row['owner'];
+                        $owners[$row['id']] = userFromID($row['owner']);
         }
 
 		$scan_limit = $xml2->getChildrenCount();
