@@ -59,7 +59,7 @@ if($modules_custom)
 	$total_customs = 0;
 	echo "<p>";
 	
-	$d = opendir("customs");
+	$d = opendir("../Custom");
 		while($f = readdir($d))
 		{
 		  if(is_dir($f))
@@ -68,7 +68,7 @@ if($modules_custom)
 		  if(eregi("\.php$", $f))
 			{
 				$frox = str_replace(".php", "", $f);
-				echo "<a href=\"customs/$f\" title=\"$f\">$frox</a><br />";
+				echo "<a href=\"../Custom/$f\" title=\"$f\">$frox</a><br />";
 				$total_customs++;
 			}
 		}
@@ -84,10 +84,7 @@ else
 	echo "<h1>Module has been disabled by the admin</h1>";
 }
 
-if(isset($_SESSION['M2_account']) && isset($_SESSION['M2_password']))
-	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebarManagerLoggedIn.tpl');
-else
-	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebar.tpl');
+include "../Includes/Templates/$aac_layout/sidebar.php";
 echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/footer.tpl');
 echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/bottom.tpl');
 ?>
