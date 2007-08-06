@@ -112,7 +112,8 @@ else
 		</form>
 		";
 
-	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebarAdmin.tpl');
+	$adminSidebar = true;
+	include "../Includes/Templates/$aac_layout/sidebar.php";
 	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/footer.tpl');
 	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/bottom.tpl');
 }

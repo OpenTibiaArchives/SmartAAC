@@ -73,7 +73,7 @@ else
 	echo "<p>Sorry, the key you entered doesn't exist. <a href=\"lostAccount.php\">Go Back</a></p>";
 }
 
-echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebarOutterMain.tpl');
+include "../Includes/Templates/$aac_layout/sidebar.php";
 echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/footer.tpl');
 echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/bottom.tpl');
 

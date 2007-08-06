@@ -103,7 +103,7 @@ Password: <input type="password" name="M2_password"><br>
 <input type="submit" value="Continue"> <font color="red"><i>Note. By pressing this you agree that your character (<?php echo $char; ?>) will be permanently deleted from our servers.</i></font>
 </form>
 <?php
-			echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebarManagerLoggedIn.tpl');
+			include "../Includes/Templates/$aac_layout/sidebar.php";
 			echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/footer.tpl');
 			echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/bottom.tpl');
 			}

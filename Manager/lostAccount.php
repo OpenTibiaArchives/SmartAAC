@@ -67,7 +67,7 @@ echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/top.tpl');
 <p><i>Your recovery key was given to you when you created your account and should be like this:<br /> XXXXXXXX-XXXXXXXX-XXXXXXXX-XXXXXXXX.</i></p>
 <?php
 
-echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebarOutterMain.tpl');
+include "../Includes/Templates/$aac_layout/sidebar.php";
 echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/footer.tpl');
 echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/bottom.tpl');
 ?>

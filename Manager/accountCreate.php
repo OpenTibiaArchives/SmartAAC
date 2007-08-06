@@ -250,7 +250,7 @@ echo '<br />
 
 
 <?PHP
-echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebarOutterMain.tpl');
+include "../Includes/Templates/$aac_layout/sidebar.php";
 echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/footer.tpl');
 echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/bottom.tpl');
 }

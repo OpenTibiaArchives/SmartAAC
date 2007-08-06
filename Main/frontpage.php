@@ -98,10 +98,11 @@ switch($want)
 }
 
 
-if(isset($_SESSION['M2_account']) && isset($_SESSION['M2_password']))
+/* if(isset($_SESSION['M2_account']) && isset($_SESSION['M2_password']))
 	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebarManagerLoggedIn.tpl');
 else
-	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebar.tpl');
+	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebar.tpl'); */
+include "../Includes/Templates/$aac_layout/sidebar.php";
 echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/footer.tpl');
 echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/bottom.tpl');
 ?>

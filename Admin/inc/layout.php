@@ -39,7 +39,7 @@ if((!isset($_COOKIE["logged_in_user"]) || $_COOKIE["logged_in_user"] != md5($adm
 // Logged in
 else
 {
-	$title = 'Items';
+	$title = 'Layout/Skin';
 	$name = 'Admin Panel';
 	$bodySpecial = 'onload="NOTHING"';
 
@@ -125,7 +125,8 @@ echo "
 		</form>
 ";
 
-	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebarAdmin.tpl');
+	$adminSidebar = true;
+	include "../Includes/Templates/$aac_layout/sidebar.php";
 	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/footer.tpl');
 	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/bottom.tpl');
 ?>

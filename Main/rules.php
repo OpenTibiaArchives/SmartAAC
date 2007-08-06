@@ -67,7 +67,7 @@ if($modules_rules)
 	<br>
 	<b>Rules of Conduct:</b><br>
 	<br>
-	All player must use the sense common when being related to Serskelander players of Serskeland.<br>
+	All player must use the sense common when being related to $aac_servername'er players of $aac_servername.<br>
 	Responsible for your acts.<br>
 	<br>
 	1. Don't do anything to an $aac_servername player that you wouldn't like for you. Respect.<br>
@@ -105,10 +105,7 @@ else
 	echo "<h1>Module has been disabled by the admin</h1>";
 }
 
-if(isset($_SESSION['M2_account']) && isset($_SESSION['M2_password']))
-	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebarManagerLoggedIn.tpl');
-else
-	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebar.tpl');
+include "../Includes/Templates/$aac_layout/sidebar.php";
 echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/footer.tpl');
 echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/bottom.tpl');
 ?>

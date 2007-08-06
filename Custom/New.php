@@ -26,8 +26,8 @@
 //    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // ===========================================================
 
-include '../../conf.php';
-include '../../Includes/stats/stats.php';
+include '../conf.php';
+include '../Includes/stats/stats.php';
 if($aac_status == "Maintenance")
 {
 	header("location: maintenance.php");
@@ -37,7 +37,7 @@ $title = 'New';
 $name = $aac_servername;
 $bodySpecial = 'onload="NOTHING"';
 
-include_once('../../Includes/Templates/bTemplate.php');
+include_once('../Includes/Templates/bTemplate.php');
 $tpl = new bTemplate();
 
 $tpl->set('title', $title);
@@ -48,7 +48,7 @@ $tpl->set('AAC_Version', $aac_version);
 $tpl->set('Total_Visits', "Disabled");
 $tpl->set('Unique_Visits', "Disabled");
 
-echo $tpl->fetch('../../Includes/Templates/'.$aac_layout.'/topCustom.tpl');
+echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/top.tpl');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -62,7 +62,7 @@ include 'New.inc';
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-echo $tpl->fetch('../../Includes/Templates/'.$aac_layout.'/sidebarCustoms.tpl');
-echo $tpl->fetch('../../Includes/Templates/'.$aac_layout.'/footer.tpl');
-echo $tpl->fetch('../../Includes/Templates/'.$aac_layout.'/bottom.tpl');
+include '../Includes/Templates/'.$aac_layout.'/sidebar.php';
+echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/footer.tpl');
+echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/bottom.tpl');
 ?>

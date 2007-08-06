@@ -30,7 +30,7 @@ include '../conf.php';
 include '../Includes/stats/stats.php';
 include '../Includes/counter/counter.php';
 include("../Includes/fckeditor/fckeditor.php") ;
-define("CUSTOM_DIRECTORY", "../Main/customs");
+define("CUSTOM_DIRECTORY", "../Custom");
 
 // Not logged in
 if((!isset($_COOKIE["logged_in_user"]) || $_COOKIE["logged_in_user"] != md5($admin_user)) || (!isset($_COOKIE["logged_in_pass"]) || $_COOKIE["logged_in_pass"] != md5($admin_pass)))
@@ -155,7 +155,8 @@ else
 		";
 	}
 
-	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebarAdmin.tpl');
+	$adminSidebar = true;
+	include "../Includes/Templates/$aac_layout/sidebar.php";
 	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/footer.tpl');
 	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/bottom.tpl');
 }

@@ -455,7 +455,7 @@ $encryptedAdminPass
 		case "newcustompage":
 		$newpageName = $_POST['PageName'];
 		
-		$newpageContentAFile = fopen("../Main/customs/$newpageName.php", "w");
+		$newpageContentAFile = fopen("../Custom/$newpageName.php", "w");
 		$newpageContentA = '<?PHP
 
 // ===========================================================
@@ -465,7 +465,7 @@ $encryptedAdminPass
 //	USE OF THIS PROGRAM TO RELY ON IT FOR SERVER USE IS NOT
 // 	RECOMMENDED! THIS IS FOR TESTING ONLY.
 //
-//	Main setup for the system
+//	Custom page
 // ===========================================================
 // ===========================================================
 //
@@ -484,8 +484,8 @@ $encryptedAdminPass
 //    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // ===========================================================
 
-include \'../../conf.php\';
-include \'../../Includes/stats/stats.php\';
+include \'../conf.php\';
+include \'../Includes/stats/stats.php\';
 if($aac_status == "Maintenance")
 {
 	header("location: maintenance.php");
@@ -495,7 +495,7 @@ $title = \''.$newpageName.'\';
 $name = $aac_servername;
 $bodySpecial = \'onload="NOTHING"\';
 
-include_once(\'../../Includes/Templates/bTemplate.php\');
+include_once(\'../Includes/Templates/bTemplate.php\');
 $tpl = new bTemplate();
 
 $tpl->set(\'title\', $title);
@@ -506,7 +506,7 @@ $tpl->set(\'AAC_Version\', $aac_version);
 $tpl->set(\'Total_Visits\', "Disabled");
 $tpl->set(\'Unique_Visits\', "Disabled");
 
-echo $tpl->fetch(\'../../Includes/Templates/\'.$aac_layout.\'/topCustom.tpl\');
+echo $tpl->fetch(\'../Includes/Templates/\'.$aac_layout.\'/top.tpl\');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -520,15 +520,15 @@ include \''.$newpageName.'.inc\';
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-echo $tpl->fetch(\'../../Includes/Templates/\'.$aac_layout.\'/sidebarCustoms.tpl\');
-echo $tpl->fetch(\'../../Includes/Templates/\'.$aac_layout.\'/footer.tpl\');
-echo $tpl->fetch(\'../../Includes/Templates/\'.$aac_layout.\'/bottom.tpl\');
+include "../Includes/Templates/$aac_layout/sidebar.php";
+echo $tpl->fetch(\'../Includes/Templates/\'.$aac_layout.\'/footer.tpl\');
+echo $tpl->fetch(\'../Includes/Templates/\'.$aac_layout.\'/bottom.tpl\');
 ?>
 ';
 		fwrite($newpageContentAFile, $newpageContentA);
 		fclose($newpageContentAFile);
 		
-		$newpageContentBFile = fopen("../Main/customs/$newpageName.inc", "w");
+		$newpageContentBFile = fopen("../Custom/$newpageName.inc", "w");
 		$newpageContentB = '<h1>Header</h1><p>No content</p>';
 		fwrite($newpageContentBFile, $newpageContentB);
 		fclose($newpageContentBFile);
@@ -537,7 +537,7 @@ echo $tpl->fetch(\'../../Includes/Templates/\'.$aac_layout.\'/bottom.tpl\');
 		case "savecustompage":
 		$pagefile = $_POST['pagefile'];
 		
-		$customincfile = fopen("../Main/customs/$pagefile", "w");
+		$customincfile = fopen("../Custom/$pagefile", "w");
 		$moddedcontent = $_POST['PageContent'];
 		fwrite($customincfile, $moddedcontent);
 		fclose($customincfile);
@@ -546,8 +546,8 @@ echo $tpl->fetch(\'../../Includes/Templates/\'.$aac_layout.\'/bottom.tpl\');
 		case "deletecustompage":
 		$custompage = $_GET['file'];
 		$custompage = str_replace(".inc", "", $custompage);
-		unlink('../Main/customs/' . $custompage . '.inc');
-		unlink('../Main/customs/' . $custompage . '.php');
+		unlink('../Custom/' . $custompage . '.inc');
+		unlink('../Custom/' . $custompage . '.php');
 		break;
 		
 		case "others":

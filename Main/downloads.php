@@ -83,10 +83,7 @@ else
 	echo "<h1>Module has been disabled by the admin</h1>";
 }
 
-if(isset($_SESSION['M2_account']) && isset($_SESSION['M2_password']))
-	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebarManagerLoggedIn.tpl');
-else
-	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebar.tpl');
+include "../Includes/Templates/$aac_layout/sidebar.php";
 echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/footer.tpl');
 echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/bottom.tpl');
 ?>

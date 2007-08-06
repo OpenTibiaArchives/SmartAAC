@@ -104,7 +104,8 @@ Version Code: $aac_versioncode</i></p><br />";
 
 echo "<br /><br />";
 
-	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/sidebarAdmin.tpl');
+	$adminSidebar = true;
+	include "../Includes/Templates/$aac_layout/sidebar.php";
 	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/footer.tpl');
 	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/bottom.tpl');
 }
