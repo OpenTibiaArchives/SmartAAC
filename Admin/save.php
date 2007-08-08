@@ -598,8 +598,8 @@ echo $tpl->fetch(\'../Includes/Templates/\'.$aac_layout.\'/bottom.tpl\');
 
 # The basic and sane settings for the AAC to run properly
 \$aac_status = 					\"$aac_status\";
-\$aac_version = 					\"2.0.1\";
-\$aac_versioncode = 				201;
+\$aac_version = 					\"2.0.2\";
+\$aac_versioncode = 				202;
 \$aac_dataDir =					\"$aac_dataDir\";
 \$aac_worldDirName = 			\"$aac_worldDirName\";
 \$aac_monstersDirName =			\"$aac_monstersDirName\";

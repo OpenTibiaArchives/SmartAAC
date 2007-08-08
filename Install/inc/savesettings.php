@@ -206,8 +206,8 @@ else
 
 # The basic and sane settings for the AAC to run properly
 \$aac_status = 					\"Installed\";
-\$aac_version = 					\"2.0.1\";
-\$aac_versioncode = 				201;
+\$aac_version = 					\"2.0.2\";
+\$aac_versioncode = 				202;
 \$aac_dataDir =					\"$conf_dataDir\";
 \$aac_worldDirName = 			\"world\";
 \$aac_monstersDirName =			\"monster\";

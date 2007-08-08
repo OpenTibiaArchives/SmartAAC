@@ -91,6 +91,7 @@ Version Code: $aac_versioncode</i></p><br />";
 <li><a href="admin.php?action=Others">Change other stuff</a></li>
 <br />
 <li><a href="admin.php?action=Towns">Detect Towns</a></li>
+<li><a href="admin.php?action=Remote">Remote otserv start/stop</a></li>
 <li><a href="admin.php?action=CheckVersion">Check version</a></li>
 <!--<li><a href="admin.php?action=ImportDB">Import the Default OTServ DB</a></li>-->
 <li><a href="admin.php?action=Videos">Add/Delete videos</a></li>

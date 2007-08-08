@@ -87,6 +87,10 @@ switch($action)
 	case "CustomPages":
 	include 'inc/custompages.php';
 	break;
+	
+	case "Remote":
+	include 'inc/remote.php';
+	break;
 
 	default:
 	include 'inc/index.php';

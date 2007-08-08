@@ -27,8 +27,8 @@
 
 # The basic and sane settings for the AAC to run properly
 $aac_status = 					"Not Installed";
-$aac_version = 					"2.0.1";
-$aac_versioncode = 				201;
+$aac_version = 					"2.0.2";
+$aac_versioncode = 				202;
 $aac_dataDir =					"C:/Dev-Cpp/otserv/data";
 $aac_worldDirName = 			"world";
 $aac_monstersDirName =			"monster";
