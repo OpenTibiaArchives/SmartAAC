@@ -36,8 +36,16 @@
 		<a href="../index.php"><span><font color="white"><tag:title /></font> || <tag:strayline /></span></a>
 	</div>
 
+	<div class="stripes"><span></span></div>
 	
-
+	<div class="nav">
+		<b><a href="../index.php">Frontpage</a></b>
+		<b><a href="../Admin/">Admin</a></b>
+		<a href="http://otfans.net">OTFans</a>
+		<a href="http://smart.pekay.co.uk">Smart-Ass AAC</a>
+		<a href="http://www.otserv-aac.info/">AAC Scripts</a>
+		<div class="clearer"><span></span></div>
+	</div>
 
 	<div class="stripes"><span></span></div>
 

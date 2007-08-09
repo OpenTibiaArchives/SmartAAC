@@ -66,6 +66,42 @@ else
 		echo "<p><b>This is version of Smart-Ass appears to be a development version.</b><br />";
 	}
 	
+	function get_server_load($windows = 0) {
+    $os = strtolower(PHP_OS);
+    if(strpos($os, "win") === false) {
+ if(file_exists("/proc/loadavg")) {
+     $load = file_get_contents("/proc/loadavg");
+     $load = explode(' ', $load);
+     return $load[0];
+ }
+ elseif(function_exists("shell_exec")) {
+     $load = explode(' ', `uptime`);
+     return $load[count($load)-1];
+ }
+ else {
+     return "";
+ }
+    }
+    elseif($windows) {
+ if(class_exists("COM")) {
+     $wmi = new COM("WinMgmts:\\\\.");
+     $cpus = $wmi->InstancesOf("Win32_Processor");
+     
+     $cpuload = 0;
+     $i = 0;
+     while ($cpu = $cpus->Next()) {
+   $cpuload += $cpu->LoadPercentage;
+   $i++;
+     }
+     
+     $cpuload = round($cpuload / $i, 2);
+     return "$cpuload%";
+ }
+ else {
+     return "";
+ }
+    }
+}
 
 echo "<h1>Checking</h1><br />
 <p>Main AAC Status: $aac_status<br />

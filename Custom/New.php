@@ -25,7 +25,7 @@
 //    along with this program; if not, write to the Free Software
 //    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // ===========================================================
-
+session_start();
 include '../conf.php';
 include '../Includes/stats/stats.php';
 if($aac_status == "Maintenance")

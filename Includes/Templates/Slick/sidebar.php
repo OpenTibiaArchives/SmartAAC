@@ -1,6 +1,7 @@
-		</div>
-		<div class="sidenav">
-		
+</div></div>
+		<div class="right">
+
+			<div class="subnav">
 		
 		<?php
 		if($adminSidebar == false)
@@ -12,8 +13,10 @@
 						<ul>
 							<li><a href="../Manager/index.php?act=manager">Manage Account</a></li>
 							<li><a href="../Manager/index.php?act=logout">Logout</a></li>
-						</ul>
+
+						</ul>	
 						
+						<br />
 						<h1>Status</h1>
 						<br />
 						<div style="font-size: 14px;" align="center">
@@ -25,54 +28,58 @@
 			{
 				echo '
 					<h1>Login</h1>
-							<div>			
-					<form method="post" action="../Manager/login.php" name="Login">
-					  <table style="text-align: left; height: 112px; width: 296px;" border="0" cellpadding="2" cellspacing="2">
-						<tbody>
-						  <tr>
-							<td style="width: 90px;">
-							<label>Account Number: </label></td>
-							<td style="width: 157px;"><input name="M2_account" type="password"></td>
-						  </tr>
-						  <tr>
-							<td style="width: 90px;"><label>Password: </label></td>
-							<td style="width: 157px;"><input name="M2_password" type="password"></td>
-						  </tr>
-						  <tr>
-							<td style="width: 90px;"></td>
-							<td style="width: 157px;"><a href="../Manager/index.php?act=lost">Lost Account</a></td>
-						  </tr>
-						  <tr>
-							<td style="width: 90px;"><input type="Submit" value="Login"></a></td>
-							<td style="width: 157px;"></td>
-						  </tr>
-						</tbody>
-						</form>
-					  </table>
-					  <a href="../Manager/index.php?act=register">Not got an account? Register Here</a>
-							</div>
+			
+			<div>			
+				<form method="post" action="../Manager/login.php" name="Login">
+				  <table style="text-align: left; height: 112px; width: 296px;" border="0" cellpadding="2" cellspacing="2">
+				    <tbody>
+				      <tr>
+				        <td style="width: 90px;">
+				        <label>Account Number: </label></td>
+				        <td style="width: 157px;"><input name="M2_account" type="password"></td>
+				      </tr>
+				      <tr>
+				        <td style="width: 90px;"><label>Password: </label></td>
+				        <td style="width: 157px;"><input name="M2_password" type="password"></td>
+				      </tr>
+					  <tr>
+				        <td style="width: 90px;"></td>
+				        <td style="width: 157px;"><a href="../Manager/index.php?act=lost">Lost Account</a></td>
+				      </tr>
+				      <tr>
+				        <td style="width: 90px;"><input type="Submit" value="Login"></a></td>
+				        <td style="width: 157px;"></td>
+				      </tr>
+				    </tbody>
+					</form>
+				  </table>
+				  <a href="../Manager/index.php?act=register">Not got an account? Register Here</a>
 							
-						<h1>Status</h1>
-						<br />
-						<div style="font-size: 14px;" align="center">
-						'.$global_stats.'
-						</div>
+			</div>
+			
+			<br />
+			<h1>Status</h1>
+			<br />
+			<div style="font-size: 14px;" align="center">
+			'.$global_stats.'
+			</div>
 				';		
 			}
 		}
 		elseif($adminSidebar) // (TRUE)
 		{
 			echo '			
-			<h1>Main Status</h1>
+			<h1>Status</h1>
 			<br />
 			<div style="font-size: 14px;" align="center">
 			'.$global_stats.'
 			</div>
-
+			
+			<br /><br />
 			
 			<h1>Main Menu</h1>
 			<ul>
-				<li><a href="admin.php">Index</a></li>
+				<li><a href="admin.php">Admin Panel</a></li>
 				<li><a href="../">Back to AAC</a></li>
 				<li><a href="login.php?logout=yes">Logout</a></li>
 			</ul>
@@ -161,10 +168,12 @@
 			
 			<br /><br />
 
+
+
+			</div>
+
 		</div>
-	
+
 		<div class="clearer"><span></span></div>
 
 	</div>
-
-</div>

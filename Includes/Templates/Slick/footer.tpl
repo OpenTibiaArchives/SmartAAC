@@ -1,6 +1,6 @@
-<!-- 	<div class="footer">
+	<div class="footer">
 	
-		<div class="col3">
+<!-- 		<div class="col3">
 
 				<h2>Go somewhere</h2>
 				<ul>

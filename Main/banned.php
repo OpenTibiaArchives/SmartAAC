@@ -70,6 +70,7 @@ if($modules_bannedplayers)
 	  </tbody>';
 		$query = sqlquery('SELECT `type`, `player`, `time` FROM `bans` ORDER BY `time` ASC');
 		$types = array(1 => 'IP', 2 => 'Account', 3 => 'Player');
+		$total_bans = 0;
 		while($row = mysql_fetch_array($query)) {
 			echo '
 			<tr class="lolhover">
@@ -78,6 +79,10 @@ if($modules_bannedplayers)
 			<td><center>'. date('M d Y, H:i:s T', $row['time']) .'</center></td>
 			</tr>
 			';
+			$total_bans++;
+		}
+		if($total_bans == 0) {
+			echo '<tr class="lolhover"><td><center>(None)</center></td></tr>';
 		}
 	echo '</table>';
 }
