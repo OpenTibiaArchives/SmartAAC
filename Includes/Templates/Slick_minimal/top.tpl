@@ -10,6 +10,15 @@
 <link rel="stylesheet" type="text/css" href="../Includes/Templates/Slick_minimal/default.css" media="screen"/>
 <link rel="stylesheet" type="text/css" href="../Includes/Templates/Slick_minimal/extra.css" media="screen"/>
 
+<script>
+      function checkedAll (id, checked) {
+	var el = document.getElementById(id);
+	for (var i = 0; i < el.elements.length; i++) {
+	  el.elements[i].checked = checked;
+	}
+      }
+</script>
+
 <script type="text/javascript" src="../Includes/window_protocol/javascript/prototype.js"> </script>
 <script type="text/javascript" src="../Includes/window_protocol/javascript/effects.js"> </script>
 <script type="text/javascript" src="../Includes/window_protocol/javascript/window.js"> </script>

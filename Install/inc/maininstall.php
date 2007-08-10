@@ -113,9 +113,12 @@ else
 		}
 		</style>
 
-		<form action=\"install.php?step=5\" method=\"POST\">
+		<form id=\"daform\" action=\"install.php?step=5\" method=\"POST\">
 		<input type=\"hidden\" name=\"char_rook\" value=\"$char_rook\">
 		<input type=\"hidden\" name=\"main_enable_mailer\" value=\"$main_enable_mailer\">
+		
+		<p><a href=\"javascript:checkedAll('daform', true)\">Tick all now</a>
+		<a href=\"javascript:checkedAll('daform', false)\">Untick all actually</a></p><br />
 		
 		<h1>MySQL Database Details</h1>
 		<label for=\"SQL_Host\">MySQL Host:</label>
