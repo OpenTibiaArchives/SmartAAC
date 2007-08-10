@@ -159,7 +159,7 @@ else
 		}
 		</style>
 
-		<p>Here you can start, kill and restart the server.<br /><font color=\"red\"><b>NOTE</font>: This is only available for Windows at the moment.</b></p><br />
+		<p>Here you can start, kill and restart the server.<br /><font color=\"red\"><b>NOTE</font>: This is only available for Windows at the moment.</b><br /><font color=\"red\"><b>NOTE</font>: The server will NOT save if you close the server this way.</b></p><br />
 		
 		<form action=\"admin.php?action=Remote\" method=\"POST\">
 		Server Binary:<br /><input type=\"text\" name=\"otservbinary\" value=\"otserv.exe\" /><br />
