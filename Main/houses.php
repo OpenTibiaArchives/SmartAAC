@@ -109,7 +109,7 @@ if($modules_houses)
 			echo '<td style="width: 124px; text-align: center;">' . $main_towns[$xml2->house[$i]->getAttribute('townid')] . '</td>';
 			echo '<td style="width: 124px; text-align: center;">' . $xml2->house[$i]->getAttribute('rent') . ' gp</td>';
 			echo '<td style="width: 124px; text-align: center;">' . $xml2->house[$i]->getAttribute('size') . ' sqm</td>';
-			echo '<td style="width: 124px; text-align: center;">' . $owners[$xml2->house[$i]->getAttribute('houseid')] . '</td>';
+			echo '<td style="width: 124px; text-align: center;">' . (array_search($xml2->house[$i]->getAttribute('houseid'), $owners) ? $owners[$xml2->house[$i]->getAttribute('houseid')] : 'Nobody') . '</td>';
 			echo '</tr>';
 		}
 	echo "</tbody></table></div>";
