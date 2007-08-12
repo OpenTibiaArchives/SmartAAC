@@ -39,7 +39,7 @@ if((!isset($_COOKIE["logged_in_user"]) || $_COOKIE["logged_in_user"] != md5($adm
 // Logged in
 else
 {
-	$title = 'Change frontpage text';
+	$title = 'Remote server management';
 	$name = 'Admin Panel';
 	$bodySpecial = 'onload="NOTHING"';
 
