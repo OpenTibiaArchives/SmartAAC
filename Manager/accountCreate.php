@@ -117,7 +117,7 @@ if ( (isset($M2_account) && !empty($M2_account)) && (isset($M2_password) && !emp
 					$query = sqlquery('SELECT `id` FROM `accounts`');
 					$used = array();
 					while($row = mysql_fetch_array($query)){
-						$used[$row] = true;
+						$used[ $row['id'] ] = true;
 					}
 
 					while(true)
