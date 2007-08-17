@@ -63,12 +63,12 @@ if ( (isset($M2_account) && !empty($M2_account)) && (isset($M2_password) && !emp
 		}
 	}
 
-	if ( strlen($M2_account) < $aac_minacclen || strlen($M2_account) > $aac_maxacclen )
+	if ( !$aac_randomaccnum && (strlen($M2_account) < $aac_minacclen || strlen($M2_account) > $aac_maxacclen) )
 	{
 		echo "<font color=\"red\">Error! Your account number is either too short or too long!</font><br><br>";
 		$error = 1;
 	}
-	elseif ( !is_numeric($M2_account) )
+	elseif ( !$aac_randomaccnum && !is_numeric($M2_account) )
 	{
 		echo "<font color=\"red\">Error! Your account number must be a number!</font><br><br>";
 	}
@@ -109,6 +109,40 @@ if ( (isset($M2_account) && !empty($M2_account)) && (isset($M2_password) && !emp
 				return;
 			}
 			else {
+				if($aac_randomaccnum) {
+					$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die("MySQL Error: mysql_error 								(mysql_errno()).\n");
+					mysql_select_db($sql_db, $sqlconnect);
+					$random = rand(0, 999999);
+					$accno = $random;
+
+					while(true)
+					{
+						$result = sqlquery("SELECT * FROM `accounts` WHERE `id` = '$accno';");
+						$rowz = mysql_num_rows($result);
+						if($rowz == 1)
+						{
+							$accno++;
+						}
+						// If we have got to an account number that doesn't exist, break the while statement, YAY we got a number!
+						elseif($rowz == 0)
+						{
+							break;
+						}
+		
+						// we need to re-set
+						if($accno > 999999)
+						{
+							$accno = 0;
+						}
+
+						// we checked all possibilities
+						if($accno == $random)
+						{
+							die('Sorry... there are no free account number at the moment, lol :D.');
+						}
+					}
+					$M2_account = $accno;
+				}
 				sqlquery('INSERT INTO `accounts` ( id, password , email , blocked , premdays )
 					VALUES ( ' . intval($M2_account) . ', \'' . mysql_real_escape_string($M2_password) . '\', \'' . mysql_real_escape_string($M2_email) . '\', 0, 0 );');
 				
@@ -171,44 +205,8 @@ echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/top.tpl');
 	    <tr>
 	      <td>Account Number: </td>
 <?php
-	
-	if($aac_randomaccnum) {
-	$sqlconnect = mysql_connect($sql_host, $sql_user, $sql_pass) or die("MySQL Error: mysql_error 								(mysql_errno()).\n");
-			mysql_select_db($sql_db, $sqlconnect);
-	$random = rand(0, 999999);
-    $accno = $random;
 
-	while(true)
-	{
-		$result = sqlquery("SELECT * FROM `accounts` WHERE `id` = '$accno';");
-		$rowz = mysql_num_rows($result);
-		if($rowz == 1)
-		{
-			$accno++;
-		}
-		// If we have got to an account number that doesn't exist, break the while statement, YAY we got a number!
-		elseif($rowz == 0)
-		{
-			break;
-		}
-		
-		// we need to re-set
-	    if($accno > 999999)
-	    {
-	        $accno = 0;
-	    }
-
-	    // we checked all possibilities
-	    if($accno == $random)
-	    {
-	        die('Sorry... there are no free account number at the moment, lol :D.');
-	    }
-	}
-	echo '<td><input name="M2_account" type="text" maxlength="' . $aac_maxacclen . '" value="' . $accno . '" class="textfield" readonly></td>
-	<td style="width: 218px;"><font color="red">* <i>(Not choosable!)</i></font></td>';
-}
-
-else
+if(!$aac_randomaccnum)
 {
 	echo '<td><input name="M2_account" type="text" maxlength="' . $aac_maxacclen . '" class="textfield"></td>
 	<td style="width: 218px;"><font color="red">* <i>('.$aac_minacclen .' - '. $aac_maxacclen.' numbers)</i></font></td>';

@@ -56,7 +56,10 @@ if ($M2_acc != "" && $M2_acc != null && is_numeric($M2_acc) && $M2_pass != "" &&
 	$namein = $_POST['name'];
 	$player = $namein;
 	
-	$vocin = $_POST['voc'];
+	if($char_rook)
+		$vocin = 0;
+	else
+		$vocin = $_POST['voc'];
 	$sexin = $_POST['sex'];
 	
 	$player = $namein;
