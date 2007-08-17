@@ -114,17 +114,20 @@ if ( (isset($M2_account) && !empty($M2_account)) && (isset($M2_password) && !emp
 					mysql_select_db($sql_db, $sqlconnect);
 					$random = rand(0, 999999);
 					$accno = $random;
+					$query = sqlquery('SELECT `id` FROM `accounts`');
+					$used = array();
+					while($row = mysql_fetch_array($query)){
+						$used[$row] = true;
+					}
 
 					while(true)
 					{
-						$result = sqlquery("SELECT * FROM `accounts` WHERE `id` = '$accno';");
-						$rowz = mysql_num_rows($result);
-						if($rowz == 1)
+						if($used[$accno])
 						{
 							$accno++;
 						}
 						// If we have got to an account number that doesn't exist, break the while statement, YAY we got a number!
-						elseif($rowz == 0)
+						elseif(!$used[$accno])
 						{
 							break;
 						}
