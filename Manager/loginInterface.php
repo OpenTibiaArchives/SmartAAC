@@ -55,6 +55,7 @@ $tpl->set('Total_Visits', $total);
 $tpl->set('Unique_Visits', $total_uniques);
 
 $reckey = $_GET['key'];
+$creatednumber = $_GET['acc'];
 $M2_account = $_SESSION['M2_account'];
 $M2_password = $_SESSION['M2_password'];
 
@@ -65,7 +66,12 @@ echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/top.tpl');
 <h2>Login to your account:</h2><br />
 <?php
 if(isset($reckey)) {
+	if(isset($creatednumber)) {
+		echo "<b>Account created!<br /><br />Your recovery key is: <font size=\"+1\">$reckey</font>. <br />Your account number is<font size=\"+1\">$creatednumber</font></b>.<br /><br />";
+	}
+	else {
 	echo "<b>Account created!<br /><br />Your recovery key is: <font size=\"+1\">$reckey</font>. <br />Please keep this safe and discreet.</b><br /><br />";
+	}
 }
 ?>
 
