@@ -55,32 +55,34 @@ else
 
 	echo $tpl->fetch('../Includes/Templates/'.$aac_layout.'/top.tpl');
 
-	$currVersion = file_get_contents("http://smart.pekay.co.uk/smartass_version");
-	if($currVersion > $aac_versioncode)
+	$currVersion = file_get_contents("http://otaac.sourceforge.net/smartass_version");
+	switch(version_compare($aac_version, $currVersion))
 	{
-		echo "<p><b>Smart-Ass isn't up to date. Updates are there to bring new features, security fixes and other stuff.<br />";
-		echo 'Goto check version to upgrade</b></p>';
-	}
-	elseif($currVersion < $aac_versioncode)
-	{
-		echo "<p><b>This is version of Smart-Ass appears to be a development version.</b><br />";
+		case -1:
+			echo "<p>Smart-Ass isn't up to date. <a href=\"admin.php?action=CheckVersion\">Instructions for upgrading</a>";
+		break;
+		
+		case 1:
+			echo "<p><b>This is version of Smart-Ass appears to be a development version either from the SVN respository or via some other method.</b><br /> <br /><a href=\"admin.php\">Go back</a>";
+		break;
 	}
 	
-	function get_server_load($windows = 0) {
-    $os = strtolower(PHP_OS);
-    if(strpos($os, "win") === false) {
- if(file_exists("/proc/loadavg")) {
-     $load = file_get_contents("/proc/loadavg");
-     $load = explode(' ', $load);
-     return $load[0];
- }
- elseif(function_exists("shell_exec")) {
-     $load = explode(' ', `uptime`);
-     return $load[count($load)-1];
- }
- else {
-     return "";
- }
+function get_server_load($windows = 0) {
+	$os = strtolower(PHP_OS);
+	
+	if(strpos($os, "win") === false) {
+		if(file_exists("/proc/loadavg")) {
+		$load = file_get_contents("/proc/loadavg");
+		$load = explode(' ', $load);
+		return $load[0];
+	}
+	elseif(function_exists("shell_exec")) {
+		$load = explode(' ', `uptime`);
+		return $load[count($load)-1];
+	}
+	else {
+		return "NONE";
+}
     }
     elseif($windows) {
  if(class_exists("COM")) {
@@ -98,15 +100,17 @@ else
      return "$cpuload%";
  }
  else {
-     return "";
+     return "NONE";
  }
     }
 }
 
+//echo get_server_load();
+
 echo "<h1>Checking</h1><br />
 <p>Main AAC Status: $aac_status<br />
 <i>Version: $aac_version<br />
-Version Code: $aac_versioncode</i></p><br />";
+OS: ". PHP_OS . "<br /></i></p><br />";
 
 ?>
 <h1>Administration</h1><br />
