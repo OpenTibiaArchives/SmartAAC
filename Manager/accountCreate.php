@@ -146,8 +146,8 @@ if ( (isset($M2_account) && !empty($M2_account)) && (isset($M2_password) && !emp
 					}
 					$M2_account = $accno;
 				}
-				sqlquery('INSERT INTO `accounts` ( id, password , email , blocked , premdays )
-					VALUES ( ' . intval($M2_account) . ', \'' . mysql_real_escape_string($M2_password) . '\', \'' . mysql_real_escape_string($M2_email) . '\', 0, 0 );');
+				sqlquery('INSERT INTO `accounts` ( id, password , email , blocked )
+					VALUES ( ' . intval($M2_account) . ', \'' . mysql_real_escape_string($M2_password) . '\', \'' . mysql_real_escape_string($M2_email) . '\', 0 );');
 				
 				$reckey = createRecoveryKey();
 				while(true)

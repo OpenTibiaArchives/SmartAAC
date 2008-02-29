@@ -162,7 +162,7 @@ else
 	`guild_id` INT NOT NULL,
 	FOREIGN KEY (`player_id`) REFERENCES `players` (`id`),
 	FOREIGN KEY (`guild_id`) REFERENCES `guilds` (`id`)
-	) ENGINE = InnoDB;';
+	)';
 	$recoveryExist = 1;
 	mysql_query('SELECT `recovery` FROM `accounts LIMIT 1 ;`') or $recoveryExist = 0;
 	$recoveryField = 'ALTER TABLE `accounts` ADD `recovery` VARCHAR(255) NULL ;';
